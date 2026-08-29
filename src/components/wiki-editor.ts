@@ -2,6 +2,7 @@ import { LitElement, html, css } from 'lit';
 import { customElement, state } from 'lit/decorators.js';
 import { WikiContentEngine, ClassificationResult, DuplicateAnalysisResult, BookAnalysisResult } from '../services/WikiContentEngine';
 import { wikiArticles } from '../data/wikiArticles';
+import { extractBookFile, type ExtractedBook } from '../document/browser-book-extractor.ts';
 
 @customElement('wiki-editor')
 export class WikiEditor extends LitElement {
@@ -19,6 +20,12 @@ export class WikiEditor extends LitElement {
 
   @state()
   private isProcessing: boolean = false;
+
+  @state()
+  private extraction: ExtractedBook | null = null;
+
+  @state()
+  private extractionError: string = '';
 
   static styles = css`
     :host {
@@ -64,6 +71,16 @@ export class WikiEditor extends LitElement {
       border-color: var(--accent-gold, #d4af37);
       box-shadow: 0 0 0 2px rgba(212, 175, 55, 0.2);
     }
+    .drop-zone {
+      border: 2px dashed #665526;
+      border-radius: 10px;
+      padding: 22px;
+      text-align: center;
+      background: rgba(212, 175, 55, 0.05);
+    }
+    .drop-zone input { display: block; width: 100%; margin-top: 12px; }
+    .file-result { color: #cbd5e1; line-height: 1.6; margin-top: 10px; }
+    .error { color: #fca5a5; margin-top: 10px; }
     .btn {
       background: linear-gradient(135deg, #d4af37, #b8860b);
       color: #000;
@@ -151,6 +168,26 @@ export class WikiEditor extends LitElement {
     }, 600);
   }
 
+  private async handleDocument(event: Event) {
+    const input = event.currentTarget as HTMLInputElement;
+    const file = input.files?.[0];
+    if (!file) return;
+    this.isProcessing = true;
+    this.extractionError = '';
+    this.extraction = null;
+    try {
+      const result = await extractBookFile(file);
+      this.extraction = result;
+      this.content = result.text;
+      if (!this.articleTitle.trim()) this.articleTitle = file.name.replace(/\.[^.]+$/, '').replace(/[_-]+/g, ' ');
+    } catch (error) {
+      this.extractionError = error instanceof Error ? error.message : 'Ismeretlen dokumentumfeldolgozási hiba.';
+    } finally {
+      this.isProcessing = false;
+      input.value = '';
+    }
+  }
+
   private handleSave() {
     if (!this.bookAnalysis) return;
 
@@ -176,6 +213,7 @@ export class WikiEditor extends LitElement {
     this.subtitle = '';
     this.content = '';
     this.bookAnalysis = null;
+    this.extraction = null;
   }
 
   render() {
@@ -183,6 +221,21 @@ export class WikiEditor extends LitElement {
       <div class="editor-container">
         <h2 style="margin: 0; color: var(--accent-gold, #d4af37); text-align: center; font-size: 1.5rem; letter-spacing: 1px;">Új Tudásanyag Integrálása</h2>
         <p style="text-align: center; color: #94a3b8; margin-top: -10px; margin-bottom: 10px;">Fejlett tartalomelemzés, könyv/fejezet detektálás, és auto-kapcsolódás.</p>
+
+        <div class="drop-zone">
+          <strong>📥 Könyvdokumentum bedobása</strong>
+          <div style="color:#94a3b8; margin-top:6px;">PDF, DOCX, TXT, Markdown vagy HTML – a feldolgozás ezen az eszközön történik.</div>
+          <input aria-label="Könyvdokumentum kiválasztása" type="file" accept=".pdf,.docx,.txt,.md,.html,.htm" @change=${this.handleDocument} ?disabled=${this.isProcessing}>
+          ${this.isProcessing ? html`<div style="margin-top:10px;">⏳ A teljes szöveg kinyerése folyamatban…</div>` : ''}
+          ${this.extractionError ? html`<div class="error" role="alert">${this.extractionError}</div>` : ''}
+          ${this.extraction ? html`
+            <div class="file-result" role="status">
+              ✅ ${this.extraction.fileName}: ${this.extraction.wordCount.toLocaleString('hu-HU')} szó,
+              ${this.extraction.characterCount.toLocaleString('hu-HU')} karakter${this.extraction.pageCount ? `, ${this.extraction.pageCount} oldal` : ''}.
+              ${this.extraction.warnings.map((warning) => html`<div class="warning-text">⚠️ ${warning}</div>`)}
+            </div>
+          ` : ''}
+        </div>
         
         <div class="input-group">
           <label>Tudásanyag Címe</label>

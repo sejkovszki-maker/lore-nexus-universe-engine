@@ -20877,6 +20877,25 @@ export const wikiArticles: Record<string, any> = {
 `
   },
 
+  "fekete-meneteles": {
+    id: "fekete-meneteles",
+    title: "A Fekete Menetelés (Blackmarch)",
+    subtitle: "Edgewulf seregének pusztulása és Siggard visszatérése",
+    category: "Események",
+    gameTag: "Lore",
+    image: "",
+    description: "Assur démoni seregeinek rajtaütése, amely elpusztította Edgewulf gróf haderejét, és elindította Siggard bosszúhadjáratát.",
+    relatedArticles: ["demonsbane-ch1", "siggard", "assur", "brennor"],
+    content: `
+      <h2>A csata</h2>
+      <p><strong>A Fekete Menetelés</strong>, más néven <em>Blackmarch</em>, a <em>Diablo: Demonsbane</em> történetének nyitó katasztrófája. Edgewulf gróf serege Entsteig földjén vonult, amikor <strong>Assur</strong> fődémon erői rajtaütöttek. A démoni támadás felmorzsolta a hadat, és a harcmező halottakkal telt meg.</p>
+      <h2>Siggard halála és visszatérése</h2>
+      <p>A csatában elesett <strong>Siggard</strong> is. A családja iránt érzett szeretet és a bosszúvágy azonban olyan erősnek bizonyult, hogy a Lelkek Éjszakáján visszatért a halálból. Találkozása Tyraellel, majd Sarnakyle-lal innen indította el Assur és a démoni hordák elleni útján.</p>
+      <h2>Következmények</h2>
+      <p>A menetelés pusztulása vezetett Brennor ostromához és Assur bukásához. Az esemény teljes regénybeli elbeszélése a [[demonsbane-ch1|Demonsbane első fejezetében|references]] kezdődik.</p>
+    `
+  },
+
 };
 
 export const timelineData = [
@@ -20888,7 +20907,7 @@ export const timelineData = [
     date: "A Bűn Háborúja Után",
     title: "A Fekete Menetelés (Blackmarch)",
     gameTag: "Lore",
-    articleId: "demonsbane",
+    articleId: "fekete-meneteles",
     summary: "A démoni seregek lemészárolják Entsteig haderejét.",
     description: "Assur fődémon seregei rajtaütöttek Edgewulf Gróf seregén a Fekete Menetelés (Blackmarch) során. Siggard, egy fiatal katona, meghalt a csatában, de bosszúvágya és hatalmas akaratereje visszahozta őt a halálból. Ezzel kezdetét vette a Lelkek Éjszakája.",
     isHighlight: false
@@ -21067,5 +21086,4 @@ export const timelineData = [
     isHighlight: true
   }
 ];
-
 
