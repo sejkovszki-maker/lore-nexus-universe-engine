@@ -5,6 +5,10 @@ test('application renders and switches its primary views', async ({ page }) => {
   await expect(page.locator('diablo-app')).toBeVisible();
   await expect(page.getByRole('button', { name: 'Kronológia' })).toBeVisible();
   await expect(page.locator('diablo-timeline')).toBeVisible();
+  await page.getByRole('button', { name: 'Történet' }).click();
+  await expect(page).toHaveURL(/#tab\/story$/);
+  await expect(page.locator('story-reader')).toBeVisible();
+  await expect(page.getByText(/pozíció automatikusan mentve/)).toBeVisible();
   await page.getByRole('button', { name: 'Cikkek' }).click();
   await expect(page).toHaveURL(/#tab\/articles$/);
   await expect(page.locator('wiki-article-grid')).toBeVisible();

@@ -20,6 +20,7 @@
     "gate:zero-data-loss": "pwsh -NoProfile -File _scripts/zero-data-loss-gate.ps1",
     "quality": "node _scripts/quality-gate.mjs",
     "quality:public": "npm run test:unit && npm run test:property && npm run test:regression && npm run test:fuzz && npm run security:secrets && npm run security:audit",
+    "language:check": "node _scripts/check-wiki-language.mjs",
     "test:unit": "node --test --experimental-strip-types --experimental-test-coverage --test-coverage-lines=80 --test-coverage-include=src/store/appState.ts tests/unit/*.test.ts",
     "test:property": "node --test --experimental-strip-types tests/property/*.test.ts",
     "test:integration": "node _scripts/test-raw-source-store.mjs && node _scripts/test-audit-log.mjs",
@@ -33,13 +34,13 @@
     "test:document-sandbox": "node _scripts/test-document-sandbox.mjs && node _scripts/test-pdf-sandbox.mjs",
     "test:ocr": "node _scripts/test-ocr-pipeline.mjs",
     "document:ingest": "node --experimental-strip-types _scripts/ingest-document-store.ts",
-    "document:verify": "node _scripts/verify-document-store.mjs"
-    ,"migration:dry-run": "node --experimental-strip-types _scripts/run-legacy-migration-dry-run.ts"
-    ,"migration:verify": "node _scripts/verify-legacy-migration.mjs"
-    ,"netlify:check": "node _scripts/verify-netlify-readiness.mjs"
-    ,"ai:evaluate": "node --experimental-strip-types _scripts/evaluate-ai-baseline.ts"
-    ,"migration:finalize": "node _scripts/finalize-diablo-migration.mjs"
-    ,"production:verify": "node _scripts/verify-production-readiness.mjs"
+    "document:verify": "node _scripts/verify-document-store.mjs",
+    "migration:dry-run": "node --experimental-strip-types _scripts/run-legacy-migration-dry-run.ts",
+    "migration:verify": "node _scripts/verify-legacy-migration.mjs",
+    "netlify:check": "node _scripts/verify-netlify-readiness.mjs",
+    "ai:evaluate": "node --experimental-strip-types _scripts/evaluate-ai-baseline.ts",
+    "migration:finalize": "node _scripts/finalize-diablo-migration.mjs",
+    "production:verify": "node _scripts/verify-production-readiness.mjs"
   },
   "dependencies": {
     "@noble/hashes": "2.4.0",
@@ -47,9 +48,7 @@
     "ajv-formats": "3.0.1",
     "dexie": "^4.4.5",
     "dompurify": "^3.1.6",
-    "graphology": "^0.25.4",
-    "lit": "^3.1.2",
-    "sigma": "^3.0.0-beta.19"
+    "lit": "^3.1.2"
   },
   "devDependencies": {
     "@cyclonedx/cyclonedx-npm": "6.0.1",

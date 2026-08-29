@@ -3,7 +3,7 @@ import { customElement, state } from 'lit/decorators.js';
 import { useAppStore } from '../store/appState';
 
 import './diablo-navigation';
-import './lore-network';
+import './story-reader';
 import './wiki-article-grid';
 import './wiki-article-view';
 import './wiki-editor';
@@ -34,7 +34,7 @@ export class DiabloApp extends LitElement {
         <main class="w-full flex justify-center mt-6 relative">
           ${this.activeTab === 'timeline' ? html`<diablo-timeline class="w-full"></diablo-timeline>` : ''}
           ${this.activeTab === 'articles' ? html`<wiki-article-grid class="w-full"></wiki-article-grid>` : ''}
-          ${this.activeTab === 'lore-map' ? html`<lore-network class="w-full rounded-xl overflow-hidden shadow-2xl border border-blood-red/30"></lore-network>` : ''}
+          ${this.activeTab === 'story' ? html`<story-reader class="w-full"></story-reader>` : ''}
           ${this.activeTab === 'editor' ? html`<wiki-editor class="w-full max-w-4xl mx-auto"></wiki-editor>` : ''}
           ${this.activeTab === 'article-view' ? html`<wiki-article-view class="w-full"></wiki-article-view>` : ''}
           ${this.activeTab === 'conflicts' ? html`<canon-conflict-dashboard class="w-full"></canon-conflict-dashboard>` : ''}

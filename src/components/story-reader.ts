@@ -1,0 +1,117 @@
+import { LitElement, css, html } from 'lit';
+import { customElement, state } from 'lit/decorators.js';
+import DOMPurify from 'dompurify';
+import { canonicalStory } from '../wiki/story-order';
+import { renderWikiLinks } from '../wiki/link-engine';
+import { wikiArticles } from '../data/wikiArticles';
+
+const STORAGE_KEY = 'lore-nexus:story-progress:v1';
+
+interface SavedProgress { articleId: string; scrollY: number; updatedAt: number }
+
+@customElement('story-reader')
+export class StoryReader extends LitElement {
+  @state() private chapterIndex = 0;
+  private restoreScrollY = 0;
+  private saveTimer?: number;
+  private readonly chapters = canonicalStory();
+
+  static styles = css`
+    :host { display:block; width:100%; max-width:900px; margin:0 auto; color:#eaddc5; }
+    .reader { background:#151011; border:1px solid #d4af3733; border-radius:1rem; padding:clamp(1.25rem,4vw,3rem); box-shadow:0 20px 60px #0008; }
+    .toolbar { position:sticky; top:0; z-index:4; background:#0a0809ee; backdrop-filter:blur(10px); border:1px solid #8b000055; border-radius:.75rem; padding:.8rem; margin-bottom:1.5rem; }
+    .progress { height:.35rem; background:#2b2021; border-radius:99px; overflow:hidden; margin:.7rem 0; }
+    .progress span { display:block; height:100%; background:linear-gradient(90deg,#8b0000,#d4af37); }
+    .meta { display:flex; justify-content:space-between; gap:1rem; color:#cbbd9f; font-size:.9rem; }
+    h1 { color:#d4af37; font-family:'Cinzel',serif; font-size:clamp(2rem,6vw,3.2rem); line-height:1.15; }
+    .content { font-family:'Outfit',sans-serif; font-size:1.08rem; line-height:1.85; }
+    .content h2,.content h3 { color:#d4af37; font-family:'Cinzel',serif; margin-top:2rem; }
+    .content a { color:#e6c65c; text-decoration:underline dotted; text-underline-offset:.2em; }
+    .controls { display:grid; grid-template-columns:1fr 1fr; gap:1rem; margin-top:2.5rem; }
+    button { min-height:48px; border:1px solid #d4af3766; border-radius:.65rem; background:#d4af3712; color:#f0dfbc; padding:.75rem 1rem; cursor:pointer; font-weight:700; }
+    button:hover,button:focus-visible { border-color:#d4af37; color:#d4af37; outline:2px solid transparent; }
+    button:disabled { opacity:.35; cursor:not-allowed; }
+    select { width:100%; background:#171112; color:#f0dfbc; border:1px solid #d4af3755; border-radius:.5rem; padding:.6rem; }
+    @media(max-width:600px){ .meta{font-size:.8rem}.reader{border-radius:.6rem}.controls{grid-template-columns:1fr} }
+  `;
+
+  connectedCallback() {
+    super.connectedCallback();
+    const saved = this.loadProgress();
+    if (saved) {
+      const index = this.chapters.findIndex(article => article.id === saved.articleId);
+      if (index >= 0) this.chapterIndex = index;
+      this.restoreScrollY = Math.max(0, saved.scrollY);
+    }
+    window.addEventListener('scroll', this.handleScroll, { passive: true });
+  }
+
+  disconnectedCallback() {
+    window.removeEventListener('scroll', this.handleScroll);
+    if (this.saveTimer) window.clearTimeout(this.saveTimer);
+    this.saveProgress();
+    super.disconnectedCallback();
+  }
+
+  protected firstUpdated() { this.restorePosition(); }
+
+  private handleScroll = () => {
+    if (this.saveTimer) window.clearTimeout(this.saveTimer);
+    this.saveTimer = window.setTimeout(() => this.saveProgress(), 250);
+  };
+
+  private loadProgress(): SavedProgress | null {
+    try { return JSON.parse(localStorage.getItem(STORAGE_KEY) || 'null'); } catch { return null; }
+  }
+
+  private saveProgress() {
+    const article = this.chapters[this.chapterIndex];
+    if (!article) return;
+    const progress: SavedProgress = { articleId: article.id, scrollY: window.scrollY, updatedAt: Date.now() };
+    localStorage.setItem(STORAGE_KEY, JSON.stringify(progress));
+  }
+
+  private restorePosition() {
+    requestAnimationFrame(() => window.scrollTo({ top: this.restoreScrollY, behavior: 'auto' }));
+  }
+
+  private goTo(index: number) {
+    this.chapterIndex = Math.min(this.chapters.length - 1, Math.max(0, index));
+    this.restoreScrollY = 0;
+    this.saveProgress();
+    history.replaceState(null, '', `#tab/story/${this.chapters[this.chapterIndex].id}`);
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
+
+  private articleHtml(content: string) {
+    const linked = renderWikiLinks(content, wikiArticles);
+    return DOMPurify.sanitize(linked, { ADD_ATTR: ['data-wiki-id', 'data-relation'] });
+  }
+
+  render() {
+    const article = this.chapters[this.chapterIndex];
+    if (!article) return html`<p>A történet jelenleg nem érhető el.</p>`;
+    const percent = Math.round(((this.chapterIndex + 1) / this.chapters.length) * 100);
+    return html`<section class="reader" aria-labelledby="story-title">
+      <div class="toolbar">
+        <label>Fejezet
+          <select .value=${String(this.chapterIndex)} @change=${(event: Event) => this.goTo(Number((event.target as HTMLSelectElement).value))}>
+            ${this.chapters.map((chapter, index) => html`<option value=${index}>${index + 1}. ${chapter.title}</option>`)}
+          </select>
+        </label>
+        <div class="progress" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow=${percent}><span style=${`width:${percent}%`}></span></div>
+        <div class="meta"><span>${this.chapterIndex + 1}/${this.chapters.length}. fejezet</span><span>${percent}% – a pozíció automatikusan mentve</span></div>
+      </div>
+      <article>
+        <p>${article.category}</p>
+        <h1 id="story-title">${article.title}</h1>
+        ${article.subtitle ? html`<p><em>${article.subtitle}</em></p>` : ''}
+        <div class="content" .innerHTML=${this.articleHtml(article.content)}></div>
+      </article>
+      <nav class="controls" aria-label="Történet fejezetei">
+        <button ?disabled=${this.chapterIndex === 0} @click=${() => this.goTo(this.chapterIndex - 1)}>← Előző fejezet</button>
+        <button ?disabled=${this.chapterIndex === this.chapters.length - 1} @click=${() => this.goTo(this.chapterIndex + 1)}>Következő fejezet →</button>
+      </nav>
+    </section>`;
+  }
+}

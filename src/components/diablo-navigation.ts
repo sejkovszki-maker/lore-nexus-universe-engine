@@ -18,7 +18,7 @@ export class DiabloNavigation extends LitElement {
     return this; // Disable shadow DOM to inherit global Tailwind
   }
 
-  private handleTabClick(tab: 'timeline' | 'articles' | 'lore-map' | 'editor' | 'conflicts') {
+  private handleTabClick(tab: 'timeline' | 'articles' | 'story' | 'editor' | 'conflicts') {
     useAppStore.setActiveTab(tab);
   }
 
@@ -41,10 +41,10 @@ export class DiabloNavigation extends LitElement {
           <i class="fa-solid fa-book-journal-whills ${iconClass}"></i> <span>Cikkek</span>
         </button>
         <button 
-          class="${btnClass} ${this.activeTab === 'lore-map' ? 'text-blood-red border-blood-red bg-blood-red/10' : 'text-gray-400 border-transparent hover:text-white hover:bg-white/5'}"
-          @click=${() => this.handleTabClick('lore-map')}
+          class="${btnClass} ${this.activeTab === 'story' ? 'text-blood-red border-blood-red bg-blood-red/10' : 'text-gray-400 border-transparent hover:text-white hover:bg-white/5'}"
+          @click=${() => this.handleTabClick('story')}
         >
-          <i class="fa-solid fa-project-diagram ${iconClass}"></i> <span>Hálózat</span>
+          <i class="fa-solid fa-book-open ${iconClass}"></i> <span>Történet</span>
         </button>
         <button 
           class="${btnClass} ${this.activeTab === 'editor' ? 'text-blood-red border-blood-red bg-blood-red/10' : 'text-gray-400 border-transparent hover:text-white hover:bg-white/5'}"
