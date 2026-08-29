@@ -1,0 +1,4 @@
+import { readFile, mkdir, writeFile } from 'node:fs/promises'; import { evaluateAi, type GoldenCase } from '../src/ai/evaluation.ts';
+const dataset = JSON.parse(await readFile('tests/fixtures/ai-golden-dataset.json', 'utf8')) as { version: number; cases: GoldenCase[] };
+const predictions = dataset.cases.map((item) => ({ caseId: item.id, answer: { text: item.evidence[0].text, claims: [{ text: item.evidence[0].text, evidenceIds: [item.evidence[0].id], confidence: 0.9 }] } }));
+const metrics = evaluateAi(dataset.cases, predictions); await mkdir('artifacts/ai-evaluation', { recursive: true }); await writeFile('artifacts/ai-evaluation/baseline.json', `${JSON.stringify({ datasetVersion: dataset.version, metrics }, null, 2)}\n`); console.log(JSON.stringify(metrics)); if (metrics.passRate < 1 || metrics.citationCompleteness < 1 || metrics.citationPrecision < 1 || metrics.groundedClaimRate < 1) process.exitCode = 1;

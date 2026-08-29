@@ -1,0 +1,12 @@
+{
+  "schemaVersion": 1,
+  "schedule": "daily",
+  "retention": {
+    "daily": 7,
+    "weekly": 4,
+    "monthly": 12
+  },
+  "requireVerification": true,
+  "minimumIndependentCopies": 2,
+  "notes": "A második, fizikailag elkülönített célhelyet a Disaster Recovery feladatban kell konfigurálni."
+}

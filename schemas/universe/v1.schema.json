@@ -1,0 +1,30 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://universe-engine.local/schemas/universe/v1",
+  "title": "Universe",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["id", "schemaVersion", "slug", "name", "defaultLocale", "supportedLocales", "createdAtUtc", "status"],
+  "properties": {
+    "id": { "type": "string", "pattern": "^uni_[a-f0-9]{32}$" },
+    "schemaVersion": { "const": 1 },
+    "slug": { "type": "string", "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$", "minLength": 2, "maxLength": 80 },
+    "name": { "type": "string", "minLength": 1, "maxLength": 200 },
+    "description": { "type": "string", "maxLength": 5000 },
+    "defaultLocale": { "type": "string", "pattern": "^[a-z]{2,3}(?:-[A-Z]{2})?$" },
+    "supportedLocales": { "type": "array", "minItems": 1, "uniqueItems": true, "items": { "type": "string", "pattern": "^[a-z]{2,3}(?:-[A-Z]{2})?$" } },
+    "createdAtUtc": { "type": "string", "format": "date-time" },
+    "status": { "enum": ["draft", "active", "archived"] },
+    "metadata": {
+      "type": "object",
+      "additionalProperties": {
+        "anyOf": [
+          { "type": "string" },
+          { "type": "number" },
+          { "type": "boolean" },
+          { "type": "null" }
+        ]
+      }
+    }
+  }
+}

@@ -1,0 +1,20 @@
+{
+  "compilerOptions": {
+    "target": "ESNext",
+    "module": "ESNext",
+    "moduleResolution": "node",
+    "strict": true,
+    "jsx": "preserve",
+    "jsxImportSource": "solid-js",
+    "allowJs": true,
+    "esModuleInterop": true,
+    "skipLibCheck": true,
+    "forceConsistentCasingInFileNames": true,
+    "experimentalDecorators": true,
+    "useDefineForClassFields": false,
+    "noEmit": true
+    ,"allowImportingTsExtensions": true
+  },
+  "include": ["src/**/*.ts"],
+  "exclude": ["src/App.tsx", "src/App.jsx", "src/main.tsx", "src/nlp/pkg", "src/nlp/target"]
+}

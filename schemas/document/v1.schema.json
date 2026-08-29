@@ -1,0 +1,23 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://universe-engine.local/schemas/document/v1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["id", "universeId", "sourceId", "schemaVersion", "title", "language", "mediaType", "processingStatus", "processorId", "processorVersion", "createdAtUtc", "textLength"],
+  "properties": {
+    "id": { "type": "string", "minLength": 8 },
+    "universeId": { "type": "string", "pattern": "^uni_[a-f0-9]{32}$" },
+    "sourceId": { "type": "string", "pattern": "^src_sha256_[a-f0-9]{64}$" },
+    "schemaVersion": { "const": 1 },
+    "title": { "type": "string", "minLength": 1 },
+    "language": { "anyOf": [{ "type": "null" }, { "type": "string", "pattern": "^[a-z]{2,3}(?:-[A-Z]{2})?$" }] },
+    "mediaType": { "type": "string" },
+    "processingStatus": { "enum": ["staged", "validated", "processed", "rejected"] },
+    "processorId": { "type": "string", "minLength": 1 },
+    "processorVersion": { "type": "string", "minLength": 1 },
+    "createdAtUtc": { "type": "string", "format": "date-time" },
+    "textLength": { "type": "integer", "minimum": 0 },
+    "pageCount": { "type": "integer", "minimum": 1 },
+    "durationMs": { "type": "integer", "minimum": 0 }
+  }
+}

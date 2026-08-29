@@ -1,0 +1,14 @@
+﻿@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body {
+    @apply bg-dark-bg text-parchment font-body m-0 p-0 leading-relaxed;
+    background-image: url('assets/parchment-dark.png');
+    background-blend-mode: overlay;
+  }
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-heading text-gold tracking-widest font-bold;
+  }
+}

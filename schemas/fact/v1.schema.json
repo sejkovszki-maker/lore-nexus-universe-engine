@@ -1,0 +1,9 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema", "$id": "https://universe-engine.local/schemas/fact/v1",
+  "type": "object", "additionalProperties": false,
+  "required": ["id", "universeId", "claimId", "subjectEntityId", "predicate", "object", "polarity", "confidence", "evidenceIds", "validatedAtUtc", "validator"],
+  "properties": {
+    "id": { "type": "string", "pattern": "^fact_" }, "universeId": { "type": "string" }, "claimId": { "type": "string" }, "subjectEntityId": { "type": "string" }, "predicate": { "type": "string" }, "object": { "type": "object" },
+    "polarity": { "enum": ["affirmative", "negative"] }, "confidence": { "type": "number", "minimum": 0, "maximum": 1 }, "evidenceIds": { "type": "array", "minItems": 1, "uniqueItems": true, "items": { "type": "string" } }, "validatedAtUtc": { "type": "string", "format": "date-time" }, "validator": { "type": "string", "minLength": 1 }
+  }
+}

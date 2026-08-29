@@ -1,0 +1,33 @@
+node_modules/
+dist/
+backups/
+coverage/
+test-results/
+playwright-report/
+*.log
+.env
+.env.*
+!.env.example
+src/nlp/target/
+src/nlp/pkg/
+.python-deps/
+document-store/tmp/
+
+# Private and immutable source material must never be published.
+raw_books/
+raw-source-store/
+document-store/objects/
+document-store/*.jsonl
+tmp/
+
+# Intermediate book extraction output (not application source).
+_scripts/gonosz-osvenye_chapters.json
+_scripts/fejezet_lines.txt
+_scripts/preview.txt
+
+# Generated operational artifacts can contain full migration payloads.
+artifacts/
+audit/
+
+# Local Netlify folder
+.netlify

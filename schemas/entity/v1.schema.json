@@ -1,0 +1,12 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema", "$id": "https://universe-engine.local/schemas/entity/v1",
+  "type": "object", "additionalProperties": false,
+  "required": ["id", "universeId", "typeId", "status", "canonicalNames", "description", "properties", "createdAtUtc", "updatedAtUtc"],
+  "properties": {
+    "id": { "type": "string", "pattern": "^ent_[a-f0-9]{40}$" }, "universeId": { "type": "string", "pattern": "^uni_[a-f0-9]{32}$" },
+    "typeId": { "type": "string", "minLength": 1 }, "status": { "enum": ["active", "merged", "split", "deprecated"] },
+    "canonicalNames": { "type": "object", "minProperties": 1, "additionalProperties": { "type": "string", "minLength": 1 } },
+    "description": { "type": "object", "additionalProperties": { "type": "string" } }, "properties": { "type": "object" },
+    "createdAtUtc": { "type": "string", "format": "date-time" }, "updatedAtUtc": { "type": "string", "format": "date-time" }
+  }
+}

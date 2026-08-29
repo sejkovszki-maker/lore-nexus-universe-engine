@@ -1,0 +1,9 @@
+{
+  "schemaVersion": 1,
+  "recoveryPointObjectiveHours": 24,
+  "recoveryTimeObjectiveHours": 4,
+  "requiredIndependentCopies": 2,
+  "offsiteDestinationEnvironmentVariable": "UNIVERSE_ENGINE_OFFSITE_BACKUP",
+  "requireArchiveChecksum": true,
+  "requireRestoreDrillDays": 30
+}

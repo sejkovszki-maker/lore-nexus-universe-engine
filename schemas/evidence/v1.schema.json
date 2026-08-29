@@ -1,0 +1,10 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema", "$id": "https://universe-engine.local/schemas/evidence/v1",
+  "type": "object", "additionalProperties": false,
+  "required": ["id", "universeId", "sourceId", "documentId", "chunkId", "locator", "quote", "quoteSha256", "stance", "strength", "reliability", "createdAtUtc"],
+  "properties": {
+    "id": { "type": "string" }, "universeId": { "type": "string" }, "sourceId": { "type": "string" }, "documentId": { "type": "string" }, "chunkId": { "anyOf": [{ "type": "null" }, { "type": "string" }] },
+    "locator": { "type": "object", "minProperties": 1, "properties": { "page": { "type": "integer", "minimum": 1 }, "sectionId": { "type": "string" }, "startOffset": { "type": "integer", "minimum": 0 }, "endOffset": { "type": "integer", "minimum": 0 }, "timestampMs": { "type": "integer", "minimum": 0 } } },
+    "quote": { "type": "string", "minLength": 1 }, "quoteSha256": { "type": "string", "pattern": "^[a-f0-9]{64}$" }, "stance": { "enum": ["supports", "contradicts", "context"] }, "strength": { "enum": ["direct", "indirect"] }, "reliability": { "type": "number", "minimum": 0, "maximum": 1 }, "createdAtUtc": { "type": "string", "format": "date-time" }
+  }
+}

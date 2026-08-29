@@ -1,0 +1,21 @@
+{
+  "version": 1,
+  "cases": [
+    {
+      "id": "diablo-tyrael-role-hu",
+      "universeId": "diablo",
+      "question": "Ki Tyrael?",
+      "expectedAnswerTerms": ["arkangyala", "igazság"],
+      "allowedEvidenceIds": ["ev-tyrael-1"],
+      "evidence": [{ "id": "ev-tyrael-1", "text": "Tyrael az Igazság arkangyala volt." }]
+    },
+    {
+      "id": "diablo-lilith-parent-hu",
+      "universeId": "diablo",
+      "question": "Kinek a lánya Lilith?",
+      "expectedAnswerTerms": ["mephisto", "lánya"],
+      "allowedEvidenceIds": ["ev-lilith-1"],
+      "evidence": [{ "id": "ev-lilith-1", "text": "Lilith Mephisto lánya." }]
+    }
+  ]
+}

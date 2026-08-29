@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0" />
+  <title>Diablo Lore Portal</title>
+  <meta name="theme-color" content="#0a0809" />
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700;900&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+  <script src="https://cdn.jsdelivr.net/npm/idb@8/build/umd.js" crossorigin="anonymous"></script>
+</head>
+<body class="bg-[#0a0809] text-gray-200">
+  <div id="file-protocol-warning" style="display: none; background: #8b0000; color: white; padding: 20px; text-align: center; font-family: sans-serif; font-size: 1.2rem; margin: 50px; border-radius: 10px;">
+    <strong>FIGYELEM!</strong><br><br>
+    Ezt a modern alkalmazást már nem lehet dupla kattintással (file:/// protokoll) megnyitni a mappából.<br>
+    Kérlek nyisd meg a böngésződben a következőt: <br><br>
+    <a href="http://localhost:5173/" style="color: #ffd700; font-size: 1.5rem; text-decoration: none;">http://localhost:5173/</a><br><br>
+    (A Vite fejlesztői szervernek futnia kell a háttérben.)
+  </div>
+
+  <script>
+    if (window.location.protocol === 'file:') {
+      document.getElementById('file-protocol-warning').style.display = 'block';
+    }
+  </script>
+
+  <diablo-app></diablo-app>
+
+  <!-- Vite Entry -->
+  <script type="module" src="/src/main.ts"></script>
+</body>
+</html>

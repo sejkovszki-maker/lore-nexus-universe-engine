@@ -1,0 +1,65 @@
+{
+  "name": "diablo-lore-portal",
+  "private": true,
+  "version": "5.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc && vite build",
+    "serve": "vite preview",
+    "raw:import": "node _scripts/raw-source-store.mjs import raw_books raw-source-store",
+    "raw:verify": "node _scripts/raw-source-store.mjs verify raw-source-store",
+    "test:raw-store": "node _scripts/test-raw-source-store.mjs",
+    "backup": "pwsh -NoProfile -File _scripts/run-automated-backup.ps1",
+    "backup:schedule": "pwsh -NoProfile -File _scripts/install-backup-schedule.ps1",
+    "backup:offsite": "pwsh -NoProfile -File _scripts/replicate-backup-offsite.ps1",
+    "test:restore": "pwsh -NoProfile -File _scripts/test-backup-restore.ps1",
+    "test:pitr": "pwsh -NoProfile -File _scripts/test-point-in-time-recovery.ps1",
+    "audit:verify": "node _scripts/audit-log.mjs verify",
+    "test:audit": "node _scripts/test-audit-log.mjs",
+    "gate:zero-data-loss": "pwsh -NoProfile -File _scripts/zero-data-loss-gate.ps1",
+    "quality": "node _scripts/quality-gate.mjs",
+    "test:unit": "node --test --experimental-strip-types --experimental-test-coverage --test-coverage-lines=80 --test-coverage-include=src/store/appState.ts tests/unit/*.test.ts",
+    "test:property": "node --test --experimental-strip-types tests/property/*.test.ts",
+    "test:integration": "node _scripts/test-raw-source-store.mjs && node _scripts/test-audit-log.mjs",
+    "test:e2e": "playwright test",
+    "security:audit": "npm audit --audit-level=high",
+    "sbom": "cyclonedx-npm --output-file artifacts/sbom.cdx.json --output-format JSON --spec-version 1.6",
+    "test:regression": "node _scripts/test-wiki-regression.mjs",
+    "test:fuzz": "node _scripts/fuzz-audit-integrity.mjs",
+    "security:secrets": "node _scripts/scan-secrets.mjs",
+    "test:security": "npm run test:audit && npm run test:fuzz && npm run security:secrets && npm run security:audit",
+    "test:document-sandbox": "node _scripts/test-document-sandbox.mjs && node _scripts/test-pdf-sandbox.mjs",
+    "test:ocr": "node _scripts/test-ocr-pipeline.mjs",
+    "document:ingest": "node --experimental-strip-types _scripts/ingest-document-store.ts",
+    "document:verify": "node _scripts/verify-document-store.mjs"
+    ,"migration:dry-run": "node --experimental-strip-types _scripts/run-legacy-migration-dry-run.ts"
+    ,"migration:verify": "node _scripts/verify-legacy-migration.mjs"
+    ,"netlify:check": "node _scripts/verify-netlify-readiness.mjs"
+    ,"ai:evaluate": "node --experimental-strip-types _scripts/evaluate-ai-baseline.ts"
+    ,"migration:finalize": "node _scripts/finalize-diablo-migration.mjs"
+    ,"production:verify": "node _scripts/verify-production-readiness.mjs"
+  },
+  "dependencies": {
+    "@noble/hashes": "2.4.0",
+    "ajv": "8.20.0",
+    "ajv-formats": "3.0.1",
+    "dexie": "^4.4.5",
+    "dompurify": "^3.1.6",
+    "graphology": "^0.25.4",
+    "lit": "^3.1.2",
+    "sigma": "^3.0.0-beta.19"
+  },
+  "devDependencies": {
+    "@cyclonedx/cyclonedx-npm": "6.0.1",
+    "@playwright/test": "1.62.1",
+    "@types/dompurify": "^3.0.5",
+    "autoprefixer": "^10.4.19",
+    "fast-check": "4.9.0",
+    "postcss": "^8.4.39",
+    "tailwindcss": "^3.4.4",
+    "typescript": "^5.5.3",
+    "vite": "8.2.2",
+    "vite-plugin-pwa": "1.3.0"
+  }
+}

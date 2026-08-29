@@ -1,0 +1,21 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://universe-engine.local/schemas/source/v1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["id", "universeId", "logicalSourceId", "version", "previousVersionSourceId", "fingerprint", "originalName", "mediaType", "byteLength", "objectPath", "importedAtUtc", "metadata"],
+  "properties": {
+    "id": { "type": "string", "pattern": "^src_sha256_[a-f0-9]{64}$" },
+    "universeId": { "type": "string", "pattern": "^uni_[a-f0-9]{32}$" },
+    "logicalSourceId": { "type": "string", "minLength": 8 },
+    "version": { "type": "integer", "minimum": 1 },
+    "previousVersionSourceId": { "anyOf": [{ "type": "null" }, { "type": "string", "pattern": "^src_sha256_[a-f0-9]{64}$" }] },
+    "fingerprint": { "type": "object", "additionalProperties": false, "required": ["algorithm", "value"], "properties": { "algorithm": { "const": "sha256" }, "value": { "type": "string", "pattern": "^[a-f0-9]{64}$" } } },
+    "originalName": { "type": "string", "minLength": 1 },
+    "mediaType": { "type": "string", "pattern": "^[a-z0-9.+-]+/[a-z0-9.+-]+$" },
+    "byteLength": { "type": "integer", "minimum": 1 },
+    "objectPath": { "type": "string", "minLength": 1 },
+    "importedAtUtc": { "type": "string", "format": "date-time" },
+    "metadata": { "type": "object" }
+  }
+}

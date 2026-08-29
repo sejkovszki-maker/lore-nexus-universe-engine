@@ -1,0 +1,8 @@
+import type { QualityScore, QualityScoreInput } from '../domain/canon.ts';
+export function calculateKnowledgeQuality(input: QualityScoreInput): QualityScore {
+  const bounded = [input.evidenceCoverage, input.averageEvidenceReliability, input.citationCompleteness, input.authorityScore, input.claimConfidence]; if (bounded.some((value) => value < 0 || value > 1)) throw new Error('Quality inputs must be within [0,1]');
+  const breakdown = { evidenceCoverage: input.evidenceCoverage * 25, evidenceReliability: input.averageEvidenceReliability * 20, citationCompleteness: input.citationCompleteness * 20, authority: input.authorityScore * 15, confidence: input.claimConfidence * 10, humanReview: input.humanReviewed ? 10 : 0 };
+  const penaltyMap = { low: 2, medium: 7, high: 15, critical: 30 }; const conflictPenalty = Math.min(50, input.openConflictSeverity.reduce((sum, severity) => sum + penaltyMap[severity], 0)); const score = Math.max(0, Math.min(100, Object.values(breakdown).reduce((sum, value) => sum + value, 0) - conflictPenalty));
+  const blockers: string[] = []; if (input.evidenceCoverage < 1) blockers.push('INCOMPLETE_EVIDENCE'); if (input.citationCompleteness < 1) blockers.push('INCOMPLETE_CITATIONS'); if (input.openConflictSeverity.some((severity) => severity === 'critical')) blockers.push('CRITICAL_CONFLICT'); if (!input.humanReviewed) blockers.push('NOT_HUMAN_REVIEWED');
+  const grade = score >= 90 && blockers.length === 0 ? 'A' : score >= 80 ? 'B' : score >= 70 ? 'C' : score >= 60 ? 'D' : 'F'; return { score: Math.round(score * 100) / 100, grade, breakdown: { ...breakdown, conflictPenalty: -conflictPenalty }, blockers };
+}
