@@ -19,6 +19,7 @@
     "test:audit": "node _scripts/test-audit-log.mjs",
     "gate:zero-data-loss": "pwsh -NoProfile -File _scripts/zero-data-loss-gate.ps1",
     "quality": "node _scripts/quality-gate.mjs",
+    "quality:public": "npm run test:unit && npm run test:property && npm run test:regression && npm run test:fuzz && npm run security:secrets && npm run security:audit",
     "test:unit": "node --test --experimental-strip-types --experimental-test-coverage --test-coverage-lines=80 --test-coverage-include=src/store/appState.ts tests/unit/*.test.ts",
     "test:property": "node --test --experimental-strip-types tests/property/*.test.ts",
     "test:integration": "node _scripts/test-raw-source-store.mjs && node _scripts/test-audit-log.mjs",

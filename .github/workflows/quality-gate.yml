@@ -25,7 +25,7 @@ jobs:
       - run: python -m pip install -r requirements-document.txt
       - run: choco install poppler -y --no-progress
       - run: npm ci
-      - run: npm run quality
+      - run: npm run quality:public
       - run: npm run sbom
       - uses: actions/upload-artifact@v4
         with:

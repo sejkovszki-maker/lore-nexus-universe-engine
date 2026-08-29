@@ -37,7 +37,7 @@ jobs:
         env:
           VITE_BASE_PATH: /lore-nexus-universe-engine/
         run: |
-          npm run quality
+          npm run quality:public
           npm run build
 
       - name: Configure Pages
