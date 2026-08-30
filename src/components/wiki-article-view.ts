@@ -14,7 +14,7 @@ export class WikiArticleView extends LitElement {
     :host {
       display: block;
       width: 100%;
-      max-w: 900px;
+      max-width: 900px;
       margin: 0 auto;
     }
     .markdown-content {
@@ -60,11 +60,8 @@ export class WikiArticleView extends LitElement {
   }
 
   private openArticle(articleId: string) {
-    if (!wikiArticles[articleId]) return;
-    useAppStore.setActiveArticleId(articleId);
-    useAppStore.setActiveTab('article-view');
-    history.replaceState(null, '', `#/wiki/${articleId}`);
-    window.scrollTo({ top: 0, behavior: 'smooth' });
+    if (!wikiArticles[articleId] || (wikiArticles[articleId].universeId || 'diablo') !== useAppStore.getState().activeUniverseId) return;
+    useAppStore.openArticleRoute(articleId);
   }
 
   private handleContentClick(event: MouseEvent) {
@@ -80,6 +77,8 @@ export class WikiArticleView extends LitElement {
     }
 
     const article = wikiArticles[this.activeArticleId];
+    const universeId = useAppStore.getState().activeUniverseId;
+    const scopedArticles = Object.fromEntries(Object.entries(wikiArticles).filter(([, item]) => (item.universeId || 'diablo') === universeId));
     
     // Egyszerűsített parser
     let htmlContent = article.content
@@ -90,13 +89,12 @@ export class WikiArticleView extends LitElement {
       .replace(/\*(.*?)\*/gim, '<em>$1</em>')
       .replace(/\n$/gim, '<br />');
       
-    htmlContent = renderWikiLinks(htmlContent, wikiArticles);
+    htmlContent = renderWikiLinks(htmlContent, scopedArticles);
     htmlContent = DOMPurify.sanitize(htmlContent, { ADD_ATTR: ['data-wiki-id', 'data-relation', 'data-missing-id'] });
-    const related = relatedArticlesFor(article, wikiArticles);
-    const backlinks = (buildBacklinkIndex(wikiArticles).get(article.id) || []).map(id => wikiArticles[id]).filter(Boolean);
+    const related = relatedArticlesFor(article, scopedArticles);
+    const backlinks = (buildBacklinkIndex(scopedArticles).get(article.id) || []).map(id => scopedArticles[id]).filter(Boolean);
 
     return html`
-      <link rel="stylesheet" href="/src/index.css" />
       <div class="mb-6">
         <button 
           @click=${this.handleBack}

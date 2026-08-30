@@ -15,6 +15,8 @@ export interface WikiArticle {
 
     type?: 'article' | 'book' | 'chapter';
     parentBook?: string;
+    universeId?: string;
+    storyAfter?: string;
 
     lastEdited?: number;
 
@@ -37,6 +39,8 @@ export interface TimelineItem {
 
 export interface AppState {
     activeTab: string;
+    activeUniverseId: string;
+    routeStatus: 'ready' | 'not-found';
     searchQuery: string;
     currentSearchQuery: string;
     activeGameTag: string;

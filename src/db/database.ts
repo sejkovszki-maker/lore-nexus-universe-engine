@@ -10,6 +10,9 @@ export interface Article {
   relatedArticles?: string[];
   type?: 'article' | 'book' | 'chapter';
   parentBook?: string;
+  universeId?: string;
+  universeLabel?: string;
+  storyAfter?: string;
 }
 
 export class DiabloDatabase extends Dexie {

@@ -3,24 +3,28 @@ import { customElement, state } from 'lit/decorators.js';
 import { useAppStore } from '../store/appState';
 import { wikiArticles } from '../data/wikiArticles';
 import './wiki-article-card';
+import { articleUniverseId } from '../universe/article-universes.ts';
 
 @customElement('wiki-article-grid')
 export class WikiArticleGrid extends LitElement {
   @state() private searchQuery = useAppStore.getState().currentSearchQuery;
   @state() private activeCategory = useAppStore.getState().activeCategory;
   @state() private categories: string[] = [];
+  @state() private activeUniverseId = useAppStore.getState().activeUniverseId;
 
   constructor() {
     super();
     useAppStore.subscribe((state) => {
       this.searchQuery = state.currentSearchQuery;
       this.activeCategory = state.activeCategory;
+      this.activeUniverseId = state.activeUniverseId;
+      this.categories = Array.from(new Set(Object.values(wikiArticles).filter(article => articleUniverseId(article) === state.activeUniverseId && article.type !== 'chapter' && article.type !== 'book').map(article => article.category)));
     });
   }
 
   connectedCallback() {
     super.connectedCallback();
-    const cats = Array.from(new Set(Object.values(wikiArticles).map((a: any) => a.category)));
+    const cats = Array.from(new Set(Object.values(wikiArticles).filter(article => articleUniverseId(article) === this.activeUniverseId && article.type !== 'chapter' && article.type !== 'book').map((a: any) => a.category)));
     this.categories = cats;
   }
 
@@ -38,7 +42,7 @@ export class WikiArticleGrid extends LitElement {
   }
 
   render() {
-    let filtered = Object.values(wikiArticles);
+    let filtered = Object.values(wikiArticles).filter(article => articleUniverseId(article) === this.activeUniverseId && article.type !== 'chapter' && article.type !== 'book');
     
     if (this.activeCategory) {
       filtered = filtered.filter((a: any) => a.category === this.activeCategory);

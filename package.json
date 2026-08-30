@@ -24,7 +24,7 @@
     "test:unit": "node --test --experimental-strip-types --experimental-test-coverage --test-coverage-lines=80 --test-coverage-include=src/store/appState.ts tests/unit/*.test.ts",
     "test:property": "node --test --experimental-strip-types tests/property/*.test.ts",
     "test:integration": "node _scripts/test-raw-source-store.mjs && node _scripts/test-audit-log.mjs",
-    "test:e2e": "playwright test",
+    "test:e2e": "npm run build && playwright test",
     "security:audit": "npm audit --audit-level=high",
     "sbom": "cyclonedx-npm --output-file artifacts/sbom.cdx.json --output-format JSON --spec-version 1.6",
     "test:regression": "node _scripts/test-wiki-regression.mjs",

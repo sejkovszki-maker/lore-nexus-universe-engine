@@ -1,10 +1,17 @@
 import type { AppState } from "../types";
+import { navigate, parseRoute, type AppRoute } from '../router.ts';
+import { wikiArticles } from '../data/wikiArticles.ts';
+import { articleUniverseId, availableUniverses } from '../universe/article-universes.ts';
+import { storyBooks } from '../wiki/story-order.ts';
 
 const hash = typeof window !== 'undefined' ? window.location.hash : '';
-const initialTab = hash.startsWith('#tab/') ? hash.split('/')[1] : 'timeline';
+const initialRoute = parseRoute(hash);
+const routeTab = (route: AppRoute) => route.view === 'article-view' ? 'article-view' : route.view === 'book' ? 'books' : route.view;
 
 const initialState: AppState = {
-    activeTab: initialTab,
+    activeTab: routeTab(initialRoute),
+    activeUniverseId: initialRoute.universeId,
+    routeStatus: initialRoute.view === 'not-found' ? 'not-found' : 'ready',
 
     searchQuery: "",
     currentSearchQuery: "",
@@ -16,7 +23,7 @@ const initialState: AppState = {
     activeArticleCategory: "ALL",
     activeCategory: null,
     
-    activeArticleId: null,
+    activeArticleId: initialRoute.articleId ?? initialRoute.chapterId ?? null,
 
     reader: {
         bookId: null,
@@ -60,10 +67,27 @@ export function setActiveTab(
         ...state,
         activeTab: tab
     };
-    if (typeof window !== 'undefined') {
-        window.location.hash = `#tab/${tab}`;
-    }
-    notify();
+    if (typeof window !== 'undefined') navigate({ view: tab === 'articles' ? 'articles' : tab as AppRoute['view'], universeId: state.activeUniverseId });
+    else notify();
+}
+
+export function setActiveUniverse(universeId: string): void {
+    state = { ...state, activeUniverseId: universeId, activeArticleId: null, activeCategory: null, searchQuery: '', currentSearchQuery: '' };
+    if (typeof window !== 'undefined') navigate({ view: 'timeline', universeId });
+    else notify();
+}
+
+export function openArticleRoute(articleId: string): void {
+    if (typeof window !== 'undefined') navigate({ view: 'article-view', universeId: state.activeUniverseId, articleId });
+    else { state = { ...state, activeTab: 'article-view', activeArticleId: articleId }; notify(); }
+}
+
+export function openStoryRoute(articleId?: string): void {
+    if (typeof window !== 'undefined') navigate({ view: 'story', universeId: state.activeUniverseId, articleId });
+}
+
+export function openBookRoute(bookId: string, chapterId?: string): void {
+    if (typeof window !== 'undefined') navigate({ view: 'book', universeId: state.activeUniverseId, bookId, chapterId });
 }
 
 export function setSearchQuery(
@@ -220,6 +244,10 @@ export const useAppStore = {
     setState: setAppState,
     subscribe: subscribe,
     setActiveTab: setActiveTab,
+    setActiveUniverse,
+    openArticleRoute,
+    openStoryRoute,
+    openBookRoute,
     setSearchQuery: setSearchQuery,
     setGameTag: setGameTag,
     setEra: setEra,
@@ -232,14 +260,21 @@ export const useAppStore = {
 };
 
 if (typeof window !== 'undefined') {
-    window.addEventListener('hashchange', () => {
-        const hash = window.location.hash;
-        if (hash.startsWith('#tab/')) {
-            const tab = hash.split('/')[1];
-            if (state.activeTab !== tab) {
-                state = { ...state, activeTab: tab };
-                notify();
-            }
-        }
+    history.scrollRestoration = 'manual';
+    const applyRoute = (route: AppRoute) => {
+        let status: AppState['routeStatus'] = route.view === 'not-found' ? 'not-found' : 'ready';
+        if (!availableUniverses(wikiArticles).some(universe => universe.id === route.universeId)) status = 'not-found';
+        const requestedId = route.articleId ?? route.chapterId ?? route.eventId;
+        if (requestedId && (!wikiArticles[requestedId] || articleUniverseId(wikiArticles[requestedId]) !== route.universeId)) status = 'not-found';
+        if (route.bookId && !storyBooks(route.universeId).some(book => book.id === route.bookId && (!route.chapterId || book.chapters.some(chapter => chapter.id === route.chapterId)))) status = 'not-found';
+        state = { ...state, activeTab: status === 'not-found' ? 'not-found' : routeTab(route), activeUniverseId: route.universeId, routeStatus: status, activeArticleId: status === 'ready' ? requestedId ?? null : null, reader: { ...state.reader, bookId: route.bookId ?? null, chapterId: route.chapterId ?? null } };
+        notify();
+        const saved = sessionStorage.getItem(`lore-scroll:${location.hash}`);
+        requestAnimationFrame(() => window.scrollTo({ top: saved ? Number(saved) || 0 : 0 }));
+    };
+    window.addEventListener('hashchange', (event) => {
+        try { const oldHash = new URL((event as HashChangeEvent).oldURL).hash; sessionStorage.setItem(`lore-scroll:${oldHash}`, String(window.scrollY)); } catch { /* synthetic event */ }
+        applyRoute(parseRoute(window.location.hash));
     });
+    applyRoute(initialRoute);
 }

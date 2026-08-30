@@ -6,17 +6,17 @@ test('application renders and switches its primary views', async ({ page }) => {
   await expect(page.getByRole('button', { name: 'Kronológia' })).toBeVisible();
   await expect(page.locator('diablo-timeline')).toBeVisible();
   await page.getByRole('button', { name: 'Történet' }).click();
-  await expect(page).toHaveURL(/#tab\/story$/);
+  await expect(page).toHaveURL(/#\/story$/);
   await expect(page.locator('story-reader')).toBeVisible();
   await expect(page.getByText(/pozíció automatikusan mentve/)).toBeVisible();
   await page.getByRole('button', { name: 'Cikkek' }).click();
-  await expect(page).toHaveURL(/#tab\/articles$/);
+  await expect(page).toHaveURL(/#\/wiki$/);
   await expect(page.locator('wiki-article-grid')).toBeVisible();
   await page.getByRole('button', { name: 'Új Cikk' }).click();
-  await expect(page).toHaveURL(/#tab\/editor$/);
+  await expect(page).toHaveURL(/#\/editor$/);
   await expect(page.locator('wiki-editor')).toBeVisible();
   await page.getByRole('button', { name: 'Kánonellenőrzés' }).click();
-  await expect(page).toHaveURL(/#tab\/conflicts$/);
+  await expect(page).toHaveURL(/#\/conflicts$/);
   await expect(page.locator('canon-conflict-dashboard')).toBeVisible();
   await expect(page.getByText('Nincs nyitott kánonkonfliktus.')).toBeVisible();
 });
@@ -37,6 +37,38 @@ test('direct hash navigation restores the requested view', async ({ page }) => {
   await page.goto('/#tab/articles');
   await expect(page.locator('wiki-article-grid')).toBeVisible();
   await expect(page.getByRole('button', { name: 'Cikkek' })).toHaveClass(/text-blood-red/);
+});
+
+test('Router 2.0 supports article deep links, history, 404 and scroll restoration', async ({ page }) => {
+  await page.goto('/#/wiki/kozmogonia');
+  await expect(page.getByRole('heading', { name: 'Kozmogónia: Anu', exact: true })).toBeVisible();
+  await page.evaluate(() => { location.hash = '#/wiki/horadrim-order'; });
+  await expect(page.getByRole('heading', { name: /Horadrim Rend/i }).first()).toBeVisible();
+  await page.goBack();
+  await expect(page.getByRole('heading', { name: 'Kozmogónia: Anu', exact: true })).toBeVisible();
+  await page.goForward();
+  await expect(page).toHaveURL(/#\/wiki\/horadrim-order$/);
+
+  await page.goto('/#/wiki');
+  await page.evaluate(() => scrollTo(0, 600));
+  await page.evaluate(() => { location.hash = '#/wiki/kozmogonia'; });
+  await page.goBack();
+  await expect.poll(() => page.evaluate(() => scrollY)).toBeGreaterThan(300);
+
+  await page.goto('/#/wiki/nem-letezik');
+  await expect(page.getByRole('heading', { name: 'Az oldal nem található' })).toBeVisible();
+  await page.goto('/#/u/witcher/wiki/kozmogonia');
+  await expect(page.getByRole('heading', { name: 'Az oldal nem található' })).toBeVisible();
+});
+
+test('books have a separate reader and stable deep links', async ({ page }) => {
+  await page.goto('/#/books');
+  await expect(page.getByRole('heading', { name: 'Könyvek' })).toBeVisible();
+  await page.getByRole('button', { name: 'Könyv olvasása' }).first().click();
+  await expect(page).toHaveURL(/#\/book\//);
+  await expect(page.getByRole('navigation', { name: 'Könyv lapozása' })).toBeVisible();
+  await page.reload();
+  await expect(page.getByRole('navigation', { name: 'Könyv lapozása' })).toBeVisible();
 });
 
 test('the Blackmarch article is searchable and book import is available', async ({ page }) => {
@@ -67,14 +99,16 @@ test('an imported book survives reload and invalid binary input is rejected', as
   });
   await page.getByRole('button', { name: /tartalom elemzése/i }).click();
   await expect(page.getByText(/2 fejezet felismerve/)).toBeVisible();
+  let saveMessage = '';
   const saved = page.waitForEvent('dialog').then(async dialog => {
+    saveMessage = dialog.message();
     await dialog.accept();
   });
   await page.getByRole('button', { name: /teljes könyv integrálása/i }).click();
   await saved;
+  expect(saveMessage).toContain('tartósan mentve');
   await page.reload();
-  await page.getByRole('button', { name: 'Cikkek' }).click();
-  await page.getByPlaceholder(/keres/i).fill('Utoteszt konyv');
+  await page.getByRole('button', { name: 'Könyvek' }).click();
   await expect(page.getByText('Utoteszt konyv', { exact: true })).toBeVisible();
 
   await page.getByRole('button', { name: /új cikk/i }).click();
@@ -83,6 +117,25 @@ test('an imported book survives reload and invalid binary input is rejected', as
   });
   await expect(page.getByRole('alert')).toContainText('nem nyerhető ki könyvszöveg');
   await expect(page.locator('textarea')).toHaveValue('');
+});
+
+test('foreign books create an isolated universe tab and remain readable in story order', async ({ page }) => {
+  await page.goto('/#/editor');
+  await page.getByLabel('Idegen nyelvű könyv automatikus fordítása magyarra').uncheck();
+  await page.getByLabel('Könyvdokumentum kiválasztása').setInputFiles({ name: 'Vajak-proba.txt', mimeType: 'text/plain', buffer: Buffer.from(`1. fejezet\n${'Geralt, a witcher Yennefer és Ciri nyomába indult Nilfgaard felé. '.repeat(10)}\n\n2. fejezet\n${'A vaják újabb szörnyeteggel találkozott. '.repeat(12)}`) });
+  await page.getByRole('button', { name: /tartalom elemzése/i }).click();
+  await expect(page.getByText(/Felismert univerzum: The Witcher/)).toBeVisible();
+  let saveMessage = '';
+  const saved = page.waitForEvent('dialog').then(dialog => { saveMessage = dialog.message(); return dialog.accept(); });
+  await page.getByRole('button', { name: /teljes könyv integrálása/i }).click();
+  await saved;
+  expect(saveMessage).toContain('The Witcher');
+  await page.getByLabel('Olvasott univerzum').selectOption('witcher');
+  await expect(page).toHaveURL(/#\/u\/witcher\/timeline$/);
+  await page.getByRole('button', { name: 'Könyvek' }).click();
+  await expect(page.getByText('Vajak proba', { exact: true })).toBeVisible();
+  await page.getByRole('button', { name: 'Történet' }).click();
+  await expect(page.getByText(/Könyvszakasz: Vajak proba/)).toBeVisible();
 });
 
 test('story reader remains usable without horizontal overflow on mobile and desktop', async ({ page }) => {

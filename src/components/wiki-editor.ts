@@ -5,6 +5,8 @@ import { wikiArticles } from '../data/wikiArticles';
 import { extractBookFile, type ExtractedBook } from '../document/browser-book-extractor.ts';
 import { translateBookToHungarian } from '../document/browser-translator.ts';
 import { persistUserArticles } from '../wiki/user-article-store.ts';
+import { detectArticleUniverse, registerUniverse, type ArticleUniverse } from '../universe/article-universes.ts';
+import { useAppStore } from '../store/appState.ts';
 
 @customElement('wiki-editor')
 export class WikiEditor extends LitElement {
@@ -34,6 +36,9 @@ export class WikiEditor extends LitElement {
 
   @state()
   private translationStatus = '';
+
+  @state() private detectedUniverse: (ArticleUniverse & { confidence: number; reason: string }) | null = null;
+  @state() private storyAfter = '';
 
   static styles = css`
     :host {
@@ -168,10 +173,13 @@ export class WikiEditor extends LitElement {
       return;
     }
     this.isProcessing = true;
+    const detected = detectArticleUniverse(this.articleTitle, this.content, useAppStore.getState().activeUniverseId);
+    this.detectedUniverse = { ...detected.universe, confidence: detected.confidence, reason: detected.reason };
+    const scopedArticles = Object.fromEntries(Object.entries(wikiArticles).filter(([, article]) => (article.universeId || 'diablo') === detected.universe.id));
     
     // Simulate processing time for UX
     setTimeout(() => {
-        this.bookAnalysis = WikiContentEngine.analyzeBook(this.articleTitle, this.subtitle, this.content, wikiArticles);
+        this.bookAnalysis = WikiContentEngine.analyzeBook(this.articleTitle, this.subtitle, this.content, scopedArticles);
         this.isProcessing = false;
     }, 600);
   }
@@ -225,15 +233,21 @@ export class WikiEditor extends LitElement {
         return;
     }
 
+    const universe = this.detectedUniverse ?? { id: useAppStore.getState().activeUniverseId, label: useAppStore.getState().activeUniverseId, confidence: 1, reason: 'kiválasztott univerzum' };
     const newArticles = this.bookAnalysis.isBook
-      ? WikiContentEngine.processAndPrepareBook(this.bookAnalysis, wikiArticles)
-      : [WikiContentEngine.processAndPrepareArticle(this.articleTitle, this.subtitle, this.content, wikiArticles)];
+      ? WikiContentEngine.processAndPrepareBook(this.bookAnalysis, wikiArticles, universe)
+      : [WikiContentEngine.processAndPrepareArticle(this.articleTitle, this.subtitle, this.content, wikiArticles, universe)];
+    if (this.storyAfter) newArticles[0].storyAfter = this.storyAfter;
     try {
       await persistUserArticles(newArticles);
       newArticles.forEach(article => { wikiArticles[article.id] = article; });
+      registerUniverse(universe);
+      useAppStore.setState({});
+      const switchUniverse = universe.id !== useAppStore.getState().activeUniverseId;
       alert(this.bookAnalysis.isBook
-        ? `✅ A könyv és ${newArticles.length - 1} fejezete tartósan mentve ezen az eszközön.`
-        : '✅ A cikk tartósan mentve ezen az eszközön.');
+        ? `✅ A könyv és ${newArticles.length - 1} fejezete a(z) ${universe.label} univerzumba került, tartósan mentve ezen az eszközön.`
+        : `✅ A cikk a(z) ${universe.label} univerzumba került, tartósan mentve ezen az eszközön.`);
+      if (switchUniverse) useAppStore.setActiveUniverse(universe.id);
     } catch (error) {
       alert(`❌ A mentés nem sikerült, ezért a wiki nem módosult. ${error instanceof Error ? error.message : ''}`);
       return;
@@ -244,6 +258,8 @@ export class WikiEditor extends LitElement {
     this.content = '';
     this.bookAnalysis = null;
     this.extraction = null;
+    this.detectedUniverse = null;
+    this.storyAfter = '';
   }
 
   render() {
@@ -251,6 +267,10 @@ export class WikiEditor extends LitElement {
       <div class="editor-container">
         <h2 style="margin: 0; color: var(--accent-gold, #d4af37); text-align: center; font-size: 1.5rem; letter-spacing: 1px;">Új Tudásanyag Integrálása</h2>
         <p style="text-align: center; color: #94a3b8; margin-top: -10px; margin-bottom: 10px;">Fejlett tartalomelemzés, könyv/fejezet detektálás, és auto-kapcsolódás.</p>
+
+        ${this.detectedUniverse ? html`<div class="file-result" role="status"><strong>Felismert univerzum: ${this.detectedUniverse.label}</strong> – ${Math.round(this.detectedUniverse.confidence * 100)}% (${this.detectedUniverse.reason}). ${this.detectedUniverse.id !== useAppStore.getState().activeUniverseId ? 'A tartalom külön univerzumfület kap.' : ''}</div>` : ''}
+
+        ${this.bookAnalysis?.isBook ? html`<div class="input-group"><label for="story-after">A könyv helye a történetben</label><select id="story-after" .value=${this.storyAfter} @change=${(event: Event) => this.storyAfter = (event.target as HTMLSelectElement).value}><option value="">A történet végén / később rendezem</option>${Object.values(wikiArticles).filter(article => (article.universeId || 'diablo') === (this.detectedUniverse?.id || useAppStore.getState().activeUniverseId) && article.type !== 'chapter' && article.type !== 'book').map(article => html`<option value=${article.id}>${article.title} után</option>`)}</select></div>` : ''}
 
         <div class="drop-zone">
           <strong>📥 Könyvdokumentum bedobása</strong>

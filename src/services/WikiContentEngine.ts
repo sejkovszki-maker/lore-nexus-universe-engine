@@ -238,7 +238,7 @@ export class WikiContentEngine {
         return { isDuplicate: true, matchedArticle, similarity: Math.min(100, maxSimilarity), recommendedAction: 'merge', rationale: 'Kiegészítés' };
     }
 
-    public static processAndPrepareBook(analysis: BookAnalysisResult, existingArticles: WikiArticles): WikiArticle[] {
+    public static processAndPrepareBook(analysis: BookAnalysisResult, existingArticles: WikiArticles, universe: { id: string; label: string } = { id: 'diablo', label: 'Diablo' }): WikiArticle[] {
         let results: WikiArticle[] = [];
         const relatedTerms = [
             ...analysis.classification.extractedEntities.characters,
@@ -248,7 +248,7 @@ export class WikiContentEngine {
         ];
         const related = [...new Set(relatedTerms.map(term => {
             const normalized = term.toLowerCase();
-            return Object.values(existingArticles).find(article => article.id === normalized || article.title.toLowerCase() === normalized || article.title.toLowerCase().includes(normalized))?.id;
+            return Object.values(existingArticles).find(article => (article.universeId || 'diablo') === universe.id && (article.id === normalized || article.title.toLowerCase() === normalized || article.title.toLowerCase().includes(normalized)))?.id;
         }).filter((id): id is string => Boolean(id)))];
 
         // Main book article
@@ -260,6 +260,8 @@ export class WikiContentEngine {
             content: `Ez a könyv ${analysis.chapters.length} fejezetet tartalmaz.`, // Intro text
             relatedArticles: related,
             type: 'book',
+            universeId: universe.id,
+            universeLabel: universe.label,
             lastEdited: Date.now()
         });
 
@@ -273,6 +275,8 @@ export class WikiContentEngine {
                 relatedArticles: related,
                 type: 'chapter',
                 parentBook: analysis.bookId,
+                universeId: universe.id,
+                universeLabel: universe.label,
                 lastEdited: Date.now()
             });
         }
@@ -280,7 +284,7 @@ export class WikiContentEngine {
         return results;
     }
 
-    public static processAndPrepareArticle(title: string, subtitle: string, content: string, existingArticles: WikiArticles): WikiArticle {
+    public static processAndPrepareArticle(title: string, subtitle: string, content: string, existingArticles: WikiArticles, universe: { id: string; label: string } = { id: 'diablo', label: 'Diablo' }): WikiArticle {
         const cleanTitle = this.sanitizeContent(title);
         const id = this.resolveIdCollision(this.generateId(cleanTitle), existingArticles);
         const classification = this.classify(cleanTitle, subtitle, content);
@@ -292,6 +296,8 @@ export class WikiContentEngine {
             content: this.sanitizeContent(content),
             relatedArticles: [],
             type: 'article',
+            universeId: universe.id,
+            universeLabel: universe.label,
             lastEdited: Date.now()
         };
     }

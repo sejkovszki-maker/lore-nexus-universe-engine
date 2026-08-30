@@ -1,6 +1,7 @@
 import { db, type Article } from '../db/database.ts';
 import { wikiArticles } from '../data/wikiArticles.ts';
 import type { WikiArticle } from '../types.ts';
+import { registerUniverse } from '../universe/article-universes.ts';
 
 function isStoredArticle(value: unknown): value is Article {
   if (!value || typeof value !== 'object') return false;
@@ -10,7 +11,10 @@ function isStoredArticle(value: unknown): value is Article {
     && typeof article.category === 'string' && article.category.trim().length > 0 && article.category.length <= 120
     && typeof article.content === 'string' && typeof article.lastEdited === 'number' && Number.isFinite(article.lastEdited)
     && (article.relatedArticles === undefined || (Array.isArray(article.relatedArticles) && article.relatedArticles.every(id => typeof id === 'string' && /^[a-z0-9][a-z0-9-]{0,119}$/.test(id))))
-    && (article.parentBook === undefined || (typeof article.parentBook === 'string' && /^[a-z0-9][a-z0-9-]{0,119}$/.test(article.parentBook)));
+    && (article.parentBook === undefined || (typeof article.parentBook === 'string' && /^[a-z0-9][a-z0-9-]{0,119}$/.test(article.parentBook)))
+    && (article.universeId === undefined || (typeof article.universeId === 'string' && /^[a-z0-9][a-z0-9-]{0,119}$/.test(article.universeId)))
+    && (article.universeLabel === undefined || (typeof article.universeLabel === 'string' && article.universeLabel.length <= 120))
+    && (article.storyAfter === undefined || (typeof article.storyAfter === 'string' && /^[a-z0-9][a-z0-9-]{0,119}$/.test(article.storyAfter)));
 }
 
 export async function hydrateUserArticles(): Promise<number> {
@@ -21,6 +25,7 @@ export async function hydrateUserArticles(): Promise<number> {
     const existing = wikiArticles[article.id];
     if (existing) continue;
     wikiArticles[article.id] = article as WikiArticle;
+    if (article.universeId) registerUniverse({ id: article.universeId, label: article.universeLabel || article.universeId });
     loaded += 1;
   }
   return loaded;

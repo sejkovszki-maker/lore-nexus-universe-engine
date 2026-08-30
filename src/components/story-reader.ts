@@ -1,9 +1,10 @@
 import { LitElement, css, html } from 'lit';
 import { customElement, state } from 'lit/decorators.js';
 import DOMPurify from 'dompurify';
-import { storyBookSegments, storyReadingPath } from '../wiki/story-order';
+import { storyBooks, storyReadingPath } from '../wiki/story-order';
 import { renderWikiLinks } from '../wiki/link-engine';
 import { wikiArticles } from '../data/wikiArticles';
+import { useAppStore } from '../store/appState.ts';
 
 const STORAGE_KEY = 'lore-nexus:story-progress:v1';
 const BOOKS_SETTING_KEY = 'lore-nexus:story-books:v1';
@@ -14,9 +15,11 @@ interface SavedProgress { articleId: string; scrollY: number; updatedAt: number 
 export class StoryReader extends LitElement {
   @state() private chapterIndex = 0;
   @state() private booksEnabled = true;
+  @state() private universeId = useAppStore.getState().activeUniverseId;
   private restoreScrollY = 0;
   private saveTimer?: number;
-  private get chapters() { return storyReadingPath(this.booksEnabled); }
+  private unsubscribe?: () => void;
+  private get chapters() { return storyReadingPath(this.booksEnabled, this.universeId); }
 
   static styles = css`
     :host { display:block; width:100%; max-width:900px; margin:0 auto; color:#eaddc5; }
@@ -44,8 +47,18 @@ export class StoryReader extends LitElement {
   connectedCallback() {
     super.connectedCallback();
     this.booksEnabled = localStorage.getItem(BOOKS_SETTING_KEY) !== 'false';
+    this.unsubscribe = useAppStore.subscribe(state => {
+      if (state.activeUniverseId !== this.universeId) this.universeId = state.activeUniverseId;
+      if (state.activeTab === 'story' && state.activeArticleId) {
+        const index = this.chapters.findIndex(chapter => chapter.article.id === state.activeArticleId);
+        if (index >= 0 && index !== this.chapterIndex) this.chapterIndex = index;
+      }
+    });
+    const requested = useAppStore.getState().activeArticleId;
     const saved = this.loadProgress();
-    if (saved) {
+    const requestedIndex = this.chapters.findIndex(chapter => chapter.article.id === requested);
+    if (requestedIndex >= 0) this.chapterIndex = requestedIndex;
+    else if (saved) {
       const index = this.chapters.findIndex(chapter => chapter.article.id === saved.articleId);
       if (index >= 0) this.chapterIndex = index;
       this.restoreScrollY = Math.max(0, saved.scrollY);
@@ -56,6 +69,7 @@ export class StoryReader extends LitElement {
   disconnectedCallback() {
     window.removeEventListener('scroll', this.handleScroll);
     if (this.saveTimer) window.clearTimeout(this.saveTimer);
+    this.unsubscribe?.();
     this.saveProgress();
     super.disconnectedCallback();
   }
@@ -68,14 +82,14 @@ export class StoryReader extends LitElement {
   };
 
   private loadProgress(): SavedProgress | null {
-    try { return JSON.parse(localStorage.getItem(STORAGE_KEY) || 'null'); } catch { return null; }
+    try { return JSON.parse(localStorage.getItem(`${STORAGE_KEY}:${this.universeId}`) || 'null'); } catch { return null; }
   }
 
   private saveProgress() {
     const chapter = this.chapters[this.chapterIndex];
     if (!chapter) return;
     const progress: SavedProgress = { articleId: chapter.article.id, scrollY: window.scrollY, updatedAt: Date.now() };
-    localStorage.setItem(STORAGE_KEY, JSON.stringify(progress));
+    localStorage.setItem(`${STORAGE_KEY}:${this.universeId}`, JSON.stringify(progress));
   }
 
   private restorePosition() {
@@ -86,7 +100,7 @@ export class StoryReader extends LitElement {
     this.chapterIndex = Math.min(this.chapters.length - 1, Math.max(0, index));
     this.restoreScrollY = 0;
     this.saveProgress();
-    history.replaceState(null, '', `#tab/story/${this.chapters[this.chapterIndex].article.id}`);
+    useAppStore.openStoryRoute(this.chapters[this.chapterIndex].article.id);
     window.scrollTo({ top: 0, behavior: 'smooth' });
   }
 
@@ -96,11 +110,11 @@ export class StoryReader extends LitElement {
     const currentId = currentChapter?.article.id;
     this.booksEnabled = enabled;
     localStorage.setItem(BOOKS_SETTING_KEY, String(enabled));
-    const nextPath = storyReadingPath(enabled);
+    const nextPath = storyReadingPath(enabled, this.universeId);
     const sameArticle = nextPath.findIndex(item => item.article.id === currentId);
     if (sameArticle >= 0) this.chapterIndex = sameArticle;
     else if (!enabled && currentChapter?.segmentId) {
-      const segment = storyBookSegments.find(item => item.id === currentChapter.segmentId);
+      const segment = storyBooks(this.universeId).find(item => item.id === currentChapter.segmentId);
       const anchor = nextPath.findIndex(item => item.article.id === segment?.after);
       this.chapterIndex = Math.min(nextPath.length - 1, Math.max(0, anchor + 1));
     } else this.chapterIndex = Math.min(this.chapterIndex, nextPath.length - 1);
@@ -115,8 +129,16 @@ export class StoryReader extends LitElement {
   }
 
   private articleHtml(content: string) {
-    const linked = renderWikiLinks(content, wikiArticles);
+    const scopedArticles = Object.fromEntries(Object.entries(wikiArticles).filter(([, article]) => (article.universeId || 'diablo') === this.universeId));
+    const linked = renderWikiLinks(content, scopedArticles);
     return DOMPurify.sanitize(linked, { ADD_ATTR: ['data-wiki-id', 'data-relation'] });
+  }
+
+  private openWikiLink(event: MouseEvent) {
+    const anchor = (event.target as HTMLElement).closest<HTMLElement>('[data-wiki-id]');
+    if (!anchor) return;
+    event.preventDefault();
+    useAppStore.openArticleRoute(anchor.dataset.wikiId || '');
   }
 
   render() {
@@ -142,7 +164,7 @@ export class StoryReader extends LitElement {
         <p>${article.category}</p>
         <h1 id="story-title">${article.title}</h1>
         ${article.subtitle ? html`<p><em>${article.subtitle}</em></p>` : ''}
-        <div class="content" .innerHTML=${this.articleHtml(article.content)}></div>
+        <div class="content" @click=${this.openWikiLink} .innerHTML=${this.articleHtml(article.content)}></div>
       </article>
       <nav class="controls" aria-label="Történet fejezetei">
         <button ?disabled=${this.chapterIndex === 0} @click=${() => this.goTo(this.chapterIndex - 1)}>← Előző fejezet</button>

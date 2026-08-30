@@ -28,14 +28,14 @@ Ez a dokumentum az eredeti 217 implementációs egységet, a Wiki UX-tervet és 
 | 3 | Audit log, tamper-evidence és zero-data-loss gate | KÉSZ | Append-only hash-lánc és rongálásdetektálás tesztelt. |
 | 4 | CI, Definition of Done és automatizált minőségi kapuk | KÉSZ | Unit, property, integration, regression, fuzz, security, build és E2E fut. |
 | 5 | Kötelező branch protection és review enforcement | RÉSZBEN KÉSZ | CODEOWNERS és PR-folyamat van; repository-szintű kötelező védelem nincs teljesen igazolva. |
-| 6 | Router 2.0 – egyetlen központi, típusos route parser/generator | ÚJ FELADAT | Az `appState.ts` csak `#tab/...` útvonalat ért, miközben a linkmotor `#/wiki/...` URL-t készít. |
-| 7 | Stabil fő útvonalak: home, wiki, timeline, story, book, network, search | ÚJ FELADAT | Jelenleg tab-alapú nézetváltás van. |
-| 8 | Wiki-, Story-, Timeline- és könyv-deep-link | NINCS KÉSZ | Frissítéskor nem áll vissza egységesen a nézet és az entitás. |
-| 9 | Back/Forward history és `pushState`-szemantika | NINCS KÉSZ | A cikknézet és Story Reader `replaceState`-et használ. |
-| 10 | Hibás route, 404 cikk és biztonságos fallback | NINCS KÉSZ | Csak komponensszintű „Cikk nem található” állapot van. |
-| 11 | Scroll restoration útvonalanként | ÚJ FELADAT | Cikkváltáskor mindig a lap tetejére görget, visszatérési pozíció nincs. |
-| 12 | Router regressziós és E2E mátrix | ÚJ FELADAT | A jelenlegi E2E csak a régi tab-hash működést fedi. |
-| 13 | Hibás `max-w` CSS javítása | NINCS KÉSZ | A cikknézet `:host` szabályában `max-w: 900px` szerepel. |
+| 6 | Router 2.0 – egyetlen központi, típusos route parser/generator | KÉSZ | Típusos parser/generator és fail-closed validáció működik. |
+| 7 | Stabil fő útvonalak: home, wiki, timeline, story, book, search | RÉSZBEN KÉSZ | Wiki, timeline, story, book, editor és conflicts kész; külön search oldal a keresőcsomag része. |
+| 8 | Wiki-, Story-, Timeline- és könyv-deep-link | KÉSZ | Közvetlen betöltés és frissítés E2E-ben ellenőrzött. |
+| 9 | Back/Forward history és új history-bejegyzések | KÉSZ | Hash history Back/Forward mátrix sikeres; cikk- és könyvváltás nem írja felül az előzményt. |
+| 10 | Hibás route, 404 cikk és biztonságos fallback | KÉSZ | Hibás, hiányzó és más univerzumhoz tartozó cikk külön 404-et ad. |
+| 11 | Scroll restoration útvonalanként | KÉSZ | Route-onként session storage pozíció és Back-visszaállítás működik. |
+| 12 | Router regressziós és E2E mátrix | KÉSZ | Parser unit + deep-link/history/404/scroll E2E tesztek készültek. |
+| 13 | Hibás `max-w` CSS javítása | KÉSZ | Szabványos `max-width: 900px`, mobil/desktop regresszióval. |
 | 14 | LOCAL DRAFT és PUBLISHED KNOWLEDGE szétválasztása | RÉSZBEN KÉSZ | IndexedDB-s, tranzakciós helyi mentés működik, de nincs publikált központi réteg. |
 | 15 | Helyi draft export/import és visszaállítható biztonsági mentés | ÚJ FELADAT | Webhelyadat törlésekor a helyi import elveszhet. |
 | 16 | Tulajdonosi publikálási folyamat repositoryba vagy központi tárba | ÚJ FELADAT | PC-n importált könyv telefonon nem jelenik meg. |
@@ -151,14 +151,24 @@ Strukturált nyelvi diagnosztika és lore-szótár védi a publikálást; Timeli
 | 76 | Knowledge versioning, snapshot és végleges migrációs artifact | KÉSZ | 189 rekordos snapshot, fingerprint összevetés és rollback bizonyíték elkészült. |
 | 77 | GitHub Pages kiadás és mobil smoke test | KÉSZ | Automatikus Pages workflow, publikus URL és E2E smoke működik. |
 | 78 | Netlify kiadási lehetőség | RÉSZBEN KÉSZ | Konfiguráció/readiness dokumentált; az elsődleges oldal GitHub Pages. |
-| 79 | Production-ready teljes kapu v2 | NINCS KÉSZ | Router 2.0, published storage, review/publish és publikus Knowledge Layer-integráció még hiányzik. |
+| 79 | Production-ready teljes kapu v2 | NINCS KÉSZ | A router elkészült; published storage, review/publish és publikus Knowledge Layer-integráció még hiányzik. |
+
+## Aktuális multi-universe és könyvolvasási kiegészítés
+
+| # | Feladat | Állapot | Bizonyíték / hiányzó rész |
+|---:|---|---|---|
+| 80 | Automatikus univerzumfelismerés importkor | KÉSZ | Diablo/Witcher/Warcraft/Gyűrűk Ura jelzőszótár, confidence és indoklás; ismeretlen tartalom nem szennyezi a Diablót. |
+| 81 | Dinamikus univerzumválasztó és teljes tartalom-elkülönítés | KÉSZ | Az új univerzum külön választási lehetőséget, route-prefixet, cikk-, timeline-, story- és könyvteret kap. |
+| 82 | Külön könyvtár és fejezetes könyvolvasó | KÉSZ | Könyvlista, stabil könyv/fejezet deep-link, előző/következő lapozás és reload működik. |
+| 83 | Cikkek és könyvek közös történeti útvonala | KÉSZ | Diablo kurált kronológiája és idegen univerzumok elkülönített cikk/könyv útvonala működik. |
+| 84 | Könyv történeti beszúrási pontja | KÉSZ | Importkor kiválasztható, melyik történeti cikk után következzen; a külön könyvtárban is látható. |
 
 ## Kritikus végrehajtási sorrend
 
 ```text
-Router 2.0
-  → deep-link + Back/Forward + 404 + scroll restoration
-  → CSS-javítás és router E2E
+[KÉSZ] Router 2.0
+  → [KÉSZ] deep-link + Back/Forward + 404 + scroll restoration
+  → [KÉSZ] CSS-javítás és router E2E
   → LOCAL DRAFT / PUBLISHED KNOWLEDGE határ
   → draft export/import + tulajdonosi publish
   → breadcrumb + TOC + háromrészes cikkoldal
@@ -176,11 +186,10 @@ Router 2.0
 
 ## Következő kiadható fejlesztési csomag
 
-1. Router 2.0 típusos route modellel.
-2. `#/wiki/:id`, `#/story/:id`, `#/book/:bookId/:chapterId?` és `#/timeline/:eventId?` támogatás.
-3. `pushState`/hash history, Back/Forward, 404 és scroll restoration.
-4. A `max-w` CSS-hiba javítása.
-5. Router unit/property/E2E regressziós mátrix.
-6. Helyi draft export/import specifikáció a published tudásfolyam következő csomagjához.
+1. Helyi draft export/import és ellenőrzött visszaállítás.
+2. LOCAL DRAFT / PUBLISHED KNOWLEDGE explicit lifecycle.
+3. Tulajdonosi, auditált publikálás repositoryba vagy központi tárba.
+4. Publikált tudás szinkronizálása más eszközökre.
+5. Review/approve/rollback összekötése a böngészős editorral.
 
-Ezt a csomagot kell lezárni a breadcrumb, TOC, kereső és további AI-funkciók előtt.
+Ezt a csomagot kell lezárni a breadcrumb, TOC, teljes kereső és további AI-funkciók előtt.

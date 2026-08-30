@@ -18,8 +18,7 @@ export class WikiArticleCard extends LitElement {
   `;
 
   private handleClick() {
-    useAppStore.setActiveArticleId(this.id);
-    useAppStore.setActiveTab('article-view');
+    useAppStore.openArticleRoute(this.id);
   }
 
   render() {
