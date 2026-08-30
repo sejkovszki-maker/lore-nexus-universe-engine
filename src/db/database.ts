@@ -7,6 +7,9 @@ export interface Article {
   category: string;
   content: string;
   lastEdited: number;
+  relatedArticles?: string[];
+  type?: 'article' | 'book' | 'chapter';
+  parentBook?: string;
 }
 
 export class DiabloDatabase extends Dexie {

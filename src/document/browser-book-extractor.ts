@@ -23,12 +23,18 @@ function htmlToText(source: string): string {
 async function extractPdf(bytes: Uint8Array): Promise<{ text: string; pageCount: number }> {
   const { getDocument, GlobalWorkerOptions } = await import('pdfjs-dist');
   GlobalWorkerOptions.workerSrc = new URL('pdfjs-dist/build/pdf.worker.min.mjs', import.meta.url).href;
-  const pdf = await getDocument({ data: bytes.slice() }).promise;
+  const loadingTask = getDocument({ data: bytes.slice() });
+  const pdf = await loadingTask.promise;
   const pages: string[] = [];
-  for (let pageNumber = 1; pageNumber <= pdf.numPages; pageNumber += 1) {
-    const page = await pdf.getPage(pageNumber);
-    const content = await page.getTextContent();
-    pages.push(content.items.map((item) => ('str' in item ? item.str : '')).join(' ').replace(/\s+/g, ' ').trim());
+  try {
+    for (let pageNumber = 1; pageNumber <= pdf.numPages; pageNumber += 1) {
+      const page = await pdf.getPage(pageNumber);
+      const content = await page.getTextContent();
+      pages.push(content.items.map((item) => ('str' in item ? item.str : '')).join(' ').replace(/\s+/g, ' ').trim());
+      page.cleanup();
+    }
+  } finally {
+    await loadingTask.destroy();
   }
   return { text: pages.join('\n\n'), pageCount: pdf.numPages };
 }
@@ -37,6 +43,8 @@ export async function extractBookFile(file: File): Promise<ExtractedBook> {
   const bytes = new Uint8Array(await file.arrayBuffer());
   const validation = validateFile({ originalName: file.name, declaredMediaType: file.type || undefined, bytes });
   if (!validation.valid) throw new Error(`Nem támogatott dokumentum: ${validation.errors.join(', ')}`);
+  const extractableTypes = new Set(['application/pdf', 'application/vnd.openxmlformats-officedocument.wordprocessingml.document', 'text/plain', 'text/markdown', 'text/html']);
+  if (!extractableTypes.has(validation.detectedMediaType)) throw new Error(`Ebből a fájltípusból nem nyerhető ki könyvszöveg: ${validation.detectedMediaType}`);
 
   let text = '';
   let pageCount: number | null = null;
@@ -48,6 +56,7 @@ export async function extractBookFile(file: File): Promise<ExtractedBook> {
     const mammoth = await import('mammoth/mammoth.browser');
     const result = await mammoth.extractRawText({ arrayBuffer: bytes.buffer.slice(bytes.byteOffset, bytes.byteOffset + bytes.byteLength) });
     text = result.value;
+    if (result.messages.length) validation.warnings.push(`A DOCX feldolgozó ${result.messages.length} szerkezeti figyelmeztetést jelzett.`);
   } else {
     const decoded = new TextDecoder('utf-8').decode(bytes);
     text = validation.detectedMediaType === 'text/html' ? htmlToText(decoded) : decoded;

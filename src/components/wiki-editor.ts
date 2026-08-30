@@ -4,6 +4,7 @@ import { WikiContentEngine, ClassificationResult, DuplicateAnalysisResult, BookA
 import { wikiArticles } from '../data/wikiArticles';
 import { extractBookFile, type ExtractedBook } from '../document/browser-book-extractor.ts';
 import { translateBookToHungarian } from '../document/browser-translator.ts';
+import { persistUserArticles } from '../wiki/user-article-store.ts';
 
 @customElement('wiki-editor')
 export class WikiEditor extends LitElement {
@@ -182,6 +183,9 @@ export class WikiEditor extends LitElement {
     this.isProcessing = true;
     this.extractionError = '';
     this.extraction = null;
+    this.bookAnalysis = null;
+    this.translationStatus = '';
+    this.content = '';
     try {
       const result = await extractBookFile(file);
       this.extraction = result;
@@ -213,7 +217,7 @@ export class WikiEditor extends LitElement {
     }
   }
 
-  private handleSave() {
+  private async handleSave() {
     if (!this.bookAnalysis) return;
 
     if (this.bookAnalysis.duplicates.isDuplicate && this.bookAnalysis.duplicates.recommendedAction === 'reject') {
@@ -221,17 +225,18 @@ export class WikiEditor extends LitElement {
         return;
     }
 
-    if (this.bookAnalysis.isBook) {
-        const newArticles = WikiContentEngine.processAndPrepareBook(this.bookAnalysis, wikiArticles);
-        newArticles.forEach(art => {
-            wikiArticles[art.id] = art;
-            WikiContentEngine.applyBidirectionalRelations(art.id, art.relatedArticles || [], wikiArticles);
-        });
-        alert(`✅ Könyv és ${newArticles.length - 1} fejezet sikeresen integrálva a Wikibe!`);
-    } else {
-        // Fallback for single article (not explicitly a book but handled by the engine)
-        // Re-use logic or adjust
-        alert('✅ Cikk mentése sikeres.');
+    const newArticles = this.bookAnalysis.isBook
+      ? WikiContentEngine.processAndPrepareBook(this.bookAnalysis, wikiArticles)
+      : [WikiContentEngine.processAndPrepareArticle(this.articleTitle, this.subtitle, this.content, wikiArticles)];
+    try {
+      await persistUserArticles(newArticles);
+      newArticles.forEach(article => { wikiArticles[article.id] = article; });
+      alert(this.bookAnalysis.isBook
+        ? `✅ A könyv és ${newArticles.length - 1} fejezete tartósan mentve ezen az eszközön.`
+        : '✅ A cikk tartósan mentve ezen az eszközön.');
+    } catch (error) {
+      alert(`❌ A mentés nem sikerült, ezért a wiki nem módosult. ${error instanceof Error ? error.message : ''}`);
+      return;
     }
     
     this.articleTitle = '';
@@ -355,7 +360,7 @@ export class WikiEditor extends LitElement {
         </div>
 
         <div class="integration-box" style="${getDelay(12)}">
-          <button class="btn" @click=${this.handleSave}>
+          <button class="btn" @click=${this.handleSave} ?disabled=${this.isProcessing}>
             [ ${a.isBook ? 'TELJES KÖNYV INTEGRÁLÁSA' : 'CIKK INTEGRÁLÁSA'} ]
           </button>
         </div>

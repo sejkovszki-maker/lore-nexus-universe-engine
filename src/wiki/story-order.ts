@@ -61,7 +61,12 @@ function segmentArticles(segment: BookSegment): WikiArticle[] {
     .sort((left, right) => numericChapterOrder(left.id) - numericChapterOrder(right.id));
 }
 
+let cachedExpandedPath: StoryReadingChapter[] | null = null;
+let cachedMainPath: StoryReadingChapter[] | null = null;
+
 export function storyReadingPath(includeBooks = true): StoryReadingChapter[] {
+  const cached = includeBooks ? cachedExpandedPath : cachedMainPath;
+  if (cached) return cached;
   const path: StoryReadingChapter[] = [];
   for (const article of canonicalStory()) {
     path.push({ article, segmentId: null, segmentTitle: null });
@@ -70,5 +75,7 @@ export function storyReadingPath(includeBooks = true): StoryReadingChapter[] {
       path.push(...segmentArticles(segment).map(bookArticle => ({ article: bookArticle, segmentId: segment.id, segmentTitle: segment.title })));
     }
   }
+  if (includeBooks) cachedExpandedPath = path;
+  else cachedMainPath = path;
   return path;
 }

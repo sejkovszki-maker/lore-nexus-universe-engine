@@ -1,7 +1,7 @@
 import { LitElement, css, html } from 'lit';
 import { customElement, state } from 'lit/decorators.js';
 import DOMPurify from 'dompurify';
-import { storyReadingPath } from '../wiki/story-order';
+import { storyBookSegments, storyReadingPath } from '../wiki/story-order';
 import { renderWikiLinks } from '../wiki/link-engine';
 import { wikiArticles } from '../data/wikiArticles';
 
@@ -92,12 +92,18 @@ export class StoryReader extends LitElement {
 
   private toggleBooks(event: Event) {
     const enabled = (event.target as HTMLInputElement).checked;
-    const currentId = this.chapters[this.chapterIndex]?.article.id;
+    const currentChapter = this.chapters[this.chapterIndex];
+    const currentId = currentChapter?.article.id;
     this.booksEnabled = enabled;
     localStorage.setItem(BOOKS_SETTING_KEY, String(enabled));
     const nextPath = storyReadingPath(enabled);
     const sameArticle = nextPath.findIndex(item => item.article.id === currentId);
-    this.chapterIndex = sameArticle >= 0 ? sameArticle : Math.min(this.chapterIndex, nextPath.length - 1);
+    if (sameArticle >= 0) this.chapterIndex = sameArticle;
+    else if (!enabled && currentChapter?.segmentId) {
+      const segment = storyBookSegments.find(item => item.id === currentChapter.segmentId);
+      const anchor = nextPath.findIndex(item => item.article.id === segment?.after);
+      this.chapterIndex = Math.min(nextPath.length - 1, Math.max(0, anchor + 1));
+    } else this.chapterIndex = Math.min(this.chapterIndex, nextPath.length - 1);
     this.saveProgress();
   }
 
@@ -120,16 +126,15 @@ export class StoryReader extends LitElement {
     const percent = Math.round(((this.chapterIndex + 1) / this.chapters.length) * 100);
     return html`<section class="reader" aria-labelledby="story-title">
       <div class="toolbar">
-        <label>Fejezet
-          <select .value=${String(this.chapterIndex)} @change=${(event: Event) => this.goTo(Number((event.target as HTMLSelectElement).value))}>
+        <label for="story-chapter">Fejezet</label>
+          <select id="story-chapter" aria-label="Történeti fejezet" .value=${String(this.chapterIndex)} @change=${(event: Event) => this.goTo(Number((event.target as HTMLSelectElement).value))}>
             ${this.chapters.map((item, index) => html`<option value=${index}>${index + 1}. ${item.segmentId ? '📖 ' : ''}${item.article.title}</option>`)}
           </select>
-        </label>
         <div class="book-tools">
           <label class="toggle"><input type="checkbox" .checked=${this.booksEnabled} @change=${this.toggleBooks}> Könyvek beillesztése a történetbe</label>
           ${chapter.segmentId ? html`<button @click=${this.skipCurrentBook}>A teljes könyv átugrása →</button>` : html`<span>A könyvek a megfelelő történeti ponton jelennek meg.</span>`}
         </div>
-        <div class="progress" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow=${percent}><span style=${`width:${percent}%`}></span></div>
+        <div class="progress" role="progressbar" aria-label="Olvasási előrehaladás" aria-valuemin="0" aria-valuemax="100" aria-valuenow=${percent} aria-valuetext=${`${this.chapterIndex + 1}/${this.chapters.length}. fejezet`}><span style=${`width:${percent}%`}></span></div>
         <div class="meta"><span>${this.chapterIndex + 1}/${this.chapters.length}. fejezet</span><span>${percent}% – a pozíció automatikusan mentve</span></div>
       </div>
       <article>

@@ -20,7 +20,15 @@ function translationChunks(text: string, maximum = 3000): string[] {
   for (const paragraph of text.split(/\n{2,}/u)) {
     if (paragraph.length > maximum) {
       if (current) chunks.push(current);
-      for (let start = 0; start < paragraph.length; start += maximum) chunks.push(paragraph.slice(start, start + maximum));
+      let remaining = paragraph;
+      while (remaining.length > maximum) {
+        let end = remaining.lastIndexOf(' ', maximum);
+        if (end < maximum / 2) end = maximum;
+        if (/^[\uDC00-\uDFFF]$/u.test(remaining[end])) end -= 1;
+        chunks.push(remaining.slice(0, end).trim());
+        remaining = remaining.slice(end).trimStart();
+      }
+      if (remaining) chunks.push(remaining);
       current = '';
     } else if (!current || current.length + paragraph.length + 2 <= maximum) {
       current += `${current ? '\n\n' : ''}${paragraph}`;
@@ -45,9 +53,13 @@ export async function translateBookToHungarian(text: string, onProgress?: (compl
   if ((await availability(ai.LanguageDetector)) === 'unavailable') throw new Error('A helyi nyelvfelismerő nem érhető el ezen az eszközön.');
 
   const detector = await ai.LanguageDetector.create();
-  const sample = text.slice(0, 4000);
-  const detected = (await detector.detect(sample)).sort((a, b) => b.confidence - a.confidence)[0];
-  detector.destroy?.();
+  let detected: LanguageDetection | undefined;
+  try {
+    const sample = text.slice(0, 4000);
+    detected = (await detector.detect(sample)).sort((a, b) => b.confidence - a.confidence)[0];
+  } finally {
+    detector.destroy?.();
+  }
   const sourceLanguage = detected?.detectedLanguage?.toLowerCase() || 'und';
   if (sourceLanguage === 'hu' || sourceLanguage.startsWith('hu-')) return { text, sourceLanguage, translated: false };
   if (sourceLanguage === 'und') throw new Error('A dokumentum nyelve nem volt megbízhatóan felismerhető.');
@@ -57,10 +69,13 @@ export async function translateBookToHungarian(text: string, onProgress?: (compl
   const translator = await ai.Translator.create(options);
   const chunks = translationChunks(text);
   const translated: string[] = [];
-  for (let index = 0; index < chunks.length; index += 1) {
-    translated.push(await translator.translate(chunks[index]));
-    onProgress?.(index + 1, chunks.length);
+  try {
+    for (let index = 0; index < chunks.length; index += 1) {
+      translated.push(await translator.translate(chunks[index]));
+      onProgress?.(index + 1, chunks.length);
+    }
+  } finally {
+    translator.destroy?.();
   }
-  translator.destroy?.();
   return { text: translated.join('\n\n'), sourceLanguage, translated: true };
 }

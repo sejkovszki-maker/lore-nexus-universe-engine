@@ -58,41 +58,14 @@ export class WikiContentEngine {
         events: ["sin war", "bűn háborúja", "dark exile", "sötét száműzetés", "első kozmikus háború", "örök konfliktus", "eternal conflict", "teremtés", "világkő elrablása"]
     };
 
-    private static legacyByteMap: Record<string, number> = {
-        'í': 0xC3, 'Ä': 0xC4, 'Ĺ': 0xC5, 'Ć': 0xC6, 'Č': 0xC8, 'É': 0xC9,
-        'Í': 0xCD, 'Ó': 0xD3, 'Ö': 0xD6, 'Ú': 0xDA, 'Ü': 0xDC, 'Ý': 0xDD,
-        'ˇ': 0xA1, '‘': 0x91, '’': 0x92, '“': 0x93, '”': 0x94, '–': 0x96,
-        '—': 0x97, 'đ': 0xF0, 'ď': 0xEF, 'ź': 0x9F, '¸': 0xB8, 'ś': 0x9C,
-        'Ť': 0x85, 'Ź': 0x8F
-    };
-
     public static sanitizeContent(text: string): string {
         if (!text) return text;
-        
-        // 1. Krisz-krasz (Mojibake) javítás
-        let sanitized = text;
-        const mojibakePattern = /[íĹÄĆČ]|â.|đź|ď¸/;
-        if (mojibakePattern.test(sanitized)) {
-            try {
-                const bytes = Uint8Array.from([...sanitized], char => this.legacyByteMap[char] ?? char.codePointAt(0)!);
-                const utf8Decoder = new TextDecoder('utf-8', { fatal: true });
-                sanitized = utf8Decoder.decode(bytes);
-            } catch (e) {
-                // If decoding fails, keep the original text
-            }
-        }
-
-        // 2. Helyesírási és tipográfiai alapok (krisz-kraszok és duplikált szóközök)
-        sanitized = sanitized
-            .replace(/\s+/g, ' ') // dupla szóközök
-            .replace(/ ,/g, ',') // szóköz vessző előtt
-            .replace(/ \./g, '.') // szóköz pont előtt
-            .replace(/([,\.\?\!])([^\s\"\'\)])/g, '$1 $2') // szóköz hiánya írásjel után
-            .replace(/ \)/g, ')')
-            .replace(/\( /g, '(')
+        return text
+            .replace(/\r\n?/g, '\n')
+            .replace(/[ \t]+/g, ' ')
+            .replace(/ *\n */g, '\n')
+            .replace(/\n{4,}/g, '\n\n\n')
             .trim();
-
-        return sanitized;
     }
 
     private static categoryRules = [
@@ -188,7 +161,7 @@ export class WikiContentEngine {
         const cleanContent = this.sanitizeContent(content);
 
         const classification = this.classify(cleanTitle, cleanSubtitle, cleanContent);
-        const bookId = this.generateId(cleanTitle);
+        const bookId = this.resolveIdCollision(this.generateId(cleanTitle), existingArticles);
         
         // Chapter parsing regex: matches "X. fejezet" or "Chapter X" or "X. Fejezet"
         const chapterRegex = /(?:^|\n)(?:### |## |# )?(?:(?:\d+\.\s*fejezet)|(?:chapter\s+\d+)|(?:fejezet\s+\d+)|(?:[IVXLCDM]+\.\s*fejezet))/gi;
@@ -267,12 +240,16 @@ export class WikiContentEngine {
 
     public static processAndPrepareBook(analysis: BookAnalysisResult, existingArticles: WikiArticles): WikiArticle[] {
         let results: WikiArticle[] = [];
-        const related = [
+        const relatedTerms = [
             ...analysis.classification.extractedEntities.characters,
             ...analysis.classification.extractedEntities.locations,
             ...analysis.classification.extractedEntities.events,
             ...analysis.classification.extractedEntities.other
         ];
+        const related = [...new Set(relatedTerms.map(term => {
+            const normalized = term.toLowerCase();
+            return Object.values(existingArticles).find(article => article.id === normalized || article.title.toLowerCase() === normalized || article.title.toLowerCase().includes(normalized))?.id;
+        }).filter((id): id is string => Boolean(id)))];
 
         // Main book article
         results.push({
@@ -301,6 +278,22 @@ export class WikiContentEngine {
         }
 
         return results;
+    }
+
+    public static processAndPrepareArticle(title: string, subtitle: string, content: string, existingArticles: WikiArticles): WikiArticle {
+        const cleanTitle = this.sanitizeContent(title);
+        const id = this.resolveIdCollision(this.generateId(cleanTitle), existingArticles);
+        const classification = this.classify(cleanTitle, subtitle, content);
+        return {
+            id,
+            title: cleanTitle,
+            subtitle: this.sanitizeContent(subtitle) || undefined,
+            category: classification.primaryCategory,
+            content: this.sanitizeContent(content),
+            relatedArticles: [],
+            type: 'article',
+            lastEdited: Date.now()
+        };
     }
 
     public static applyBidirectionalRelations(articleId: string, relatedIds: string[], existingArticles: WikiArticles) {
