@@ -1,20 +1,22 @@
 import { LitElement, css, html } from 'lit';
 import { customElement, state } from 'lit/decorators.js';
 import DOMPurify from 'dompurify';
-import { canonicalStory } from '../wiki/story-order';
+import { storyReadingPath } from '../wiki/story-order';
 import { renderWikiLinks } from '../wiki/link-engine';
 import { wikiArticles } from '../data/wikiArticles';
 
 const STORAGE_KEY = 'lore-nexus:story-progress:v1';
+const BOOKS_SETTING_KEY = 'lore-nexus:story-books:v1';
 
 interface SavedProgress { articleId: string; scrollY: number; updatedAt: number }
 
 @customElement('story-reader')
 export class StoryReader extends LitElement {
   @state() private chapterIndex = 0;
+  @state() private booksEnabled = true;
   private restoreScrollY = 0;
   private saveTimer?: number;
-  private readonly chapters = canonicalStory();
+  private get chapters() { return storyReadingPath(this.booksEnabled); }
 
   static styles = css`
     :host { display:block; width:100%; max-width:900px; margin:0 auto; color:#eaddc5; }
@@ -28,6 +30,10 @@ export class StoryReader extends LitElement {
     .content h2,.content h3 { color:#d4af37; font-family:'Cinzel',serif; margin-top:2rem; }
     .content a { color:#e6c65c; text-decoration:underline dotted; text-underline-offset:.2em; }
     .controls { display:grid; grid-template-columns:1fr 1fr; gap:1rem; margin-top:2.5rem; }
+    .book-tools { display:flex; align-items:center; justify-content:space-between; gap:1rem; flex-wrap:wrap; margin:1rem 0; padding:.85rem; border:1px solid #d4af3744; border-radius:.65rem; background:#d4af370a; }
+    .book-badge { color:#d4af37; font-weight:800; }
+    .toggle { display:flex; align-items:center; gap:.55rem; cursor:pointer; }
+    .toggle input { inline-size:1.15rem; block-size:1.15rem; accent-color:#d4af37; }
     button { min-height:48px; border:1px solid #d4af3766; border-radius:.65rem; background:#d4af3712; color:#f0dfbc; padding:.75rem 1rem; cursor:pointer; font-weight:700; }
     button:hover,button:focus-visible { border-color:#d4af37; color:#d4af37; outline:2px solid transparent; }
     button:disabled { opacity:.35; cursor:not-allowed; }
@@ -37,9 +43,10 @@ export class StoryReader extends LitElement {
 
   connectedCallback() {
     super.connectedCallback();
+    this.booksEnabled = localStorage.getItem(BOOKS_SETTING_KEY) !== 'false';
     const saved = this.loadProgress();
     if (saved) {
-      const index = this.chapters.findIndex(article => article.id === saved.articleId);
+      const index = this.chapters.findIndex(chapter => chapter.article.id === saved.articleId);
       if (index >= 0) this.chapterIndex = index;
       this.restoreScrollY = Math.max(0, saved.scrollY);
     }
@@ -65,9 +72,9 @@ export class StoryReader extends LitElement {
   }
 
   private saveProgress() {
-    const article = this.chapters[this.chapterIndex];
-    if (!article) return;
-    const progress: SavedProgress = { articleId: article.id, scrollY: window.scrollY, updatedAt: Date.now() };
+    const chapter = this.chapters[this.chapterIndex];
+    if (!chapter) return;
+    const progress: SavedProgress = { articleId: chapter.article.id, scrollY: window.scrollY, updatedAt: Date.now() };
     localStorage.setItem(STORAGE_KEY, JSON.stringify(progress));
   }
 
@@ -79,8 +86,26 @@ export class StoryReader extends LitElement {
     this.chapterIndex = Math.min(this.chapters.length - 1, Math.max(0, index));
     this.restoreScrollY = 0;
     this.saveProgress();
-    history.replaceState(null, '', `#tab/story/${this.chapters[this.chapterIndex].id}`);
+    history.replaceState(null, '', `#tab/story/${this.chapters[this.chapterIndex].article.id}`);
     window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
+
+  private toggleBooks(event: Event) {
+    const enabled = (event.target as HTMLInputElement).checked;
+    const currentId = this.chapters[this.chapterIndex]?.article.id;
+    this.booksEnabled = enabled;
+    localStorage.setItem(BOOKS_SETTING_KEY, String(enabled));
+    const nextPath = storyReadingPath(enabled);
+    const sameArticle = nextPath.findIndex(item => item.article.id === currentId);
+    this.chapterIndex = sameArticle >= 0 ? sameArticle : Math.min(this.chapterIndex, nextPath.length - 1);
+    this.saveProgress();
+  }
+
+  private skipCurrentBook() {
+    const currentSegment = this.chapters[this.chapterIndex]?.segmentId;
+    if (!currentSegment) return;
+    const next = this.chapters.findIndex((chapter, index) => index > this.chapterIndex && chapter.segmentId !== currentSegment);
+    this.goTo(next >= 0 ? next : this.chapters.length - 1);
   }
 
   private articleHtml(content: string) {
@@ -89,20 +114,26 @@ export class StoryReader extends LitElement {
   }
 
   render() {
-    const article = this.chapters[this.chapterIndex];
+    const chapter = this.chapters[this.chapterIndex];
+    const article = chapter?.article;
     if (!article) return html`<p>A történet jelenleg nem érhető el.</p>`;
     const percent = Math.round(((this.chapterIndex + 1) / this.chapters.length) * 100);
     return html`<section class="reader" aria-labelledby="story-title">
       <div class="toolbar">
         <label>Fejezet
           <select .value=${String(this.chapterIndex)} @change=${(event: Event) => this.goTo(Number((event.target as HTMLSelectElement).value))}>
-            ${this.chapters.map((chapter, index) => html`<option value=${index}>${index + 1}. ${chapter.title}</option>`)}
+            ${this.chapters.map((item, index) => html`<option value=${index}>${index + 1}. ${item.segmentId ? '📖 ' : ''}${item.article.title}</option>`)}
           </select>
         </label>
+        <div class="book-tools">
+          <label class="toggle"><input type="checkbox" .checked=${this.booksEnabled} @change=${this.toggleBooks}> Könyvek beillesztése a történetbe</label>
+          ${chapter.segmentId ? html`<button @click=${this.skipCurrentBook}>A teljes könyv átugrása →</button>` : html`<span>A könyvek a megfelelő történeti ponton jelennek meg.</span>`}
+        </div>
         <div class="progress" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow=${percent}><span style=${`width:${percent}%`}></span></div>
         <div class="meta"><span>${this.chapterIndex + 1}/${this.chapters.length}. fejezet</span><span>${percent}% – a pozíció automatikusan mentve</span></div>
       </div>
       <article>
+        ${chapter.segmentTitle ? html`<p class="book-badge">📖 Könyvszakasz: ${chapter.segmentTitle}</p>` : ''}
         <p>${article.category}</p>
         <h1 id="story-title">${article.title}</h1>
         ${article.subtitle ? html`<p><em>${article.subtitle}</em></p>` : ''}

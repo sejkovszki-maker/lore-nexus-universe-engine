@@ -3,6 +3,7 @@ import { customElement, state } from 'lit/decorators.js';
 import { WikiContentEngine, ClassificationResult, DuplicateAnalysisResult, BookAnalysisResult } from '../services/WikiContentEngine';
 import { wikiArticles } from '../data/wikiArticles';
 import { extractBookFile, type ExtractedBook } from '../document/browser-book-extractor.ts';
+import { translateBookToHungarian } from '../document/browser-translator.ts';
 
 @customElement('wiki-editor')
 export class WikiEditor extends LitElement {
@@ -26,6 +27,12 @@ export class WikiEditor extends LitElement {
 
   @state()
   private extractionError: string = '';
+
+  @state()
+  private autoTranslate = true;
+
+  @state()
+  private translationStatus = '';
 
   static styles = css`
     :host {
@@ -180,11 +187,29 @@ export class WikiEditor extends LitElement {
       this.extraction = result;
       this.content = result.text;
       if (!this.articleTitle.trim()) this.articleTitle = file.name.replace(/\.[^.]+$/, '').replace(/[_-]+/g, ' ');
+      if (this.autoTranslate) await this.translateContent();
     } catch (error) {
       this.extractionError = error instanceof Error ? error.message : 'Ismeretlen dokumentumfeldolgozási hiba.';
     } finally {
       this.isProcessing = false;
       input.value = '';
+    }
+  }
+
+  private async translateContent() {
+    if (!this.content.trim()) return;
+    this.isProcessing = true;
+    this.translationStatus = 'A dokumentum nyelvének felismerése…';
+    try {
+      const result = await translateBookToHungarian(this.content, (completed, total) => {
+        this.translationStatus = `Magyar fordítás: ${completed}/${total}. szövegrész`;
+      });
+      this.content = result.text;
+      this.translationStatus = result.translated ? `✅ Automatikusan magyarra fordítva (${result.sourceLanguage}).` : '✅ A dokumentum már magyar nyelvű.';
+    } catch (error) {
+      this.translationStatus = `⚠️ ${error instanceof Error ? error.message : 'A fordítás nem sikerült.'} Az eredeti szöveg megmaradt.`;
+    } finally {
+      this.isProcessing = false;
     }
   }
 
@@ -226,6 +251,10 @@ export class WikiEditor extends LitElement {
           <strong>📥 Könyvdokumentum bedobása</strong>
           <div style="color:#94a3b8; margin-top:6px;">PDF, DOCX, TXT, Markdown vagy HTML – a feldolgozás ezen az eszközön történik.</div>
           <input aria-label="Könyvdokumentum kiválasztása" type="file" accept=".pdf,.docx,.txt,.md,.html,.htm" @change=${this.handleDocument} ?disabled=${this.isProcessing}>
+          <label class="toggle" style="display:flex;justify-content:center;gap:.5rem;margin-top:10px;text-transform:none;">
+            <input type="checkbox" .checked=${this.autoTranslate} @change=${(event: Event) => this.autoTranslate = (event.target as HTMLInputElement).checked}>
+            Idegen nyelvű könyv automatikus fordítása magyarra
+          </label>
           ${this.isProcessing ? html`<div style="margin-top:10px;">⏳ A teljes szöveg kinyerése folyamatban…</div>` : ''}
           ${this.extractionError ? html`<div class="error" role="alert">${this.extractionError}</div>` : ''}
           ${this.extraction ? html`
@@ -235,6 +264,7 @@ export class WikiEditor extends LitElement {
               ${this.extraction.warnings.map((warning) => html`<div class="warning-text">⚠️ ${warning}</div>`)}
             </div>
           ` : ''}
+          ${this.translationStatus ? html`<div class="file-result" aria-live="polite">${this.translationStatus}</div>` : ''}
         </div>
         
         <div class="input-group">
@@ -250,6 +280,7 @@ export class WikiEditor extends LitElement {
         <div class="input-group">
           <label>Nyers Tartalom (akár teljes könyv)</label>
           <textarea rows="14" .value=${this.content} @input=${(e: any) => this.content = e.target.value} placeholder="Másold be ide a nyers szöveget... A rendszer automatikusan felismeri a fejezeteket (pl. '1. fejezet' vagy 'Chapter 1' alapján)."></textarea>
+          <button class="btn btn-secondary" @click=${this.translateContent} ?disabled=${this.isProcessing || !this.content.trim()}>🌐 FORDÍTÁS MAGYARRA</button>
         </div>
 
         <div style="display: flex; justify-content: center; margin-top: 10px;">

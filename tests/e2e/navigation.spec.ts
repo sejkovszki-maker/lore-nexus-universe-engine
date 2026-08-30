@@ -15,10 +15,21 @@ test('application renders and switches its primary views', async ({ page }) => {
   await page.getByRole('button', { name: 'Új Cikk' }).click();
   await expect(page).toHaveURL(/#tab\/editor$/);
   await expect(page.locator('wiki-editor')).toBeVisible();
-  await page.getByRole('button', { name: 'Konfliktusok' }).click();
+  await page.getByRole('button', { name: 'Kánonellenőrzés' }).click();
   await expect(page).toHaveURL(/#tab\/conflicts$/);
   await expect(page.locator('canon-conflict-dashboard')).toBeVisible();
   await expect(page.getByText('Nincs nyitott kánonkonfliktus.')).toBeVisible();
+});
+
+test('story books appear at their historical anchor and can be skipped', async ({ page }) => {
+  await page.goto('/#tab/story');
+  await expect(page.getByLabel('Könyvek beillesztése a történetbe')).toBeChecked();
+  await page.locator('story-reader').getByRole('combobox').selectOption('4');
+  await expect(page.getByText(/Könyvszakasz: A Bűn Háborúja I/)).toBeVisible();
+  await page.getByRole('button', { name: /teljes könyv átugrása/i }).click();
+  await expect(page.getByText(/Könyvszakasz: A Bűn Háborúja II/)).toBeVisible();
+  await page.getByLabel('Könyvek beillesztése a történetbe').uncheck();
+  await expect(page.getByRole('button', { name: /teljes könyv átugrása/i })).toHaveCount(0);
 });
 
 test('direct hash navigation restores the requested view', async ({ page }) => {

@@ -20877,6 +20877,78 @@ export const wikiArticles: Record<string, any> = {
 `
   },
 
+  "aki-hazudik-belial": {
+    id: "aki-hazudik-belial",
+    title: "Aki hazudik – Belial visszatérése",
+    subtitle: "Matthew J. Kirby hivatalos Diablo IV-elbeszélésének magyar ismertetője",
+    category: "Rövid történetek",
+    gameTag: "Diablo IV",
+    image: "",
+    description: "Egy titkos éjszakai szertartás és egy haldokló gyermek története, amely Belial, a Hazugság Ura visszatérését készíti elő.",
+    relatedArticles: ["prime-lesser-evils", "diablo-3-story"],
+    content: `<h2>A történet</h2><p>Egy apa, egy anya, egy pap, egy közvetítő és egy boszorkány éjszaka összegyűlik, hogy megmentsen egy haldokló kislányt. A szertartás során azonban egyre kevésbé világos, hogy valóban a gyermek lelkét hívják-e vissza, vagy egy sokkal veszélyesebb lény használja fel a résztvevők hazugságait.</p><p>A történet Belial természetét nem pusztán megtévesztésként, hanem az önámítás és a bizalom szétrombolásának erejeként mutatja be. Ez a Diablo IV nyolcadik évadában bekövetkező visszatérésének hivatalos előzménye.</p><h2>Forrás</h2><p><a href="https://news.blizzard.com/fr-fr/article/24195755/une-nouvelle-histoire-quiconque-ment" target="_blank" rel="noopener noreferrer">Blizzard: Quiconque ment / Aki hazudik</a></p>`
+  },
+
+  "aratas-eve-sharval": {
+    id: "aratas-eve-sharval",
+    title: "Az aratás éve – Albrecht Sharvalban",
+    subtitle: "A Prince of Freedom küldetés hivatalos képregény-előzménye",
+    category: "Rövid történetek",
+    gameTag: "Diablo Immortal",
+    image: "",
+    description: "Albrecht követői reményt és igazságot ígérnek Sharval lakóinak, miközben egyre nagyobbra növelik híveik seregét.",
+    relatedArticles: ["diablo-immortal", "diablo-1-story"],
+    content: `<h2>Sharval bizonytalan megmentője</h2><p>Sharval vadonjának lakói vigaszért és igazságért kiáltanak. Albrecht emberei válaszolnak a hívásra, de segítségük egyúttal a követőik számát és uruk befolyását is növeli. A képregény ezért szándékosan nyitva hagyja, hogy a visszatért herceg valódi oltalmazó vagy egy újabb fenyegetés-e.</p><p>Az elbeszélés a <em>Prince of Freedom</em> történeti küldetés közvetlen előzménye, és a Diablo Immortal későbbi korszakában helyezi új megvilágításba Albrecht örökségét.</p><h2>Forrás</h2><p><a href="https://news.blizzard.com/es-es/article/24214091/una-nueva-historia-ano-de-la-cosecha" target="_blank" rel="noopener noreferrer">Blizzard: Año de la Cosecha / Az aratás éve</a></p>`
+  },
+
+  "csontok-szentelye": {
+    id: "csontok-szentelye",
+    title: "A Csontok szentélye",
+    subtitle: "Iolaynah útja Scosglen lápvidékén",
+    category: "Rövid történetek",
+    gameTag: "Diablo IV",
+    image: "",
+    description: "Iolaynah eltűnt nővérét és annak mágusmesterét keresve egy romlott szentély titkaiba ereszkedik alá.",
+    relatedArticles: ["diablo-4-story"],
+    content: `<h2>Iolaynah keresése</h2><p>Tejal elbeszélésében Iolaynah Scosglen ködös lápvidékére indul eltűnt nővére után. A nyomok Droman Grigsóhoz, ahhoz a varázslóhoz vezetnek, akinél a nővére tanulni akart. A mágus omladozó szentélyében azonban nem tudás, hanem elhallgatott bűnök és áldozatok öröksége várja.</p><p>A történet a Sanctuary meséi sorozat része, és azt vizsgálja, hogyan válhat a tudás keresése kiszolgáltatottsággá egy olyan világban, ahol a mesterek szándékai ritkán tiszták.</p><h2>Forrás</h2><p><a href="https://news.blizzard.com/en-us/article/23972666/diablo-iv-short-story-sanctum-of-bone-by-carly-anne-west" target="_blank" rel="noopener noreferrer">Blizzard: Sanctum of Bone</a></p>`
+  },
+
+  "vak-szem-haza": {
+    id: "vak-szem-haza",
+    title: "A Vak Szem Háza",
+    subtitle: "A Nővérek hazatérése a Világ Koronájánál vívott csata után",
+    category: "Rövid történetek",
+    gameTag: "Diablo Immortal",
+    image: "",
+    description: "A Vak Szem Nővérei győztesen térnek vissza Eastgate-be, de a háború sebei velük együtt érkeznek haza.",
+    relatedArticles: ["diablo-immortal"],
+    content: `<h2>A győzelem ára</h2><p>A Világ Koronájánál megnyert csata után a Vak Szem Nővérei visszatérnek Eastgate-be. A rend azonban nem tud egyszerűen visszatérni korábbi életéhez: a veszteség, a harag és a háborúban meghozott döntések tovább élnek a túlélőkben.</p><p>Fred Kennedy hivatalos képregénye azt mutatja meg, hogy Sanctuaryban a győzelem sem állítja helyre automatikusan az otthont. A történet közvetlenül a Diablo Immortal újabb eseményeihez kapcsolódik.</p><h2>Forrás</h2><p><a href="https://news.blizzard.com/en-us/article/24259071/a-new-tale-house-of-the-sightless" target="_blank" rel="noopener noreferrer">Blizzard: House of the Sightless</a></p>`
+  },
+
+  "bunfalo-warlock": {
+    id: "bunfalo-warlock",
+    title: "Bűnfaló – a Warlock ára",
+    subtitle: "Egy pokoli erőt használó harcos erkölcsi terhe",
+    category: "Rövid történetek",
+    gameTag: "Diablo Immortal",
+    image: "",
+    description: "A Warlock a Pokol erejét fordítja a démonok ellen, de minden győzelemért személyes árat fizet.",
+    relatedArticles: ["diablo-immortal", "prime-lesser-evils"],
+    content: `<h2>Bűn és áldozat</h2><p>A Warlock útján nincsenek tisztán jó vagy rossz döntések. Pokoli hatalmat használ a démonok elpusztítására, ezért minden győzelem azzal a veszéllyel jár, hogy az alkalmazott erő őt magát is megváltoztatja.</p><p>Benjamin Wagner hivatalos képregénye a kaszt eredettörténetét nem diadalmeseként, hanem a szükséges rossz és az önfeláldozás közötti küzdelemként mutatja be.</p><h2>Forrás</h2><p><a href="https://news.blizzard.com/en-us/article/24259078/a-new-tale-sin-eater" target="_blank" rel="noopener noreferrer">Blizzard: Sin Eater</a></p>`
+  },
+
+  "megcsonkitott-varos": {
+    id: "megcsonkitott-varos",
+    title: "A megcsonkított város – Lut Gholein megszállása",
+    subtitle: "A Gondozó uralma és Andariel rejtett befolyása",
+    category: "Rövid történetek",
+    gameTag: "Diablo Immortal",
+    image: "",
+    description: "Lut Gholein ellenállóit a Gondozó a halálnál is rosszabb sorsra küldi, miközben a háttérből más mozgatja a szálakat.",
+    relatedArticles: ["diablo-immortal", "diablo-2-story"],
+    content: `<h2>Megszállt Lut Gholein</h2><p>Az egykor virágzó sivatagi város a Gondozó uralma alatt él. Akik ellenállnak a megszállásnak, azokat olyan büntetés várja, amely a halálnál is kegyetlenebb lehet. A történet központi kérdése nemcsak a város börtönőrének kiléte, hanem az is, hogy valójában ki irányítja őt.</p><p>Clay McLeod Chapman hivatalos képregénye Andariel befolyását és Lut Gholein újabb tragédiáját kapcsolja a Diablo Immortal folytatódó történetéhez.</p><h2>Forrás</h2><p><a href="https://news.blizzard.com/en-gb/article/24280279/a-new-tale-the-maimed-city" target="_blank" rel="noopener noreferrer">Blizzard: The Maimed City</a></p>`
+  },
+
   "fekete-meneteles": {
     id: "fekete-meneteles",
     title: "A Fekete Menetelés (Blackmarch)",
@@ -21086,4 +21158,3 @@ export const timelineData = [
     isHighlight: true
   }
 ];
-

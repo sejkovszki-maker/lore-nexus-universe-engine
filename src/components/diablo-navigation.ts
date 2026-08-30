@@ -53,7 +53,7 @@ export class DiabloNavigation extends LitElement {
           <i class="fa-solid fa-pen-nib ${iconClass}"></i> <span>Új Cikk</span>
         </button>
         <button class="${btnClass} ${this.activeTab === 'conflicts' ? 'text-blood-red border-blood-red bg-blood-red/10' : 'text-gray-400 border-transparent hover:text-white hover:bg-white/5'}" @click=${() => this.handleTabClick('conflicts')}>
-          <i class="fa-solid fa-scale-balanced ${iconClass}"></i> <span>Konfliktusok</span>
+          <i class="fa-solid fa-scale-balanced ${iconClass}"></i> <span>Kánonellenőrzés</span>
         </button>
       </nav>
     `;
