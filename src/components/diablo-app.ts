@@ -1,6 +1,7 @@
 import { LitElement, html } from 'lit';
 import { customElement, state } from 'lit/decorators.js';
 import { useAppStore } from '../store/appState';
+import { wikiArticles } from '../data/wikiArticles.ts';
 
 import './diablo-navigation';
 import './story-reader';
@@ -28,19 +29,45 @@ export class DiabloApp extends LitElement {
     return this; // Disable shadow DOM for Tailwind inheritance
   }
 
+  private showArticles(query = '', category: string | null = null) {
+    useAppStore.setSearchQuery(query);
+    useAppStore.setActiveCategory(category);
+    useAppStore.setActiveTab('articles');
+  }
+
+  private openRandomArticle() {
+    const articles = Object.values(wikiArticles).filter(article => article.type !== 'chapter' && article.type !== 'book');
+    const article = articles[Math.floor(Math.random() * articles.length)];
+    if (article) useAppStore.openArticleRoute(article.id);
+  }
+
   render() {
     return html`
       <div class="codex-app-shell">
         <diablo-navigation></diablo-navigation>
         <aside class="codex-sidebar" aria-label="Diablo kódex">
-          <h2>Diablo Kódex</h2>
-          <button aria-label="Wiki tartalomjegyzék" @click=${()=>useAppStore.setActiveTab('articles')}><i class="fa-solid fa-book-journal-whills"></i> Wiki</button>
-          <button aria-label="Időrendi áttekintés" @click=${()=>useAppStore.setActiveTab('timeline')}><i class="fa-solid fa-hourglass-half"></i> Kronológia</button>
-          <button aria-label="Folyamatos olvasási útvonal" @click=${()=>useAppStore.setActiveTab('story')}><i class="fa-solid fa-book-open"></i> Teljes történet</button>
-          <button aria-label="Kódex könyvtára" @click=${()=>useAppStore.setActiveTab('books')}><i class="fa-solid fa-book"></i> Könyvtár</button>
-          <button aria-label="Kutatási forrástár" @click=${()=>useAppStore.setActiveTab('sources')}><i class="fa-solid fa-link"></i> Forrástár</button>
-          <button aria-label="Szerkesztői eszközök" @click=${()=>useAppStore.setActiveTab('editor')}><i class="fa-solid fa-pen-nib"></i> Eszközök</button>
-          <div class="codex-motto"><span aria-hidden="true">❖</span><p>„Maradj egy ideig, és hallgass.”</p><small>— Deckard Cain</small></div>
+          <h2>Codex</h2>
+          <button class="sidebar-overview" @click=${()=>this.showArticles()}><i class="fa-solid fa-house"></i> Áttekintés</button>
+          <div class="sidebar-group-title">Univerzum</div>
+          <button @click=${()=>this.showArticles('Sanctuary')}><i class="fa-solid fa-globe"></i> Sanctuary világa</button>
+          <button @click=${()=>this.showArticles('Angiris')}><i class="fa-solid fa-sun"></i> Angiris Tanács</button>
+          <button @click=${()=>this.showArticles('Konfliktus')}><i class="fa-solid fa-burst"></i> Nagy Konfliktus</button>
+          <button @click=${()=>this.showArticles('Mennyek Pokol')}><i class="fa-solid fa-star"></i> Mennyek és Pokol</button>
+          <div class="sidebar-group-title">Lények</div>
+          <button @click=${()=>this.showArticles('', 'Démonok')}><i class="fa-solid fa-fire"></i> Démonok</button>
+          <button @click=${()=>this.showArticles('', 'Angyalok')}><i class="fa-solid fa-feather"></i> Angyalok</button>
+          <button @click=${()=>this.showArticles('ember')}><i class="fa-solid fa-user"></i> Emberek</button>
+          <div class="sidebar-group-title">Helyszínek</div>
+          <button @click=${()=>this.showArticles('Kehjistan')}><i class="fa-solid fa-location-dot"></i> Kehjistan</button>
+          <button @click=${()=>this.showArticles('Scosglen')}><i class="fa-solid fa-tree"></i> Scosglen</button>
+          <button @click=${()=>this.showArticles('', 'Helyszínek')}><i class="fa-solid fa-compass"></i> Egyéb helyszínek</button>
+          <div class="sidebar-group-title">Események</div>
+          <button aria-label="Oldalsáv – teljes idővonal megnyitása" @click=${()=>useAppStore.setActiveTab('timeline')}><i class="fa-solid fa-hourglass-half"></i> Teljes kronológia</button>
+          <button aria-label="Oldalsáv – folyamatos olvasás megnyitása" @click=${()=>useAppStore.setActiveTab('story')}><i class="fa-solid fa-book-open"></i> Folyamatos történet</button>
+          <div class="sidebar-group-title">Könyvek és források</div>
+          <button aria-label="Oldalsáv – könyvtár megnyitása" @click=${()=>useAppStore.setActiveTab('books')}><i class="fa-solid fa-book"></i> Könyvek</button>
+          <button aria-label="Oldalsáv – forrástár megnyitása" @click=${()=>useAppStore.setActiveTab('sources')}><i class="fa-solid fa-link"></i> Forrástár</button>
+          <button class="random-article" @click=${this.openRandomArticle}><i class="fa-solid fa-dice"></i> Véletlen cikk</button>
         </aside>
         <main class="codex-content">
           ${this.activeTab === 'timeline' ? html`<diablo-timeline class="w-full"></diablo-timeline>` : ''}
@@ -53,7 +80,7 @@ export class DiabloApp extends LitElement {
           ${this.activeTab === 'article-view' ? html`<wiki-article-view class="w-full"></wiki-article-view>` : ''}
           ${this.activeTab === 'conflicts' ? html`<canon-conflict-dashboard class="w-full"></canon-conflict-dashboard>` : ''}
           ${this.activeTab === 'not-found' ? html`<section role="alert" class="w-full max-w-2xl bg-dark-card border border-blood-red rounded-xl p-8 text-center"><h1 class="text-gold text-3xl font-heading">Az oldal nem található</h1><p>A hivatkozás hibás, vagy a tartalom nem ehhez az univerzumhoz tartozik.</p><button class="mt-4 px-4 py-2 border border-gold rounded text-gold" @click=${()=>useAppStore.setActiveTab('articles')}>Vissza a cikkekhez</button></section>` : ''}
-        </main><footer class="codex-footer">Lore Nexus Universe Engine · Sanctuary tudástára</footer>
+        </main><footer class="codex-footer"><span>Rólunk · Szabályzat · Források · Közreműködők · Kapcsolat</span><strong>✥ Lore Nexus Diablo 5.0 ✥</strong><span>Sanctuary rajongói enciklopédiája</span></footer>
       </div>
     `;
   }

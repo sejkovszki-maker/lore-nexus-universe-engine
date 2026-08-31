@@ -149,6 +149,23 @@ test('story reader remains usable without horizontal overflow on mobile and desk
   }
 });
 
+test('Codex landing uses the full desktop dashboard and keeps mobile compact', async ({ page }) => {
+  await page.setViewportSize({ width: 1440, height: 900 });
+  await page.goto('/#/wiki');
+  await expect(page.getByRole('heading', { name: 'Diablo', exact: true })).toBeVisible();
+  await expect(page.locator('.codex-stat-strip dd')).toHaveCount(6);
+  await expect(page.locator('.featured-codex-card')).toHaveCount(4);
+  await expect(page.getByRole('complementary', { name: 'Codex gyorsnavigáció' })).toBeVisible();
+  expect(await page.evaluate(() => document.documentElement.scrollWidth - window.innerWidth)).toBeLessThanOrEqual(1);
+
+  await page.setViewportSize({ width: 390, height: 844 });
+  await page.reload();
+  await expect(page.locator('.desktop-codex-dashboard')).toBeHidden();
+  await expect(page.getByRole('searchbox', { name: 'Keresés a cikkek között' })).toBeVisible();
+  await expect(page.locator('.codex-sidebar')).toBeHidden();
+  expect(await page.evaluate(() => document.documentElement.scrollWidth - window.innerWidth)).toBeLessThanOrEqual(1);
+});
+
 test('the 184-event chronology filters, reveals spoilers and supports timeline backlinks', async ({ page }) => {
   await page.goto('/#/timeline');
   await expect(page.getByText(/155 esemény/)).toBeVisible();

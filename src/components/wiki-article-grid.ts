@@ -4,6 +4,8 @@ import { useAppStore } from '../store/appState';
 import { wikiArticles } from '../data/wikiArticles';
 import './wiki-article-card';
 import { articleUniverseId } from '../universe/article-universes.ts';
+import { diabloTimelineEras, diabloTimelineEvents } from '../data/diabloChronology.ts';
+import { creativeWorkRegistry, sourceRegistry } from '../research/registry.ts';
 
 @customElement('wiki-article-grid')
 export class WikiArticleGrid extends LitElement {
@@ -41,6 +43,31 @@ export class WikiArticleGrid extends LitElement {
     useAppStore.setActiveCategory(cat);
   }
 
+  private openArticle(id: string) { useAppStore.openArticleRoute(id); }
+
+  private renderDirectory(filtered: any[]) {
+    return html`
+      <section class="codex-directory" aria-labelledby="article-library-title">
+        <header class="article-library-heading">
+          <span aria-hidden="true">— ❖ —</span>
+          <h1 id="article-library-title">Sanctuary Kódexe</h1>
+          <p>Krónikák, személyek, helyszínek és a Pokol titkai</p>
+        </header>
+        <div class="article-filters">
+          <label class="sr-only" for="article-search">Keresés a cikkek között</label>
+          <input id="article-search" type="search" placeholder="Keresés a cikkek között..." .value=${this.searchQuery} @input=${this.handleSearch} />
+          <div class="article-category-list" aria-label="Cikk-kategóriák">
+            <button class=${!this.activeCategory ? 'active' : ''} aria-pressed=${!this.activeCategory} @click=${() => this.setCategory(null)}>Összes</button>
+            ${this.categories.map(cat => html`<button class=${this.activeCategory === cat ? 'active' : ''} aria-pressed=${this.activeCategory === cat} @click=${() => this.setCategory(cat)}>${cat}</button>`)}
+          </div>
+        </div>
+        <p class="directory-result-count" aria-live="polite">${filtered.length} cikk</p>
+        <div class="article-card-grid">
+          ${filtered.map((article: any) => html`<wiki-article-card .id=${article.id} .title=${article.title} .subtitle=${article.subtitle} .category=${article.category}></wiki-article-card>`)}
+        </div>
+      </section>`;
+  }
+
   render() {
     let filtered = Object.values(wikiArticles).filter(article => articleUniverseId(article) === this.activeUniverseId && article.type !== 'chapter' && article.type !== 'book');
     
@@ -56,53 +83,35 @@ export class WikiArticleGrid extends LitElement {
       );
     }
 
+    const allArticles = Object.values(wikiArticles).filter(article => articleUniverseId(article) === this.activeUniverseId && article.type !== 'chapter' && article.type !== 'book') as any[];
+    const countBy = (term: string) => allArticles.filter(a => String(a.category).toLocaleLowerCase('hu').includes(term)).length;
+    const preferredIds = ['prime-lesser-evils', 'sanctuary-full-lexicon', 'dark-exile'];
+    const featured = [...preferredIds.map(id => wikiArticles[id]).filter(Boolean), ...allArticles].filter((a, i, arr) => arr.findIndex(x => x.id === a.id) === i).slice(0, 4);
+    const eras = diabloTimelineEras.slice(0, 6);
     return html`
-      <section class="article-codex-frame" aria-labelledby="article-library-title">
-        <header class="article-library-heading">
-          <span aria-hidden="true">— ❖ —</span>
-          <h1 id="article-library-title">Sanctuary Kódexe</h1>
-          <p>Krónikák, személyek, helyszínek és a Pokol titkai</p>
-        </header>
-        <!-- Szűrők és Kereső -->
-        <div class="w-full max-w-4xl mb-10 flex flex-col md:flex-row gap-4 items-center justify-between bg-dark-card p-6 rounded-xl border border-blood-red/20 shadow-lg">
-          <input 
-            type="text" 
-            placeholder="Keresés a cikkek között..." 
-            .value=${this.searchQuery}
-            @input=${this.handleSearch}
-            class="w-full md:w-1/3 bg-dark-bg text-parchment border border-gold/40 rounded px-4 py-2 focus:outline-none focus:border-gold focus:ring-1 focus:ring-gold transition-colors"
-          />
-          
-          <div class="flex flex-wrap gap-2 justify-center md:justify-end flex-1">
-            <button 
-              class="px-3 py-1 rounded text-sm md:text-base border transition-colors ${!this.activeCategory ? 'bg-blood-red/20 border-blood-red text-white' : 'border-gold/30 text-parchment/70 hover:border-gold hover:text-gold'}"
-              @click=${() => this.setCategory(null)}
-            >
-              Összes
-            </button>
-            ${this.categories.map(cat => html`
-              <button 
-                class="px-3 py-1 rounded text-sm md:text-base border transition-colors ${this.activeCategory === cat ? 'bg-blood-red/20 border-blood-red text-white' : 'border-gold/30 text-parchment/70 hover:border-gold hover:text-gold'}"
-                @click=${() => this.setCategory(cat)}
-              >
-                ${cat}
-              </button>
-            `)}
+      <div class="desktop-codex-dashboard">
+        <div class="codex-dashboard-main">
+          <section class="codex-hero" aria-labelledby="codex-hero-title">
+            <div><h1 id="codex-hero-title">Diablo</h1><h2>A félelem ura</h2><blockquote>„A félelem az egyetlen igazság, mely minden szívben lakozik.”<cite>— Deckard Cain</cite></blockquote></div>
+            <span class="hero-demon" aria-hidden="true">♆</span>
+          </section>
+          <dl class="codex-stat-strip">
+            ${[['Cikkek', allArticles.length, 'fa-scroll'], ['Karakterek', countBy('karakter'), 'fa-user-shield'], ['Helyszínek', countBy('helyszín'), 'fa-compass'], ['Események', diabloTimelineEvents.length, 'fa-sun'], ['Könyvek', creativeWorkRegistry.length, 'fa-book-open'], ['Források', sourceRegistry.length, 'fa-file-lines']].map(([label,value,icon]) => html`<div><i class="fa-solid ${icon}" aria-hidden="true"></i><dt>${label}</dt><dd>${value}</dd></div>`)}
+          </dl>
+          <section class="dashboard-section" aria-labelledby="featured-title"><h2 id="featured-title">Kiemelt cikkek</h2><div class="featured-codex-grid">
+            ${featured.map((article, index) => html`<button class="featured-codex-card card-${index + 1}" @click=${() => this.openArticle(article.id)}><span class="featured-art" aria-hidden="true">${['♆','✥','⌖','✦'][index]}</span><small>${article.category}</small><strong>${article.title}</strong><span>${article.subtitle || 'Fedezd fel Sanctuary krónikáját.'}</span></button>`)}
+          </div></section>
+          <div class="dashboard-lower-grid">
+            <section class="engraved-panel"><h2>Legfrissebb frissítések</h2><ul>${allArticles.slice(-4).reverse().map(article => html`<li><button @click=${() => this.openArticle(article.id)}><span>✥ ${article.title}</span><small>megnyitás ›</small></button></li>`)}</ul><button class="panel-action" @click=${() => document.querySelector('.codex-directory')?.scrollIntoView({behavior:'smooth'})}>Összes frissítés megtekintése</button></section>
+            <section class="engraved-panel featured-source"><h2>Kiemelt forrás</h2><div><span class="book-cover" aria-hidden="true">DIABLO<br><small>THE SIN WAR</small></span><p><strong>${creativeWorkRegistry[0]?.title ?? 'The Sin War'}</strong><br><small>${creativeWorkRegistry[0]?.authors.join(', ')}</small></p></div><button class="panel-action" @click=${() => useAppStore.setActiveTab('books')}>Részletek</button></section>
+            <blockquote class="engraved-panel dashboard-quote">„Az emberek azt hiszik, a pokol mélyén lakozunk. Nem. A pokol bennük van.”<cite>— Mephisto</cite></blockquote>
           </div>
         </div>
-
-        <!-- Cikk Rács (Point 3: Reszponzív Grid hálózata) -->
-        <div class="w-full grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
-          ${filtered.map((article: any) => html`
-            <wiki-article-card
-              .id=${article.id}
-              .title=${article.title}
-              .subtitle=${article.subtitle}
-              .category=${article.category}
-            ></wiki-article-card>
-          `)}
-        </div>
-      </section>
-    `;
+        <aside class="codex-dashboard-rail" aria-label="Codex gyorsnavigáció">
+          <section class="engraved-panel"><h2>Tartalomjegyzék</h2><nav>${['Alapinformációk','Megjelenései','Története','Képességei és hatalma','Kapcsolatai','Idézetek','Források','Galéria'].map(item => html`<a href="#article-library-title">◇ ${item}</a>`)}</nav></section>
+          <section class="engraved-panel mini-timeline"><h2>Idővonal <button @click=${() => useAppStore.setActiveTab('timeline')}>Teljes idővonal ›</button></h2><ol>${eras.map(era => html`<li><span>${era.name}</span><small>${diabloTimelineEvents.filter(event => event.eraId === era.id).length} esemény</small></li>`)}</ol><button class="panel-action" @click=${() => useAppStore.setActiveTab('timeline')}>Időgép megnyitása</button></section>
+        </aside>
+      </div>
+      <div class="article-codex-frame">${this.renderDirectory(filtered)}</div>`;
   }
 }
