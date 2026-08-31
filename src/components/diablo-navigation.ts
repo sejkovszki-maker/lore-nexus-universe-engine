@@ -24,7 +24,7 @@ export class DiabloNavigation extends LitElement {
     return this; // Disable shadow DOM to inherit global Tailwind
   }
 
-  private handleTabClick(tab: 'timeline' | 'articles' | 'story' | 'books' | 'editor' | 'conflicts') {
+  private handleTabClick(tab: 'timeline' | 'articles' | 'story' | 'books' | 'sources' | 'editor' | 'conflicts') {
     useAppStore.setActiveTab(tab);
   }
 
@@ -45,6 +45,7 @@ export class DiabloNavigation extends LitElement {
         <button aria-pressed=${this.activeTab === 'books'} class="${btnClass} ${this.activeTab === 'books' ? 'text-blood-red border-blood-red bg-blood-red/10' : 'text-gray-400 border-transparent hover:text-white hover:bg-white/5'}" @click=${() => this.handleTabClick('books')}>
           <i class="fa-solid fa-book ${iconClass}"></i> <span>Könyvek</span>
         </button>
+        <button aria-pressed=${this.activeTab === 'sources'} class="${btnClass} ${this.activeTab === 'sources' ? 'text-blood-red border-blood-red bg-blood-red/10' : 'text-gray-400 border-transparent hover:text-white hover:bg-white/5'}" @click=${() => this.handleTabClick('sources')}><i class="fa-solid fa-link ${iconClass}"></i><span>Források</span></button>
         <button 
           aria-pressed=${this.activeTab === 'articles'}
           class="${btnClass} ${this.activeTab === 'articles' ? 'text-blood-red border-blood-red bg-blood-red/10' : 'text-gray-400 border-transparent hover:text-white hover:bg-white/5'}"

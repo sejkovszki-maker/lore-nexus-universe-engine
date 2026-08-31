@@ -1,7 +1,8 @@
 import { LitElement, html } from 'lit';
 import { customElement, state } from 'lit/decorators.js';
 import { useAppStore } from '../store/appState.ts';
-import { diabloTimelineEras, diabloTimelineEvents } from '../data/diabloChronology.ts';
+import { diabloTimelineEras } from '../data/diabloChronology.ts';
+import { verifiedTimeline } from '../research/timeline-audit.ts';
 import { wikiArticles } from '../data/wikiArticles.ts';
 import { articleUniverseId } from '../universe/article-universes.ts';
 import { sortTimelineEvents, type TimelineEvent } from '../timeline/types.ts';
@@ -18,7 +19,7 @@ export class DiabloTimeline extends LitElement {
   disconnectedCallback(){this.unsubscribe?.();super.disconnectedCallback();}
 
   private get events():TimelineEvent[]{
-    if(this.activeUniverseId==='diablo')return sortTimelineEvents(diabloTimelineEvents);
+    if(this.activeUniverseId==='diablo')return sortTimelineEvents(verifiedTimeline);
     return Object.values(wikiArticles).filter(a=>articleUniverseId(a)===this.activeUniverseId&&a.type!=='chapter'&&a.type!=='book').sort((a,b)=>(a.lastEdited||0)-(b.lastEdited||0)||a.title.localeCompare(b.title,'hu')).map((a,i)=>({id:`${this.activeUniverseId}-event-${i+1}`,universeId:'diablo',eraId:'story',eraName:'Történeti sorrend',eraOrder:1,eventOrder:i+1,title:a.title,summary:a.subtitle||'',dateDisplay:'',dateStatus:'unknown',canonStatus:'canon_with_uncertainty',sourcePriority:'secondary_reference',retconned:false,characters:[],locations:[],factions:[],items:[],games:[],books:[],relatedEvents:[],articleId:a.id,sources:[],needsSourceAudit:true,spoilerLevel:0}));
   }
   private values(field:'characters'|'locations'|'games'){return [...new Set(this.events.flatMap(e=>e[field]))].sort((a,b)=>a.localeCompare(b,'hu'));}

@@ -163,3 +163,5 @@ test('the 184-event chronology filters, reveals spoilers and supports timeline b
   await page.getByRole('button',{name:/001\. Anu/}).click();
   await expect(page).toHaveURL(/#\/timeline\/diablo-event-001$/);
 });
+
+test('source library exposes audited sources works and claims without mobile overflow',async({page})=>{await page.setViewportSize({width:390,height:844});await page.goto('/#/sources');await expect(page.getByRole('heading',{name:'Forrástár és műjegyzék'})).toBeVisible();await expect(page.getByRole('button',{name:/Források \(14\)/})).toBeVisible();await page.getByRole('button',{name:/Művek \(6\)/}).click();await expect(page.getByRole('heading',{name:'Diablo III: Book of Cain'})).toBeVisible();await page.getByRole('button',{name:/Ellenőrzött állítások \(5\)/}).click();await expect(page.getByText('Diablo II: Lord of Destruction után és Diablo III előtt')).toBeVisible();expect(await page.evaluate(()=>document.documentElement.scrollWidth-window.innerWidth)).toBeLessThanOrEqual(1);});

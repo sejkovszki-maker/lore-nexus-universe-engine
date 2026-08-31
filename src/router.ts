@@ -1,4 +1,4 @@
-export type AppView = 'timeline' | 'articles' | 'article-view' | 'story' | 'books' | 'book' | 'editor' | 'conflicts' | 'search' | 'not-found';
+export type AppView = 'timeline' | 'articles' | 'article-view' | 'story' | 'books' | 'book' | 'sources' | 'editor' | 'conflicts' | 'search' | 'not-found';
 
 export interface AppRoute {
   view: AppView;
@@ -11,7 +11,7 @@ export interface AppRoute {
 }
 
 const SAFE_SEGMENT = /^[a-z0-9][a-z0-9-]{0,119}$/;
-const LEGACY_TABS: Record<string, AppView> = { timeline: 'timeline', articles: 'articles', 'article-view': 'article-view', story: 'story', editor: 'editor', conflicts: 'conflicts', books: 'books' };
+const LEGACY_TABS: Record<string, AppView> = { timeline: 'timeline', articles: 'articles', 'article-view': 'article-view', story: 'story', editor: 'editor', conflicts: 'conflicts', books: 'books', sources:'sources' };
 
 function safe(value: string | undefined): string | undefined {
   if (!value) return undefined;
@@ -43,6 +43,7 @@ export function parseRoute(hash: string): AppRoute {
   if (root === 'story' && !first) return { view: 'story', universeId };
   if (root === 'story' && safe(first)) return { view: 'story', universeId, articleId: safe(first) };
   if (root === 'books' && !first) return { view: 'books', universeId };
+  if (root === 'sources' && !first) return { view: 'sources', universeId };
   if (root === 'book' && safe(first) && !second) return { view: 'book', universeId, bookId: safe(first) };
   if (root === 'book' && safe(first) && safe(second)) return { view: 'book', universeId, bookId: safe(first), chapterId: safe(second) };
   if (root === 'search') return { view: 'search', universeId };
@@ -59,6 +60,7 @@ export function routeHash(route: AppRoute): string {
     case 'article-view': return `${prefix}wiki/${route.articleId ?? ''}`;
     case 'story': return `${prefix}story${route.articleId ? `/${route.articleId}` : ''}`;
     case 'books': return `${prefix}books`;
+    case 'sources': return `${prefix}sources`;
     case 'book': return `${prefix}book/${route.bookId ?? ''}${route.chapterId ? `/${route.chapterId}` : ''}`;
     case 'search': return `${prefix}search`;
     case 'editor': return `${prefix}editor`;

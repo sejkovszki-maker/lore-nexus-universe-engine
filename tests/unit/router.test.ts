@@ -8,6 +8,7 @@ test('Router 2.0 parses every public route family', () => {
   assert.deepEqual(parseRoute('#/timeline/sin-war'), { view: 'timeline', universeId: 'diablo', eventId: 'sin-war' });
   assert.deepEqual(parseRoute('#/book/the-black-road/chapter-4'), { view: 'book', universeId: 'diablo', bookId: 'the-black-road', chapterId: 'chapter-4' });
   assert.deepEqual(parseRoute('#/u/witcher/wiki/geralt'), { view: 'article-view', universeId: 'witcher', articleId: 'geralt' });
+  assert.deepEqual(parseRoute('#/sources'), { view: 'sources', universeId: 'diablo' });
 });
 
 test('route generation round-trips and invalid input fails closed', () => {

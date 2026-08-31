@@ -10,6 +10,7 @@ import './wiki-editor';
 import './diablo-timeline';
 import './canon-conflict-dashboard';
 import './book-library';
+import './source-library';
 
 @customElement('diablo-app')
 export class DiabloApp extends LitElement {
@@ -38,6 +39,7 @@ export class DiabloApp extends LitElement {
           ${this.activeTab === 'search' ? html`<wiki-article-grid class="w-full"></wiki-article-grid>` : ''}
           ${this.activeTab === 'story' ? html`<story-reader class="w-full"></story-reader>` : ''}
           ${this.activeTab === 'books' ? html`<book-library class="w-full"></book-library>` : ''}
+          ${this.activeTab === 'sources' ? html`<source-library class="w-full"></source-library>` : ''}
           ${this.activeTab === 'editor' ? html`<wiki-editor class="w-full max-w-4xl mx-auto"></wiki-editor>` : ''}
           ${this.activeTab === 'article-view' ? html`<wiki-article-view class="w-full"></wiki-article-view>` : ''}
           ${this.activeTab === 'conflicts' ? html`<canon-conflict-dashboard class="w-full"></canon-conflict-dashboard>` : ''}

@@ -9,6 +9,7 @@ export interface TimelineEra {
 }
 
 export interface TimelineSource {
+  sourceId?: string;
   label: string;
   url?: string;
   kind: TimelineSourcePriority | 'editorial_audit';
