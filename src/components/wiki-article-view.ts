@@ -4,6 +4,7 @@ import { useAppStore } from '../store/appState';
 import { wikiArticles } from '../data/wikiArticles';
 import DOMPurify from 'dompurify';
 import { buildBacklinkIndex, relatedArticlesFor, renderWikiLinks } from '../wiki/link-engine';
+import { diabloTimelineEvents } from '../data/diabloChronology.ts';
 
 @customElement('wiki-article-view')
 export class WikiArticleView extends LitElement {
@@ -93,6 +94,7 @@ export class WikiArticleView extends LitElement {
     htmlContent = DOMPurify.sanitize(htmlContent, { ADD_ATTR: ['data-wiki-id', 'data-relation', 'data-missing-id'] });
     const related = relatedArticlesFor(article, scopedArticles);
     const backlinks = (buildBacklinkIndex(scopedArticles).get(article.id) || []).map(id => scopedArticles[id]).filter(Boolean);
+    const timelineEvents = universeId === 'diablo' ? diabloTimelineEvents.filter(event => event.articleId === article.id) : [];
 
     return html`
       <div class="mb-6">
@@ -111,6 +113,7 @@ export class WikiArticleView extends LitElement {
         <div class="markdown-content" @click=${this.handleContentClick} .innerHTML=${htmlContent}></div>
         ${related.length ? html`<section class="relations" aria-labelledby="related-heading"><h2 id="related-heading">Kapcsolódó szócikkek</h2><div class="relation-list">${related.map(item => html`<button class="relation-button" @click=${() => this.openArticle(item.id)}>${item.title}</button>`)}</div></section>` : ''}
         ${backlinks.length ? html`<section class="relations" aria-labelledby="backlinks-heading"><h2 id="backlinks-heading">Erre a lapra hivatkozik</h2><div class="relation-list">${backlinks.map(item => html`<button class="relation-button" @click=${() => this.openArticle(item.id)}>${item.title}</button>`)}</div></section>` : ''}
+        ${timelineEvents.length ? html`<section class="relations" aria-labelledby="timeline-links-heading"><h2 id="timeline-links-heading">Kapcsolódó idővonalesemények</h2><div class="relation-list">${timelineEvents.map(event => html`<button class="relation-button" @click=${() => useAppStore.openTimelineRoute(event.id)}>${String(event.eventOrder).padStart(3,'0')}. ${event.title}</button>`)}</div></section>` : ''}
       </article>
     `;
   }

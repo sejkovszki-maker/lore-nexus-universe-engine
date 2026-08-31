@@ -1,0 +1,8 @@
+import assert from 'node:assert/strict';
+import test from 'node:test';
+import { diabloTimelineEras, diabloTimelineEvents } from '../../src/data/diabloChronology.ts';
+import { sortTimelineEvents } from '../../src/timeline/types.ts';
+
+test('Diablo chronology contains 20 ordered eras and 184 unique linked events',()=>{assert.equal(diabloTimelineEras.length,20);assert.deepEqual(diabloTimelineEras.map(e=>e.order),Array.from({length:20},(_,i)=>i+1));assert.equal(diabloTimelineEvents.length,184);assert.equal(new Set(diabloTimelineEvents.map(e=>e.id)).size,184);const sorted=sortTimelineEvents(diabloTimelineEvents);assert.deepEqual(sorted.map(e=>e.eventOrder),Array.from({length:184},(_,i)=>i+1));for(let i=0;i<sorted.length;i++){assert.equal(sorted[i].previousEventId,i?sorted[i-1].id:undefined);assert.equal(sorted[i].nextEventId,i<183?sorted[i+1].id:undefined);assert.ok(sorted[i].sources.length);}});
+test('critical chronology boundaries and uncertainty rules cannot regress',()=>{const at=(n:number)=>diabloTimelineEvents.find(e=>e.eventOrder===n)!;assert.equal(at(52).eraId,'mage-clan-wars');assert.equal(at(71).eraId,'dark-exile');assert.equal(at(123).eraId,'diablo-immortal');assert.equal(at(123).dateSortKey,1270);assert.equal(at(123).sourcePriority,'primary_blizzard');assert.equal(at(179).eraId,'lord-of-hatred');assert.equal(diabloTimelineEras.some(e=>/reckoning/i.test(e.name)),false);assert.equal(at(183).canonStatus,'canon_with_uncertainty');});
+test('sort order is independent from physical array order',()=>assert.deepEqual(sortTimelineEvents([diabloTimelineEvents[183],diabloTimelineEvents[50],diabloTimelineEvents[0]]).map(e=>e.eventOrder),[1,51,184]));

@@ -148,3 +148,18 @@ test('story reader remains usable without horizontal overflow on mobile and desk
     expect(overflow).toBeLessThanOrEqual(1);
   }
 });
+
+test('the 184-event chronology filters, reveals spoilers and supports timeline backlinks', async ({ page }) => {
+  await page.goto('/#/timeline');
+  await expect(page.getByText(/155 esemény/)).toBeVisible();
+  await page.getByLabel('Diablo IV és újabb történeti spoilerek megjelenítése').check();
+  await expect(page.getByRole('heading', { name: '184. A kampány utáni jelenlegi kánonállapot' })).toBeVisible();
+  await page.getByPlaceholder(/Esemény, szereplő/).fill('Worldstone');
+  await expect(page.getByText(/9 esemény/)).toBeVisible();
+  await page.goto('/#/timeline/diablo-event-123');
+  await expect(page.locator('#timeline-diablo-event-123')).toBeVisible();
+  await page.goto('/#/wiki/kozmogonia');
+  await expect(page.getByRole('heading',{name:'Kapcsolódó idővonalesemények'})).toBeVisible();
+  await page.getByRole('button',{name:/001\. Anu/}).click();
+  await expect(page).toHaveURL(/#\/timeline\/diablo-event-001$/);
+});

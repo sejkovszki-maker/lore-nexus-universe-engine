@@ -13,6 +13,8 @@ export interface Article {
   universeId?: string;
   universeLabel?: string;
   storyAfter?: string;
+  publicationStatus?: 'local-draft' | 'published';
+  version?: number;
 }
 
 export class DiabloDatabase extends Dexie {

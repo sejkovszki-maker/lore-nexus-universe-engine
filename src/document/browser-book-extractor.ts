@@ -1,4 +1,5 @@
 import { validateFile } from './file-validation.ts';
+import { unzipSync } from 'fflate';
 
 export interface ExtractedBook {
   fileName: string;
@@ -18,6 +19,20 @@ function htmlToText(source: string): string {
   const document = new DOMParser().parseFromString(source, 'text/html');
   document.querySelectorAll('script, style, noscript').forEach((node) => node.remove());
   return document.body.textContent ?? '';
+}
+
+function attr(source:string,name:string):string|undefined{return source.match(new RegExp(`${name}=["']([^"']+)["']`,'i'))?.[1];}
+function extractEpub(bytes:Uint8Array):{text:string;pageCount:null;warnings:string[]}{
+  const files=unzipSync(bytes,{filter:file=>file.size<=20_000_000});
+  const entries=Object.entries(files); if(entries.length>10_000)throw new Error('Az EPUB túl sok fájlt tartalmaz.');
+  if(entries.reduce((sum,[,data])=>sum+data.length,0)>200_000_000)throw new Error('Az EPUB kicsomagolt mérete túl nagy.');
+  const decode=(name:string)=>{const data=files[name];if(!data)throw new Error(`Hiányzó EPUB-elem: ${name}`);return new TextDecoder().decode(data);};
+  const container=decode('META-INF/container.xml');const opfPath=attr(container.match(/<rootfile\b[^>]*>/i)?.[0]||'','full-path');if(!opfPath)throw new Error('Az EPUB csomagleírója hiányzik.');
+  const opf=decode(opfPath);const base=opfPath.includes('/')?opfPath.slice(0,opfPath.lastIndexOf('/')+1):'';const manifest=new Map<string,string>();
+  for(const tag of opf.match(/<item\b[^>]*>/gi)||[]){const id=attr(tag,'id'),href=attr(tag,'href');if(id&&href&&!href.includes('..'))manifest.set(id,decodeURIComponent(href.split('#')[0]));}
+  const ordered:string[]=[];for(const tag of opf.match(/<itemref\b[^>]*>/gi)||[]){const href=manifest.get(attr(tag,'idref')||'');if(href)ordered.push(base+href);}
+  if(!ordered.length)throw new Error('Az EPUB olvasási sorrendje üres.');
+  return{text:ordered.map(name=>htmlToText(decode(name))).filter(Boolean).join('\n\n'),pageCount:null,warnings:[]};
 }
 
 async function extractPdf(bytes: Uint8Array): Promise<{ text: string; pageCount: number }> {
@@ -43,12 +58,14 @@ export async function extractBookFile(file: File): Promise<ExtractedBook> {
   const bytes = new Uint8Array(await file.arrayBuffer());
   const validation = validateFile({ originalName: file.name, declaredMediaType: file.type || undefined, bytes });
   if (!validation.valid) throw new Error(`Nem támogatott dokumentum: ${validation.errors.join(', ')}`);
-  const extractableTypes = new Set(['application/pdf', 'application/vnd.openxmlformats-officedocument.wordprocessingml.document', 'text/plain', 'text/markdown', 'text/html']);
+  const extractableTypes = new Set(['application/pdf', 'application/epub+zip', 'application/vnd.openxmlformats-officedocument.wordprocessingml.document', 'text/plain', 'text/markdown', 'text/html']);
   if (!extractableTypes.has(validation.detectedMediaType)) throw new Error(`Ebből a fájltípusból nem nyerhető ki könyvszöveg: ${validation.detectedMediaType}`);
 
   let text = '';
   let pageCount: number | null = null;
-  if (validation.detectedMediaType === 'application/pdf') {
+  if(validation.detectedMediaType==='application/epub+zip'){
+    const result=extractEpub(bytes);text=result.text;pageCount=result.pageCount;validation.warnings.push(...result.warnings);
+  } else if (validation.detectedMediaType === 'application/pdf') {
     const result = await extractPdf(bytes);
     text = result.text;
     pageCount = result.pageCount;

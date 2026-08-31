@@ -17,6 +17,12 @@ export interface WikiArticle {
     parentBook?: string;
     universeId?: string;
     storyAfter?: string;
+    publicationStatus?: 'local-draft' | 'published';
+    version?: number;
+    creativeWorkType?: import('./creative-work/model.ts').CreativeWorkType;
+    workId?: string;
+    instanceId?: string;
+    itemId?: string;
 
     lastEdited?: number;
 

@@ -262,6 +262,8 @@ export class WikiContentEngine {
             type: 'book',
             universeId: universe.id,
             universeLabel: universe.label,
+            publicationStatus: 'local-draft',
+            version: 1,
             lastEdited: Date.now()
         });
 
@@ -277,6 +279,8 @@ export class WikiContentEngine {
                 parentBook: analysis.bookId,
                 universeId: universe.id,
                 universeLabel: universe.label,
+                publicationStatus: 'local-draft',
+                version: 1,
                 lastEdited: Date.now()
             });
         }
@@ -298,6 +302,8 @@ export class WikiContentEngine {
             type: 'article',
             universeId: universe.id,
             universeLabel: universe.label,
+            publicationStatus: 'local-draft',
+            version: 1,
             lastEdited: Date.now()
         };
     }

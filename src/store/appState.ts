@@ -3,6 +3,7 @@ import { navigate, parseRoute, type AppRoute } from '../router.ts';
 import { wikiArticles } from '../data/wikiArticles.ts';
 import { articleUniverseId, availableUniverses } from '../universe/article-universes.ts';
 import { storyBooks } from '../wiki/story-order.ts';
+import { diabloTimelineEvents } from '../data/diabloChronology.ts';
 
 const hash = typeof window !== 'undefined' ? window.location.hash : '';
 const initialRoute = parseRoute(hash);
@@ -80,6 +81,10 @@ export function setActiveUniverse(universeId: string): void {
 export function openArticleRoute(articleId: string): void {
     if (typeof window !== 'undefined') navigate({ view: 'article-view', universeId: state.activeUniverseId, articleId });
     else { state = { ...state, activeTab: 'article-view', activeArticleId: articleId }; notify(); }
+}
+
+export function openTimelineRoute(eventId?: string): void {
+    if (typeof window !== 'undefined') navigate({ view: 'timeline', universeId: state.activeUniverseId, eventId });
 }
 
 export function openStoryRoute(articleId?: string): void {
@@ -246,6 +251,7 @@ export const useAppStore = {
     setActiveTab: setActiveTab,
     setActiveUniverse,
     openArticleRoute,
+    openTimelineRoute,
     openStoryRoute,
     openBookRoute,
     setSearchQuery: setSearchQuery,
@@ -265,7 +271,8 @@ if (typeof window !== 'undefined') {
         let status: AppState['routeStatus'] = route.view === 'not-found' ? 'not-found' : 'ready';
         if (!availableUniverses(wikiArticles).some(universe => universe.id === route.universeId)) status = 'not-found';
         const requestedId = route.articleId ?? route.chapterId ?? route.eventId;
-        if (requestedId && (!wikiArticles[requestedId] || articleUniverseId(wikiArticles[requestedId]) !== route.universeId)) status = 'not-found';
+        if ((route.articleId || route.chapterId) && requestedId && (!wikiArticles[requestedId] || articleUniverseId(wikiArticles[requestedId]) !== route.universeId)) status = 'not-found';
+        if (route.eventId && (route.universeId !== 'diablo' || !diabloTimelineEvents.some(event => event.id === route.eventId))) status = 'not-found';
         if (route.bookId && !storyBooks(route.universeId).some(book => book.id === route.bookId && (!route.chapterId || book.chapters.some(chapter => chapter.id === route.chapterId)))) status = 'not-found';
         state = { ...state, activeTab: status === 'not-found' ? 'not-found' : routeTab(route), activeUniverseId: route.universeId, routeStatus: status, activeArticleId: status === 'ready' ? requestedId ?? null : null, reader: { ...state.reader, bookId: route.bookId ?? null, chapterId: route.chapterId ?? null } };
         notify();
