@@ -1864,4 +1864,14 @@ diablo-navigation { display: contents; }
 @media(min-width:1024px){
   .codex-hero{background-color:#080504;background-position:center;background-size:cover;background-repeat:no-repeat}
   .codex-hero::after{height:22%;background:linear-gradient(180deg,transparent,#090606)}
+  .codex-sidebar>button.sidebar-group-title{width:calc(100% - 20px);min-height:28px;margin:10px 10px 2px;padding:0 0 5px;border:0;border-bottom:1px solid rgba(172,119,50,.25);background:transparent;color:#b99052;text-transform:uppercase;letter-spacing:.12em;font:600 .68rem 'Cinzel',serif;cursor:pointer}
+  .codex-sidebar>button.sidebar-group-title:hover,.codex-sidebar>button.sidebar-group-title:focus-visible{color:#efc77d;border-color:#a52b17;background:linear-gradient(90deg,rgba(126,25,12,.25),transparent)}
+  .featured-codex-card{position:relative;padding:0;display:block;min-height:250px;overflow:hidden}
+  .featured-codex-card>img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:transform .35s ease,filter .35s ease}
+  .featured-codex-card:hover>img,.featured-codex-card:focus-visible>img{transform:scale(1.045);filter:brightness(1.12)}
+  .featured-card-copy{position:absolute;inset:auto 0 0;display:flex;flex-direction:column;align-items:flex-start;padding:48px 14px 14px;background:linear-gradient(180deg,transparent,rgba(3,4,4,.94) 44%);text-align:left}
+  .featured-card-copy small{color:#c39755;text-transform:uppercase;font-size:.54rem}.featured-card-copy strong{margin:.25rem 0;color:#f0d09a;font:500 .95rem 'Cinzel',serif;text-shadow:0 2px 5px #000}.featured-card-copy>span{display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;color:#c8b89f;font-size:.69rem;line-height:1.35}
+  .dashboard-compendium{display:grid;grid-template-columns:1fr 1fr;gap:9px;margin-top:12px}.dashboard-compendium p{margin:0;font-size:.72rem;line-height:1.55;color:#ad9a7d}
+  .codex-dashboard-rail nav>button{padding:7px 3px;border:0!important;border-bottom:1px solid rgba(172,119,50,.14)!important;background:transparent!important;color:#b69d76;text-align:left;font-size:.69rem;cursor:pointer}
+  .codex-dashboard-rail nav>button:hover,.codex-dashboard-rail nav>button:focus-visible{color:#efc77d;background:rgba(126,25,12,.18)!important}
 }

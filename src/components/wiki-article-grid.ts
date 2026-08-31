@@ -87,27 +87,32 @@ export class WikiArticleGrid extends LitElement {
     const countBy = (term: string) => allArticles.filter(a => String(a.category).toLocaleLowerCase('hu').includes(term)).length;
     const preferredIds = ['prime-lesser-evils', 'sanctuary-full-lexicon', 'dark-exile'];
     const featured = [...preferredIds.map(id => wikiArticles[id]).filter(Boolean), ...allArticles].filter((a, i, arr) => arr.findIndex(x => x.id === a.id) === i).slice(0, 4);
+    const featuredImages = ['featured-seven-evils-v1.jpg', 'featured-sanctuary-v1.jpg', 'featured-dark-exile-v1.jpg', 'featured-cosmology-v1.jpg'];
     const eras = diabloTimelineEras.slice(0, 6);
     return html`
       <div class="desktop-codex-dashboard">
         <div class="codex-dashboard-main">
-          <section class="codex-hero" aria-labelledby="codex-hero-title" style=${`background-image:linear-gradient(90deg,rgba(2,3,3,.96) 0%,rgba(3,3,3,.76) 37%,rgba(3,3,3,.08) 72%),url('${import.meta.env.BASE_URL}assets/diablo-hero-v1.png')`}>
+          <section id="codex-basic" class="codex-hero" aria-labelledby="codex-hero-title" style=${`background-image:linear-gradient(90deg,rgba(2,3,3,.96) 0%,rgba(3,3,3,.76) 37%,rgba(3,3,3,.08) 72%),url('${import.meta.env.BASE_URL}assets/diablo-hero-v1.png')`}>
             <div><h1 id="codex-hero-title">Diablo</h1><h2>A félelem ura</h2><blockquote>„A félelem az egyetlen igazság, mely minden szívben lakozik.”<cite>— Deckard Cain</cite></blockquote></div>
           </section>
           <dl class="codex-stat-strip">
             ${[['Cikkek', allArticles.length, 'fa-scroll'], ['Karakterek', countBy('karakter'), 'fa-user-shield'], ['Helyszínek', countBy('helyszín'), 'fa-compass'], ['Események', diabloTimelineEvents.length, 'fa-sun'], ['Könyvek', creativeWorkRegistry.length, 'fa-book-open'], ['Források', sourceRegistry.length, 'fa-file-lines']].map(([label,value,icon]) => html`<div><i class="fa-solid ${icon}" aria-hidden="true"></i><dt>${label}</dt><dd>${value}</dd></div>`)}
           </dl>
-          <section class="dashboard-section" aria-labelledby="featured-title"><h2 id="featured-title">Kiemelt cikkek</h2><div class="featured-codex-grid">
-            ${featured.map((article, index) => html`<button class="featured-codex-card card-${index + 1}" @click=${() => this.openArticle(article.id)}><span class="featured-art" aria-hidden="true">${['♆','✥','⌖','✦'][index]}</span><small>${article.category}</small><strong>${article.title}</strong><span>${article.subtitle || 'Fedezd fel Sanctuary krónikáját.'}</span></button>`)}
+          <section id="codex-appearances" class="dashboard-section" aria-labelledby="featured-title"><h2 id="featured-title">Kiemelt cikkek</h2><div id="codex-gallery" class="featured-codex-grid">
+            ${featured.map((article, index) => html`<button class="featured-codex-card" @click=${() => this.openArticle(article.id)}><img src=${`${import.meta.env.BASE_URL}assets/${featuredImages[index]}`} alt="${article.title} – kiemelt illusztráció" loading="lazy"><span class="featured-card-copy"><small>${article.category}</small><strong>${article.title}</strong><span>${article.subtitle || 'Fedezd fel Sanctuary krónikáját.'}</span></span></button>`)}
           </div></section>
+          <div class="dashboard-compendium">
+            <section id="codex-powers" class="engraved-panel"><h2>Képességei és hatalma</h2><p>Diablo a rettegést fegyverként használja: félelmet kelt, megrontja az emberi akaratot, és a Pokol erejével formálja át környezetét.</p><button class="panel-action" @click=${() => this.openArticle('prime-lesser-evils')}>A pokoli urak képességei</button></section>
+            <section id="codex-relations" class="engraved-panel"><h2>Kapcsolatai</h2><p>Mephisto és Baal testvére, az Angiris Tanács ősi ellenfele, Sanctuary hőseinek és a Horadrim rendnek visszatérő nemezise.</p><button class="panel-action" @click=${() => this.openArticle('prime-lesser-evils')}>Kapcsolati áttekintés</button></section>
+          </div>
           <div class="dashboard-lower-grid">
-            <section class="engraved-panel"><h2>Legfrissebb frissítések</h2><ul>${allArticles.slice(-4).reverse().map(article => html`<li><button @click=${() => this.openArticle(article.id)}><span>✥ ${article.title}</span><small>megnyitás ›</small></button></li>`)}</ul><button class="panel-action" @click=${() => document.querySelector('.codex-directory')?.scrollIntoView({behavior:'smooth'})}>Összes frissítés megtekintése</button></section>
-            <section class="engraved-panel featured-source"><h2>Kiemelt forrás</h2><div><span class="book-cover" aria-hidden="true">DIABLO<br><small>THE SIN WAR</small></span><p><strong>${creativeWorkRegistry[0]?.title ?? 'The Sin War'}</strong><br><small>${creativeWorkRegistry[0]?.authors.join(', ')}</small></p></div><button class="panel-action" @click=${() => useAppStore.setActiveTab('books')}>Részletek</button></section>
-            <blockquote class="engraved-panel dashboard-quote">„Az emberek azt hiszik, a pokol mélyén lakozunk. Nem. A pokol bennük van.”<cite>— Mephisto</cite></blockquote>
+            <section id="codex-history" class="engraved-panel"><h2>Története és frissítései</h2><ul>${allArticles.slice(-4).reverse().map(article => html`<li><button @click=${() => this.openArticle(article.id)}><span>✥ ${article.title}</span><small>megnyitás ›</small></button></li>`)}</ul><button class="panel-action" @click=${() => document.querySelector('.codex-directory')?.scrollIntoView({behavior:'smooth'})}>Összes cikk megtekintése</button></section>
+            <section id="codex-sources" class="engraved-panel featured-source"><h2>Kiemelt forrás</h2><div><span class="book-cover" aria-hidden="true">DIABLO<br><small>THE SIN WAR</small></span><p><strong>${creativeWorkRegistry[0]?.title ?? 'The Sin War'}</strong><br><small>${creativeWorkRegistry[0]?.authors.join(', ')}</small></p></div><button class="panel-action" @click=${() => useAppStore.setActiveTab('sources')}>Forrás megnyitása</button></section>
+            <blockquote id="codex-quotes" class="engraved-panel dashboard-quote">„Az emberek azt hiszik, a pokol mélyén lakozunk. Nem. A pokol bennük van.”<cite>— Mephisto</cite></blockquote>
           </div>
         </div>
         <aside class="codex-dashboard-rail" aria-label="Codex gyorsnavigáció">
-          <section class="engraved-panel"><h2>Tartalomjegyzék</h2><nav>${['Alapinformációk','Megjelenései','Története','Képességei és hatalma','Kapcsolatai','Idézetek','Források','Galéria'].map(item => html`<a href="#article-library-title">◇ ${item}</a>`)}</nav></section>
+          <section class="engraved-panel"><h2>Tartalomjegyzék</h2><nav>${[['Alapinformációk','codex-basic'],['Megjelenései','codex-appearances'],['Története','codex-history'],['Képességei és hatalma','codex-powers'],['Kapcsolatai','codex-relations'],['Idézetek','codex-quotes'],['Források','codex-sources'],['Galéria','codex-gallery']].map(([item,target]) => html`<button @click=${() => document.getElementById(target)?.scrollIntoView({behavior:'smooth', block:'start'})}>◇ ${item}</button>`)}</nav></section>
           <section class="engraved-panel mini-timeline"><h2>Idővonal <button @click=${() => useAppStore.setActiveTab('timeline')}>Teljes idővonal ›</button></h2><ol>${eras.map(era => html`<li><span>${era.name}</span><small>${diabloTimelineEvents.filter(event => event.eraId === era.id).length} esemény</small></li>`)}</ol><button class="panel-action" @click=${() => useAppStore.setActiveTab('timeline')}>Időgép megnyitása</button></section>
         </aside>
       </div>

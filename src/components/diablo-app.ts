@@ -48,23 +48,23 @@ export class DiabloApp extends LitElement {
         <aside class="codex-sidebar" aria-label="Diablo kódex">
           <h2>Codex</h2>
           <button class="sidebar-overview" @click=${()=>this.showArticles()}><i class="fa-solid fa-house"></i> Áttekintés</button>
-          <div class="sidebar-group-title">Univerzum</div>
-          <button @click=${()=>this.showArticles('Sanctuary')}><i class="fa-solid fa-globe"></i> Sanctuary világa</button>
-          <button @click=${()=>this.showArticles('Angiris')}><i class="fa-solid fa-sun"></i> Angiris Tanács</button>
-          <button @click=${()=>this.showArticles('Konfliktus')}><i class="fa-solid fa-burst"></i> Nagy Konfliktus</button>
-          <button @click=${()=>this.showArticles('Mennyek Pokol')}><i class="fa-solid fa-star"></i> Mennyek és Pokol</button>
-          <div class="sidebar-group-title">Lények</div>
-          <button @click=${()=>this.showArticles('', 'Démonok')}><i class="fa-solid fa-fire"></i> Démonok</button>
-          <button @click=${()=>this.showArticles('', 'Angyalok')}><i class="fa-solid fa-feather"></i> Angyalok</button>
-          <button @click=${()=>this.showArticles('ember')}><i class="fa-solid fa-user"></i> Emberek</button>
-          <div class="sidebar-group-title">Helyszínek</div>
-          <button @click=${()=>this.showArticles('Kehjistan')}><i class="fa-solid fa-location-dot"></i> Kehjistan</button>
-          <button @click=${()=>this.showArticles('Scosglen')}><i class="fa-solid fa-tree"></i> Scosglen</button>
-          <button @click=${()=>this.showArticles('', 'Helyszínek')}><i class="fa-solid fa-compass"></i> Egyéb helyszínek</button>
-          <div class="sidebar-group-title">Események</div>
+          <button class="sidebar-group-title" @click=${()=>this.showArticles('Sanctuary')}>Univerzum</button>
+          <button aria-label="Sanctuary világa" @click=${()=>this.showArticles('Sanctuary')}><i class="fa-solid fa-globe"></i> Sanctuary világa</button>
+          <button aria-label="Angiris Tanács" @click=${()=>this.showArticles('Angiris')}><i class="fa-solid fa-sun"></i> Angiris Tanács</button>
+          <button aria-label="Nagy Konfliktus" @click=${()=>this.showArticles('Eternal Conflict')}><i class="fa-solid fa-burst"></i> Nagy Konfliktus</button>
+          <button aria-label="Mennyek és Pokol" @click=${()=>this.showArticles('Pokol')}><i class="fa-solid fa-star"></i> Mennyek és Pokol</button>
+          <button class="sidebar-group-title" @click=${()=>this.showArticles('Kicsoda')}>Lények</button>
+          <button aria-label="Démonok" @click=${()=>this.showArticles('démon')}><i class="fa-solid fa-fire"></i> Démonok</button>
+          <button aria-label="Angyalok" @click=${()=>this.showArticles('angyal')}><i class="fa-solid fa-feather"></i> Angyalok</button>
+          <button aria-label="Emberek" @click=${()=>this.showArticles('ember')}><i class="fa-solid fa-user"></i> Emberek</button>
+          <button class="sidebar-group-title" @click=${()=>this.showArticles('', 'Helyszínek')}>Helyszínek</button>
+          <button aria-label="Kehjistan" @click=${()=>this.showArticles('Kehjistan')}><i class="fa-solid fa-location-dot"></i> Kehjistan</button>
+          <button aria-label="Scosglen" @click=${()=>this.showArticles('Scosglen')}><i class="fa-solid fa-tree"></i> Scosglen</button>
+          <button aria-label="Egyéb helyszínek" @click=${()=>this.showArticles('', 'Helyszínek')}><i class="fa-solid fa-compass"></i> Egyéb helyszínek</button>
+          <button class="sidebar-group-title" aria-label="Események – idővonal megnyitása" @click=${()=>useAppStore.setActiveTab('timeline')}>Események</button>
           <button aria-label="Oldalsáv – teljes idővonal megnyitása" @click=${()=>useAppStore.setActiveTab('timeline')}><i class="fa-solid fa-hourglass-half"></i> Teljes kronológia</button>
           <button aria-label="Oldalsáv – folyamatos olvasás megnyitása" @click=${()=>useAppStore.setActiveTab('story')}><i class="fa-solid fa-book-open"></i> Folyamatos történet</button>
-          <div class="sidebar-group-title">Könyvek és források</div>
+          <button class="sidebar-group-title" aria-label="Oldalsáv – gyűjtemények megnyitása" @click=${()=>useAppStore.setActiveTab('books')}>Könyvek és források</button>
           <button aria-label="Oldalsáv – könyvtár megnyitása" @click=${()=>useAppStore.setActiveTab('books')}><i class="fa-solid fa-book"></i> Könyvek</button>
           <button aria-label="Oldalsáv – forrástár megnyitása" @click=${()=>useAppStore.setActiveTab('sources')}><i class="fa-solid fa-link"></i> Forrástár</button>
           <button class="random-article" @click=${this.openRandomArticle}><i class="fa-solid fa-dice"></i> Véletlen cikk</button>

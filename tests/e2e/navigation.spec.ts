@@ -166,6 +166,32 @@ test('Codex landing uses the full desktop dashboard and keeps mobile compact', a
   expect(await page.evaluate(() => document.documentElement.scrollWidth - window.innerWidth)).toBeLessThanOrEqual(1);
 });
 
+test('desktop Codex menus lead to populated content and its contents panel stays in-route', async ({ page }) => {
+  await page.setViewportSize({ width: 1440, height: 900 });
+  await page.goto('/#/wiki');
+  const sidebar = page.getByLabel('Diablo kódex');
+  for (const label of ['Univerzum', 'Sanctuary világa', 'Angiris Tanács', 'Nagy Konfliktus', 'Mennyek és Pokol', 'Lények', 'Démonok', 'Angyalok', 'Emberek', 'Helyszínek', 'Kehjistan', 'Scosglen', 'Egyéb helyszínek']) {
+    await sidebar.getByRole('button', { name: label, exact: true }).click();
+    await expect(page.locator('.directory-result-count'), `${label} menüpont`).not.toHaveText('0 cikk');
+  }
+  for (const label of ['Alapinformációk', 'Megjelenései', 'Története', 'Képességei és hatalma', 'Kapcsolatai', 'Idézetek', 'Források', 'Galéria']) {
+    await page.getByRole('button', { name: `◇ ${label}`, exact: true }).click();
+    await expect(page).toHaveURL(/#\/wiki$/);
+  }
+  await expect(page.locator('.featured-codex-card img')).toHaveCount(4);
+  for (const image of await page.locator('.featured-codex-card img').all()) await expect(image).toHaveJSProperty('complete', true);
+  await sidebar.getByRole('button', { name: 'Események – idővonal megnyitása' }).click();
+  await expect(page).toHaveURL(/#\/timeline$/);
+  await sidebar.getByRole('button', { name: 'Oldalsáv – folyamatos olvasás megnyitása' }).click();
+  await expect(page).toHaveURL(/#\/story$/);
+  await sidebar.locator('button.sidebar-group-title', { hasText: 'Könyvek és források' }).click();
+  await expect(page).toHaveURL(/#\/books$/);
+  await sidebar.getByRole('button', { name: 'Oldalsáv – forrástár megnyitása' }).click();
+  await expect(page).toHaveURL(/#\/sources$/);
+  await sidebar.getByRole('button', { name: /Véletlen cikk/ }).click();
+  await expect(page).toHaveURL(/#\/wiki\/.+$/);
+});
+
 test('the 184-event chronology filters, reveals spoilers and supports timeline backlinks', async ({ page }) => {
   await page.goto('/#/timeline');
   await expect(page.getByText(/155 esemény/)).toBeVisible();
