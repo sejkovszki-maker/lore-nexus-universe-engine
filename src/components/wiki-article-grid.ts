@@ -91,9 +91,8 @@ export class WikiArticleGrid extends LitElement {
     return html`
       <div class="desktop-codex-dashboard">
         <div class="codex-dashboard-main">
-          <section class="codex-hero" aria-labelledby="codex-hero-title">
+          <section class="codex-hero" aria-labelledby="codex-hero-title" style=${`background-image:linear-gradient(90deg,rgba(2,3,3,.96) 0%,rgba(3,3,3,.76) 37%,rgba(3,3,3,.08) 72%),url('${import.meta.env.BASE_URL}assets/diablo-hero-v1.png')`}>
             <div><h1 id="codex-hero-title">Diablo</h1><h2>A félelem ura</h2><blockquote>„A félelem az egyetlen igazság, mely minden szívben lakozik.”<cite>— Deckard Cain</cite></blockquote></div>
-            <span class="hero-demon" aria-hidden="true">♆</span>
           </section>
           <dl class="codex-stat-strip">
             ${[['Cikkek', allArticles.length, 'fa-scroll'], ['Karakterek', countBy('karakter'), 'fa-user-shield'], ['Helyszínek', countBy('helyszín'), 'fa-compass'], ['Események', diabloTimelineEvents.length, 'fa-sun'], ['Könyvek', creativeWorkRegistry.length, 'fa-book-open'], ['Források', sourceRegistry.length, 'fa-file-lines']].map(([label,value,icon]) => html`<div><i class="fa-solid ${icon}" aria-hidden="true"></i><dt>${label}</dt><dd>${value}</dd></div>`)}
