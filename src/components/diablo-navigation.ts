@@ -33,8 +33,9 @@ export class DiabloNavigation extends LitElement {
     const btnClass = "flex-1 flex flex-col md:flex-row items-center justify-center py-3 md:py-4 px-2 text-xs md:text-sm lg:text-base font-heading font-semibold uppercase tracking-wider transition-colors duration-300 md:border-b-2";
     const iconClass = "text-lg md:text-base mb-1 md:mb-0 md:mr-2";
 
-    return html`<div class="w-full flex items-center justify-center gap-3 py-3"><label for="universe-select" class="text-gold font-heading">Univerzum</label><select id="universe-select" aria-label="Olvasott univerzum" class="bg-dark-card text-parchment border border-gold/40 rounded px-3 py-2" .value=${this.activeUniverseId} @change=${(event: Event) => useAppStore.setActiveUniverse((event.target as HTMLSelectElement).value)}>${universes.map(universe => html`<option value=${universe.id}>${universe.label}</option>`)}</select></div>
-      <nav aria-label="Fő navigáció" class="flex w-full bg-dark-bg border-t md:border-t-0 md:border-b border-blood-red/30 fixed bottom-0 md:sticky md:top-0 md:bottom-auto left-0 z-50 shadow-[0_-4px_10px_rgba(139,0,0,0.1)] md:shadow-[0_4px_10px_rgba(139,0,0,0.1)]">
+    return html`<header class="codex-header">
+      <button class="codex-brand" @click=${() => this.handleTabClick('articles')} aria-label="Lore Nexus – Wiki megnyitása"><span class="brand-sigil" aria-hidden="true">✥</span><span><strong>Lore Nexus</strong><small>Universe Engine</small></span></button>
+      <nav aria-label="Fő navigáció" class="codex-topnav">
         <button 
           aria-pressed=${this.activeTab === 'timeline'}
           class="${btnClass} ${this.activeTab === 'timeline' ? 'text-blood-red border-blood-red bg-blood-red/10' : 'text-gray-400 border-transparent hover:text-white hover:bg-white/5'}"
@@ -71,6 +72,8 @@ export class DiabloNavigation extends LitElement {
           <i class="fa-solid fa-scale-balanced ${iconClass}"></i> <span>Kánonellenőrzés</span>
         </button>
       </nav>
+      <div class="universe-switch"><label for="universe-select">Univerzum</label><select id="universe-select" aria-label="Olvasott univerzum" .value=${this.activeUniverseId} @change=${(event: Event) => useAppStore.setActiveUniverse((event.target as HTMLSelectElement).value)}>${universes.map(universe => html`<option value=${universe.id}>${universe.label}</option>`)}</select></div>
+    </header>
     `;
   }
 }

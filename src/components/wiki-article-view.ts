@@ -15,18 +15,18 @@ export class WikiArticleView extends LitElement {
     :host {
       display: block;
       width: 100%;
-      max-width: 900px;
+      max-width: 1120px;
       margin: 0 auto;
     }
     .markdown-content {
-      font-family: 'Outfit', sans-serif;
+      font-family: Georgia, 'Times New Roman', serif;
       line-height: 1.8;
       font-size: 1.1rem;
-      color: #eaddc5;
+      color: #d9c9ad;
     }
     .markdown-content h1, .markdown-content h2, .markdown-content h3 {
       font-family: 'Cinzel', serif;
-      color: #d4af37;
+      color: #c99b4c;
       margin-top: 2rem;
       margin-bottom: 1rem;
     }
@@ -36,13 +36,13 @@ export class WikiArticleView extends LitElement {
     .markdown-content p { margin-bottom: 1.25rem; }
     .markdown-content em { color: #b8860b; }
     .markdown-content strong { color: #f8fafc; font-weight: 600; }
-    .infobox { float: right; width: min(320px, 42%); margin: 0 0 1.5rem 1.5rem; padding: 1rem; border: 1px solid #d4af3755; border-radius: .75rem; background: #100c0ddd; }
+    .infobox { float: right; width: min(320px, 42%); margin: 0 0 1.5rem 1.5rem; padding: 1.2rem; border: 1px solid #9d6b2e77; border-radius: 1px; background: #080807ee; box-shadow: inset 0 0 0 5px #030303, inset 0 0 0 6px #9d6b2e33; }
     .infobox dl { margin: 0; }
     .infobox dt { color: #d4af37; font-weight: 700; margin-top: .75rem; }
     .infobox dd { margin: .15rem 0 0; color: #eaddc5; }
     .relations { clear: both; margin-top: 2rem; padding-top: 1.5rem; border-top: 1px solid #8b000066; }
     .relation-list { display: flex; flex-wrap: wrap; gap: .6rem; }
-    .relation-button { border: 1px solid #d4af3755; background: #d4af3710; color: #eaddc5; border-radius: 999px; padding: .45rem .8rem; cursor: pointer; }
+    .relation-button { border: 1px solid #9d6b2e77; background: #d4af3710; color: #eaddc5; border-radius: 1px; padding: .55rem .9rem; cursor: pointer; font-family: 'Cinzel', serif; }
     .relation-button:hover, .relation-button:focus-visible { border-color: #d4af37; color: #d4af37; outline: none; }
     .markdown-content .wiki-link { color: #e6c65c; text-decoration: underline; text-decoration-style: dotted; text-underline-offset: .2em; }
     .markdown-content .wiki-link-broken { color: #ff8a8a; text-decoration: underline wavy; }
@@ -83,6 +83,7 @@ export class WikiArticleView extends LitElement {
     
     // Egyszerűsített parser
     let htmlContent = article.content
+      .replace(/!\[[^\]]*\]\(file:\/\/\/[^)]+\)/gim, '')
       .replace(/^### (.*$)/gim, '<h3>$1</h3>')
       .replace(/^## (.*$)/gim, '<h2>$1</h2>')
       .replace(/^# (.*$)/gim, '<h1>$1</h1>')
