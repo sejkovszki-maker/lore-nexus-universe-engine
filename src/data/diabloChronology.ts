@@ -103,7 +103,7 @@ export const diabloTimelineEras: TimelineEra[] = [
   }
 ];
 
-export const diabloTimelineEvents: TimelineEvent[] = [
+const rawDiabloTimelineEvents: TimelineEvent[] = [
   {
     "id": "diablo-event-001",
     "universeId": "diablo",
@@ -6629,3 +6629,36 @@ export const diabloTimelineEvents: TimelineEvent[] = [
     "previousEventId": "diablo-event-183"
   }
 ];
+
+/** Complete, deterministic fallback from every chronology era to an existing overview article. */
+export const timelineArticleByEra: Readonly<Record<string, string>> = Object.freeze({
+  cosmology: 'kozmogonia',
+  'eternal-conflict': 'prime-lesser-evils',
+  'sanctuary-creation': 'sanctuary-origin',
+  'early-humanity': 'sanctuary-full-lexicon',
+  'sin-war': 'sin-war-lore',
+  'age-of-magic': 'mage-clan-wars',
+  'mage-clan-wars': 'mage-clan-wars',
+  'age-of-faith': 'sanctuary-factions',
+  'dark-exile': 'dark-exile',
+  horadrim: 'horadrim-order',
+  'diablo-1': 'diablo-1-story',
+  'diablo-2': 'diablo-2-story',
+  'lord-of-destruction': 'diablo-2-lod',
+  'diablo-immortal': 'diablo-immortal',
+  'diablo-3': 'diablo-3-story',
+  'reaper-of-souls': 'diablo-3-ros',
+  'great-enmity': 'diablo-4-story',
+  'diablo-4': 'diablo-4-story',
+  'vessel-of-hatred': 'diablo-4-voh',
+  'lord-of-hatred': 'diablo-4-loh'
+});
+
+const validCuratedArticleIds = new Set(Object.values(timelineArticleByEra));
+
+export const diabloTimelineEvents: TimelineEvent[] = rawDiabloTimelineEvents.map(event => ({
+  ...event,
+  articleId: event.articleId && validCuratedArticleIds.has(event.articleId)
+    ? event.articleId
+    : timelineArticleByEra[event.eraId]
+}));

@@ -753,6 +753,10 @@ export const wikiArticles: Record<string, any> = {
       <p><strong>Sisterhood of the Sightless Eye (Zsiványok / Rogues):</strong> Amazonszerű harcosnőkből álló szekta, a Titkos Szem (Sightless Eye) relikvia őrzői. Khandurasban éltek, míg Andariel a Diablo II elején ki nem irtotta a rend nagy részét, sötét vérhollóvá változtatva legkiválóbb kapitányukat, Moreinát (Blood Raven).</p>
       <p><strong>Iron Wolves (Vasfarkasok):</strong> Asheara által vezetett elit zsoldosrend (akik elemi mágiát is használnak). Ők biztosították az egyetlen menedéket Kurast kikötőjében a Zakarum bukása után (Diablo II), majd később Caldeum sivatagában harcoltak Belial ellen (Diablo III). A Vasfarkasok becsületesek, és ellentétben sok más zsoldoscsapattal, az ártatlanok védelmére esküdtek fel.</p>
       <p><strong>A Khazra (Kecskeemberek):</strong> Bár ma vérszomjas szörnyetegek, eredetileg az Umbaru nevű, békés vándortörzsek voltak. A Mage Clan Wars idején a Vizjerei klán rabszolgává tette őket, és démoni vérrel mutálta őket, hogy fegyverként használják őket. A Khazra végül fellázadt és elmenekült; ma már önálló, agresszív törzsekben élnek Sanctuary vadonjaiban.</p>
+
+      <h2>Az Age of Faith: Akarattól Akkhanig</h2>
+      <p>A mágusklán-háborúk után Akarat tanítása az emberben rejlő „belső fényre” épült, majd Kehjistanban a Zakarum vallás alapjává vált. Évszázadokkal később Mephisto Travincal alatt fogva tartott esszenciája fokozatosan megrontotta az egyház vezetését. Akkhan ezt a romlást érzékelve alapította meg a keresztesek rendjét: küldetésük nem hódítás, hanem a hit megtisztításának keresése lett. Ez külön történeti ág a Rakkisszal nyugatra vonuló paladinokétól.</p>
+      <p><strong>Elsődleges forrás:</strong> <a href="https://news.blizzard.com/en-us/article/13183881/the-history-behind-the-crusade" target="_blank" rel="noopener noreferrer">Blizzard – The History Behind the Crusade</a>.</p>
     `
   },
 
@@ -989,6 +993,10 @@ export const wikiArticles: Record<string, any> = {
 
       <h2>Vessel of Hatred: A Gyűlölet Edénye (Epilógus és Folytatás)</h2>
       <p>A győzelem ellenére a béke illúzió. Neyrelle, tudva, hogy a Horadrimok valószínűleg nem tudnák kordában tartani Mephistót, egyedül menekül el, magával víve a kék Lélekkövet. Útja délre, Kurast és a Nahantu dzsungel mélye felé vezet, miközben Mephisto sötét jelenléte folyamatosan emészti az elméjét. A Diablo IV története itt folytatódik a <em>Vessel of Hatred</em> kiegészítőben, ahol a Vándornak meg kell találnia a lányt, mielőtt a Gyűlölet Ura teljesen felemészti a lelkét, és kiszabadul Sanctuary-ba.</p>
+
+      <h2>A Great Enmity történeti átmenete</h2>
+      <p>A Diablo IV nem közvetlenül a Diablo III győzelmével kezdődik. A Black Soulstone pusztulása, a Prime Evil veresége és Malthael bukása után Sanctuary óriási emberveszteséget szenvedett. Az ezt követő évtizedekben a meggyengült közösségek csak részben épültek újjá; ebben a politikai és vallási hatalmi vákuumban tudott Lilith ismét befolyást szerezni. A fejlesztői összefoglaló a Diablo IV-et ötven évvel a Diablo III eseményei után helyezi el.</p>
+      <p><strong>Elsődleges források:</strong> <a href="https://news.blizzard.com/en-us/article/23189675/diablo-iv-unveiled" target="_blank" rel="noopener noreferrer">Blizzard – Diablo IV Unveiled</a> és <a href="https://news.blizzard.com/en-us/article/23952501/diablo-iv-inside-the-game-a-new-saga" target="_blank" rel="noopener noreferrer">Blizzard – A New Saga</a>.</p>
     `
   },
 
