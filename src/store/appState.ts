@@ -276,8 +276,10 @@ if (typeof window !== 'undefined') {
         if (route.bookId && !storyBooks(route.universeId).some(book => book.id === route.bookId && (!route.chapterId || book.chapters.some(chapter => chapter.id === route.chapterId)))) status = 'not-found';
         state = { ...state, activeTab: status === 'not-found' ? 'not-found' : routeTab(route), activeUniverseId: route.universeId, routeStatus: status, activeArticleId: status === 'ready' ? requestedId ?? null : null, reader: { ...state.reader, bookId: route.bookId ?? null, chapterId: route.chapterId ?? null } };
         notify();
-        const saved = sessionStorage.getItem(`lore-scroll:${location.hash}`);
-        requestAnimationFrame(() => window.scrollTo({ top: saved ? Number(saved) || 0 : 0 }));
+        const freshNavigation = sessionStorage.getItem('lore-navigation-intent') === 'fresh';
+        if (freshNavigation) sessionStorage.removeItem('lore-navigation-intent');
+        const saved = freshNavigation ? null : sessionStorage.getItem(`lore-scroll:${location.hash}`);
+        requestAnimationFrame(() => window.scrollTo({ top: saved ? Number(saved) || 0 : 0, behavior: 'auto' }));
     };
     window.addEventListener('hashchange', (event) => {
         try { const oldHash = new URL((event as HashChangeEvent).oldURL).hash; sessionStorage.setItem(`lore-scroll:${oldHash}`, String(window.scrollY)); } catch { /* synthetic event */ }

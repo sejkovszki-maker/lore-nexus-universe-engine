@@ -170,6 +170,9 @@ test('desktop Codex menus lead to populated content and its contents panel stays
   await page.setViewportSize({ width: 1440, height: 900 });
   await page.goto('/#/wiki');
   const sidebar = page.getByLabel('Diablo kódex');
+  await page.evaluate(() => scrollTo(0, 900));
+  await sidebar.getByRole('button', { name: 'Sanctuary világa', exact: true }).click();
+  await expect.poll(() => page.evaluate(() => scrollY)).toBeLessThan(5);
   for (const label of ['Univerzum', 'Sanctuary világa', 'Angiris Tanács', 'Nagy Konfliktus', 'Mennyek és Pokol', 'Lények', 'Démonok', 'Angyalok', 'Emberek', 'Helyszínek', 'Kehjistan', 'Scosglen', 'Egyéb helyszínek']) {
     await sidebar.getByRole('button', { name: label, exact: true }).click();
     await expect(page.locator('.directory-result-count'), `${label} menüpont`).not.toHaveText('0 cikk');
@@ -180,6 +183,7 @@ test('desktop Codex menus lead to populated content and its contents panel stays
   }
   await expect(page.locator('.featured-codex-card img')).toHaveCount(4);
   for (const image of await page.locator('.featured-codex-card img').all()) await expect(image).toHaveJSProperty('complete', true);
+  expect(await page.locator('.featured-card-copy').evaluateAll(nodes => new Set(nodes.map(node => Math.round(node.getBoundingClientRect().height))).size)).toBe(1);
   await sidebar.getByRole('button', { name: 'Események – idővonal megnyitása' }).click();
   await expect(page).toHaveURL(/#\/timeline$/);
   await sidebar.getByRole('button', { name: 'Oldalsáv – folyamatos olvasás megnyitása' }).click();
@@ -188,6 +192,9 @@ test('desktop Codex menus lead to populated content and its contents panel stays
   await expect(page).toHaveURL(/#\/books$/);
   await sidebar.getByRole('button', { name: 'Oldalsáv – forrástár megnyitása' }).click();
   await expect(page).toHaveURL(/#\/sources$/);
+  await page.evaluate(() => scrollTo(0, 700));
+  await page.getByLabel('Fő navigáció').getByRole('button', { name: 'Könyvek' }).click();
+  await expect.poll(() => page.evaluate(() => scrollY)).toBeLessThan(5);
   await sidebar.getByRole('button', { name: /Véletlen cikk/ }).click();
   await expect(page).toHaveURL(/#\/wiki\/.+$/);
 });

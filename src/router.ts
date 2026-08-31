@@ -71,6 +71,7 @@ export function routeHash(route: AppRoute): string {
 
 export function navigate(route: AppRoute, replace = false): void {
   const next = routeHash(route);
+  sessionStorage.setItem('lore-navigation-intent', 'fresh');
   if (replace) history.replaceState(null, '', next);
   else if (location.hash !== next) location.hash = next;
   else window.dispatchEvent(new HashChangeEvent('hashchange'));
