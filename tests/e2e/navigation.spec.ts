@@ -36,7 +36,7 @@ test('story books appear at their historical anchor and can be skipped', async (
 test('direct hash navigation restores the requested view', async ({ page }) => {
   await page.goto('/#tab/articles');
   await expect(page.locator('wiki-article-grid')).toBeVisible();
-  await expect(page.getByRole('button', { name: 'Cikkek' })).toHaveClass(/text-blood-red/);
+  await expect(page.getByRole('navigation', { name: 'Fő navigáció' }).getByRole('button', { name: 'Cikkek' })).toHaveClass(/text-blood-red/);
 });
 
 test('Router 2.0 supports article deep links, history, 404 and scroll restoration', async ({ page }) => {

@@ -57,7 +57,12 @@ export class WikiArticleGrid extends LitElement {
     }
 
     return html`
-      <div class="w-full flex flex-col items-center">
+      <section class="article-codex-frame" aria-labelledby="article-library-title">
+        <header class="article-library-heading">
+          <span aria-hidden="true">— ❖ —</span>
+          <h1 id="article-library-title">Sanctuary Kódexe</h1>
+          <p>Krónikák, személyek, helyszínek és a Pokol titkai</p>
+        </header>
         <!-- Szűrők és Kereső -->
         <div class="w-full max-w-4xl mb-10 flex flex-col md:flex-row gap-4 items-center justify-between bg-dark-card p-6 rounded-xl border border-blood-red/20 shadow-lg">
           <input 
@@ -97,7 +102,7 @@ export class WikiArticleGrid extends LitElement {
             ></wiki-article-card>
           `)}
         </div>
-      </div>
+      </section>
     `;
   }
 }
