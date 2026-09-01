@@ -1,4 +1,4 @@
-export type AppView = 'timeline' | 'articles' | 'article-view' | 'story' | 'books' | 'book' | 'sources' | 'editor' | 'conflicts' | 'search' | 'not-found';
+export type AppView = 'timeline' | 'articles' | 'article-view' | 'story' | 'books' | 'book' | 'sources' | 'conflicts' | 'search' | 'not-found';
 
 export interface AppRoute {
   view: AppView;
@@ -11,7 +11,7 @@ export interface AppRoute {
 }
 
 const SAFE_SEGMENT = /^[a-z0-9][a-z0-9-]{0,119}$/;
-const LEGACY_TABS: Record<string, AppView> = { timeline: 'timeline', articles: 'articles', 'article-view': 'article-view', story: 'story', editor: 'editor', conflicts: 'conflicts', books: 'books', sources:'sources' };
+const LEGACY_TABS: Record<string, AppView> = { timeline: 'timeline', articles: 'articles', 'article-view': 'article-view', story: 'story', conflicts: 'conflicts', books: 'books', sources:'sources' };
 
 function safe(value: string | undefined): string | undefined {
   if (!value) return undefined;
@@ -47,7 +47,6 @@ export function parseRoute(hash: string): AppRoute {
   if (root === 'book' && safe(first) && !second) return { view: 'book', universeId, bookId: safe(first) };
   if (root === 'book' && safe(first) && safe(second)) return { view: 'book', universeId, bookId: safe(first), chapterId: safe(second) };
   if (root === 'search') return { view: 'search', universeId };
-  if (root === 'editor') return { view: 'editor', universeId };
   if (root === 'conflicts') return { view: 'conflicts', universeId };
   return { view: 'not-found', universeId, invalidPath: raw };
 }
@@ -63,7 +62,6 @@ export function routeHash(route: AppRoute): string {
     case 'sources': return `${prefix}sources`;
     case 'book': return `${prefix}book/${route.bookId ?? ''}${route.chapterId ? `/${route.chapterId}` : ''}`;
     case 'search': return `${prefix}search`;
-    case 'editor': return `${prefix}editor`;
     case 'conflicts': return `${prefix}conflicts`;
     default: return `${prefix}404`;
   }

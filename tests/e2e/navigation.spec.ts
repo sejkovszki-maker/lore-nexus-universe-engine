@@ -12,9 +12,7 @@ test('application renders and switches its primary views', async ({ page }) => {
   await page.getByRole('button', { name: 'Cikkek' }).click();
   await expect(page).toHaveURL(/#\/wiki$/);
   await expect(page.locator('wiki-article-grid')).toBeVisible();
-  await page.getByRole('button', { name: 'Új Cikk' }).click();
-  await expect(page).toHaveURL(/#\/editor$/);
-  await expect(page.locator('wiki-editor')).toBeVisible();
+  await expect(page.getByRole('button', { name: 'Új Cikk' })).toHaveCount(0);
   await page.getByRole('button', { name: 'Kánonellenőrzés' }).click();
   await expect(page).toHaveURL(/#\/conflicts$/);
   await expect(page.locator('canon-conflict-dashboard')).toBeVisible();
@@ -71,98 +69,15 @@ test('books have a separate reader and stable deep links', async ({ page }) => {
   await expect(page.getByRole('navigation', { name: 'Könyv lapozása' })).toBeVisible();
 });
 
-test('the Blackmarch article is searchable and book import is available', async ({ page }) => {
+test('the Blackmarch article is searchable and the removed importer stays unavailable', async ({ page }) => {
   await page.goto('/#tab/articles');
   const search = page.getByPlaceholder(/keres/i);
   await search.fill('Fekete Menetelés');
   await expect(page.getByText('A Fekete Menetelés (Blackmarch)', { exact: true })).toBeVisible();
 
-  await page.getByRole('button', { name: /új cikk/i }).click();
-  await expect(page.getByLabel('Könyvdokumentum kiválasztása')).toBeVisible();
-  await page.getByLabel('Könyvdokumentum kiválasztása').setInputFiles({
-    name: 'proba-konyv.txt',
-    mimeType: 'text/plain',
-    buffer: Buffer.from('1. fejezet\nA Fekete Menetelés története.\n\n2. fejezet\nA történet folytatódik.'),
-  });
-  await expect(page.getByRole('status').filter({ hasText: 'proba-konyv.txt' })).toContainText('proba-konyv.txt');
-  await expect(page.locator('textarea')).toHaveValue(/A Fekete Menetelés története\./);
-});
-
-test('an imported book survives reload and invalid binary input is rejected', async ({ page }) => {
-  await page.goto('/#tab/editor');
-  await page.getByLabel('Idegen nyelvű könyv automatikus fordítása magyarra').uncheck();
-  const chapterOne = 'Az első fejezet tartalma Sanctuary történetéről. '.repeat(10);
-  const chapterTwo = 'A második fejezet tartalma a hősök útjáról. '.repeat(10);
-  await page.getByLabel('Könyvdokumentum kiválasztása').setInputFiles({
-    name: 'Utoteszt-konyv.txt', mimeType: 'text/plain',
-    buffer: Buffer.from(`1. fejezet\n${chapterOne}\n\n2. fejezet\n${chapterTwo}`),
-  });
-  await page.getByRole('button', { name: /tartalom elemzése/i }).click();
-  await expect(page.getByText(/2 fejezet felismerve/)).toBeVisible();
-  let saveMessage = '';
-  const saved = page.waitForEvent('dialog').then(async dialog => {
-    saveMessage = dialog.message();
-    await dialog.accept();
-  });
-  await page.getByRole('button', { name: /teljes könyv integrálása/i }).click();
-  await saved;
-  expect(saveMessage).toContain('tartósan mentve');
-  await page.reload();
-  await page.getByRole('button', { name: 'Könyvek' }).click();
-  await expect(page.getByText('Utoteszt konyv', { exact: true })).toBeVisible();
-
-  await page.getByRole('button', { name: /új cikk/i }).click();
-  await page.getByLabel('Könyvdokumentum kiválasztása').setInputFiles({
-    name: 'nem-konyv.png', mimeType: 'image/png', buffer: Buffer.from([0x89, 0x50, 0x4e, 0x47, 0, 0, 0, 0]),
-  });
-  await expect(page.getByRole('alert')).toContainText('nem nyerhető ki könyvszöveg');
-  await expect(page.locator('textarea')).toHaveValue('');
-});
-
-test('reimport recognizes the existing work, avoids duplicates and saves new chapter pages', async ({ page }) => {
-  const chapterOne = 'Az első stabil fejezet tartalma. '.repeat(10);
-  const chapterTwo = 'A második stabil fejezet tartalma. '.repeat(10);
-  const upload = async (text: string) => {
-    await page.getByLabel('Könyvdokumentum kiválasztása').setInputFiles({ name: 'Felismert-work.txt', mimeType: 'text/plain', buffer: Buffer.from(text) });
-    await page.getByRole('button', { name: /tartalom elemzése/i }).click();
-  };
+  await expect(page.getByRole('button', { name: /új cikk/i })).toHaveCount(0);
   await page.goto('/#/editor');
-  await page.getByLabel('Idegen nyelvű könyv automatikus fordítása magyarra').uncheck();
-  await upload(`1. fejezet\n${chapterOne}\n\n2. fejezet\n${chapterTwo}`);
-  const firstSaved = page.waitForEvent('dialog').then(dialog => dialog.accept());
-  await page.getByRole('button', { name: /teljes könyv integrálása/i }).click();
-  await firstSaved;
-  await page.goto('/#/editor');
-  await upload(`1. fejezet\n${chapterOne}\n\n2. fejezet\n${chapterTwo}\n\n3. fejezet\n${'Az új harmadik fejezet tartalma. '.repeat(10)}`);
-  await expect(page.getByText(/Meglévő work felismerve/)).toBeVisible();
-  await expect(page.getByText(/1 új, 0 módosult, 2 változatlan fejezet/)).toBeVisible();
-  const secondSaved = page.waitForEvent('dialog').then(dialog => dialog.accept());
-  await page.getByRole('button', { name: /teljes könyv integrálása/i }).click();
-  await secondSaved;
-  await page.reload();
-  await page.getByLabel('Olvasott univerzum').selectOption({ label: 'Felismert work' });
-  await page.getByRole('button', { name: 'Könyvek' }).click();
-  await page.getByRole('button', { name: 'Könyv olvasása' }).click();
-  await expect(page.getByRole('button', { name: '3. fejezet' })).toBeVisible();
-});
-
-test('foreign books create an isolated universe tab and remain readable in story order', async ({ page }) => {
-  await page.goto('/#/editor');
-  await page.getByLabel('Idegen nyelvű könyv automatikus fordítása magyarra').uncheck();
-  await page.getByLabel('Könyvdokumentum kiválasztása').setInputFiles({ name: 'Vajak-proba.txt', mimeType: 'text/plain', buffer: Buffer.from(`1. fejezet\n${'Geralt, a witcher Yennefer és Ciri nyomába indult Nilfgaard felé. '.repeat(10)}\n\n2. fejezet\n${'A vaják újabb szörnyeteggel találkozott. '.repeat(12)}`) });
-  await page.getByRole('button', { name: /tartalom elemzése/i }).click();
-  await expect(page.getByText(/Felismert univerzum: The Witcher/)).toBeVisible();
-  let saveMessage = '';
-  const saved = page.waitForEvent('dialog').then(dialog => { saveMessage = dialog.message(); return dialog.accept(); });
-  await page.getByRole('button', { name: /teljes könyv integrálása/i }).click();
-  await saved;
-  expect(saveMessage).toContain('The Witcher');
-  await page.getByLabel('Olvasott univerzum').selectOption('witcher');
-  await expect(page).toHaveURL(/#\/u\/witcher\/timeline$/);
-  await page.getByRole('button', { name: 'Könyvek' }).click();
-  await expect(page.getByText('Vajak proba', { exact: true })).toBeVisible();
-  await page.getByRole('button', { name: 'Történet' }).click();
-  await expect(page.getByText(/Könyvszakasz: Vajak proba/)).toBeVisible();
+  await expect(page.getByRole('heading', { name: 'Az oldal nem található' })).toBeVisible();
 });
 
 test('story reader remains usable without horizontal overflow on mobile and desktop', async ({ page }) => {

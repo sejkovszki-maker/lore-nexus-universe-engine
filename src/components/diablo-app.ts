@@ -7,7 +7,6 @@ import './diablo-navigation';
 import './story-reader';
 import './wiki-article-grid';
 import './wiki-article-view';
-import './wiki-editor';
 import './diablo-timeline';
 import './canon-conflict-dashboard';
 import './book-library';
@@ -76,7 +75,6 @@ export class DiabloApp extends LitElement {
           ${this.activeTab === 'story' ? html`<story-reader class="w-full"></story-reader>` : ''}
           ${this.activeTab === 'books' ? html`<book-library class="w-full"></book-library>` : ''}
           ${this.activeTab === 'sources' ? html`<source-library class="w-full"></source-library>` : ''}
-          ${this.activeTab === 'editor' ? html`<wiki-editor class="w-full max-w-4xl mx-auto"></wiki-editor>` : ''}
           ${this.activeTab === 'article-view' ? html`<wiki-article-view class="w-full"></wiki-article-view>` : ''}
           ${this.activeTab === 'conflicts' ? html`<canon-conflict-dashboard class="w-full"></canon-conflict-dashboard>` : ''}
           ${this.activeTab === 'not-found' ? html`<section role="alert" class="w-full max-w-2xl bg-dark-card border border-blood-red rounded-xl p-8 text-center"><h1 class="text-gold text-3xl font-heading">Az oldal nem található</h1><p>A hivatkozás hibás, vagy a tartalom nem ehhez az univerzumhoz tartozik.</p><button class="mt-4 px-4 py-2 border border-gold rounded text-gold" @click=${()=>useAppStore.setActiveTab('articles')}>Vissza a cikkekhez</button></section>` : ''}

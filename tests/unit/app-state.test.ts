@@ -27,6 +27,6 @@ test('reader lifecycle clamps negative pages and resets cleanly', () => {
 
 test('subscriptions are notified and can be removed', () => {
   let notifications = 0; const unsubscribe = subscribe(() => { notifications += 1; });
-  setAppState({ activeTab: 'editor' }); assert.equal(notifications, 1); unsubscribe();
+  setAppState({ activeTab: 'sources' }); assert.equal(notifications, 1); unsubscribe();
   setAppState({ activeTab: 'timeline' }); assert.equal(notifications, 1);
 });

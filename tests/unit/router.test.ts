@@ -16,5 +16,7 @@ test('route generation round-trips and invalid input fails closed', () => {
   assert.deepEqual(parseRoute(routeHash(route)), route);
   assert.equal(parseRoute('#/wiki/%2Fetc').view, 'not-found');
   assert.equal(parseRoute('#/unknown/path').view, 'not-found');
+  assert.equal(parseRoute('#/editor').view, 'not-found');
+  assert.equal(parseRoute('#tab/editor').view, 'not-found');
   assert.deepEqual(parseRoute('#tab/story'), { view: 'story', universeId: 'diablo' });
 });
