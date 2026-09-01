@@ -1,0 +1,8 @@
+{
+  "runId":"DIABLO-WAVE-010-2026-09-01",
+  "items":[
+    {"id":"DQ-001","canonicalUrl":"https://ftp.blizzard.com/pub/misc/Diablo.PDF","sourceId":"src-blizzard-diablo-manual","status":"RECHECK_REQUIRED","reason":"Pontos oldal- és fejezetlokátor feldolgozása"},
+    {"id":"DQ-002","canonicalUrl":"https://download.blizzard.com/pub/misc/Diablo%20II%20Manual.pdf","sourceId":"src-blizzard-diablo-2-manual","status":"RECHECK_REQUIRED","reason":"Pontos oldal- és fejezetlokátor feldolgozása"},
+    {"id":"DQ-003","canonicalUrl":null,"sourceId":null,"status":"QUEUED","reason":"Book of Cain/Book of Tyrael Anu–Tathamet lokátor jogszerű bibliográfiai vagy felhasználói példányból"}
+  ]
+}

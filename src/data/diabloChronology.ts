@@ -467,7 +467,7 @@ const rawDiabloTimelineEvents: TimelineEvent[] = [
     "dateDisplay": "",
     "dateStatus": "unknown",
     "canonStatus": "canon",
-    "sourcePriority": "secondary_reference",
+    "sourcePriority": "primary_blizzard",
     "retconned": false,
     "characters": [],
     "locations": [],
@@ -478,11 +478,13 @@ const rawDiabloTimelineEvents: TimelineEvent[] = [
     "relatedEvents": [],
     "sources": [
       {
-        "label": "Lore Nexus kronológiai ellenőrzési jegyzet (2026-08-30)",
-        "kind": "editorial_audit"
+        "sourceId": "src-blizzard-tyrael-spotlight",
+        "label": "Tyrael Hero Spotlight",
+        "url": "https://news.blizzard.com/en-us/article/13423479/tyrael-hero-spotlight",
+        "kind": "primary_blizzard"
       }
     ],
-    "needsSourceAudit": true,
+    "needsSourceAudit": false,
     "spoilerLevel": 0,
     "previousEventId": "diablo-event-010",
     "nextEventId": "diablo-event-012"
@@ -568,7 +570,7 @@ const rawDiabloTimelineEvents: TimelineEvent[] = [
     "dateDisplay": "",
     "dateStatus": "unknown",
     "canonStatus": "canon",
-    "sourcePriority": "secondary_reference",
+    "sourcePriority": "primary_blizzard",
     "retconned": false,
     "characters": [],
     "locations": [],
@@ -581,11 +583,13 @@ const rawDiabloTimelineEvents: TimelineEvent[] = [
     "relatedEvents": [],
     "sources": [
       {
-        "label": "Lore Nexus kronológiai ellenőrzési jegyzet (2026-08-30)",
-        "kind": "editorial_audit"
+        "sourceId": "src-blizzard-malthael-nexus",
+        "label": "Malthael Enters the Nexus!",
+        "url": "https://news.blizzard.com/en-us/article/20819590/malthael-enters-the-nexus",
+        "kind": "primary_blizzard"
       }
     ],
-    "needsSourceAudit": true,
+    "needsSourceAudit": false,
     "spoilerLevel": 0,
     "previousEventId": "diablo-event-013",
     "nextEventId": "diablo-event-015"
@@ -4303,7 +4307,7 @@ const rawDiabloTimelineEvents: TimelineEvent[] = [
     "dateDisplay": "",
     "dateStatus": "unknown",
     "canonStatus": "canon",
-    "sourcePriority": "secondary_reference",
+    "sourcePriority": "primary_blizzard",
     "retconned": false,
     "characters": [
       "Tyrael"
@@ -4320,11 +4324,19 @@ const rawDiabloTimelineEvents: TimelineEvent[] = [
     "relatedEvents": [],
     "sources": [
       {
-        "label": "Lore Nexus kronológiai ellenőrzési jegyzet (2026-08-30)",
-        "kind": "editorial_audit"
+        "sourceId": "src-blizzard-tyrael-spotlight",
+        "label": "Tyrael Hero Spotlight",
+        "url": "https://news.blizzard.com/en-us/article/13423479/tyrael-hero-spotlight",
+        "kind": "primary_blizzard"
+      },
+      {
+        "sourceId": "src-blizzard-malthael-nexus",
+        "label": "Malthael Enters the Nexus!",
+        "url": "https://news.blizzard.com/en-us/article/20819590/malthael-enters-the-nexus",
+        "kind": "primary_blizzard"
       }
     ],
-    "needsSourceAudit": true,
+    "needsSourceAudit": false,
     "spoilerLevel": 0,
     "previousEventId": "diablo-event-120",
     "nextEventId": "diablo-event-122"
@@ -5032,7 +5044,7 @@ const rawDiabloTimelineEvents: TimelineEvent[] = [
     "dateDisplay": "",
     "dateStatus": "unknown",
     "canonStatus": "canon",
-    "sourcePriority": "secondary_reference",
+    "sourcePriority": "primary_blizzard",
     "retconned": false,
     "characters": [
       "Malthael"
@@ -5047,11 +5059,13 @@ const rawDiabloTimelineEvents: TimelineEvent[] = [
     "relatedEvents": [],
     "sources": [
       {
-        "label": "Lore Nexus kronológiai ellenőrzési jegyzet (2026-08-30)",
-        "kind": "editorial_audit"
+        "sourceId": "src-blizzard-malthael-nexus",
+        "label": "Malthael Enters the Nexus!",
+        "url": "https://news.blizzard.com/en-us/article/20819590/malthael-enters-the-nexus",
+        "kind": "primary_blizzard"
       }
     ],
-    "needsSourceAudit": true,
+    "needsSourceAudit": false,
     "spoilerLevel": 0,
     "previousEventId": "diablo-event-140",
     "nextEventId": "diablo-event-142"
@@ -5175,7 +5189,7 @@ const rawDiabloTimelineEvents: TimelineEvent[] = [
     "dateDisplay": "",
     "dateStatus": "unknown",
     "canonStatus": "canon",
-    "sourcePriority": "secondary_reference",
+    "sourcePriority": "primary_blizzard",
     "retconned": false,
     "characters": [
       "Malthael"
@@ -5190,11 +5204,13 @@ const rawDiabloTimelineEvents: TimelineEvent[] = [
     "relatedEvents": [],
     "sources": [
       {
-        "label": "Lore Nexus kronológiai ellenőrzési jegyzet (2026-08-30)",
-        "kind": "editorial_audit"
+        "sourceId": "src-blizzard-malthael-nexus",
+        "label": "Malthael Enters the Nexus!",
+        "url": "https://news.blizzard.com/en-us/article/20819590/malthael-enters-the-nexus",
+        "kind": "primary_blizzard"
       }
     ],
-    "needsSourceAudit": true,
+    "needsSourceAudit": false,
     "spoilerLevel": 0,
     "previousEventId": "diablo-event-144",
     "nextEventId": "diablo-event-146"

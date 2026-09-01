@@ -1,0 +1,11 @@
+{
+  "runId":"DIABLO-WAVE-010-2026-09-01",
+  "rejectedSources":[],
+  "rejectedClaims":[
+    {"claimFingerprint":"anu-tathamet-unsourced-web-summary","reason":"S4/S5 összefoglaló pontos S0/S1 lokátor nélkül nem zárhat le kozmológiai claimet","sourceId":null}
+  ],
+  "rejectedMerges":[],
+  "rejectedDates":[
+    {"eventId":"unplaced-licensed-works","dateCandidate":"publication-date-as-lore-date","reason":"A megjelenési dátum nem in-universe dátum"}
+  ]
+}
