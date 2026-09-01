@@ -1,5 +1,5 @@
 {
-  "runId":"DIABLO-WAVE-010-2026-09-01",
+  "runId":"DIABLO-WAVE-011-2026-09-01",
   "currentWave":"WAVE_11_GAP_DRIVEN",
   "currentTask":"RT-001",
   "currentStage":"SOURCE_FOUND",
@@ -9,6 +9,6 @@
   "completedTasks":["primary-tyrael-malthael-batch"],
   "pendingTasks":["RT-001","RT-002","RT-003","RT-004","RT-005","RT-006","RT-007","RT-008","RT-009","RT-010","RT-011","RT-012","RT-013","RT-014","RT-018","RT-019","RT-020"],
   "reviewTasks":["RT-015","RT-016","RT-017"],
-  "qualitySnapshot":{"sources":72,"creativeWorks":79,"editions":33,"claims":35,"events":184,"primaryAuditedEvents":5,"sourceRequiredEvents":179,"legacyOfficialUrlOnlyEvents":11,"registryIssues":0},
+  "qualitySnapshot":{"sources":74,"creativeWorks":81,"editions":36,"claims":37,"events":184,"primaryAuditedEvents":5,"sourceRequiredEvents":179,"legacyOfficialUrlOnlyEvents":11,"registryIssues":0},
   "nextAction":"RT-001: Diablo I manual evidence audit"
 }

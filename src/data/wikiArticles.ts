@@ -622,8 +622,8 @@ export const wikiArticles: Record<string, any> = {
       <h2>A Klasszikus Regények és Képregények</h2>
       <ul>
         <li><strong>Demonsbane (Robert B. Marks):</strong> A legelső kiadott Diablo novella, amely Siggard, a démonvadász és a Khanduras-t sújtó sötét erők összecsapását mutatja be.</li>
-        <li><strong>Legacy of Blood & The Black Road (Mel Odom):</strong> Zsoldosok, elátkozott páncélok és a démoni fertőzés. Ezek a regények a halandó emberek szemszögéből mutatják be, mennyire kétségbeejtő egy démoni entitással szembeszállni.</li>
-        <li><strong>The Kingdom of Shadow (Richard A. Knaak):</strong> Ureh legendás, "eltűnt" városának felfedezése (A Fény Városa), amely valójában egy démoni csapdába (Diablo átkába) esett. Később a Zakarum zsoldos, Kentril Dumon küzd meg a túlélésért.</li>
+        <li><strong>Legacy of Blood (Richard A. Knaak) és The Black Road (Mel Odom):</strong> Zsoldosok, elátkozott páncélok és a démoni fertőzés. Ezek a regények a halandó emberek szemszögéből mutatják be, mennyire kétségbeejtő egy démoni entitással szembeszállni.</li>
+        <li><strong>The Kingdom of Shadow (Richard A. Knaak):</strong> Ureh legendás, eltűnt városának felfedezése, amely valójában egy démoni csapda. Kentril Dumon zsoldoskapitány és társai az újjászülető város titkával küzdenek meg.</li>
         <li><strong>Moon of the Spider (Richard A. Knaak):</strong> A Nekromanta, Zayl (és beszélő koponyája, Humbart) utazásai és küzdelmei egy pókdémon-kultusszal, Astrogha újjászületésével kapcsolatban.</li>
         <li><strong>The Order (Nate Kenyon):</strong> A Diablo III előzményregénye, amely Deckard Cain és Leah utazásait követi végig, miközben próbálják újjáépíteni a Horadrim Rendet, és szembenéznek Belial rejtett ügynökeivel.</li>
         <li><strong>Storm of Light (Nate Kenyon):</strong> Közvetlen átvezető a Diablo III és a Reaper of Souls között. A Mennyeket sújtó politikai válságot és Tyrael Horadrimjainak megalakulását (köztük Jacob és Shanar) meséli el, miközben el akarják lopni a Black Soulstone-t az Angiris Council orra elől.</li>
@@ -20974,6 +20974,32 @@ export const wikiArticles: Record<string, any> = {
       <h2>Következmények</h2>
       <p>A menetelés pusztulása vezetett Brennor ostromához és Assur bukásához. Az esemény teljes regénybeli elbeszélése a [[demonsbane-ch1|Demonsbane első fejezetében|references]] kezdődik.</p>
     `
+  },
+
+  "the-lost-horadrim": {
+    id: "the-lost-horadrim",
+    title: "The Lost Horadrim – Az elveszett Horadrim",
+    subtitle: "A Lord of Hatred hivatalos előzményregénye",
+    category: "Könyvek és írások",
+    gameTag: "Diablo IV",
+    type: "book",
+    image: "",
+    description: "Matthew J. Kirby regénye a Horadrim Skovosra vezető útját, Lorath és Adreona kényszerű szövetségét mutatja be.",
+    relatedArticles: ["diablo-4-loh", "horadrim-order"],
+    content: `<h2>Bibliográfia</h2><p><strong>Szerző:</strong> Matthew J. Kirby<br><strong>Kiadó:</strong> Random House Worlds<br><strong>Megjelenés:</strong> 2026. április 21.<br><strong>ISBN:</strong> 9780425284896</p><h2>Spoilermentes összefoglaló</h2><p>A Horadrim rend fennmaradása veszélybe kerül, ezért Lorath vezetésével a távoli Skovos-szigetekre indulnak. Egy korábban eltűnt mágusexpedíció és egy elrejtett páncélterem nyomát követik, miközben az amazonok saját politikai válsággal és egy több irányból támadó élőhalott lénnyel néznek szembe.</p><p>Lorath és Adreona kapitány kénytelen szövetséget kötni, mert a szigeteken kibontakozó fenyegetés nemcsak Skovost, hanem egész Sanctuaryt veszélyeztetheti.</p><h2>Történeti jelentőség</h2><p>A kiadó hivatalosan a <em>Diablo IV: Lord of Hatred</em> előzményregényeként azonosítja. A pontos eseményszintű timeline-beillesztés a teljes kánonaudit után történhet meg; mesterséges évszámot a wiki nem rendel hozzá.</p><h2>Kánon és hozzáférés</h2><p>Hivatalosan licencelt Diablo-regény. A nyilvános wiki bibliográfiát és saját összefoglalást közöl; a teljes helyi példány az eszköz privát olvasójában kezelhető.</p><h2>Forrás</h2><p><a href="https://www.penguinrandomhouse.com/books/538199/the-lost-horadrim-diablo-iv-by-matthew-j-kirby/" target="_blank" rel="noopener noreferrer">Random House Worlds: The Lost Horadrim</a></p>`
+  },
+
+  "stay-awhile-listen-book-1": {
+    id: "stay-awhile-listen-book-1",
+    title: "Stay Awhile and Listen: Book I",
+    subtitle: "Az első Diablo fejlesztéstörténete",
+    category: "Könyvek és írások",
+    gameTag: "Háttéranyag",
+    type: "book",
+    image: "",
+    description: "David L. Craddock dokumentumkönyve a Blizzard North és az első Diablo létrejöttéről.",
+    relatedArticles: ["diablo-1-story"],
+    content: `<h2>Bibliográfia</h2><p><strong>Szerző:</strong> David L. Craddock<br><strong>Kiadó:</strong> DM Press<br><strong>Legendary Edition:</strong> 2017. július 17.<br><strong>ISBN:</strong> 9780988409910</p><h2>Összefoglaló</h2><p>A könyv a Blizzard és a Condor – később Blizzard North – alkotóinak munkáján keresztül mutatja be az első Diablo megszületését. Fejlesztői döntésekkel, technikai és üzleti háttérrel, valamint a stúdiók együttműködésével foglalkozik.</p><h2>Forrásérték és kánon</h2><p>Fejlesztéstörténeti háttérforrás, ezért nem Sanctuary világán belüli kánonmű és nem használható önmagában lore-események igazolására. A játék készítésére és az alkotók történetére vonatkozó kutatásban azonban releváns másodlagos forrás.</p><h2>Kiadások</h2><p>A szerző külön Legendary és rövidebb Narrative kiadást ismertet. A helyi fájl PDF-metaadata a Legendary Edition címet és David L. Craddock szerzőségét erősíti meg.</p><h2>Forrás</h2><p><a href="https://davidlcraddock.com/news/page/chronicles-craddock-2017/" target="_blank" rel="noopener noreferrer">David L. Craddock: Chronicles of Craddock 2017</a></p>`
   },
 
 };

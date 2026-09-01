@@ -44,7 +44,7 @@ interface BookSegment { id: string; title: string; after: string; prefixes: stri
 
 export const storyBookSegments: readonly BookSegment[] = [
   { id: 'sin-war-birthright', title: 'A Bűn Háborúja I. – Születési jog', after: 'sin-war-lore', prefixes: ['sin-war-birthright-ch'] },
-  { id: 'sin-war-scales', title: 'A Bűn Háborúja II. – A kígyó mérlegei', after: 'sin-war-lore', prefixes: ['sin-war-scales-ch'] },
+  { id: 'sin-war-scales', title: 'A Bűn Háborúja II. – A kígyó pikkelyei', after: 'sin-war-lore', prefixes: ['sin-war-scales-ch'] },
   { id: 'sin-war-prophet', title: 'A Bűn Háborúja III. – A fátyolos próféta', after: 'sin-war-lore', prefixes: ['sin-war-prophet-ch'] },
   { id: 'demonsbane', title: 'Démonok csapása', after: 'akarat-nahantu', prefixes: ['demonsbane-ch'] },
   { id: 'kingdom-of-shadow', title: 'Az árnyak királysága', after: 'diablo-1-story', prefixes: ['kingdom-of-shadow-ch'] },
