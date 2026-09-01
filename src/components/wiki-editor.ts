@@ -10,6 +10,7 @@ import { useAppStore } from '../store/appState.ts';
 import { createWorkIdentity, detectCreativeWorkType, type CreativeWorkType } from '../creative-work/model.ts';
 import { KnowledgeIngestionEngine, KnowledgePublishingEngine, type ImportMode, type TranslationProvenance } from '../sync/knowledge-sync.ts';
 import { findLatestWorkDocument, persistDocumentImport, persistSynchronizedImport } from '../sync/knowledge-sync-store.ts';
+import { pushCentralKnowledge } from '../sync/central-knowledge-client.ts';
 
 @customElement('wiki-editor')
 export class WikiEditor extends LitElement {
@@ -303,12 +304,15 @@ export class WikiEditor extends LitElement {
         const record = await KnowledgeIngestionEngine.createRecord({ universeId: universe.id, fileName: this.extraction.fileName, mediaType: this.extraction.mediaType, fileSize: this.uploadedFileSize, title: this.articleTitle, originalText: this.originalContent || this.content, ...(this.translationProvenance ? { translatedText: this.content, language: this.translationProvenance.sourceLanguage, translation: this.translationProvenance } : { language: 'hu' }), visibility: 'private', ...(previous ? { previous } : {}) });
         if (this.importMode === 'metadata-only' || this.importMode === 'knowledge-extraction' || this.importMode === 'document-sync') {
           const run = await persistDocumentImport(record, this.importMode);
-          this.syncStatus = `✅ A dokumentum regisztrálva (${run.importRunId}); a Wiki és a kánon tudásbázis nem módosult.`;
+          const central = await pushCentralKnowledge({ schemaVersion: 1, document: record, importRun: run, articles: [] });
+          this.syncStatus = central.status === 'synced' ? `✅ Központi Knowledge Store szinkronizálva (${central.revision}); a Wiki és a kánon nem módosult.` : `⚠️ Helyileg regisztrálva, központilag még nem: ${central.reason}`;
           alert(this.syncStatus);
           return;
         }
         const run = await persistSynchronizedImport(record, this.importMode, newArticles);
-        this.syncStatus = `✅ Knowledge Sync: ${run.changeSet.segmentChanges.filter(change => change.kind === 'added').length} új, ${run.changeSet.segmentChanges.filter(change => change.kind === 'changed').length} módosult, ${run.changeSet.segmentChanges.filter(change => change.kind === 'unchanged').length} változatlan dokumentumszakasz.`;
+        const central = await pushCentralKnowledge({ schemaVersion: 1, document: record, importRun: run, articles: newArticles });
+        const summary = `${run.changeSet.segmentChanges.filter(change => change.kind === 'added').length} új, ${run.changeSet.segmentChanges.filter(change => change.kind === 'changed').length} módosult, ${run.changeSet.segmentChanges.filter(change => change.kind === 'unchanged').length} változatlan dokumentumszakasz.`;
+        this.syncStatus = central.status === 'synced' ? `✅ Központi Knowledge Sync (${central.revision}): ${summary}` : `⚠️ Helyi Knowledge Sync kész: ${summary} Központi mentés még nem történt: ${central.reason}`;
       } else await persistUserArticles(newArticles);
       newArticles.forEach(article => { wikiArticles[article.id] = article; });
       registerUniverse(universe);

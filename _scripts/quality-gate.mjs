@@ -19,6 +19,7 @@ const commands = [
   ['npm', ['run', 'test:document-sandbox'], 'sandboxed document processing'],
   ['npm', ['run', 'test:ocr'], 'local OCR pipeline'],
   ['npm', ['run', 'build'], 'production build'],
+  ['npm', ['run', 'typecheck:netlify'], 'central Knowledge API type check'],
   ['npm', ['run', 'netlify:check'], 'Netlify deployment readiness'],
   ['npm', ['run', 'production:verify'], 'production readiness and final migration'],
   ['npm', ['run', 'test:e2e'], 'browser end-to-end tests'],

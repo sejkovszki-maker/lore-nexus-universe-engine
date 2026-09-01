@@ -40,9 +40,15 @@
     "netlify:check": "node _scripts/verify-netlify-readiness.mjs",
     "ai:evaluate": "node --experimental-strip-types _scripts/evaluate-ai-baseline.ts",
     "migration:finalize": "node _scripts/finalize-diablo-migration.mjs",
-    "production:verify": "node _scripts/verify-production-readiness.mjs"
+    "production:verify": "node _scripts/verify-production-readiness.mjs",
+    "knowledge:pull": "node _scripts/central-knowledge-cli.mjs pull",
+    "knowledge:push": "node _scripts/central-knowledge-cli.mjs push"
+    ,"typecheck:netlify": "tsc --noEmit --target ESNext --module NodeNext --moduleResolution NodeNext --skipLibCheck --types node netlify/functions/knowledge-sync.ts"
   },
   "dependencies": {
+    "@netlify/blobs": "^11.0.2",
+    "@netlify/functions": "^6.0.0",
+    "@netlify/identity": "^2.0.0",
     "@noble/hashes": "2.4.0",
     "ajv": "8.20.0",
     "ajv-formats": "3.0.1",
@@ -57,6 +63,7 @@
     "@cyclonedx/cyclonedx-npm": "6.0.1",
     "@playwright/test": "1.62.1",
     "@types/dompurify": "^3.0.5",
+    "@types/node": "^26.4.0",
     "autoprefixer": "^10.4.19",
     "fake-indexeddb": "^6.2.5",
     "fast-check": "4.9.0",
