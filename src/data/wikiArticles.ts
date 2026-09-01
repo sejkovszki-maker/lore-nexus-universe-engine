@@ -6777,451 +6777,7 @@ export const wikiArticles: Record<string, any> = {
       <p>"Már most is képesek rá. Menj, és ne mondj nekik semmit… még a mai este után sem…" – A kezei az övére vándoroltak, és amikor megérintette őket, Romuson végigfutott a pír. Megpróbált magához térni, az ajtókra pillantott, és csak akkor vette észre, hogy zárva vannak.</p>
       <p>– Azt akarom, hogy egyedül legyünk… hogy jobban tudjunk koncentrálni – magyarázta Serenthia. – Érted, hogy fontos a magánélet, ugye?</p>
       <p>"Igen… igen, úrnőm…"</p>
-      <p>A nő felkuncogott, amitől a férfi arca ismét elpirult. – És még valami, kedves Romus… – Ujjai összefonódtak az övével. – Soha ne szólíts "úrnőmnek"… – TIZENHÁROM</p>
-      <p>Uldyssiannak úgy tűnt, mintha valami hatalmas lélegzik.</p>
-      <p>A barlang, amelyben ő és Rathma álltak, olyan magasra nyúlt, hogy a felette képződő cseppkövek sokszorosára nőttek egy ember hosszánál. A cseppkövek is elég jól teljesítettek, zömök óriásokként emelkedtek ki a padlóból.</p>
-      <p>Uldyssian úgy érezte magát, mintha egy éhes fenevad szájában állna. A "lélegzés" csak fokozta ezt a nyugtalanító érzést.</p>
-      <p>A sztalaktitok és sztalagmitok voltak a hatalmas terem megvilágításának forrásai is, mivel mindegyik mélyéről kísérteties bíborvörös fény áradt, amelynek forrását csak elképzelni tudta. Bár hálás volt a ragyogásukért, ezek is hozzájárultak Uldyssian elsöprő nyugtalanságához.</p>
-      <p>– Eddig kockáztathatom meg, hogy fizikai úton eljussak minket – jegyezte meg Rathma szokásos távolságtartással. – Azt hiszem, sejted, miért. – De most, hogy kezdett túltenni magát a döbbenetén, hogy hol materializálódtak nemkívánatos társaival, az, amit Rathma közvetlenül az érkezésük előtt kijelentett, ismét magával ragadta Uldyssiant.</p>
-      <p>Lilith irányította az edyremet…</p>
-      <p>Újra dühbe gurult, és megragadta Rathmát a köpenye gallérjánál fogva. "Hogy értetted az előbb, amit mondtál?" – mordult fel Uldyssian, miközben megrázta a démonnő fiát. "Hogy történt? Hogyan tette?"</p>
-      <p>– Az anyámra utalsz, és arra, hogy hogyan bitorolta a követőidet – mondta a másik szükségtelenül. – Ravasz és jól védi magát, de fokozatosan arra jutottam, hogy valamikor megszállhatta Serenthia asszonyt, amikor minden szempontból eltűnt a szemed elől. Innentől kezdve egyszerű feladat volt… – Uldyssian fejét lüktetve durván elengedte Lilith fiát, miközben arra gondolt, hogy éppen mikor történhetett, hogy a démonnő elragadta a kereskedő lányát. Egy incidens jutott azonnal eszébe. Serenthia elment vízért, és ezúttal nem használta a képességeit, hogy megfigyelje. A buja növények mögé hajolt és… és egy pillanattal később elakadt a lélegzete.</p>
-      <p>És bármilyen bolond is volt, Uldyssian névértéken vette a lány aggodalmára adott válaszát. Elfelejtette Lilith kiforgatott szokásait…</p>
-      <p>– Serenthia… – suttogta. – Az nem lehet… nem halhat meg…</p>
-      <p>"És nem az."</p>
-      <p>Zavar, remény és bizalmatlanság küzdött Uldyssian felett. "Hogy érted ezt? Megint Ethon mester és a fia! Az a förtelmes boszorkány úgy viseli Serry bőrét, mint egy átkozott ruhát! Lemészárolta, majd megfosztotta a húsától!"</p>
-      <p>Rathma megrázta a fejét. "Nem… anyám nem tudja így álcázni magát abban a játékban, amit választott."</p>
-      <p>Egy ilyen technika, bár természeténél fogva határozottan démoni, csak korlátozott képességet tesz lehetővé. Elég ahhoz, hogy egy ideig becsapjon néhány papot vagy házszolgát, de nem hosszabb időre és szükség esetén. Ehhez Lilithnek óvatosabb, finomabb érintésre volt szüksége. Szó szerint eggyé kellett tennie magát és a nőt. Anyám olyan, mint egy kísérteties szellem, amely most a test minden mozdulatát irányítja, de a te Serenthiád még mindig benned van, de nagyon-nagyon mélyen alszik.</p>
-      <p>Uldyssian szíve, amely egy pillanattal korábban még úgy tűnt, mintha abbahagyta volna a dobogást, most új élettel vert. "Akkor jól van? Ha kiűzzük Lilith-et, Serenthia újra önmaga lehet?"</p>
-      <p>"Ezt nem ígérhetem, Diomédész fia. Nagyon erős álmot kell aludnia, hogy Lilith is hozzáférhessen az emlékeihez, és így jobban fenntarthassa a hazugságot."</p>
-      <p>Még ha anyámat el is menesztik, teljes őszinteséggel nem ígérhetem, hogy a barátodat visszahelyezik a helyére.</p>
-      <p>"Soha nem lett volna szabad elvinni Hashirból! Akkor azonnal mennem kell hozzá! Küldj el innen, vagy mutasd meg, hogyan kell magam csinálni!"</p>
-      <p>De Rathma rendíthetetlen maradt. "Ha abban a helyzetben hagytunk volna, amiből kivezettünk, akkor most nem lettél volna több egy héjnál, ami Lilith nevében cselekszik. Folyamatosan változtatja a terveit a pillanatnyi helyzethez igazodva, ezért nehéz megjósolni a következő lépését. Miután elvette a nő holttestét, és látta annak az ostoba támadását, aki Primus szerepét játszotta, nyilvánvalóan úgy döntött, hogy nem bízhat meg benned, hogy úgy vezess, ahogy ő akarja. Valójában anyám az oka annak, hogy az utolsó pillanatban ennyire legyengültél."</p>
-      <p>– Szóval, ehelyett ő kezében tartja Serenthia és a többiek felett a hatalmát – vágott vissza Uldyssian. – Úgy tűnik, a segítséged több gondot okoz nekem, mint amennyit ér…</p>
-      <p>Rathma egy enyhe fejbillentéssel nyugtázta a megjegyzést, hozzátéve: "Túl sokat hibáztam. Egyetértek."</p>
-      <p>De egyedül gyorsan a kezébe kerültél volna. Még van lehetőség orvosolni ezt, ha meghallgatod.</p>
-      <p>"Serenthia…"</p>
-      <p>"Örökre elveszett, ha megpróbálod elválasztani Lilithtől ebben a pillanatban. Bármennyire is visszataszítónak találom, anyámnak szabad kezet kell adni egy pillanatra. De csak egy pillanatra."</p>
-      <p>Egy ilyen aljas gondolat egyáltalán nem tetszett Uldyssiannak. El sem tudta képzelni, mi lesz Serenthiával és a többiekkel a démonnő gonosz irányítása alatt. Mégis el kellett ismernie, hogy Lilith-tel szembenézni monumentális feladat lesz; hogyan is akadályozhatná meg Serenthia megsebzését, vagy akár a megölését?</p>
-      <p>Rathma előremutatott, ahol egy folyosó nyílt a túlsó végén. "Mehetünk tovább, amerre kell." Ez volt az a fajta válasz, amire Uldyssian sajnos számított. Mégis, amennyire csak lehetett, úgy akarta, hogy a dolgok mostantól az ő akarata szerint alakuljanak. Ezt szem előtt tartva gyors léptekkel elment a másik mellett.</p>
-      <p>Rathma, aki magasabb és hosszabb lábú volt, gyorsan utolérte. Lilith fia ezután tartotta a lépést, talán azért, hogy Uldyssian ne érezze magát annyira irányítottnak.</p>
-      <p>Egy labirintusszerű folyosósorozaton haladtak át, melyet valaki aprólékosan kifaragott réges-régen. A folyosókon nem volt világítás, de Rathma előhúzta a tőrét, mondott egy szót azon a furcsa nyelven, amit korábban használt, és a penge hirtelen felcsillant. Már csak ennek köszönhetően is, Uldyssian végül egy lépést hátrált társa mögött.</p>
-      <p>Miközben úton voltak, Uldyssian nem tudta elhessegetni az érzést, hogy valaki vagy valami figyeli őket. Nem hozta szóba a témát Rathmának, mert félt a másik válaszától. Uldyssiannak már így is elég gondja volt.</p>
-      <p>– Kérlek, nagyon figyelj oda magadra… – A feketébe öltözött alak nem fejtette ki, mire gondol.</p>
-      <p>Uldyssian elhatározta, hogy továbbra is résen marad.</p>
-      <p>Mit tehetett volna mást? A légzési hang, amit először a külső barlangban hallott, nem volt olyan hangos, hogy lüktetett volna a fülében. Bármit is kerestek, valószínűleg a baljós hang forrása is az volt.</p>
-      <p>Aztán, mindössze néhány lépéssel Rathma figyelmeztetése után, egy intenzív hőhullám söpört végig Uldyssiant.</p>
-      <p>Mégis, a forróság belülről áradt szét benne, nem kívülről. Érezte, hogy felgyorsul a pulzusa, és minden aggodalma…</p>
-      <p>Serenthia, Mendeln, az edyrem és a többiek –</p>
-      <p>legalább ezerszeresére felerősödött. Megtorpant a lépése, és alig tudta elfojtani a nyögését.</p>
-      <p>Rathma előrement, mintha mit sem törődve a nehéz helyzetével. Ez csak még jobban felzaklatta Uldyssiant. Hogy lehet, hogy a bolond nem látja, hogy csak az idejüket vesztegetik, hogy leküzdhetetlen akadályokkal néznek szembe? Hogyan tehette…</p>
-      <p>Rathma figyelmeztetése eszébe jutott. Uldyssian remegve küzdötte le magáról a növekvő félelmeket, aggodalmakat... és hirtelen a benne lévő forróság elillant.</p>
-      <p>– Jobban vagy már? – kérdezte a csuklyás alak anélkül, hogy hátranézett volna.</p>
-      <p>"Jobban is figyelmeztethettél volna!" Rathma, továbbra is az előttük lévő ösvényre nézve, megrázta a fejét. "Nem, sajnos nem tehettem." Uldyssian vitatkozhatott volna ezzel, de ekkor egy halvány vörös fény derengett fel a folyosó túlsó végéből. Ugyanekkor egy üvegcsörömpöléshez hasonló hang visszhangzott a folyosón. Uldyssian odalépett Rathma mellé, aki lelassított.</p>
-      <p>"Maradj a közelemben, amikor belépünk a kamrába. Nem teljesen szabad az utunk."</p>
-      <p>– Még neked sem?</p>
-      <p>"Ezt a helyet apám építette." Szavait egy újabb hangos csattanás szakította félbe.</p>
-      <p>Uldyssian óvatosan engedelmeskedett. A pulzusa ismét felgyorsult, és bár tudta, hogy köze van a távolabbi eseményekhez, nem tudta megnyugodni.</p>
-      <p>"Mi az?" – kérdezte végül Uldyssian.</p>
-      <p>"A teremtésünk és a lebontásunk. Inarius végső igája az emberiség számára. Majd meglátod…" Ahogy közelebb értek, a bíbor csillogás – és a lassú, de szüntelen légzés – még hangsúlyosabbá vált.</p>
-      <p>Bármi is volt a kamrában, olyan fényesen csillogott, mint a nap. Rathma motyogott valamit, és a tőre eltompult.</p>
-      <p>Lilith fia azonban nem tette el a fegyvert.</p>
-      <p>– Vigyázz… – figyelmeztette Rathma, miközben a folyosó végére értek. – Lassan lépj meg minden lépést. Együtt léptek be az új barlangba. A fény azonban azonnal olyan vakítóvá vált, hogy még akkor sem látott a saját lábán túlra, amikor Uldyssian eltakarta a szemét.</p>
-      <p>És akkor – "Támadás alatt állunk!" Rathma figyelmeztetése alig érkezett időben. Egy magas hangú sikoly majdnem megsüketítette Uldyssiant. Ösztönösen cselekedve azonnal egy védőkorlátot emelt maga fölé.</p>
-      <p>Nehéz puffanás és dühös sikoly hallatszott.</p>
-      <p>Uldyssian szárnycsapkodást hallott. Ezt gyorsan kaparászás és még több visítás követte. Több ocsmány teremtmény is támadta.</p>
-      <p>Uldyssian megpördült, hogy az alagút felé nézzen.</p>
-      <p>Ettől alig látott. A szeme sarkából megpillantott egy bőrszerű szárnyat.</p>
-      <p>Máshonnan Rathma kiáltott. Uldyssian nem értette, ezért azt feltételezte, hogy az ősi alak valamiféle varázslatot űz. Ez eszébe juttatta, hogy állítólag neki is fantasztikus képességei vannak. A Kígyó Pikkelyeinek Esküdözése 300</p>
-      <p>Uldyssian a bajsza alatt hallgatózott a következő támadó után.</p>
-      <p>Csupán a bal oldaláról hallatszó szárnyak hangjára volt szüksége. Kezével abba az irányba nyújtotta a kezét.</p>
-      <p>Bármi is repült felé, újabb sikolyt hallatott. Akár a dobhártyája széttörésére szánta, akár valami más okból, Uldyssian most a lény ellen használta a kiáltást. Visszaverte a sikolyt, hagyva, hogy az eredeti intenzitásának többszörösével visszacsapjon.</p>
-      <p>Ellensége irányából újabb sikoly hallatszott, majd egy test dübörgése egy sziklának, amit Uldyssian sziklának vélt. A sikoly folytatódott, de fájdalmas hangon. Dübörgés kísérte a kiáltást, mintha a szárnyas bestia görcsöket kapott volna.</p>
-      <p>Rathma valahogy átvágott a sikolyok sokaságán. "Uldyssian! Vissza a hangomra!" – engedelmeskedett Uldyssian. Egy ideges lélegzetvétellel később ütközött azzal, amit remélt, hogy a sápadt alaknak látott.</p>
-      <p>Az elefántcsont tőr felvillant Uldyssian fájdalmas szeme előtt. Mielőtt reagálhatott volna, meghallotta, hogy Rathma valamit kántál.</p>
-      <p>A tőr felvillant, megvakítva Uldyssiant. Azon tűnődött, vajon végig becsapták-e, hogy Rathma Lilith kérésére hozta ide, hogy még egyszer utoljára megalázhassa, mielőtt meghal.</p>
-      <p>Ám a vakság pillanata után Uldyssian látása nemcsak visszatért, hanem normálissá vált…</p>
-      <p>valami, amit még ő, a képességeivel sem volt képes elérni. Most már elég jól látott ahhoz, hogy kiforduljon az alagútból.</p>
-      <p>És amit látott, az iszonyatosan megremegtette.</p>
-      <p>A barlang, amelyben állt, eltörpült az előző mellett.</p>
-      <p>Mélyen alul süllyedt, ugyanakkor magasan felül is emelkedett.</p>
-      <p>Rathma és ő egy széles, kőből faragott ősi emelvényen álltak. Több méter hosszú volt, és a végei mindkét oldalra nyúltak. Uldyssian rájött, hogy ha a lények sokkal jobbra lökték volna, akkor a végzetébe zuhant volna.</p>
-      <p>Egy alacsony fal szegélyezte a platformot, a sarkoknál pedig apró, lépcsőpiramisokhoz hasonló építmények álltak. Mindegyik tetejükön apró – és ebben a teremben jelentéktelen – fény világított.</p>
-      <p>A kamra színe Uldyssiannak egy élő, vérben úszott szívre emlékeztette. Csak egy pillanatig tanulmányozta ezt a vonást, mert ami most a hely középpontjában állt, az követelte meg a teljes figyelmét.</p>
-      <p>de egyik sem volt jóval száz lábnál magasabb – talán még kétszáznál is magasabb, mivel az alap túl mélyen volt ahhoz, hogy látható legyen –, több monolitból álltak, amelyek tucatnyi különböző irányba nyúltak ki. Az emlékezetében felidézett képződményekkel ellentétben ennek a behemótnak kemény volt a külseje, csipkézett megjelenése és ijesztő bíborvörös színe.</p>
-      <p>A gigantikus képződmény minden egyes lapja ezernyi apró szikrázót rejtett. Belülről nemcsak az a fény áradt, amely annyira perzselte Uldyssian szemét, hanem még mélyebbek, többszínű villámok villanásai is. A hatalmas kristály fénye nemcsak a barlang teljes hosszában és szélességében terül el – amely maga is elég hatalmas volt ahhoz, hogy Seram faluját és környező területeit legalább hússzorosan elférje benne –, hanem úgy tűnt, mintha átszivárogna a kőfalakon is.</p>
-      <p>Minden egyes villámcsapással lüktetett a formáció, és Uldyssian végül megértette a villám forrását.</p>
-      <p>"lélegző."</p>
-      <p>Újabb fülsüketítő, roppanó hang hallatszott.</p>
-      <p>Uldyssian felnézett, és most először vette észre, hogy a kristály kisebb töredékei – "kisebbek", mivel mindössze kétszer-háromszor akkorák voltak, mint ő – látszólag véletlenszerű irányokban lebegtek a barlang nagy részén. A durva zaj két ilyen darab ütközéséből származott. A törött töredékek szétszóródtak – majd különböző mintákat vettek fel.</p>
-      <p>Mindezt Uldyssian mindössze néhány másodperc alatt felhörpintette.</p>
-      <p>Aztán egy sokkal közvetlenebb és rendkívül groteszk látvány vonta el Uldyssian figyelmét a lenyűgöző kristályról. Négy szárnyas fúria, nyúzott kutyákra emlékeztető fejjel, csapott le rá felülről különböző pontokról. A teremtményeknek vad fogaik és hosszú, széles füleik voltak. Kövér orruk volt, széles orrlyukakkal. A fejükből csak szemek hiányoztak. Még ott sem voltak rések, ahol a szemeknek kellett volna lenniük. Majdnem olyan volt, mintha bármi is teremtette őket, szándékosan lemondott volna ezekről.</p>
-      <p>Talán ez nem is állt messze az igazságtól. Mire jók voltak a szemek ezen a helyen, ahol csak Rathma mágiájának köszönhetően volt képes Uldyssian bármit is látni? Jobban hasznosak voltak a hatalmas fülek és az orrlyukak, amelyekkel ki tudtak rúgni minden bejutott zsákmányt.</p>
-      <p>akár csak egyszer is biztosan tátongó, veszélyes sebet ejtene velük.</p>
-      <p>Uldyssian a tenyerébe fogta a kezét. Kék energia gyűlt össze a tenyerében. A legközelebbi ördögre hajította.</p>
-      <p>A kék energia elnyelte célpontját… és egy puffanásban eltűnt. A szárnyas düh megrázta a fejét, döbbenten, de egyébként zavartalanul. Biztosan nem vált hamuvá, ahogy Uldyssian feltételezte.</p>
-      <p>A kudarc megdöbbentette, és alig tudott időben magához térni, hogy újjáépítse a pajzsot. Még az sem volt olyan erős, mint általában, és mivel hárman – majd négyen – támadták, Uldyssian izzadni kezdett.</p>
-      <p>Természetesen Rathma adta meg a választ.</p>
-      <p>Messzebbről Lilith fia – hatalmas köpenye ugyanolyan védelmet nyújtott neki, mint Uldyssian védőkorlátja – kiáltotta: "Az erőd itt elcsillapodott! Ez a kristály hatása! Jobban kell koncentrálnod, bármit is próbálsz!"</p>
-      <p>Uldyssian átkozta a másikat, amiért ezt nem mondta el neki, mielőtt beléptek, és jobban a korlátra koncentrált. Ekkorra már hét bizarr bestia röpködött körülötte, mindegyik a húsát akarta széttépni. Közelről látta, hogy semmilyen igazi testük nem volt. Csak egy összeaszott törzs maradványai és valami, ami talán csökevényes lábak lehettek. A lények lényegében szárnyakból és fejből álltak. Uldyssian azon tűnődött, vajon esznek-e egyáltalán... aztán úgy döntött, hogy erre a kérdésre inkább nem szeretne választ kapni.</p>
-      <p>Szájak csattantak az arcába, néha sokkal közelebb, mint szerette volna. Uldyssian, aki a támadói ádáz erőfeszítései ellenére is erőltette magát, hogy megnyugodjon, azon tűnődött, hogyan védhetné meg magát a legjobban.</p>
-      <p>Amit halálos támadásnak vélt, csúfosan kudarcot vallott. Uldyssiannak jól kellett döntenie, mert amikor lecsap, a pajzsa is meggyengül. Még regeneráló képességei ellenére is kételkedett benne, hogy sokáig túlélné, ha akár egyetlen szörnyeteg is lecsapna rá.</p>
-      <p>Végül csak egyetlen stratégia jutott eszébe, egy korábbi módszerének egy variációja.</p>
-      <p>Uldyssian kihúzta magát, vett egy mély lélegzetet… és fütyült.</p>
-      <p>Saját fülének – és remélhetőleg Rathma fülének is –</p>
-      <p>Csupán egyetlen hosszú, hangos hangot adott ki. Biztos volt benne, hogy erőfeszítéseit ismét elfojtja a hatalmas kristály, Diomédész fia akaratának minden erejét – talán még többet is – a sípba összpontosította, amennyit csak mert – talán még többet is.</p>
-      <p>Miközben ezt tette, egy szárny súrlódását érezte a vállán…</p>
-      <p>De a következő pillanatban, ahogy mintha egy karom érintette volna a karját, Uldyssian körül minden szárnyas szörnyeteg vérfagyasztó sikolyt hallatott. Elhúzódtak tőle, majd megpördültek, mintha teljesen megőrültek volna.</p>
-      <p>Kettő azonnal összeütközött, de ahelyett, hogy csupán szétváltak volna, egymásnak feszültek, ahogy az emberrel is történt.</p>
-      <p>Egy másik a barlang sziklás falának csapódott, majd újra és újra megismételte a balesetet, míg végül a padlóra zuhant.</p>
-      <p>Három másik egyszerűen a földre rogyott, ahol sikítva rázták a fejüket, mintha megpróbálnának valamit eltávolítani.</p>
-      <p>– Nem hittem volna el, ha nem láttam volna! – suttogta Rathma a fülébe. A csuklyás alak Uldyssian mellé lépett. – Amit tettél, annak pont ezen a helyen nem lett volna szabad lehetségesnek lenned.</p>
-      <p>"Csak megfogadtam a tanácsodat. Csak jobban koncentráltam."</p>
-      <p>Működött.</p>
-      <p>"Nem lett volna szabad… főleg nem ilyen mértékben."</p>
-      <p>– Nézz körül, Uldyssian ul-Diomed. Nézz körül, és lásd meg az igazságot. – Uldyssian engedelmeskedett… és szeme elkerekedett kétségbeesett kísérlete eredményétől.</p>
-      <p>Többen dühösen küzdöttek egymással, míg mások a földön vadul rángatóztak. Legalább ketten olyan mértékben harapták magukat, hogy haláluk biztosan fennállt.</p>
-      <p>Aztán két légiharcban részt vevő katona lezuhant. Egy pillanattal később a padlón lévők közül néhányan megdermedtek. Ahogy Uldyssian körülnézett, a barlang lakói egyenként egyszerűen a földre zuhantak... és meghaltak.</p>
-      <p>"Én nem… én nem értem…"</p>
-      <p>Rathma vállat vont, mintha ennek bárki számára is tökéletesen érthetőnek kellene lennie. Egy vörös sebhely éktelenkedett az állán, és egy szakadás a ruháján, pont ott, ahol Uldyssian szerint a szívének kellett volna lennie. A lények közelebb kerültek az ősi lény megöléséhez, mint Diomédész fiához. "Nyilvánvalóan emlékeztél a denevérekhez való hasonlóságukra. Azt képzelted, hogy ha hangosan fütyülsz, és a bennük rejlő erőt felhasználod a felerősítésre, legalább megsebesítesz vagy összezavarsz néhányat… ugye?"</p>
-      <p>"Igen… de… azt hittem, hogy az előttem lévőkkel talán sikerülni fog, de…"</p>
-      <p>– Diomed, nem vagy olyan, amilyennek lenned kellene – nézett hátra a válla fölött. – És ennek az oka biztosan veled van összefüggésben…</p>
-      <p>Lilith fia nem másra utalt, mint a hatalmas, fenyegető kristályra. Még a körülöttük elpusztult denevérlények ellenére is Uldyssian nem tudta megállni, hogy ne bámulja újra lenyűgözve. Soha nem tudta volna elképzelni, hogy ilyen létezik.</p>
-      <p>– Mi az? – kérdezte végül. – Miért van itt? – Rathma a lebegő óriásra mutatott. – Ez az oka annak, hogy évszázadok óta nem emelkedett fel nephalem vagy bármi hasonló, barátom. Ez az oka annak, hogy neked és a tieidnek nem kellene létezniük! Azoknak az angyaloknak és démonoknak az átka előtt állsz, akik Menedéket kovácsoltak! A Világkő előtt állsz… – A név puszta hallatán is önkéntelenül is borzongás futott végig Uldyssianon, mintha valahol benne mindig is tudnia kellett volna erről a hihetetlen ereklyéről… tudnia kellett volna róla, és jogosan félnie kellett volna a létezésétől.</p>
-      <p>Még Rathma varázslatának segítségével is nehéz volt közvetlenül látni a Világkövet. Uldyssian rájött, hogy a legjobban úgy figyelheti meg, ha kissé oldalra pillant. Még akkor is úgy csillogott, mintha száz vörös napot tükrözne vissza.</p>
-      <p>"Inarius betegségnek tartotta a nephalemet, szégyenfoltnak arra, ami ő volt. Számára soha nem lettünk volna azok. Csak a többiek tiltakozása miatt egyezett bele, hogy fontolóra vegye a sorsunkat, ahelyett, hogy eltörölne minket a létezésből. Úgy érzem, hogy akkor is úgy döntött volna, hogy végigviszi eredeti szándékát, ha anyám nem gyilkolja meg a többi menekültet. Ez a tett mindent megváltoztatott. Ha Inarius utána kiirtott volna minket, akkor teljesen egyedül maradt volna, amit még ő sem bírt elviselni. Mégis, a nephalem gondolata undorította, és ezért fogta a Világkövet – amelyet nagyrészt azért hoztak létre, hogy elrejtse a Menedéket a Magas Mennyek és az Égő Pokol szeme elől –, és megváltoztatta a rezonanciáját."</p>
-      <p>Uldyssian megpróbálta a lehető legjobban követni Rathma történetét, de az utolsót egyáltalán nem értette.</p>
-      <p>"Mit jelent ez? Mit csinálna?"</p>
-      <p>"Ez azt jelenti, hogy ezen birodalom titkosítása mellett a Világkő egy folyamatos és finom tompító folyamatba is kezdett. A nephalem minden egyes következő generációja sokkal gyengébb lett az előzőnél, mígnem nagyon rövid időn belül a következő szülöttek minden képességtől megfosztották magukat. Hamarosan az első generációból már csak néhányan…"</p>
-      <p>Én és Bul-Kathos, hogy csak a nyilvánvalót említsük, túléltük.</p>
-      <p>Elődeink ajándékait – vagy átkát – elfelejtettük.</p>
-      <p>"Inarius elkezdte átalakítani Szentélyt a saját megelégedésére… és vasuralmának megfelelően." Uldyssian érezte a Világkő kisugárzását, és nem kételkedett benne, hogy képes teljesen elfojtani a hatalmát. De miért nem teszi ezt most?</p>
-      <p>– Ez Lilith műve – jelentette ki halkan Rathma.</p>
-      <p>"Olvasod a gondolataimat?"</p>
-      <p>A démonnő fia megrázta a fejét. "Érzékeléseket olvasok…érzékeléseket. Majdnem olyan, mint a gondolatok olvasása, csak sokkal pontosabb, mert a gondolatok tele lehetnek hazugságokkal." Uldyssian ismét zavartan fordult vissza a témához. "Mit tett?"</p>
-      <p>"Anyám egyértelműen ismét megváltoztatta a Világkő rezonanciáját, így most a hatása minimális, és többé-kevésbé az Arreat-hegyre korlátozódik, ha egyáltalán az. Még a jelenlétében is képes voltál legyőzni. Mivel a Világkő már nem jelentett akadályt, a nefalem erőket lehetővé tevő természetes folyamat most már virágozhatott. Te ennek az eredménye vagy… legalábbis az első." Minél közelebb állt hozzá, Uldyssian annál jobban érezte a Világkő kisugárzását. Ezerszer nagyobbnak képzelte el őket… nem, ezerszeresnek.</p>
-      <p>Rathma szavainak sokkal több értelme volt. Ilyen hatalmas erőkkel söpörve végig a Szentélyen, az ő fajtája biztosan soha nem jöhetett volna létre. Csak Lilith közbelépése változtatott ezen.</p>
-      <p>Hirtelen megátkozta az ereklyét, gyűlölve, amiért elfojtotta minden ember lehetőségét, gyűlölve, amiért elmulasztotta ezt a kötelességet, és őt és követőit a jelenlegi kétségbeejtő helyzetükbe kényszerítette.</p>
-      <p>Aztán eszébe jutott valami. "Rathma… meg lehetne ezt még egyszer változtatni?"</p>
-      <p>"Egy kérdés, amin sokat töprengtem, és ez az igazi ok, amiért itt vagyunk, Diomédész fia." A fekete köpenyes alak a Világkő felé intett. "Mit kérnél tőle? Visszatérnél ahhoz, aki valaha voltál? Valahogy hatalmasabbá tennéd magad? Mondd meg, uldyssian ul-Diomed…"</p>
-      <p>Uldyssian kétségbeesetten szerette volna megcáfolni mindazt, ami vele történt, hogy valahogy visszatérjen ahhoz a naphoz, mielőtt Lilith belépett az életébe és elkezdte a megpróbáltatásait. Mégis kételkedett benne, hogy akár a Világkő is képes lenne erre. Legfeljebb megfoszthatná tőle és a többiektől a nephalem ajándékokat. Sajnos azonban nem szüntethette volna meg a Háromság fenyegetését, amely most már biztosan eltökélt volt, hogy szembeszálljon azokkal, akik dacolnak akaratával és létezésével. Sőt, kételkedett abban is, hogy Inarius angyal is hagyná a dolgokat úgy, ahogy kellene.</p>
-      <p>Ami csak egyetlen lehetőséget hagyott…</p>
-      <p>"Tényleg megváltoztatható a Világkő, hogy erősebbé váljunk?"</p>
-      <p>"Nem, nem közvetlenül, de megváltoztatható úgy, hogy ösztönözze az adottságok fejlődését. Ez lényegében ugyanazt eredményezné, mint amit te is szeretnél."</p>
-      <p>Uldyssian számára csak ez számított. "Mondd meg, mit tehetek."</p>
-      <p>"Ez a Világkő. Ahhoz, hogy elérd, amit akarsz, gondolnod kell rá. A kristály vagy elfogadja az akaratodat, vagy elutasítja."</p>
-      <p>"Ilyen egyszerű?"</p>
-      <p>Rathma grimaszolt. "Nem… cseppet sem." Uldyssian, akit megunt társa zavaros és gyakran ellentmondásos kijelentései, teljes figyelmét a hatalmas kristályra fordította. A Világkő szinte hipnotikusan lüktetett.</p>
-      <p>Gondolnod kell rá… – mondta Rathma. Uldyssian megpróbálta kitisztítani a gondolatait, majd arra koncentrált, amit kívánt.</p>
-      <p>Erősebbnek kell lennünk – mondta a Világkőnek. Gyorsabban kell növekednünk az erőinkben…</p>
-      <p>A Világkő külsőleg semmilyen módon nem változott, de Uldyssian érezte, hogy valami elkezd belül változni a vizsgálódására reagálva. Megismételte vágyát, hangsúlyozva a nagyobb hatalom iránti igényét, és azt, hogy gyorsan.</p>
-      <p>De a – rezonancia? – enyhe eltolódása nem ment tovább. Bármennyire is próbálkozott, Uldyssian nem tehetett többet.</p>
-      <p>Bár akaratának minden egyes darabkáját a Világkőre erőltette, végül ő volt az, aki zihálva és vereséget szenvedve hátrált meg.</p>
-      <p>Rathma kesztyűs kezével megragadta a karját. Izzadva és dühösen Uldyssian dühösen meredt társára.</p>
-      <p>Lilith fia arcán a teljes megdöbbenés tükröződött.</p>
-      <p>Ettől Uldyssian egy pillanatra tátva maradt a szája. Még soha nem látott ilyen nyers érzelmeket megnyilvánulni Rathmától.</p>
-      <p>"Mi a baj?" – sikerült végül kinyögnie. "Veszélyben van?"</p>
-      <p>– A Világkő… – suttogta a sápadt alak szinte tiszteletteljesen. Összehúzott szemei Uldyssianról a csillogó ereklyére, majd vissza az emberre cikáztak. – Látni akartam… de sosem számítottam rá… ez csak egy elmélet… nem több annál… nem több…</p>
-      <p>"Ne a szemeddel nézz… nézz az elméddel és a lelkeddel."</p>
-      <p>Uldyssian összeráncolt homlokkal meredt ismét a Világkőre, de ezúttal más érzékszerveivel is mélyebben vizsgálta. Még mindig nem talált semmi különbséget; a Világkő ugyanúgy visszhangzott, mint korábban, még csak a legcsekélyebb mértékben sem…</p>
-      <p>Nem…volt egy apró változás, olyan bonyolult, hogy nem meglepő, hogy korábban nem vette észre. De egy ilyen változás aligha okozhat bármilyen érdemleges hatást…vagy mégis?</p>
-      <p>"Végül is tettem valamit. Nem sokat. Lesz ennek bármi jelentősége?"</p>
-      <p>Rathma kiadott egy hangot, majd mormolta: "Figyeld meg a tárgy szerkezetét, Uldyssian. Figyeld meg a legmélyét. Meg tudod csinálni…"</p>
-      <p>Uldyssian jobban koncentrált… és azon kapta magát, hogy mélyen a Világkőbe mered. Látta a finom, kristályos mintázatot, amely a fantasztikus képződményt alkotta, és csodálta a legapróbb részleteket. Az apró, ötoldalú szegmensek végtelenül sokasodtak, és alkották a kő legalapvetőbb szerkezetét. Uldyssian nem tudta nem csodálatát kelteni a tökéletességükben. Az, hogy a tárgyat teremtették, nem pedig természetes képződmény volt, annyira megdöbbentette, hogy egy pillanatra el is felejtette, milyen bajt okozott neki.</p>
-      <p>Mélyebbre hatolt az elméjében, több részletet látott –</p>
-      <p>Mivel a Világkő többi része egy ötoldalú mintázatból állt, ennek az egy résznek hat éle volt.</p>
-      <p>Ami tökéletes volt, most hibás volt... lehetetlenül.</p>
-      <p>Azonnal visszavonult. "Lilith munkája…"</p>
-      <p>– Nem, Diomédész fia… a te munkád. – Rathma tekintete a férfiba szegeződött. – Anyám egy varázslattal megváltoztatta a rezonanciát, ami a kimenetelt befolyásolta, de a szerkezetet nem. Azt várom, hogy te is ugyanezt teszed, vagy valószínűbb, hogy elbuksz. Kétségbeesett lehetőség volt, de méltónak éreztem magam rá. Azt hittem, okkal vetettek ide a Világkő közelébe…</p>
-      <p>"Véletlen volt, hogy ide kerültem."</p>
-      <p>– Még nem jöttél rá, hogy nincsenek véletlenek? – felelte a lepelbe burkolt alak. – Nem tudtam, mire számítsak, de erre biztosan nem. Uldyssian ul-Diomed, megváltoztattad a Kígyó Pikkelyeinek lényegét 316</p>
-      <p>"Világkő, valami, aminek nem szabadna lehetségesnek lennie…" – Rathma összevonta a szemöldökét. – "És akár jót, akár rosszat jelent ez a reményeinkre nézve, attól tartok, csak várhatunk… és imádkozhatunk…" TIZENÉGY</p>
-      <p>Achilios megmozdult. Nem ébredt fel, mert maga az ébredés gondolata is alvásra utalt, ami az ő állapotában lehetetlen volt számára.</p>
-      <p>Mégsem volt eszméleténél. Ahogy az íjász lassan kitolta az arcát a sáros dzsungel talajából, azon tűnődött, mi történhetett vele. Achilios emlékezett rá, ahogy a Háromság démoni szolgájának csápjai elkezdték széthúzni, de utána minden üres volt.</p>
-      <p>A szörnyetegre gondolva talpra ugrott. Achilios hálát adott, hogy a gyermekkorában hallott hátborzongató történetek ellenére legalább egy nagyon fürge halott ember. Úgy gondolta, hálásnak kellene lennie a sárkánynak ezért, de bizonyos szempontból az, hogy ilyen közel volt az élethez, és mégis mégsem, keserű hidegséget hagyott benne. Az, hogy közel volt az élethez, nem ugyanaz, mint az élet.</p>
-      <p>Aztán eszébe jutott, hogy mit is csinált valójában a dzsungelnek ebben a részében. Achilios megfordult, hogy szembenézzen Hashirral.</p>
-      <p>De a városnak a tartózkodási helyéhez legközelebb eső széle romokban hevert.</p>
-      <p>Pislogás nélkül bámult – egy újabb szokása volt az élőknek, amire már nem volt szüksége –, próbálva megfejteni, mennyi idő telt el a pusztulás óta. A kapuk, a körülöttük lévő falak… azokat mintha óriási ököllel zúzták volna össze. Bent a hármas torony közül kettő megsemmisült, az egyik már nem is látszott az ő szemszögéből. Az egyetlen megmaradt torony – Dialoné, ha Achilios nem tévedett – veszélyesen megdőlt. A tornyok alatti területről füstfelhő szállt fel.</p>
-      <p>Ez a pusztítás legalább egy, talán két napig tartott, becsülte Achilios. Remélhetőleg nem tovább.</p>
-      <p>De még ez is túl hosszú idő volt. Nem lesz itt. Első adandó alkalommal utasította volna Uldyssian követőit… de hová? Már nem értette a tervét, nem mintha bármi is számított volna neki mostanában. A vadásznak csak egy dolog volt fontos, függetlenül attól, hogy Trag'Oul vagy Rathma mit állítana az ellenkezőjéről.</p>
-      <p>Serenthiát – az ő Serenthiáját – megszállta az átkozott démonnő.</p>
-      <p>De ez Serenthia megölését is jelentené.</p>
-      <p>Annak ellenére, hogy tudta, mit fognak ragaszkodni hozzá, Achilios úgy érezte, kell lennie egy másik megoldásnak. Serenthia nem halt meg, a húsát démoni mágia lepattogtatta olyan szépen, hogy Lilith parádézhasson benne. Nem, a szeretett nő még mindig ott volt, bár mélyen aludt. Valahogy fel kellett ébreszteni, hogy belülről harcolhasson Lilith-tel, míg mások kívülről a démonnővel harcolnak.</p>
-      <p>Valahogy…</p>
-      <p>Először is, meg kell találnod, te idióta! Fogalma sem volt, mekkora előnyük van Uldyssian követőinek, vagy hogy vajon ugyanarra a célra tartanak-e, mint amerre eredetileg szánták. Achilios csak azt tehette, amihez a legjobban értett: követni a célpontját.</p>
-      <p>ami még rosszabb, kétségbeesetten próbálta eloltani a máglya tüzét. Egyetlen találkozása az egyik helyi lakossal elég volt ahhoz, hogy Achilios óvatos legyen bármilyen ismétlődéssel szemben. Még lábon is felismerhetően halott volt. Ugyanilyen frusztráló volt az a tény, hogy összeesése miatt több kosz rakódott a testére, mint valaha. Egy gyors kísérlet, hogy lesöpörje a koszt, majdnem olyan hiábavalónak bizonyult, mint az eredeti bevonat eltávolítása. Úgy tűnt, a talaj általánosságban úgy vélte, hogy Achilios hozzá tartozik, és nem adta fel a kísérletet, hogy újra eltemesse.</p>
-      <p>Nem engedte volna ezt meg, amíg mindent meg nem tett szerelméért.</p>
-      <p>Árnyékként suhant át a vadász Hashir körüli dzsungelen. Kétszer is összefutott néhány lakóval, de azok lassabb eszűek voltak hozzá képest, így Achilios könnyedén elkerülte a lebukást. Végül sikerült elérnie a romos kapun túli területet, ahol remélte, hogy nyomokat talál a keresett személyekhez.</p>
-      <p>Ez valójában könnyebbnek bizonyult, mint gondolta. Az edyrem ismét megszaporodott, olyannyira, hogy az általuk hátrahagyott nyom olyan volt, mint egy kígyóorrú óriási állatok csordája, amelyeket az alföldiek használtak házimunkához, vagy szinte lovagoltak rajtuk. Még egy vak ember is követni tudta volna a tömeges kivándorlást, amellyel szembesült.</p>
-      <p>De ami meglepte, az az volt, hogy nem azon az útvonalon tartottak, ami a főtemplomba vitte volna őket, ahogy kellett volna. Ehelyett még délebbre tértek, egy olyan területre, amiről semmit sem tudott.</p>
-      <p>Vajon mire készült Lilith?</p>
-      <p>Akhiliosz továbbment. Bármi is volt az, végső soron mindegy volt. Utoléri őket, bárhová is utaznak.</p>
-      <p>Remélhetőleg addigra már lesz valami terve…</p>
-      <p>Visszatérnek…</p>
-      <p>Ez a három szó jobban felvidította Mendelnt, mint azt el tudta volna képzelni. Felnézett a sárkány által rábízott feladatról, és megtanulta, hogyan összpontosítsa még jobban akaratát a lenyűgöző tőr segítségével. Meglepően jól ment minden. Ámulatba ejtette a szerszámmal való bánásmódjának veleszületett képessége, különösen annak fényében, hogy milyen rövid ideje volt az övé.</p>
-      <p>És hirtelen Uldyssian és Rathma álltak előtte. Testvére ugyanolyan megkönnyebbültnek tűnt, mint ő. Diomedész fiai megölelték egymást, miközben Rathma kőarcúan bámulta őket, és a mennyei kígyóból derű áradt. Az élet számos képe folyamatosan felvillant és eltűnt a látóteréből, ahogy a teremtmény hullámzott.</p>
-      <p>Ne vesd meg ennyire a családi szeretetet, jó Rathmám – jegyezte meg Trag'oul, hogy mindenki érezze.</p>
-      <p>"Nem a legjobbak a tapasztalataim ezzel, és ezt tudnod kell."</p>
-      <p>Mendeln és Uldyssian elváltak. Uldyssian első kiáltása ez volt: "Serenthia… Lilith megszállta őt… ez Hashir előtt történt…"</p>
-      <p>"Ahogy én is értem, bár először attól féltem, hogy őt is megölték, mint Ethon mestert." Mendeln egy rövid, frusztrációval teli pillantást vetett a csillagos égre az átmeneti sokk miatt. Serenthia jelenlegi helyzete azonban nem volt sokkal jobb. "Meg kell találnunk a módját, hogy kiűzzük a démont…"</p>
-      <p>– Ez nem lesz ilyen egyszerű – vágott közbe Rathma. – Régóta tudom, milyen erősen ragaszkodik anyám ahhoz, ami hasznára válik… ahogy talán te is emlékszel, Uldyssian ul-Diomed.</p>
-      <p>"És kinek a hibája ez?" – ordította Mendeln testvére.</p>
-      <p>Öklével a csillagok felé rázta a tekintetét. "Ki vitt el engem? Ki akadályozott meg abban, hogy hozzá menjek?"</p>
-      <p>Ha azonnal visszatértél volna abban az állapotban, amiben voltál, könnyen leigázott volna…</p>
-      <p>– Igazat mond – tette hozzá Rathma. – Már így is megfertőzött téged a sötétségével. Ha akkor visszatérsz Lilithhez, az csak arra lett volna jó, hogy befejezze a varázslatát.</p>
-      <p>Mendeln pontosan értette, mit mondanak, de úgy érezte, meg kell védenie testvérét. "Akkor miért nem tehettünk volna többet?"</p>
-      <p>"Egyensúlyban marad." Rathma vett egy mély lélegzetet, majd hozzátette:</p>
-      <p>"Ami engem illet, a sorsom máshol van, ahogy azt mindig is tudtam. Többet nem mondhatok."</p>
-      <p>Ez aligha volt Mendeln, pláne Uldyssian megelégedésére szolgáló válasz, de mindketten rájöttek, hogy Rathmától többet nem kaphatnak.</p>
-      <p>Valójában Uldyssian láthatóan türelmetlen lett, hogy tegyen valamit... bármit. Mendeln néhány ritka alkalommal látta már így a testvérét, és attól tartott, mi fog történni, ha tovább késlekednek.</p>
-      <p>"Nincs minden reménytelen" – kezdte mondani Uldyssiannak.</p>
-      <p>"Van egy másik, aki még most is…" De nem jutott tovább. Uldyssian kitört a szájából: "Nem csoda, hogy Inarius és a démonok ilyen régóta képesek játszani a világunkkal! Ti csak beleavatkoztok azok dolgába, akik nem jelentenek rátok veszélyt, és tétlenkedtek azokkal szemben, akik a legnagyobb fenyegetést jelentik!" Mendeln nyugtatóan a testvére vállára tette a kezét.</p>
-      <p>"Uldyssian…"</p>
-      <p>De az idősebb testvér nem törődött a fiatalabbal. "Mondd, Rathma! Elértünk valamit a Világkővel? Változott valami?"</p>
-      <p>"Bizonyára, de mennyit kell ebből következtetni gondos megfigyeléssel…"</p>
-      <p>"Elég jól megfigyeltem már! Én…"</p>
-      <p>TART!</p>
-      <p>Bár Trag'Oul kitörése csak bennük történt, mintha mennydörgés robbant volna. Még Rathma is a fejét fogta fájdalmasan a hangos zajtól.</p>
-      <p>Az angyal aktív.</p>
-      <p>Ezek a szavak felkeltették a másik három figyelmét.</p>
-      <p>Uldyssian Mendelnre pillantott, aki jelezte, hogy inkább Rathmát kellene tanulmányoznia.</p>
-      <p>A sápadt alak ha lehet, még sápadtabb volt, mint valaha.</p>
-      <p>Mendeln mégsem félelmet érzett a másikban.</p>
-      <p>Inkább a lemondáshoz hasonló dolognak tartotta.</p>
-      <p>– Akkor el van intézve – mondta Rathma.</p>
-      <p>Ez a te döntésed. Én mindig azt mondtam, hogy…</p>
-      <p>– Nem… ez apám döntése… soha nem az enyém… – Rathma a két halandóra nézett. – De talán… talán túlanalizáltam… talán… – Összeszűkült szemei még jobban összeszűkültek, ahogy Uldyssianra szegeződött.</p>
-      <p>Mendeln testvére eltűnt.</p>
-      <p>"Mit tettél?" – kérdezte Mendeln. Sehol sem érezte Uldyssiant.</p>
-      <p>Hűség ébredt fel az öccsben. "Akkor én megyek…"</p>
-      <p>– Nem… Szükségem lesz rád a szembesítéshez. – Rathma beletörődése egyre hangsúlyosabbá vált. – Remélem, gyorsan kioktattad, Trag?</p>
-      <p>Amennyit lehet tenni. Ehhez nem vagy kötve…</p>
-      <p>– De igen, az vagyok. Ugyan már, Mendeln. – Mendeln sejtette, hogy nincs más választása, ezért továbbra is tudni akarta, hogy mire kényszerítik. – És hová viszel engem, amikor a bátyám oldalán lennék? Hová?</p>
-      <p>Rathma szélesre terítette a köpenyét, tekintete most magát a halált tükrözte. "Oda vinnélek, ahonnan a legmesszebb szeretnék lenni. Én… nem… sajnálattal kell bevallanom, hogy magammal kell vinnem… hogy szerető apám elé állj…" Uldyssian a dzsungelben állt.</p>
-      <p>Először örült a látványnak. Rathma végül beadta a derekát, és oda küldte, ahová mennie kellett.</p>
-      <p>Ekkor Uldyssian észrevette, hogy ismét hiányzik neki Mendeln.</p>
-      <p>Öklével a vastag lombkorona felé rázta a fejét. "Megint a fene vigyen, Rathma! Semmivel sem vagy különb azoknál, akiket a szüleidnek kiáltasz ki!"</p>
-      <p>Uldyssian Mendelnre koncentrált, először megpróbálta magához vonzani a testvérét, majd amikor ez nem sikerült, megpróbált visszatérni Trag'Oul birodalmának ürességébe.</p>
-      <p>De még mindig semmi sem történt.</p>
-      <p>Mielőtt még azon gondolkodhatott volna, mit próbáljon, Uldyssian valami olyasmit érzett, ami teljesen elvonta a figyelmét a testvéréről.</p>
-      <p>Serenthia – Lilith – mindketten a közelben voltak.</p>
-      <p>Tudván, hogy pillanatnyilag semmit sem tehet Mendelnért, Uldyssian azonnal az új helyzetre összpontosított. Bízott Rathmában, hogy majd beleveti őt a dolgok sűrűjébe. Miért nincs itt Lilith fia, hogy foglalkozzon az anyjával? Mi lehetne ennél fontosabb?</p>
-      <p>De ez nem lehetett Uldyssian aggodalma. A lényeg az volt, hogy megbizonyosodjon arról, hogy a démonnő nem érzékeli a jelenlétét. Mindent bevetett, hogy eltakarja magát a tekintete elől – és remélte, hogy tudja, mit csinál –</p>
-      <p>Uldyssian óvatosan továbblépett. Ha egyedül kell lennie egykori szeretőjével szemben, hát legyen. Nem hagyhatja, hogy a nő folytassa gonoszságát…</p>
-      <p>Már leszállt az éjszaka, ami eleinte nyugtalanította. A sárkány birodalmában furcsán telt az idő; sokkal korábban számított rá, hogy a nap folyamán lesz. A sötétség azonban biztosan segíteni fog Uldyssiannak, aki addig sem akart a követői szeme elől menekülni, amíg fel nem méri, milyen hatással lehettek rájuk Lilith-ek.</p>
-      <p>Bár csábító volt szembeszállni vele a többiek előtt, Uldyssian kételkedett benne, hogy egy ilyen manőver a javára válna. Lilith esetében a legjobb először ártalmatlanná tenni... valahogy. Csak aztán aggódhat a probléma többi része miatt.</p>
-      <p>Ahogy közeledett a táborhoz, nyilvánvalóvá vált, hogy az edyrem sorai Hashir óta megnőttek, ami Uldyssiannak nem igazán tetszett, mint régen. Az újonnan érkezők nagy részét Lilith ihlette, bár azon tűnődött, hogyan érte ezt el. Az a tény, hogy a démonnő őt választotta a csatjának, arra a feltételezésre késztette, hogy Lilithnek szüksége van rá, hogy könnyebben felébressze a többi emberben rejlő képességeket, de az új edyremek nagy száma, amit Uldyssian érzett, megcáfolta ezt... legalábbis úgy tűnt.</p>
-      <p>Uldyssian körbejárta a környéket, titokban Lilith nyomát keresve anélkül, hogy a lány észrevette volna. Nem bízott teljesen abban, hogy sokáig rejtőzködni tud előle.</p>
-      <p>A dzsungel lejtősödött, végre egészen jól belátta a tábor fő részét. Csupán a legcsekélyebb érdeklődéssel nézte a sátrak, takarók és fészerhelyek kavalkádját. Valahogy kételkedett benne, hogy Lilith méltóztatna egy ilyenben aludni. Mégis tudta, hogy a közelben kell lennie…</p>
-      <p>Az edyrem kellős közepén egy építmény megdermedt, amitől Uldyssian megdermedt. Egy fáklyákkal megvilágított nagy kőépület állt előtte. Először valami régi vadászháznak gondolta, de ahogy Uldyssian jobban szemügyre vette az épületet, többet vett észre, mint csupán az élesen hegyes ajtókeretet és a furcsán szögletes tetőt. A rovátkolt oszlopok, az ajtó csigadísze, mind egy dologgá alakultak. Bár kisebb és ősibb volt, mint bármelyik, amit korábban látott, ez nyilvánvalóan valamiféle templom lehetett.</p>
-      <p>Miközben ezt felfogta, szeme – melyet azért nagyított ki, hogy éjszaka is jól lásson – megakadt a pillantása valamin, amitől még jobban megdermedt a vér a vérben.</p>
-      <p>A bejárat tetején Serenthia arcának domborműve díszelgett.</p>
-      <p>Bár az arc úgy nézett ki, mintha mindig is az épület része lett volna, egyértelműen új volt.</p>
-      <p>Azonnal megértette, mit jelent. Serenthián keresztül Lilith egy köré épülő kultuszt hozott létre. Sőt, bár Uldyssian a saját nézőpontjából nem lehetett teljesen biztos benne, úgy tűnt, minél jobban tanulmányozta Serenthia arcát, annál inkább megjelentek benne egy másik személy finom utalásai az arcvonásaiban.</p>
-      <p>És akkor felismerte, hogy kihez tartoznak.</p>
-      <p>Lilith. Nyilvánvaló volt, hogy már most is a testükben és a lelkükben is az úrnőjükké kíván válni. Valamikor majd levetkőzheti Serenthia alakját, sőt, talán valahogy "Lylia"-ként is visszatérhet.</p>
-      <p>Uldyssian, parázsló dühét leküzdve, az ősi templomra gondolt. Nem lehetett véletlen, hogy Lilith ide került; ő nem így dolgozott.</p>
-      <p>Ez az építmény volt a tervezett úti célja.</p>
-      <p>Ez a felismerés még jobban végigfutott a hidegen Uldyssianon. Valaminek itt történnie kellett, valaminek, ami szervesen kapcsolódik a démonnő vágyaihoz…</p>
-      <p>Az edyrem nagy része már kezdett letelepedni az éjszakára, kétségtelenül kimerülten a fáradságos úttól. Több őr volt, mint valaha, sokkal több, mint amennyi indokolt lett volna. Uldyssian számára még zavaróbb volt a modoruk, ami még szunnyadó bajtársaikkal szemben is hidegebbnek és óvatosnak tűnt. Az őrök parthaniak és alföldiek keverékei voltak, némelyiket arcról felismerte. Legtöbbjük férfi volt, de néhány nő – hasonlóan sötét arckifejezésű – is sétált közöttük.</p>
-      <p>Uldyssian minden erőfeszítés nélkül is érezte a lelkük felett az árnyékot, egy Lilithre jellemző szennyet.</p>
-      <p>Figyelmeztetés nélkül az egyik őrszem felé pillantott. Uldyssian elfojtott egy jelzőt, megerősítette pajzsát és mélyebbre hátrált a dzsungelbe. Az őr homlokráncolva tett egy lépést a rejtekhelye felé.</p>
-      <p>Semmit sem látsz – gondolta Uldyssian a férfira nézve.</p>
-      <p>Csupán a dzsungel. Az egész a képzeleted szüleménye volt…</p>
-      <p>Még soha nem próbált meg így befolyásolni másokat, és remélte, hogy ezzel a kísérlettel nem árulja el magát. Az őrszem még egy pillanatig körülnézett... aztán felnyögött, és visszatért a helyére.</p>
-      <p>Egyre közelebb osonva Uldyssian ostorozta magát a gondatlanságáért. Túl közel járt ahhoz, hogy felfedje a jelenlétét... ráadásul egy őr előtt. Ha Lilith lett volna, Uldyssiant biztosan leleplezték volna.</p>
-      <p>Vajon Lilith bent volt a templomban? Mivel nem érzékelte megfelelően, Uldyssian csak feltételezni tudta. A kígyó pikkelyeinek felvétele 332</p>
-      <p>A legnagyobb óvintézkedéseket megtéve, még jobban igyekezett átvizsgálni a szerkezetet.</p>
-      <p>Megpróbálták, de gyorsan kudarcot vallottak. Valamiféle lepel borította, ami miatt bármi is történt odabent, az senki, még ő maga számára sem volt észrevehető. Ez csak még jobban szorongatta Uldyssiant. Mit akarhatna annyira elrejteni Lilith, miközben ragaszkodott ahhoz, hogy mindez olyanok között történt, akiknek lehetőségük volt megérezni?</p>
-      <p>Attól félt, hogy van valami sejtelme… és ez döntésre kényszerítette. Lilith biztosan nem cselekedhet, amíg a "követőinek" nagy része nem alszik. Ha Uldyssian észrevétlenül eléri az épületet…</p>
-      <p>Hirtelen mozgás támadt balra tőle. Alig tudott elbújni, hogy ne lássa meg egy arra járó alak. Uldyssian lélegzetét visszafojtva felismerte a tábor szélén lépkedő kopasz férfit.</p>
-      <p>Nyugodt.</p>
-      <p>Uldyssian nem merte hagyni, hogy a pillanat elszálljon.</p>
-      <p>Diomédész fia koncentrálva nyúlt a partháni felé.</p>
-      <p>Romus elfojtott egy sikítást. Laza mozdulatokkal a dzsungel felé fordult, majd eltűnt a tábor szeme elől.</p>
-      <p>"Én vagyok az. Dicsőség, Romus! Te vagy az, akinek most szükségem lenne!"</p>
-      <p>Az egykori rabló pislogott, majd így szólt: "Szolgálatára állok, Uldyssian mester, természetesen!" Hálásan bólintott, és távolabb húzta társát a tábortól. "Először is tudnom kell valamit, Romus… hogy boldogultak az edyremek Hashirban?"</p>
-      <p>"Ez egy véres dolog volt! A templomnak nagyobb mágiája és hatalma volt, mint azt el tudtuk volna képzelni! Igen, voltak elveszettek is, Uldyssian mester, Tomo is köztük volt." Tomo. Uldyssian gyászolta az összes megöltet, de a buzgó Tomót jobban ismerte, mint sokan mások. "Hogy van Saron?"</p>
-      <p>"Megekesküdött, hogy száz Triune-nal bosszulja meg unokatestvére halálát, amikor legközelebb rájuk bukkanunk…"</p>
-      <p>A vér csak ömlött. Uldyssian önmagát hibáztatta, de olyan lényeket is hibáztatott, mint Lilith, Inarius és Rathma, amiért olyan keveset gondoltak a halandó életre.</p>
-      <p>Fizetni fognak. Mindannyian fizetni fognak… először Lilith-tel.</p>
-      <p>Ez visszavezette egy másik kérdéshez, amire gyorsan választ kellett adnia. "Az az ősi építmény. Hogyan lehetséges, hogy mindannyian itt vagytok, a közelében, és nem úton vagytok a főtemplom felé?"</p>
-      <p>Romus arca felderült. "Serenthia volt az! Látomása volt, és meglátta ezt a helyet! Micsoda új és csodálatos hatalom! Még neked sem volt soha ilyen, ugye, Uldyssian mester?"</p>
-      <p>"Nem." Uldyssian kételkedett benne, hogy az edyremek közül bármelyik is tapasztalt volna már ilyen képességet, vagy hogy valaha is fog.</p>
-      <p>"Nem… és attól tartok, hogy Serenthia sem."</p>
-      <p>"Hogy érted ezt?"</p>
-      <p>"Romus, másnak tűnt… másnak tűnt Serenthia?"</p>
-      <p>– Más? – vonta meg a vállát a kopasz férfi. – Amikor eltűntél, ő átvette a küzdelmet, és sokunkat megmentett, akik talán csatlakoztak volna Tomóhoz! Visszahozta belénk a lelket, Uldyssian mester, amikor azt hittük, hogy már nem vagy többé! – Lilith jól végezte a dolgát, ítélve Romus elragadtatott arckifejezéséből és csodálkozó hangjából. Uldyssian éppen időben tért vissza.</p>
-      <p>Megragadta a férfi vállát. Romus messzire jött a kétes hírű alaktól, aki a Parthan tér túlsó végéből figyelte őt. "Figyelj rám!"</p>
-      <p>"Igen, persze…"</p>
-      <p>Uldyssian hevesen csóválta a fejét, és folytatta:</p>
-      <p>"Mindannyian átvernek benneteket, Romus! Az ott testben Serenthia, igen, de amit hallasz és látsz, az egy démon műve, a förtelmes Lucion húgáé! Tudod, kiről beszélek!"</p>
-      <p>Edyrem arca elborult. "Lilithről beszélsz, akiről mindannyian hallottunk már, igen. Igaz lehet, hogy azt mondod, Serenthia ő álruhában? Az nem lehet!"</p>
-      <p>"Serenthia a kezében van. Serenthia ott van, mélyen alszik. Amit láttál, amit átéltél, ígérem neked, Romus, hogy az igazi Serenthiának semmi köze nem lett volna hozzá…"</p>
-      <p>"Semmi… igen…" Romus elgondolkodva nézett le.</p>
-      <p>Uldyssian nem adhatta meg neki azt a luxust, hogy mindezt megemésztse. "Romus… Romus, Serenthia bent van abban a helyen?"</p>
-      <p>"Igen. Annak kellene lennie."</p>
-      <p>"Az őrszemek, akiket láttam. Volt vele különleges kapcsolatuk?" Miután Romus bólintott, Uldyssian elmagyarázta: "Óvatosnak kell lennünk velük. Lehet, hogy a hatása alatt állnak."</p>
-      <p>"Akkor ketten maradunk, Uldyssian mester? Bízhatsz bennem!" Romus hangja szinte könyörgött Uldyssiannak, hogy higgyen benne.</p>
-      <p>Uldyssian nemcsak hogy hitt benne, de Romusnak sajnos kulcsszerepet kellett játszania. Még mindig Lilith közelébe kerülhetett anélkül, hogy gyanút keltene. Uldyssiannak szüksége volt az egykori rablóra, hogy annyira elterelje Lilith figyelmét, hogy aztán lecsaphasson rá, amíg a védelme már nem teljes.</p>
-      <p>Elmagyarázta ezt Romusnak, majd megkérdezte, hogy a férfi még hajlandó-e, mit tud az épületről.</p>
-      <p>– Ez egy régi kápolna vagy szerzetesi lakhely – mondta – felelte Romus. – Serent… Azt mondta nekünk, hogy ez annak a jele, hogy oda irányítottak minket. Azt mondta, hogy ez egy fordulat kezdetét jelzi mindannyiunk számára…</p>
-      <p>Uldyssian ismét hideg futott át rajta. "Vajon előbb fogadna, mint amennyit kért?"</p>
-      <p>"Találnék rá okot, Uldyssian mester." A parthani megborzongott. "Szegény Serenthia…"</p>
-      <p>"Ha meg tudod akadályozni, hogy a démonnő észrevegye, akkor én bemegyek. Aztán te elmész."</p>
-      <p>"De mi a helyzet veled?"</p>
-      <p>Uldyssian úgy tervezte, hogy senki mást nem akar a közelben látni. Lehetséges, hogy Lilith Serenthiából való kiűzése pusztítást végezne a közvetlen környéken. "Csak menjetek minél messzebbre. Érted?" Romus vonakodva bólintott. Még egy-két percig megbeszélték a részleteket, majd egy rövid meghajlással visszatért a táborba. Uldyssian a lehető legegyszerűbben igyekezett tervüket kezelni, tudatában annak, hogy a legkisebb bonyodalom is sokszorosára ronthatja a helyzetet.</p>
-      <p>Romus nem ment azonnal a templomba. Ahogy előírták, először talált okot arra, hogy beszéljen a legközelebbi őrszemekkel, és máshová irányítsa őket. Uldyssian nem akarta, hogy bármelyiküket is megsebesítse pusztán azért, mert Lilith elbűvölte őket.</p>
-      <p>Mire Romus végzett az őrökkel, már leszállt az éj, és a tábor nagy részéből már csak csend áradt. Sok tűz már majdnem kialudt. Néhány fénylő fény lebegett a környéken, utalva az edyrem növekvő képességeire.</p>
-      <p>Szerencsére a legtöbb lámpa halványan világított, hogy alkotóik jobban aludhassanak.</p>
-      <p>Végül Romus az ősi építmény felé vette az irányt.</p>
-      <p>A két szolgálatban álló edyrem csak egy pillanatig habozott, mielőtt beengedte volna. Uldyssian egyik legidősebb követőjeként Romus valószínűleg most már a második lett a parancsnoki rangban. Ez felbecsülhetetlen értékűvé tette a felvételét Uldyssian tervébe.</p>
-      <p>A vastag, fából készült ajtó nyikorogva becsukódott a kopasz férfi mögött. Uldyssian halkan számolt, időt adva Romusnak, hogy beszélgetést kezdeményezzen az ál-Serenthiával. A parthaniak szerint a ma esti összejövetelig egyedül akart maradni.</p>
-      <p>Végül Uldyssian úgy ítélte meg, hogy elég idő telt el. Ha tovább tartott, Romus életét kockáztatta. Csak a két őr maradt, akik mindketten bizalmatlanul tekintettek a maguk előtti területre, amit Lilith felettük gyakorolt hatalma is fokozott.</p>
-      <p>Mivel nem akart senkit szükségtelenül megbántani, Uldyssian a két férfira koncentrált, majd feléjük osont.</p>
-      <p>Az őrök továbbra is előre bámultak. Most már semmit sem hallottak és láttak. Még akkor sem mozdultak, amikor elsietett mellettük.</p>
-      <p>Az épületnek nem volt más bejárata – az egyetlen további nyílások a jóval felettük lévő apró szellőzőnyílások voltak –, de Romus elmagyarázta, hogy van egy külső kamra is azelőtt, amelyben Lilith a szentélyét rendezte be.</p>
-      <p>Uldyssiannak csak el kellett volna érnie. Akkor már nem lesz ok a lopakodásra… csak a gyorsaságra.</p>
-      <p>Egyetlen lehetősége lenne, csakis egyetlen.</p>
-      <p>Az utasítására az ajtó éppen annyira kinyílt, hogy beengedje. Uldyssian elfojtott minden nyikorgást, nehogy a démonnőt még az is megzavarja.</p>
-      <p>A terem, amelybe belépett, teljesen üres volt, bármilyen dekorációt vagy tárgyat is távolítottak el a tolvajok vagy a távozó építőmesterek. Uldyssiant nem érdekelte, mire használták az építményt, csak az, hogy hangok szűrődtek ki a túlsó szobából.</p>
-      <p>Romusé… és Serenthiáé.</p>
-      <p>"…és igen, Romus, hamarosan úton leszünk a Háromság főtemploma felé. Uldyssian halálára esküdtem, hogy teljesítem a küldetését. Először a Háromságot, aztán mindenképpen a Fény Katedrálisát…akik talán rosszabb ellenségek, mint azok, akikkel most harcolunk."</p>
-      <p>– Még egyszer elnézést kérek – felelte neki a parthan. – De én is szeretném betölteni Uldyssian mester örökségét. Köszönöm a megnyugtatást.</p>
-      <p>"Egyáltalán nem. Van még valami más?" Uldyssian már nem merte kockáztatni Romust. Tudván, hogy Serenthia testét sem akarja bántani, a Kígyó Pikkelyeinek fia 340</p>
-      <p>Diomédész minden erejét beleadva elismételte, amit az őrökkel tett odakint. A női hangra szegezte a tekintetét…</p>
-      <p>Csend telepedett az épületre, melyet végül Romus felnyögése tört meg. "Uldyssian mester! Nem mozdul! Úgy áll, mint egy szobor!" – lépett be Uldyssian. Először is Serenthiát vette észre, aki olyan gyönyörű volt, mint amilyenre emlékezett, istennőként egyensúlyozott, egyik kezét Romus felé nyújtva. Egy elbűvölő mosoly, amelyet a kereskedő lánya még soha nem viselt, bőséges bizonyítékot szolgáltatott arra, hogy Lilith valóban a nőben lakozik.</p>
-      <p>Aztán egy második, még szörnyűbb látvány vonta magára a figyelmét a háta mögött.</p>
-      <p>Egy oltár.</p>
-      <p>Egy oltár, amelyet évszázados vér foltozott be.</p>
-      <p>Talán hátborzongató véletlennek gondolta volna, de a szürke kőlap tetején egy hosszú tőr és egy serleg volt. Ami még rosszabb, a foltos felületre frissen rajzolt rúnákat is rajzoltak.</p>
-      <p>Ma este az oltár generációk óta először ivott volna.</p>
-      <p>"Uldyssian mester?"</p>
-      <p>Romus töprengő hangja végre visszarántotta a jelenbe. A parthani hátralépett, miközben Uldyssian a dermedt alakra nézett.</p>
-      <p>Közelről Uldyssian látta az apró utalásokat arra, hogy a nő, akivel felnőtt, valójában nem volt ott. A mosolyon kívül a szemek ravaszsága is megnyilvánult, amit túlságosan is jól felismert.</p>
-      <p>– Vége van, Lilith… – lehelte. Uldyssian a nő halántékára tette a tenyerét. Nem volt biztos benne, mit kellene tennie, de ha valahogy elérné Serenthiát, úgy érezte, a nő segítene neki kiűzni a démont. – Mindennek vége…</p>
-      <p>Valami kemény csattant a feje hátulján.</p>
-      <p>A világ megfordult. Homályos szemmel látta, hogy Romus felé hajol, a parthani fanatikus arckifejezéssel, kezében egy nehéz követ tartva, amelyet látszólag a kamra valahonnan vettek elő. A kő egyik végén lévő friss vér Uldyssianhoz tartozott.</p>
-      <p>És ahogy Uldyssian összeesett, meghallotta Serenthia hangját… és Lilith túlságosan is ismerős nevetését.</p>
-      <p>"Nagyszerű, szerelmem… pont ahogy terveztük…" TIZENÖTÖNÖT</p>
-      <p>Uldyssian arra ébredt, hogy végtagjai az oltárkőhöz vannak kötözve. Ez önmagában is elég nyugtalanító volt, de amikor megpróbálta a képességeit felhasználva kiszabadítani magát... semmi sem történt.</p>
-      <p>Aztán újra meghallotta az ismerős nevetést.</p>
-      <p>– Drága, drága, édes Uldyssianom! – gügyögte Serenthia.</p>
-      <p>Csakhogy nem Serenthia volt az, emlékeztette magát Diomédész fia, hanem Lilith. "Olyan naiv. Olyan bizakodó." Egy arc jelent meg fölötte, de nem az, amelyikre számított. Romus ehelyett lesütötte a szemét egykori barátjára. "Soha nem kellett volna visszajönnöd, Uldyssian mester. Soha."</p>
-      <p>"Romus! Megőrültél? Lilith, ez a démon, nem Serenthia!"</p>
-      <p>A parthan megrázta a fejét. "Nem… tévedsz. Mindkettő az. Az én Serenthiám és az én Lilith-em. Mindkettő megvan nekem…"</p>
-      <p>Léptek hallatszottak, amelyek előre jelezték a démonnő megjelenését.</p>
-      <p>Félresimítva Serenthia hosszú, sötét haját, szeretetteljesen Romus vállára dőlt. "És itt vagy nekem, kedves Romus! Mennyivel hűségesebb szerető vagyok nálad, Uldyssian, aki nem láttad mindazt, amit felajánlottak! Bárki lehettem volna, akit kívánsz, beleértve azt is, amit látsz… de te visszautasítottad a szerelmemet és az ajánlatomat…"</p>
-      <p>"Csak egy bábut akartál, aki vezeti a varázsereged létrehozását, hogy elfoglalhasd Menedéket Inariustól!" Uldyssian Romusra nézett. "Ha talál valaki még hasznosabbat, félredob! Gondolkozz el, Romus! Ez nem te vagy! Ez nem te vagy!"</p>
-      <p>"Semmit sem tudsz az életemről, mielőtt Parthába jöttél, Uldyssian mester! Senkinek sem feleltem! Mindenki félt tőlem! Elvetted ezt tőlem, és a bárányaid közé fogadtál! De ő emlékeztetett arra, hogy ki is vagyok valójában" – közelebb hajolt, szeme tágra nyílt és halálos volt. Mániákus arckifejezéssel – "és ezért még jobban imádom!" Nem volt remény beszélni a Parthával. Lilith teljesen elcsábította, mélyen benne kereste azt a hosszan tartó sötétséget, ami egykor teljesen elnyelte Romust… és most újra.</p>
-      <p>Uldyssian megpróbálta kiszabadítani a bal kezét, de a kötelékek tartottak. Romus vigyorra fakadt. Lilith ajkait színlelt bánattal csücsörítette foglyuk miatt.</p>
-      <p>Miközben Uldyssian az időért és valamilyen menekülési lehetőségért küzdött, megkérdezte: "Szóval, téged használt fel az új edyrem életének megteremtésére? Csak ezt akarja igazán! Ő maga nem tudja ilyen gyorsan megcsinálni. Ez az ajándékok természete; ezek emberi dolgok, ő pedig nem, Romus!" Szavai süket fülekre találtak. "Engem választott. Mind közül engem választott, mert látta, milyen erős vagyok, és hogy felrázhatnak az illúziók, amiket ránk vetettél. Azóta, Hashiri, másoknak is megmutattam, újaknak és régieknek egyaránt, ugyanezt, és minden nap egyre több van." Elvigyorodott.</p>
-      <p>"Úgy bánnak velem, mint egy istennel…"</p>
-      <p>Lilith közelebb hajolt, először megcsókolta Romus arcát, majd megnyalta. A férfi macskaként reagált a mozdulatára, arcát az övéhez dörzsölve. A jelenet több szempontból is rosszul érezte magát Uldyssiant; nemcsak Serenthia, hanem a parthaniak miatt is. Ez nem az a Romus volt, akit ismert.</p>
-      <p>"Felhasználod őt?" – kérdezte lelkesen az egykori rabló.</p>
-      <p>Kuncogott a kérdésén. "Nos, az csodálatos lenne, de nem. A vére nem használna. Sőt, lehet, hogy az ellenkező hatást váltaná ki, hozzáadná a fertőződését. Nem… Szükségem van valakire, akinek az életereje felerősíti azt, amire vágyom, drága, édes Romus… és erre igazán csak egyetlen ember van a fejemben." A Parthan hirtelen eltátotta a száját. Szeme még jobban elkerekedett, odáig, hogy úgy nézett ki, mint egy békáé.</p>
-      <p>Borzongva előrebukott, és egy megdöbbent uldyssiánra vetette magát. Ahogy tette, a háta láthatóvá vált.</p>
-      <p>Egy hosszú, bíborvörös tócsa csordogált ki a hátán lévő gonosz lyukból.</p>
-      <p>Lilith felemelte a tőrt, amelyet Uldyssian az árulása előtt észrevett. Romus vére lecsöpögött a pengén és a markolatán. Lilith ügyet sem vetett a kezén megjelenő vörös foltokra. Ehelyett szabad kezével megsimogatta a parthan kopasz fejét.</p>
-      <p>"Gyönyörű volt… Biztos vagyok benne, hogy Serenthia is élvezte."</p>
-      <p>Kár, hogy annyira tökéletes volt a szerepre.</p>
-      <p>– Megőrültél, Lilith!</p>
-      <p>Arckifejezése megfeszült. "Nem… Igazoltak a tetteim, kedves Uldyssian! Igazoltak! Megmentettem a gyerekeket, és ezért a jótettért a semmibe taszítottak! Inarius azt hitte, soha nem találok vissza… de megtaláltam, megtaláltam!" – folytatta, és elkezdte simogatni a halott Romust. "Olyan elszánt volt, hogy bebizonyítsa magát nekem és neki. Odajött, és elmesélte, hogyan hívtad be a dzsungelbe, és hogy még mindig a barátodnak tettette magát!" Lilith elmosolyodott. "Bevallom, az időzítésed megijesztett, szerelmem. Érzem, hogy mások munkáját érzem ebben. Beszéltél az én drága Inariusommal? Hmm?"</p>
-      <p>Habár Uldyssian többször is úgy gondolta, hogy Rathma nem több a szüleinél, valami mégis visszatartotta attól, hogy elmondja a démonnőnek az igazságot. "Röviden beszélgettem vele. Hiányzol neki, és a bocsánatodat könyörög. Aztán meg akar ölni." A felette lévő arc eltorzult, és semmi épelméjűséget nem mutatott, amit még szörnyűbbé tett az a tény, hogy Serenthiáé volt.</p>
-      <p>"Ülj mit sem sejtve trónján, miközben csillogó katedrálisának falai záporoznak körülötte!" Uldyssian kételkedett benne, hogy az angyal ennyire önelégült lenne, de Lilith egyértelműen osztozott Inarius megalomániájában. El sem tudta képzelni, hogy tervei kudarcba fulladjanak, különösen nem egy halandó beavatkozása miatt.</p>
-      <p>A baj az volt, hogy az utóbbi esetben úgy tűnt, igaza van. Uldyssian érezte a benne lévő erőt, ami ki akart törni a felszínre, de valami visszafogta. Nem érzett magán semmilyen varázslatot, de a démonnő munkája nagyon-nagyon finom tudott lenni.</p>
-      <p>– Még mindig küzdök – jegyezte meg. – Milyen csodálatra méltó az elszántságod… vagy csak még egyszer a karjaidban szeretnél tartani? Lilith elég közel hajolt hozzá, hogy megcsókolja, és bár Uldyssian egykor szerette volna, ha azok az ajkak az övéhez érnek, most felháborodott. De nem önmagáért, hanem Serenthiáért, akinek a teste most a démonnő játékszerévé vált.</p>
-      <p>Az ajkak a füléhez vándoroltak, ahol Lilith azt suttogta: "Nem kell sokáig várnod, szerelmem, és újra átölelsz. Amikor szegény Romus vérével varázsolok, te sem leszel mentes! Akkor végre úgy fogod látni a dolgokat, ahogy én kívánom…"</p>
-      <p>Egy rekedt kuncogás. "Mert egy balek, aki azt hiszi, hogy jól csinálja, a legjobb álcája a tervemnek! De már messze túl vagyunk ezen a ponton, és te már annyi követőt gyűjtöttél! Amikor lehetőség adódott, hogyan is állhattam volna ellen? Most úgy fogsz új híveket gyűjteni, hogy pontosan tudod, mit követelsz tőlük – hűséget irántam!" Uldyssian megpróbálta elkapni, de küzdelme hiábavaló maradt. Lilith ismét nevetett, és még jobban hátrált, hogy csodálja erőfeszítéseit. Romus testéhez súrolta magát, aki még mindig félig a foglya fölött feküdt.</p>
-      <p>Egy gyenge morgással a parthani hirtelen feltápászkodott. Megragadta Lilith karját, amelyben a tőrt tartotta. Vér fröccsent Uldyssianra.</p>
-      <p>Uldyssian minden reménye, hogy a Parthan megdöbbentő tette megmentheti mindkettőjüket, gyorsan szertefoszlott, amikor a démonnő megfordult és torkon ragadta Romust. Becsületére legyen mondva, az egykori rabló, akinek szemében nyoma sem volt a nő fanatikus irányításának, megpróbálta erejével megégetni. Kezei fényesen izzottak, és füst szállt fel ott, ahol Lilithhez értek.</p>
-      <p>De a lány csak nevetett, és egyetlen kézszorítással beleroppant a férfi légcsövébe.</p>
-      <p>Romus, aki már így is hatalmas sebet szenvedett, azonnal meghalt. Lilith ezúttal hagyta, hogy mozdulatlan teste a kőpadlóra rogyjon.</p>
-      <p>Mindkét kezét a Parthan életnedvei áztatva visszafordult Uldyssianhoz. Kísérteties mosolya még Serenthia arcát is túl szörnyűvé tette Uldyssian számára, ezért elfordította a tekintetét.</p>
-      <p>"Milyen erős élet! Igen, szegény Romus vére látványosan fog teljesíteni, szerelmem." Nedves ujjai visszakényszerítették a tekintetét rá. "Nem gondolod?" Amikor Uldyssian csak dühösen meredt rá, megpaskolta az arcát –</p>
-      <p>még több parthani vért hagyva maga után – és újra nevetett.</p>
-      <p>Abban a pillanatban Uldyssian megérezte, hogy valaki más is van a kamrában. De nem reménykedett benne, hogy valaki azért jött, hogy segítsen neki, és a jövevény valóban az egyik őrnek bizonyult, akit korábban megfagyasztott.</p>
-      <p>Az edyrem úgy méregette Uldyssiant, mint egy ételében felfedezett férget.</p>
-      <p>"A többiek itt vannak, Serenthia úrnő." Úgy tűnt, nem lepődik meg, hogy megtalálja Romus holttestét.</p>
-      <p>Lilith a Parthan felett állt, miközben Uldyssianhoz beszélt.</p>
-      <p>"Fogalmad sincs, hányan voltak olyan könnyen a vágyamra hallgatva, drága szerelmem! Olyan kegyes voltál, hogy elfogadtál mindenkit, aki eljött, hogy átölelje, amit felajánlottál, de bár akaratod eltemette azt, amik voltak, nem törölte el azt, amik voltak."</p>
-      <p>– A forgatásuk még Romusnál is egyszerűbb volt. – A tőrt továbbra is a kezében tartva, színlelt pukedlizést mutatott be. – Köszönöm, hogy ilyen jól elrendezted a dolgokat nekem! – Még mindig próbálva halogatni az időt, Uldyssian ismét körülnézett.</p>
-      <p>Bár Lilithnek csak nyomai voltak a kamrában, gyanította, hogy a falakat egykor ugyanolyan förtelmes lényeknek szentelt feliratok borították. "Mi van ezzel a hellyel? Te kerested meg."</p>
-      <p>"…több mint három életeddel ezelőtt… itt találtam vissza a Menedékbe!" Megdöbbentette, hogy Lilith már ilyen régóta a világában volt anélkül, hogy bárki is észrevette volna. Ez ismét felébresztette benne a félelmet, hogy a démonnő talán képes lesz megvalósítani mindazt, amit eltervezett. Ha még az angyal, aki kiűzte, sem érezte volna őt ennyi idő alatt…</p>
-      <p>De mielőtt többet felfedezhetett volna, Lilith edyremmá változott arca elkezdett átszűrődni benne. Oly sok arc…</p>
-      <p>férfi és nő – jól ismerte őket Uldyssian, ami tovább fájt neki. Látott parthanokat és torajiaiakat is, és feltételezte, hogy néhány hashiri is a gyülekezetben van. Összesen legalább pár tucatnyian voltak.</p>
-      <p>"Állj a szoba széléhez!" – parancsolta Lilith.</p>
-      <p>Uldyssian kihasználta a lány figyelmét, hogy még utoljára megpróbáljon kiszabadulni. Kevés reménye volt a sikerre, de képtelen volt elfogadni azt, ami elkerülhetetlennek tűnt –</p>
-      <p>Aztán meglepetésére érezte, hogy a őt megkötöző mágikus erők néhány helyen gyengülnek. Sikerült lepleznie az örömét, ezért ezekre a pontokra koncentrált... és akkor vette észre, hogy Romus vére ezeken a pontokon fröccsent rá.</p>
-      <p>De az erőfeszítés túl lassan haladt. Lilith már a helyén tartotta a gyalogjainak nagy részét az általa tervezett szertartáshoz, és a démonnő most ismét a halott Parthan fölé helyezkedett.</p>
-      <p>Olyan hangok törtek elő a szájából, amelyeket halandó lény nem tudott kiejteni. Nyilvánvalóan a hatalom szavai voltak ezek, mert érezte, hogy a kamra azonnal megtelik láthatatlan, de hatalmas erőkkel, amelyek mélyről emelkednek fel.</p>
-      <p>Valami más is felszállt… vér tört fel Romus sebeiből. A levegőbe ömlött, végül elérve a tőrt. Ezúttal Lilith sokkal többet akart, mint amennyit csak a penge eltakarására tudott volna; Uldyssian gyanította, hogy teljesen kiszívja a holttestet, mielőtt befejezné a feladatát.</p>
-      <p>Miközben ezt tette, az edyremje felfelé fordította a tenyereiket.</p>
-      <p>A bennük rejlő energiák életre keltek a pálmák felett.</p>
-      <p>Az edyrem olyan tökéletes koordinációval mozgott, hogy azon tűnődött, vajon Lilith most már teljesen uralja őket.</p>
-      <p>Érezte, hogy a lány varázsa egyre halványul, de még mindig nem volt elég ahhoz, hogy legyőzhesse őt, nemhogy a követőit. Az idő ellene dolgozott. Lilith már majdnem végzett hátborzongató feladatával.</p>
-      <p>Végül mindenki lássa az alattomos tőrt.</p>
-      <p>Habár vérben úszott, sokkal több bíbor folyadéknak kellett volna jelen lennie. Uldyssian bele sem akart gondolni, hová tűnt a többi.</p>
-      <p>A kötővarázslat egyre gyengült. Már csak egy-két percre volt szüksége…</p>
-      <p>De úgy tűnt, Lilithnek esze ágában sincs ezt odaadni neki. Odament, ahol a férfi feküdt, ügyet sem vetve a maga után hagyott cseppekre.</p>
-      <p>– Most kezdődik, szerelmem – suttogta, és oldalra nyúlt, hogy elvegye a poharat. – Megkezdődik a megtorlás… – Szája eltorzult, ahogy ismét előtörtek belőle azok az embertelen hangok –</p>
-      <p>Az egyik edyrem felkiáltott és hátraesett.</p>
-      <p>Uldyssian először azt hitte, Lilith műve, hogy kezdettől fogva a többi bábját is használni akarta, ahogyan Romussal tette, de aztán meglátta, mi ölte meg a férfit.</p>
-      <p>Egy nyíl átfúródott a torkon. Egy porba beágyazódott nyíl.</p>
-      <p>Mielőtt az első test megdermedt volna, egy második követő is összeesett, egy nyíl fúródott a mellkasába pontosan ott, ahol a szíve volt.</p>
-      <p>De a válaszra majd később fog foglalkozni... ha lehetséges. A pillanatnyi megszakítás megadta neki az időt, amire szüksége volt, hogy végre kioltsa a varázslatot, ami megkötözve és tehetetlenül tartotta.</p>
-      <p>Az egyik legközelebbi edyrem látta, hogy feláll. A sötét bőrű alak Uldyssianra mutatott, de az utóbbi, mivel nem kellett összpontosítania, a falnak repítette leendő támadóját. Uldyssian ezután két másikra meredt, akik éppen csak érzékelték a szabadságukat. Hirtelen olyan erővel csapódtak egymásnak, hogy mindketten elvesztették az eszméletüket.</p>
-      <p>Ez azt jelentette, hogy még mindig volt reménye arra, hogy megvalósítja a tervét, és az edyrem többi részét a maga ügyére fordítja.</p>
-      <p>Bármi áron, ezt nem hagyhatta megtörténni. A kamra megremegett, ahogy minden irányban tiszta erő áradt belőle. Edyrem zuhanni kezdett, némelyik egymásnak és falaknak csapódott. Uldyssiannak nem számított, hogy élnek-e vagy meghalnak, mert valószínűleg örökre beszennyezte őket Lilith. A fontos az volt, hogy megmentsék a többieket.</p>
-      <p>Lilith-et is hátravetette a brutális támadás.</p>
-      <p>De ahogy leugrott az oltárról, látta, hogy a lány felemelkedik. Serenthia vére csöpögött a szája melletti sebből, és egy sötét zúzódás elszíneződött a homlokán.</p>
-      <p>Sajnos a démonnőt messze nem győzték le.</p>
-      <p>Felemelte a tőrt, mintha el akarná hajítani, de ehelyett egy újabb érthetetlen szót mondott. Uldyssian káromkodott, attól tartva, hogy Lilithnek már sikerült…</p>
-      <p>Legnagyobb meglepetésére azonban a követői voltak azok, akik felkiáltottak, majd mozdulatlanná dermedtek körülöttük. Uldyssian érezte, hogy Lilith gyorsan magához vonzott belőlük valamit.</p>
-      <p>– Az én ostoba, ostoba szerelmem… – rekedten szólt a démonnő, miközben felállt. – Mindig egy kicsit rövidlátó. Mindig nem teszel eleget. Ezektől még egy pillanatig bírom. Nem tudtok annyira ellenállni, hogy ne vegyem el drága nyájatok többi részét azzal, amit ezektől a bolondoktól elraboltam! Nagyobb áldozat, mint terveztem, de az ő veszteségük csekély ahhoz képest, amit én nyerek!</p>
-      <p>Nem szólt semmit, ehelyett olyan erővel válaszolt, amitől a földre kellett volna zuhannia. Lilith azonban, bár remegett, állva maradt.</p>
-      <p>Mindketten tudták az okát. Bármennyire is szerette volna, Uldyssian nem tudta rávenni magát, hogy megölje Serenthiát, ami az egyetlen biztos módszer lett volna a lény megállítására, aki megszállta a testét. Ez a habozás azt jelentette, hogy a körülmények változása ellenére Lilith végül győzni fog.</p>
-      <p>És Sanctuary biztosan kudarcra lenne ítélve.</p>
-      <p>– Szegény, édes drágám – gügyögte. – Mindig a győzelem pillanatában ragadod meg a kudarcot! Mégis ígérem, hogy lesz néhány gyönyörűség ebben a testben, ha egyszer újra az enyém leszel…</p>
-      <p>Valami olyan erővel csapódott a tőr pengéjére, hogy kitépte a fegyvert a szétszórt démonnő kezéből. Vér fröccsent Lilith környékére, miközben a tőr és ami eltalálta, a hátsó falnak csapódott.</p>
-      <p>És ahogy mindkét darab megdermedt, Uldyssian meglátta, hogy a tőr közelében egy másik nyílvessző hever… ismét porral borítva.</p>
-      <p>– Serenthia… – kiáltotta egy hang a bejárat felől, egy hang, amely a reszelőssége ellenére annyira ismerős volt Uldyssian számára, hogy felállt tőle a szőr a tarkóján. – Serenthia… – szólította újra, most már közelebbről. – Gyere vissza… hozzánk… hozzám… – Annak ellenére, hogy Lilith még mindig szabad volt, Uldyssiannak az újonnan érkezőhöz kellett fordulnia, hogy kiderüljön, álmodik-e… vagy egy új rémálomban él.</p>
-      <p>Akhiliosz volt az… Akhiliosz, aki nagyon halott volt.</p>
-      <p>A vadász túl sápadt szeme csak egy pillanatra pillantott Uldyssianra, mintha csak nyugtázni akarná, hogy utóbbi látja az igazságot. Aztán Achilios, újabb lövésre kifeszített íjjal, továbbment előre. Maga mögött enyhén nedves földcsíkot hagyott maga után, amely látszólag az ő alakjának nagy részét is beborította.</p>
-      <p>– Serenthia… – ismételte meg a halott férfi. Széttört torkának az a kevéske maradványa is megrándult és megrándult, mintha levegőt venne a beszédhez. – Te… hallasz engem… te… ismersz engem…</p>
-      <p>Lilith furcsán hallgatott, de most felkiáltott:</p>
-      <p>"Csak Lilith létezik, drága elgyötört Achilios! Jaj! Szerelmem, lehet-e ostobán erős, nemde?" – tárta szét a karját.</p>
-      <p>"Akarod, hogy felmelegítselek érte, íjász?"</p>
-      <p>– Kímélj… kímélj meg… a szánalmas… csábításaidtól – felelte Achilios, és tűzre emelte az íjat. – Ha… nem tudom… kiszabadítani egy módon… akkor kiszabadítom… egy másik módon… azt… akarná…</p>
-      <p>"És talán, amikor ő is meghal, lehetőséged lesz újra megnyerni őt? Milyen hátborzongató és csodálatos egyszerre!" – Úgy hajolt, hogy a férfi tiszta lövést kapjon a mellére. "Akkor tűz!"</p>
-      <p>De Achilios nem dőlt be a csábításnak. "Amikor… készen állok, boszorkány… először… akkor is azt akarom… hogy… eljöjjön hozzánk…"</p>
-      <p>Látva, hogy Lilith a sétáló holttestre koncentrál, Uldyssian felkészült a saját támadására. Achilios azonban megrázta a fejét.</p>
-      <p>"Nem… ezt nem a te dolgod… csinálni…" Volt valami a rekedtes hangban, ami miatt Uldyssian odafigyelt. Figyelte, ahogy az íjász leengedi az íjat.</p>
-      <p>– Serenthia… – mormolta Achilios. – Serenthia… kérlek, ébredj…</p>
-      <p>Lilith mintha dermedten állt volna. Uldyssian azt hitte, hogy valami újabb csínytevést tervez, de ekkor a démonnő kezei a torkára kaptak, mintha meg akarná fojtani magát.</p>
-      <p>Felsikoltott. Olyan hangosan és olyan nyers fájdalommal sikoltott, hogy Diomédész fiát nem lepte volna meg, ha a teremben lévő többi halott felkel, hogy csatlakozzon Achilioshoz. Lilith szünet nélkül sikoltott, maga az épület remegett az erőfeszítésétől.</p>
-      <p>És akkor… és akkor… valami szörnyűség bukkant elő felfelé fordított szájából. Először úgy néztek ki, mint egy apró kígyókból álló verm, de Uldyssian végül felismerte őket, mint ujjakat. Karmos ujjakat.</p>
-      <p>Serenthia arca eltorzult, szája kétszeresére, majd háromszorosára nőtt, mint a feje. A kezek egyre szélesebbre, egyre szélesebbre tolták... és csak ekkor vált nyilvánvalóvá, hogy a sikoly abból tört elő, ami előbukkant, nem pedig az előttük álló nőből.</p>
-      <p>A kereskedő lányáért aggódva Uldyssian előrelépett, de az íjász ismét megtiltotta neki. "Ne… ne hagyd abba… ha… reménykedni akarunk… Serenthiában…"</p>
-      <p>Ha bárki más lett volna – nem, akár egy élő Achilios –, Uldyssian tudomást sem vett volna a parancsról. Mégis valahogy rájött, hogy halott bajtársa jobban érti a dolgot, mint ő valaha is el tudná képzelni. Feszült idegekkel Uldyssian kényszerítette magát, hogy figyelje a fejleményeket.</p>
-      <p>Serenthia szörnyű szájából groteszk vörös tollpihék sorozata tört elő. Felfelé nyomultak.</p>
-      <p>Emelkedő…</p>
-      <p>És egyetlen szörnyű lökéssel Lilith démonnő teljes erőből kitört a sötét hajú nő szájából.</p>
-      <p>A zöld pikkelyes szirén még mindig sikoltozott – de inkább dühtől, mint fájdalomtól –, és többször körberepülte a termet. Lent Serenthia – immár újra normális alakja – veszélyesen imbolygott.</p>
-      <p>– Bolondok! – ordította Lilith, hirtelen a levegőben lebegve. – Szűk elméjű halandó bolondok! Azt hiszitek, ennek van bármi jelentősége?</p>
-      <p>– Gondolod, hogy egyáltalán nyertél? – Vadul felnevetett, majd karmos ujját Serenthia felé bökte. – Vigyázzatok, drágáim! Mindjárt leesik!</p>
-      <p>Ezzel a démon felrepült a mennyezet felé, és eltűnt, mielőtt a lány nekicsapódott volna.</p>
-      <p>Sem Uldyssian, sem Achilios nem mertek figyelni, hogy ez csak egy újabb trükk-e, mert Lilith legalább igazat mondott, amikor figyelmeztette őket Serenthiára. Serenthia, aki majdnem olyan sápadt volt, mint az íjász, halkan felnyögött, majd elesett.</p>
-      <p>Uldyssian a képességeit akarta használni, hogy megakadályozza Serenthiát abban, hogy fejjel előre a kövekre csapjon, de Achilios valahogy még gyorsabban mozgott. Érdes karjai csupán pár centire állították meg Serenthiát a katasztrófától. Az íjász gyengéden letette, mintha törékeny üvegből lenne.</p>
-      <p>Serenthia kifújta a levegőt… és szemei hirtelen tágra nyíltak. Felnézett megmentőjére, aki maga is úgy nézett Uldyssianra, mintha hirtelen azt kívánná, bárcsak máshol lenne abban a pillanatban, mint a lány látóterében. Az íjász gyorsan a torkára tette a kezét, hiába próbálva eltakarni a szörnyű látványt.</p>
-      <p>"A-Achilios…" – motyogta. "Achilios…" Egy mosoly kezdett szétterülni az arcán, de mielőtt még elterjedhetett volna… Serenthia elájult.</p>
-      <p>– Dicsőség… legyen… – motyogta a halott férfi. Hátralépett tőle, és csak akkor nézett Uldyssianra.</p>
-      <p>Diomédész fia még mindig nem akarta elhinni, amit lát. "Achilios…"</p>
-      <p>"Jobban… jobban vigyázz… rá… legközelebb… legalábbis így… vissza kelljen…"</p>
-      <p>"És… hogyan… maradhatnék?"</p>
-      <p>Mielőtt Uldyssian válaszolhatott volna, újabb sikoly harsant az ősi építményben. Mindketten a bejárat felé néztek... ahol a hevében észrevétlenül egy csapat megdöbbent edyrem gyűlt össze.</p>
-      <p>A tömeg most halálra mozdulatlannak látta úrnőjüket, urukat pedig mintha a halálból tért volna vissza… és egy férfit, akiről a csoportban lévő parthanok tudták, hogy egy démon mészárolt le.</p>
-
+      <p>A nő felkuncogott, amitől a férfi arca ismét elpirult. – És még valami, kedves Romus… – Ujjai összefonódtak az övével. – Soha ne szólíts "úrnőmnek"…</p>
     `
   },
   "sin-war-scales-ch16": {
@@ -8427,7 +7983,164 @@ export const wikiArticles: Record<string, any> = {
     },
     content: `
       <h3>13. FEJEZET</h3>
-
+      <p>Uldyssiannak úgy tűnt, mintha valami hatalmas lélegzik.</p>
+      <p>A barlang, amelyben ő és Rathma álltak, olyan magasra nyúlt, hogy a felette képződő cseppkövek sokszorosára nőttek egy ember hosszánál. A cseppkövek is elég jól teljesítettek, zömök óriásokként emelkedtek ki a padlóból.</p>
+      <p>Uldyssian úgy érezte magát, mintha egy éhes fenevad szájában állna. A "lélegzés" csak fokozta ezt a nyugtalanító érzést.</p>
+      <p>A sztalaktitok és sztalagmitok voltak a hatalmas terem megvilágításának forrásai is, mivel mindegyik mélyéről kísérteties bíborvörös fény áradt, amelynek forrását csak elképzelni tudta. Bár hálás volt a ragyogásukért, ezek is hozzájárultak Uldyssian elsöprő nyugtalanságához.</p>
+      <p>– Eddig kockáztathatom meg, hogy fizikai úton eljussak minket – jegyezte meg Rathma szokásos távolságtartással. – Azt hiszem, sejted, miért. – De most, hogy kezdett túltenni magát a döbbenetén, hogy hol materializálódtak nemkívánatos társaival, az, amit Rathma közvetlenül az érkezésük előtt kijelentett, ismét magával ragadta Uldyssiant.</p>
+      <p>Lilith irányította az edyremet…</p>
+      <p>Újra dühbe gurult, és megragadta Rathmát a köpenye gallérjánál fogva. "Hogy értetted az előbb, amit mondtál?" – mordult fel Uldyssian, miközben megrázta a démonnő fiát. "Hogy történt? Hogyan tette?"</p>
+      <p>– Az anyámra utalsz, és arra, hogy hogyan bitorolta a követőidet – mondta a másik szükségtelenül. – Ravasz és jól védi magát, de fokozatosan arra jutottam, hogy valamikor megszállhatta Serenthia asszonyt, amikor minden szempontból eltűnt a szemed elől. Innentől kezdve egyszerű feladat volt… – Uldyssian fejét lüktetve durván elengedte Lilith fiát, miközben arra gondolt, hogy éppen mikor történhetett, hogy a démonnő elragadta a kereskedő lányát. Egy incidens jutott azonnal eszébe. Serenthia elment vízért, és ezúttal nem használta a képességeit, hogy megfigyelje. A buja növények mögé hajolt és… és egy pillanattal később elakadt a lélegzete.</p>
+      <p>És bármilyen bolond is volt, Uldyssian névértéken vette a lány aggodalmára adott válaszát. Elfelejtette Lilith kiforgatott szokásait…</p>
+      <p>– Serenthia… – suttogta. – Az nem lehet… nem halhat meg…</p>
+      <p>"És nem az."</p>
+      <p>Zavar, remény és bizalmatlanság küzdött Uldyssian felett. "Hogy érted ezt? Megint Ethon mester és a fia! Az a förtelmes boszorkány úgy viseli Serry bőrét, mint egy átkozott ruhát! Lemészárolta, majd megfosztotta a húsától!"</p>
+      <p>Rathma megrázta a fejét. "Nem… anyám nem tudja így álcázni magát abban a játékban, amit választott."</p>
+      <p>Egy ilyen technika, bár természeténél fogva határozottan démoni, csak korlátozott képességet tesz lehetővé. Elég ahhoz, hogy egy ideig becsapjon néhány papot vagy házszolgát, de nem hosszabb időre és szükség esetén. Ehhez Lilithnek óvatosabb, finomabb érintésre volt szüksége. Szó szerint eggyé kellett tennie magát és a nőt. Anyám olyan, mint egy kísérteties szellem, amely most a test minden mozdulatát irányítja, de a te Serenthiád még mindig benned van, de nagyon-nagyon mélyen alszik.</p>
+      <p>Uldyssian szíve, amely egy pillanattal korábban még úgy tűnt, mintha abbahagyta volna a dobogást, most új élettel vert. "Akkor jól van? Ha kiűzzük Lilith-et, Serenthia újra önmaga lehet?"</p>
+      <p>"Ezt nem ígérhetem, Diomédész fia. Nagyon erős álmot kell aludnia, hogy Lilith is hozzáférhessen az emlékeihez, és így jobban fenntarthassa a hazugságot."</p>
+      <p>Még ha anyámat el is menesztik, teljes őszinteséggel nem ígérhetem, hogy a barátodat visszahelyezik a helyére.</p>
+      <p>"Soha nem lett volna szabad elvinni Hashirból! Akkor azonnal mennem kell hozzá! Küldj el innen, vagy mutasd meg, hogyan kell magam csinálni!"</p>
+      <p>De Rathma rendíthetetlen maradt. "Ha abban a helyzetben hagytunk volna, amiből kivezettünk, akkor most nem lettél volna több egy héjnál, ami Lilith nevében cselekszik. Folyamatosan változtatja a terveit a pillanatnyi helyzethez igazodva, ezért nehéz megjósolni a következő lépését. Miután elvette a nő holttestét, és látta annak az ostoba támadását, aki Primus szerepét játszotta, nyilvánvalóan úgy döntött, hogy nem bízhat meg benned, hogy úgy vezess, ahogy ő akarja. Valójában anyám az oka annak, hogy az utolsó pillanatban ennyire legyengültél."</p>
+      <p>– Szóval, ehelyett ő kezében tartja Serenthia és a többiek felett a hatalmát – vágott vissza Uldyssian. – Úgy tűnik, a segítséged több gondot okoz nekem, mint amennyit ér…</p>
+      <p>Rathma egy enyhe fejbillentéssel nyugtázta a megjegyzést, hozzátéve: "Túl sokat hibáztam. Egyetértek."</p>
+      <p>De egyedül gyorsan a kezébe kerültél volna. Még van lehetőség orvosolni ezt, ha meghallgatod.</p>
+      <p>"Serenthia…"</p>
+      <p>"Örökre elveszett, ha megpróbálod elválasztani Lilithtől ebben a pillanatban. Bármennyire is visszataszítónak találom, anyámnak szabad kezet kell adni egy pillanatra. De csak egy pillanatra."</p>
+      <p>Egy ilyen aljas gondolat egyáltalán nem tetszett Uldyssiannak. El sem tudta képzelni, mi lesz Serenthiával és a többiekkel a démonnő gonosz irányítása alatt. Mégis el kellett ismernie, hogy Lilith-tel szembenézni monumentális feladat lesz; hogyan is akadályozhatná meg Serenthia megsebzését, vagy akár a megölését?</p>
+      <p>Rathma előremutatott, ahol egy folyosó nyílt a túlsó végén. "Mehetünk tovább, amerre kell." Ez volt az a fajta válasz, amire Uldyssian sajnos számított. Mégis, amennyire csak lehetett, úgy akarta, hogy a dolgok mostantól az ő akarata szerint alakuljanak. Ezt szem előtt tartva gyors léptekkel elment a másik mellett.</p>
+      <p>Rathma, aki magasabb és hosszabb lábú volt, gyorsan utolérte. Lilith fia ezután tartotta a lépést, talán azért, hogy Uldyssian ne érezze magát annyira irányítottnak.</p>
+      <p>Egy labirintusszerű folyosósorozaton haladtak át, melyet valaki aprólékosan kifaragott réges-régen. A folyosókon nem volt világítás, de Rathma előhúzta a tőrét, mondott egy szót azon a furcsa nyelven, amit korábban használt, és a penge hirtelen felcsillant. Már csak ennek köszönhetően is, Uldyssian végül egy lépést hátrált társa mögött.</p>
+      <p>Miközben úton voltak, Uldyssian nem tudta elhessegetni az érzést, hogy valaki vagy valami figyeli őket. Nem hozta szóba a témát Rathmának, mert félt a másik válaszától. Uldyssiannak már így is elég gondja volt.</p>
+      <p>– Kérlek, nagyon figyelj oda magadra… – A feketébe öltözött alak nem fejtette ki, mire gondol.</p>
+      <p>Uldyssian elhatározta, hogy továbbra is résen marad.</p>
+      <p>Mit tehetett volna mást? A légzési hang, amit először a külső barlangban hallott, nem volt olyan hangos, hogy lüktetett volna a fülében. Bármit is kerestek, valószínűleg a baljós hang forrása is az volt.</p>
+      <p>Aztán, mindössze néhány lépéssel Rathma figyelmeztetése után, egy intenzív hőhullám söpört végig Uldyssiant.</p>
+      <p>Mégis, a forróság belülről áradt szét benne, nem kívülről. Érezte, hogy felgyorsul a pulzusa, és minden aggodalma…</p>
+      <p>Serenthia, Mendeln, az edyrem és a többiek –</p>
+      <p>legalább ezerszeresére felerősödött. Megtorpant a lépése, és alig tudta elfojtani a nyögését.</p>
+      <p>Rathma előrement, mintha mit sem törődve a nehéz helyzetével. Ez csak még jobban felzaklatta Uldyssiant. Hogy lehet, hogy a bolond nem látja, hogy csak az idejüket vesztegetik, hogy leküzdhetetlen akadályokkal néznek szembe? Hogyan tehette…</p>
+      <p>Rathma figyelmeztetése eszébe jutott. Uldyssian remegve küzdötte le magáról a növekvő félelmeket, aggodalmakat... és hirtelen a benne lévő forróság elillant.</p>
+      <p>– Jobban vagy már? – kérdezte a csuklyás alak anélkül, hogy hátranézett volna.</p>
+      <p>"Jobban is figyelmeztethettél volna!" Rathma, továbbra is az előttük lévő ösvényre nézve, megrázta a fejét. "Nem, sajnos nem tehettem." Uldyssian vitatkozhatott volna ezzel, de ekkor egy halvány vörös fény derengett fel a folyosó túlsó végéből. Ugyanekkor egy üvegcsörömpöléshez hasonló hang visszhangzott a folyosón. Uldyssian odalépett Rathma mellé, aki lelassított.</p>
+      <p>"Maradj a közelemben, amikor belépünk a kamrába. Nem teljesen szabad az utunk."</p>
+      <p>– Még neked sem?</p>
+      <p>"Ezt a helyet apám építette." Szavait egy újabb hangos csattanás szakította félbe.</p>
+      <p>Uldyssian óvatosan engedelmeskedett. A pulzusa ismét felgyorsult, és bár tudta, hogy köze van a távolabbi eseményekhez, nem tudta megnyugodni.</p>
+      <p>"Mi az?" – kérdezte végül Uldyssian.</p>
+      <p>"A teremtésünk és a lebontásunk. Inarius végső igája az emberiség számára. Majd meglátod…" Ahogy közelebb értek, a bíbor csillogás – és a lassú, de szüntelen légzés – még hangsúlyosabbá vált.</p>
+      <p>Bármi is volt a kamrában, olyan fényesen csillogott, mint a nap. Rathma motyogott valamit, és a tőre eltompult.</p>
+      <p>Lilith fia azonban nem tette el a fegyvert.</p>
+      <p>– Vigyázz… – figyelmeztette Rathma, miközben a folyosó végére értek. – Lassan lépj meg minden lépést. Együtt léptek be az új barlangba. A fény azonban azonnal olyan vakítóvá vált, hogy még akkor sem látott a saját lábán túlra, amikor Uldyssian eltakarta a szemét.</p>
+      <p>És akkor – "Támadás alatt állunk!" Rathma figyelmeztetése alig érkezett időben. Egy magas hangú sikoly majdnem megsüketítette Uldyssiant. Ösztönösen cselekedve azonnal egy védőkorlátot emelt maga fölé.</p>
+      <p>Nehéz puffanás és dühös sikoly hallatszott.</p>
+      <p>Uldyssian szárnycsapkodást hallott. Ezt gyorsan kaparászás és még több visítás követte. Több ocsmány teremtmény is támadta.</p>
+      <p>Uldyssian megpördült, hogy az alagút felé nézzen.</p>
+      <p>Ettől alig látott. A szeme sarkából megpillantott egy bőrszerű szárnyat.</p>
+      <p>Máshonnan Rathma kiáltott. Uldyssian nem értette, ezért azt feltételezte, hogy az ősi alak valamiféle varázslatot űz. Ez eszébe juttatta, hogy állítólag neki is fantasztikus képességei vannak. A Kígyó Pikkelyeinek Esküdözése 300</p>
+      <p>Uldyssian a bajsza alatt hallgatózott a következő támadó után.</p>
+      <p>Csupán a bal oldaláról hallatszó szárnyak hangjára volt szüksége. Kezével abba az irányba nyújtotta a kezét.</p>
+      <p>Bármi is repült felé, újabb sikolyt hallatott. Akár a dobhártyája széttörésére szánta, akár valami más okból, Uldyssian most a lény ellen használta a kiáltást. Visszaverte a sikolyt, hagyva, hogy az eredeti intenzitásának többszörösével visszacsapjon.</p>
+      <p>Ellensége irányából újabb sikoly hallatszott, majd egy test dübörgése egy sziklának, amit Uldyssian sziklának vélt. A sikoly folytatódott, de fájdalmas hangon. Dübörgés kísérte a kiáltást, mintha a szárnyas bestia görcsöket kapott volna.</p>
+      <p>Rathma valahogy átvágott a sikolyok sokaságán. "Uldyssian! Vissza a hangomra!" – engedelmeskedett Uldyssian. Egy ideges lélegzetvétellel később ütközött azzal, amit remélt, hogy a sápadt alaknak látott.</p>
+      <p>Az elefántcsont tőr felvillant Uldyssian fájdalmas szeme előtt. Mielőtt reagálhatott volna, meghallotta, hogy Rathma valamit kántál.</p>
+      <p>A tőr felvillant, megvakítva Uldyssiant. Azon tűnődött, vajon végig becsapták-e, hogy Rathma Lilith kérésére hozta ide, hogy még egyszer utoljára megalázhassa, mielőtt meghal.</p>
+      <p>Ám a vakság pillanata után Uldyssian látása nemcsak visszatért, hanem normálissá vált…</p>
+      <p>valami, amit még ő, a képességeivel sem volt képes elérni. Most már elég jól látott ahhoz, hogy kiforduljon az alagútból.</p>
+      <p>És amit látott, az iszonyatosan megremegtette.</p>
+      <p>A barlang, amelyben állt, eltörpült az előző mellett.</p>
+      <p>Mélyen alul süllyedt, ugyanakkor magasan felül is emelkedett.</p>
+      <p>Rathma és ő egy széles, kőből faragott ősi emelvényen álltak. Több méter hosszú volt, és a végei mindkét oldalra nyúltak. Uldyssian rájött, hogy ha a lények sokkal jobbra lökték volna, akkor a végzetébe zuhant volna.</p>
+      <p>Egy alacsony fal szegélyezte a platformot, a sarkoknál pedig apró, lépcsőpiramisokhoz hasonló építmények álltak. Mindegyik tetejükön apró – és ebben a teremben jelentéktelen – fény világított.</p>
+      <p>A kamra színe Uldyssiannak egy élő, vérben úszott szívre emlékeztette. Csak egy pillanatig tanulmányozta ezt a vonást, mert ami most a hely középpontjában állt, az követelte meg a teljes figyelmét.</p>
+      <p>de egyik sem volt jóval száz lábnál magasabb – talán még kétszáznál is magasabb, mivel az alap túl mélyen volt ahhoz, hogy látható legyen –, több monolitból álltak, amelyek tucatnyi különböző irányba nyúltak ki. Az emlékezetében felidézett képződményekkel ellentétben ennek a behemótnak kemény volt a külseje, csipkézett megjelenése és ijesztő bíborvörös színe.</p>
+      <p>A gigantikus képződmény minden egyes lapja ezernyi apró szikrázót rejtett. Belülről nemcsak az a fény áradt, amely annyira perzselte Uldyssian szemét, hanem még mélyebbek, többszínű villámok villanásai is. A hatalmas kristály fénye nemcsak a barlang teljes hosszában és szélességében terül el – amely maga is elég hatalmas volt ahhoz, hogy Seram faluját és környező területeit legalább hússzorosan elférje benne –, hanem úgy tűnt, mintha átszivárogna a kőfalakon is.</p>
+      <p>Minden egyes villámcsapással lüktetett a formáció, és Uldyssian végül megértette a villám forrását.</p>
+      <p>"lélegző."</p>
+      <p>Újabb fülsüketítő, roppanó hang hallatszott.</p>
+      <p>Uldyssian felnézett, és most először vette észre, hogy a kristály kisebb töredékei – "kisebbek", mivel mindössze kétszer-háromszor akkorák voltak, mint ő – látszólag véletlenszerű irányokban lebegtek a barlang nagy részén. A durva zaj két ilyen darab ütközéséből származott. A törött töredékek szétszóródtak – majd különböző mintákat vettek fel.</p>
+      <p>Mindezt Uldyssian mindössze néhány másodperc alatt felhörpintette.</p>
+      <p>Aztán egy sokkal közvetlenebb és rendkívül groteszk látvány vonta el Uldyssian figyelmét a lenyűgöző kristályról. Négy szárnyas fúria, nyúzott kutyákra emlékeztető fejjel, csapott le rá felülről különböző pontokról. A teremtményeknek vad fogaik és hosszú, széles füleik voltak. Kövér orruk volt, széles orrlyukakkal. A fejükből csak szemek hiányoztak. Még ott sem voltak rések, ahol a szemeknek kellett volna lenniük. Majdnem olyan volt, mintha bármi is teremtette őket, szándékosan lemondott volna ezekről.</p>
+      <p>Talán ez nem is állt messze az igazságtól. Mire jók voltak a szemek ezen a helyen, ahol csak Rathma mágiájának köszönhetően volt képes Uldyssian bármit is látni? Jobban hasznosak voltak a hatalmas fülek és az orrlyukak, amelyekkel ki tudtak rúgni minden bejutott zsákmányt.</p>
+      <p>akár csak egyszer is biztosan tátongó, veszélyes sebet ejtene velük.</p>
+      <p>Uldyssian a tenyerébe fogta a kezét. Kék energia gyűlt össze a tenyerében. A legközelebbi ördögre hajította.</p>
+      <p>A kék energia elnyelte célpontját… és egy puffanásban eltűnt. A szárnyas düh megrázta a fejét, döbbenten, de egyébként zavartalanul. Biztosan nem vált hamuvá, ahogy Uldyssian feltételezte.</p>
+      <p>A kudarc megdöbbentette, és alig tudott időben magához térni, hogy újjáépítse a pajzsot. Még az sem volt olyan erős, mint általában, és mivel hárman – majd négyen – támadták, Uldyssian izzadni kezdett.</p>
+      <p>Természetesen Rathma adta meg a választ.</p>
+      <p>Messzebbről Lilith fia – hatalmas köpenye ugyanolyan védelmet nyújtott neki, mint Uldyssian védőkorlátja – kiáltotta: "Az erőd itt elcsillapodott! Ez a kristály hatása! Jobban kell koncentrálnod, bármit is próbálsz!"</p>
+      <p>Uldyssian átkozta a másikat, amiért ezt nem mondta el neki, mielőtt beléptek, és jobban a korlátra koncentrált. Ekkorra már hét bizarr bestia röpködött körülötte, mindegyik a húsát akarta széttépni. Közelről látta, hogy semmilyen igazi testük nem volt. Csak egy összeaszott törzs maradványai és valami, ami talán csökevényes lábak lehettek. A lények lényegében szárnyakból és fejből álltak. Uldyssian azon tűnődött, vajon esznek-e egyáltalán... aztán úgy döntött, hogy erre a kérdésre inkább nem szeretne választ kapni.</p>
+      <p>Szájak csattantak az arcába, néha sokkal közelebb, mint szerette volna. Uldyssian, aki a támadói ádáz erőfeszítései ellenére is erőltette magát, hogy megnyugodjon, azon tűnődött, hogyan védhetné meg magát a legjobban.</p>
+      <p>Amit halálos támadásnak vélt, csúfosan kudarcot vallott. Uldyssiannak jól kellett döntenie, mert amikor lecsap, a pajzsa is meggyengül. Még regeneráló képességei ellenére is kételkedett benne, hogy sokáig túlélné, ha akár egyetlen szörnyeteg is lecsapna rá.</p>
+      <p>Végül csak egyetlen stratégia jutott eszébe, egy korábbi módszerének egy variációja.</p>
+      <p>Uldyssian kihúzta magát, vett egy mély lélegzetet… és fütyült.</p>
+      <p>Saját fülének – és remélhetőleg Rathma fülének is –</p>
+      <p>Csupán egyetlen hosszú, hangos hangot adott ki. Biztos volt benne, hogy erőfeszítéseit ismét elfojtja a hatalmas kristály, Diomédész fia akaratának minden erejét – talán még többet is – a sípba összpontosította, amennyit csak mert – talán még többet is.</p>
+      <p>Miközben ezt tette, egy szárny súrlódását érezte a vállán…</p>
+      <p>De a következő pillanatban, ahogy mintha egy karom érintette volna a karját, Uldyssian körül minden szárnyas szörnyeteg vérfagyasztó sikolyt hallatott. Elhúzódtak tőle, majd megpördültek, mintha teljesen megőrültek volna.</p>
+      <p>Kettő azonnal összeütközött, de ahelyett, hogy csupán szétváltak volna, egymásnak feszültek, ahogy az emberrel is történt.</p>
+      <p>Egy másik a barlang sziklás falának csapódott, majd újra és újra megismételte a balesetet, míg végül a padlóra zuhant.</p>
+      <p>Három másik egyszerűen a földre rogyott, ahol sikítva rázták a fejüket, mintha megpróbálnának valamit eltávolítani.</p>
+      <p>– Nem hittem volna el, ha nem láttam volna! – suttogta Rathma a fülébe. A csuklyás alak Uldyssian mellé lépett. – Amit tettél, annak pont ezen a helyen nem lett volna szabad lehetségesnek lenned.</p>
+      <p>"Csak megfogadtam a tanácsodat. Csak jobban koncentráltam."</p>
+      <p>Működött.</p>
+      <p>"Nem lett volna szabad… főleg nem ilyen mértékben."</p>
+      <p>– Nézz körül, Uldyssian ul-Diomed. Nézz körül, és lásd meg az igazságot. – Uldyssian engedelmeskedett… és szeme elkerekedett kétségbeesett kísérlete eredményétől.</p>
+      <p>Többen dühösen küzdöttek egymással, míg mások a földön vadul rángatóztak. Legalább ketten olyan mértékben harapták magukat, hogy haláluk biztosan fennállt.</p>
+      <p>Aztán két légiharcban részt vevő katona lezuhant. Egy pillanattal később a padlón lévők közül néhányan megdermedtek. Ahogy Uldyssian körülnézett, a barlang lakói egyenként egyszerűen a földre zuhantak... és meghaltak.</p>
+      <p>"Én nem… én nem értem…"</p>
+      <p>Rathma vállat vont, mintha ennek bárki számára is tökéletesen érthetőnek kellene lennie. Egy vörös sebhely éktelenkedett az állán, és egy szakadás a ruháján, pont ott, ahol Uldyssian szerint a szívének kellett volna lennie. A lények közelebb kerültek az ősi lény megöléséhez, mint Diomédész fiához. "Nyilvánvalóan emlékeztél a denevérekhez való hasonlóságukra. Azt képzelted, hogy ha hangosan fütyülsz, és a bennük rejlő erőt felhasználod a felerősítésre, legalább megsebesítesz vagy összezavarsz néhányat… ugye?"</p>
+      <p>"Igen… de… azt hittem, hogy az előttem lévőkkel talán sikerülni fog, de…"</p>
+      <p>– Diomed, nem vagy olyan, amilyennek lenned kellene – nézett hátra a válla fölött. – És ennek az oka biztosan veled van összefüggésben…</p>
+      <p>Lilith fia nem másra utalt, mint a hatalmas, fenyegető kristályra. Még a körülöttük elpusztult denevérlények ellenére is Uldyssian nem tudta megállni, hogy ne bámulja újra lenyűgözve. Soha nem tudta volna elképzelni, hogy ilyen létezik.</p>
+      <p>– Mi az? – kérdezte végül. – Miért van itt? – Rathma a lebegő óriásra mutatott. – Ez az oka annak, hogy évszázadok óta nem emelkedett fel nephalem vagy bármi hasonló, barátom. Ez az oka annak, hogy neked és a tieidnek nem kellene létezniük! Azoknak az angyaloknak és démonoknak az átka előtt állsz, akik Menedéket kovácsoltak! A Világkő előtt állsz… – A név puszta hallatán is önkéntelenül is borzongás futott végig Uldyssianon, mintha valahol benne mindig is tudnia kellett volna erről a hihetetlen ereklyéről… tudnia kellett volna róla, és jogosan félnie kellett volna a létezésétől.</p>
+      <p>Még Rathma varázslatának segítségével is nehéz volt közvetlenül látni a Világkövet. Uldyssian rájött, hogy a legjobban úgy figyelheti meg, ha kissé oldalra pillant. Még akkor is úgy csillogott, mintha száz vörös napot tükrözne vissza.</p>
+      <p>"Inarius betegségnek tartotta a nephalemet, szégyenfoltnak arra, ami ő volt. Számára soha nem lettünk volna azok. Csak a többiek tiltakozása miatt egyezett bele, hogy fontolóra vegye a sorsunkat, ahelyett, hogy eltörölne minket a létezésből. Úgy érzem, hogy akkor is úgy döntött volna, hogy végigviszi eredeti szándékát, ha anyám nem gyilkolja meg a többi menekültet. Ez a tett mindent megváltoztatott. Ha Inarius utána kiirtott volna minket, akkor teljesen egyedül maradt volna, amit még ő sem bírt elviselni. Mégis, a nephalem gondolata undorította, és ezért fogta a Világkövet – amelyet nagyrészt azért hoztak létre, hogy elrejtse a Menedéket a Magas Mennyek és az Égő Pokol szeme elől –, és megváltoztatta a rezonanciáját."</p>
+      <p>Uldyssian megpróbálta a lehető legjobban követni Rathma történetét, de az utolsót egyáltalán nem értette.</p>
+      <p>"Mit jelent ez? Mit csinálna?"</p>
+      <p>"Ez azt jelenti, hogy ezen birodalom titkosítása mellett a Világkő egy folyamatos és finom tompító folyamatba is kezdett. A nephalem minden egyes következő generációja sokkal gyengébb lett az előzőnél, mígnem nagyon rövid időn belül a következő szülöttek minden képességtől megfosztották magukat. Hamarosan az első generációból már csak néhányan…"</p>
+      <p>Én és Bul-Kathos, hogy csak a nyilvánvalót említsük, túléltük.</p>
+      <p>Elődeink ajándékait – vagy átkát – elfelejtettük.</p>
+      <p>"Inarius elkezdte átalakítani Szentélyt a saját megelégedésére… és vasuralmának megfelelően." Uldyssian érezte a Világkő kisugárzását, és nem kételkedett benne, hogy képes teljesen elfojtani a hatalmát. De miért nem teszi ezt most?</p>
+      <p>– Ez Lilith műve – jelentette ki halkan Rathma.</p>
+      <p>"Olvasod a gondolataimat?"</p>
+      <p>A démonnő fia megrázta a fejét. "Érzékeléseket olvasok…érzékeléseket. Majdnem olyan, mint a gondolatok olvasása, csak sokkal pontosabb, mert a gondolatok tele lehetnek hazugságokkal." Uldyssian ismét zavartan fordult vissza a témához. "Mit tett?"</p>
+      <p>"Anyám egyértelműen ismét megváltoztatta a Világkő rezonanciáját, így most a hatása minimális, és többé-kevésbé az Arreat-hegyre korlátozódik, ha egyáltalán az. Még a jelenlétében is képes voltál legyőzni. Mivel a Világkő már nem jelentett akadályt, a nefalem erőket lehetővé tevő természetes folyamat most már virágozhatott. Te ennek az eredménye vagy… legalábbis az első." Minél közelebb állt hozzá, Uldyssian annál jobban érezte a Világkő kisugárzását. Ezerszer nagyobbnak képzelte el őket… nem, ezerszeresnek.</p>
+      <p>Rathma szavainak sokkal több értelme volt. Ilyen hatalmas erőkkel söpörve végig a Szentélyen, az ő fajtája biztosan soha nem jöhetett volna létre. Csak Lilith közbelépése változtatott ezen.</p>
+      <p>Hirtelen megátkozta az ereklyét, gyűlölve, amiért elfojtotta minden ember lehetőségét, gyűlölve, amiért elmulasztotta ezt a kötelességet, és őt és követőit a jelenlegi kétségbeejtő helyzetükbe kényszerítette.</p>
+      <p>Aztán eszébe jutott valami. "Rathma… meg lehetne ezt még egyszer változtatni?"</p>
+      <p>"Egy kérdés, amin sokat töprengtem, és ez az igazi ok, amiért itt vagyunk, Diomédész fia." A fekete köpenyes alak a Világkő felé intett. "Mit kérnél tőle? Visszatérnél ahhoz, aki valaha voltál? Valahogy hatalmasabbá tennéd magad? Mondd meg, uldyssian ul-Diomed…"</p>
+      <p>Uldyssian kétségbeesetten szerette volna megcáfolni mindazt, ami vele történt, hogy valahogy visszatérjen ahhoz a naphoz, mielőtt Lilith belépett az életébe és elkezdte a megpróbáltatásait. Mégis kételkedett benne, hogy akár a Világkő is képes lenne erre. Legfeljebb megfoszthatná tőle és a többiektől a nephalem ajándékokat. Sajnos azonban nem szüntethette volna meg a Háromság fenyegetését, amely most már biztosan eltökélt volt, hogy szembeszálljon azokkal, akik dacolnak akaratával és létezésével. Sőt, kételkedett abban is, hogy Inarius angyal is hagyná a dolgokat úgy, ahogy kellene.</p>
+      <p>Ami csak egyetlen lehetőséget hagyott…</p>
+      <p>"Tényleg megváltoztatható a Világkő, hogy erősebbé váljunk?"</p>
+      <p>"Nem, nem közvetlenül, de megváltoztatható úgy, hogy ösztönözze az adottságok fejlődését. Ez lényegében ugyanazt eredményezné, mint amit te is szeretnél."</p>
+      <p>Uldyssian számára csak ez számított. "Mondd meg, mit tehetek."</p>
+      <p>"Ez a Világkő. Ahhoz, hogy elérd, amit akarsz, gondolnod kell rá. A kristály vagy elfogadja az akaratodat, vagy elutasítja."</p>
+      <p>"Ilyen egyszerű?"</p>
+      <p>Rathma grimaszolt. "Nem… cseppet sem." Uldyssian, akit megunt társa zavaros és gyakran ellentmondásos kijelentései, teljes figyelmét a hatalmas kristályra fordította. A Világkő szinte hipnotikusan lüktetett.</p>
+      <p>Gondolnod kell rá… – mondta Rathma. Uldyssian megpróbálta kitisztítani a gondolatait, majd arra koncentrált, amit kívánt.</p>
+      <p>Erősebbnek kell lennünk – mondta a Világkőnek. Gyorsabban kell növekednünk az erőinkben…</p>
+      <p>A Világkő külsőleg semmilyen módon nem változott, de Uldyssian érezte, hogy valami elkezd belül változni a vizsgálódására reagálva. Megismételte vágyát, hangsúlyozva a nagyobb hatalom iránti igényét, és azt, hogy gyorsan.</p>
+      <p>De a – rezonancia? – enyhe eltolódása nem ment tovább. Bármennyire is próbálkozott, Uldyssian nem tehetett többet.</p>
+      <p>Bár akaratának minden egyes darabkáját a Világkőre erőltette, végül ő volt az, aki zihálva és vereséget szenvedve hátrált meg.</p>
+      <p>Rathma kesztyűs kezével megragadta a karját. Izzadva és dühösen Uldyssian dühösen meredt társára.</p>
+      <p>Lilith fia arcán a teljes megdöbbenés tükröződött.</p>
+      <p>Ettől Uldyssian egy pillanatra tátva maradt a szája. Még soha nem látott ilyen nyers érzelmeket megnyilvánulni Rathmától.</p>
+      <p>"Mi a baj?" – sikerült végül kinyögnie. "Veszélyben van?"</p>
+      <p>– A Világkő… – suttogta a sápadt alak szinte tiszteletteljesen. Összehúzott szemei Uldyssianról a csillogó ereklyére, majd vissza az emberre cikáztak. – Látni akartam… de sosem számítottam rá… ez csak egy elmélet… nem több annál… nem több…</p>
+      <p>"Ne a szemeddel nézz… nézz az elméddel és a lelkeddel."</p>
+      <p>Uldyssian összeráncolt homlokkal meredt ismét a Világkőre, de ezúttal más érzékszerveivel is mélyebben vizsgálta. Még mindig nem talált semmi különbséget; a Világkő ugyanúgy visszhangzott, mint korábban, még csak a legcsekélyebb mértékben sem…</p>
+      <p>Nem…volt egy apró változás, olyan bonyolult, hogy nem meglepő, hogy korábban nem vette észre. De egy ilyen változás aligha okozhat bármilyen érdemleges hatást…vagy mégis?</p>
+      <p>"Végül is tettem valamit. Nem sokat. Lesz ennek bármi jelentősége?"</p>
+      <p>Rathma kiadott egy hangot, majd mormolta: "Figyeld meg a tárgy szerkezetét, Uldyssian. Figyeld meg a legmélyét. Meg tudod csinálni…"</p>
+      <p>Uldyssian jobban koncentrált… és azon kapta magát, hogy mélyen a Világkőbe mered. Látta a finom, kristályos mintázatot, amely a fantasztikus képződményt alkotta, és csodálta a legapróbb részleteket. Az apró, ötoldalú szegmensek végtelenül sokasodtak, és alkották a kő legalapvetőbb szerkezetét. Uldyssian nem tudta nem csodálatát kelteni a tökéletességükben. Az, hogy a tárgyat teremtették, nem pedig természetes képződmény volt, annyira megdöbbentette, hogy egy pillanatra el is felejtette, milyen bajt okozott neki.</p>
+      <p>Mélyebbre hatolt az elméjében, több részletet látott –</p>
+      <p>Mivel a Világkő többi része egy ötoldalú mintázatból állt, ennek az egy résznek hat éle volt.</p>
+      <p>Ami tökéletes volt, most hibás volt... lehetetlenül.</p>
+      <p>Azonnal visszavonult. "Lilith munkája…"</p>
+      <p>– Nem, Diomédész fia… a te munkád. – Rathma tekintete a férfiba szegeződött. – Anyám egy varázslattal megváltoztatta a rezonanciát, ami a kimenetelt befolyásolta, de a szerkezetet nem. Azt várom, hogy te is ugyanezt teszed, vagy valószínűbb, hogy elbuksz. Kétségbeesett lehetőség volt, de méltónak éreztem magam rá. Azt hittem, okkal vetettek ide a Világkő közelébe…</p>
+      <p>"Véletlen volt, hogy ide kerültem."</p>
+      <p>– Még nem jöttél rá, hogy nincsenek véletlenek? – felelte a lepelbe burkolt alak. – Nem tudtam, mire számítsak, de erre biztosan nem. Uldyssian ul-Diomed, megváltoztattad a Kígyó Pikkelyeinek lényegét 316</p>
+      <p>"Világkő, valami, aminek nem szabadna lehetségesnek lennie…" – Rathma összevonta a szemöldökét. – "És akár jót, akár rosszat jelent ez a reményeinkre nézve, attól tartok, csak várhatunk… és imádkozhatunk…"</p>
     `
   },
   "sin-war-scales-ch14": {
@@ -8442,7 +8155,174 @@ export const wikiArticles: Record<string, any> = {
     },
     content: `
       <h3>14. FEJEZET</h3>
-
+      <p>Achilios megmozdult. Nem ébredt fel, mert maga az ébredés gondolata is alvásra utalt, ami az ő állapotában lehetetlen volt számára.</p>
+      <p>Mégsem volt eszméleténél. Ahogy az íjász lassan kitolta az arcát a sáros dzsungel talajából, azon tűnődött, mi történhetett vele. Achilios emlékezett rá, ahogy a Háromság démoni szolgájának csápjai elkezdték széthúzni, de utána minden üres volt.</p>
+      <p>A szörnyetegre gondolva talpra ugrott. Achilios hálát adott, hogy a gyermekkorában hallott hátborzongató történetek ellenére legalább egy nagyon fürge halott ember. Úgy gondolta, hálásnak kellene lennie a sárkánynak ezért, de bizonyos szempontból az, hogy ilyen közel volt az élethez, és mégis mégsem, keserű hidegséget hagyott benne. Az, hogy közel volt az élethez, nem ugyanaz, mint az élet.</p>
+      <p>Aztán eszébe jutott, hogy mit is csinált valójában a dzsungelnek ebben a részében. Achilios megfordult, hogy szembenézzen Hashirral.</p>
+      <p>De a városnak a tartózkodási helyéhez legközelebb eső széle romokban hevert.</p>
+      <p>Pislogás nélkül bámult – egy újabb szokása volt az élőknek, amire már nem volt szüksége –, próbálva megfejteni, mennyi idő telt el a pusztulás óta. A kapuk, a körülöttük lévő falak… azokat mintha óriási ököllel zúzták volna össze. Bent a hármas torony közül kettő megsemmisült, az egyik már nem is látszott az ő szemszögéből. Az egyetlen megmaradt torony – Dialoné, ha Achilios nem tévedett – veszélyesen megdőlt. A tornyok alatti területről füstfelhő szállt fel.</p>
+      <p>Ez a pusztítás legalább egy, talán két napig tartott, becsülte Achilios. Remélhetőleg nem tovább.</p>
+      <p>De még ez is túl hosszú idő volt. Nem lesz itt. Első adandó alkalommal utasította volna Uldyssian követőit… de hová? Már nem értette a tervét, nem mintha bármi is számított volna neki mostanában. A vadásznak csak egy dolog volt fontos, függetlenül attól, hogy Trag'Oul vagy Rathma mit állítana az ellenkezőjéről.</p>
+      <p>Serenthiát – az ő Serenthiáját – megszállta az átkozott démonnő.</p>
+      <p>De ez Serenthia megölését is jelentené.</p>
+      <p>Annak ellenére, hogy tudta, mit fognak ragaszkodni hozzá, Achilios úgy érezte, kell lennie egy másik megoldásnak. Serenthia nem halt meg, a húsát démoni mágia lepattogtatta olyan szépen, hogy Lilith parádézhasson benne. Nem, a szeretett nő még mindig ott volt, bár mélyen aludt. Valahogy fel kellett ébreszteni, hogy belülről harcolhasson Lilith-tel, míg mások kívülről a démonnővel harcolnak.</p>
+      <p>Valahogy…</p>
+      <p>Először is, meg kell találnod, te idióta! Fogalma sem volt, mekkora előnyük van Uldyssian követőinek, vagy hogy vajon ugyanarra a célra tartanak-e, mint amerre eredetileg szánták. Achilios csak azt tehette, amihez a legjobban értett: követni a célpontját.</p>
+      <p>ami még rosszabb, kétségbeesetten próbálta eloltani a máglya tüzét. Egyetlen találkozása az egyik helyi lakossal elég volt ahhoz, hogy Achilios óvatos legyen bármilyen ismétlődéssel szemben. Még lábon is felismerhetően halott volt. Ugyanilyen frusztráló volt az a tény, hogy összeesése miatt több kosz rakódott a testére, mint valaha. Egy gyors kísérlet, hogy lesöpörje a koszt, majdnem olyan hiábavalónak bizonyult, mint az eredeti bevonat eltávolítása. Úgy tűnt, a talaj általánosságban úgy vélte, hogy Achilios hozzá tartozik, és nem adta fel a kísérletet, hogy újra eltemesse.</p>
+      <p>Nem engedte volna ezt meg, amíg mindent meg nem tett szerelméért.</p>
+      <p>Árnyékként suhant át a vadász Hashir körüli dzsungelen. Kétszer is összefutott néhány lakóval, de azok lassabb eszűek voltak hozzá képest, így Achilios könnyedén elkerülte a lebukást. Végül sikerült elérnie a romos kapun túli területet, ahol remélte, hogy nyomokat talál a keresett személyekhez.</p>
+      <p>Ez valójában könnyebbnek bizonyult, mint gondolta. Az edyrem ismét megszaporodott, olyannyira, hogy az általuk hátrahagyott nyom olyan volt, mint egy kígyóorrú óriási állatok csordája, amelyeket az alföldiek használtak házimunkához, vagy szinte lovagoltak rajtuk. Még egy vak ember is követni tudta volna a tömeges kivándorlást, amellyel szembesült.</p>
+      <p>De ami meglepte, az az volt, hogy nem azon az útvonalon tartottak, ami a főtemplomba vitte volna őket, ahogy kellett volna. Ehelyett még délebbre tértek, egy olyan területre, amiről semmit sem tudott.</p>
+      <p>Vajon mire készült Lilith?</p>
+      <p>Akhiliosz továbbment. Bármi is volt az, végső soron mindegy volt. Utoléri őket, bárhová is utaznak.</p>
+      <p>Remélhetőleg addigra már lesz valami terve…</p>
+      <p>Visszatérnek…</p>
+      <p>Ez a három szó jobban felvidította Mendelnt, mint azt el tudta volna képzelni. Felnézett a sárkány által rábízott feladatról, és megtanulta, hogyan összpontosítsa még jobban akaratát a lenyűgöző tőr segítségével. Meglepően jól ment minden. Ámulatba ejtette a szerszámmal való bánásmódjának veleszületett képessége, különösen annak fényében, hogy milyen rövid ideje volt az övé.</p>
+      <p>És hirtelen Uldyssian és Rathma álltak előtte. Testvére ugyanolyan megkönnyebbültnek tűnt, mint ő. Diomedész fiai megölelték egymást, miközben Rathma kőarcúan bámulta őket, és a mennyei kígyóból derű áradt. Az élet számos képe folyamatosan felvillant és eltűnt a látóteréből, ahogy a teremtmény hullámzott.</p>
+      <p>Ne vesd meg ennyire a családi szeretetet, jó Rathmám – jegyezte meg Trag'oul, hogy mindenki érezze.</p>
+      <p>"Nem a legjobbak a tapasztalataim ezzel, és ezt tudnod kell."</p>
+      <p>Mendeln és Uldyssian elváltak. Uldyssian első kiáltása ez volt: "Serenthia… Lilith megszállta őt… ez Hashir előtt történt…"</p>
+      <p>"Ahogy én is értem, bár először attól féltem, hogy őt is megölték, mint Ethon mestert." Mendeln egy rövid, frusztrációval teli pillantást vetett a csillagos égre az átmeneti sokk miatt. Serenthia jelenlegi helyzete azonban nem volt sokkal jobb. "Meg kell találnunk a módját, hogy kiűzzük a démont…"</p>
+      <p>– Ez nem lesz ilyen egyszerű – vágott közbe Rathma. – Régóta tudom, milyen erősen ragaszkodik anyám ahhoz, ami hasznára válik… ahogy talán te is emlékszel, Uldyssian ul-Diomed.</p>
+      <p>"És kinek a hibája ez?" – ordította Mendeln testvére.</p>
+      <p>Öklével a csillagok felé rázta a tekintetét. "Ki vitt el engem? Ki akadályozott meg abban, hogy hozzá menjek?"</p>
+      <p>Ha azonnal visszatértél volna abban az állapotban, amiben voltál, könnyen leigázott volna…</p>
+      <p>– Igazat mond – tette hozzá Rathma. – Már így is megfertőzött téged a sötétségével. Ha akkor visszatérsz Lilithhez, az csak arra lett volna jó, hogy befejezze a varázslatát.</p>
+      <p>Mendeln pontosan értette, mit mondanak, de úgy érezte, meg kell védenie testvérét. "Akkor miért nem tehettünk volna többet?"</p>
+      <p>"Egyensúlyban marad." Rathma vett egy mély lélegzetet, majd hozzátette:</p>
+      <p>"Ami engem illet, a sorsom máshol van, ahogy azt mindig is tudtam. Többet nem mondhatok."</p>
+      <p>Ez aligha volt Mendeln, pláne Uldyssian megelégedésére szolgáló válasz, de mindketten rájöttek, hogy Rathmától többet nem kaphatnak.</p>
+      <p>Valójában Uldyssian láthatóan türelmetlen lett, hogy tegyen valamit... bármit. Mendeln néhány ritka alkalommal látta már így a testvérét, és attól tartott, mi fog történni, ha tovább késlekednek.</p>
+      <p>"Nincs minden reménytelen" – kezdte mondani Uldyssiannak.</p>
+      <p>"Van egy másik, aki még most is…" De nem jutott tovább. Uldyssian kitört a szájából: "Nem csoda, hogy Inarius és a démonok ilyen régóta képesek játszani a világunkkal! Ti csak beleavatkoztok azok dolgába, akik nem jelentenek rátok veszélyt, és tétlenkedtek azokkal szemben, akik a legnagyobb fenyegetést jelentik!" Mendeln nyugtatóan a testvére vállára tette a kezét.</p>
+      <p>"Uldyssian…"</p>
+      <p>De az idősebb testvér nem törődött a fiatalabbal. "Mondd, Rathma! Elértünk valamit a Világkővel? Változott valami?"</p>
+      <p>"Bizonyára, de mennyit kell ebből következtetni gondos megfigyeléssel…"</p>
+      <p>"Elég jól megfigyeltem már! Én…"</p>
+      <p>TART!</p>
+      <p>Bár Trag'Oul kitörése csak bennük történt, mintha mennydörgés robbant volna. Még Rathma is a fejét fogta fájdalmasan a hangos zajtól.</p>
+      <p>Az angyal aktív.</p>
+      <p>Ezek a szavak felkeltették a másik három figyelmét.</p>
+      <p>Uldyssian Mendelnre pillantott, aki jelezte, hogy inkább Rathmát kellene tanulmányoznia.</p>
+      <p>A sápadt alak ha lehet, még sápadtabb volt, mint valaha.</p>
+      <p>Mendeln mégsem félelmet érzett a másikban.</p>
+      <p>Inkább a lemondáshoz hasonló dolognak tartotta.</p>
+      <p>– Akkor el van intézve – mondta Rathma.</p>
+      <p>Ez a te döntésed. Én mindig azt mondtam, hogy…</p>
+      <p>– Nem… ez apám döntése… soha nem az enyém… – Rathma a két halandóra nézett. – De talán… talán túlanalizáltam… talán… – Összeszűkült szemei még jobban összeszűkültek, ahogy Uldyssianra szegeződött.</p>
+      <p>Mendeln testvére eltűnt.</p>
+      <p>"Mit tettél?" – kérdezte Mendeln. Sehol sem érezte Uldyssiant.</p>
+      <p>Hűség ébredt fel az öccsben. "Akkor én megyek…"</p>
+      <p>– Nem… Szükségem lesz rád a szembesítéshez. – Rathma beletörődése egyre hangsúlyosabbá vált. – Remélem, gyorsan kioktattad, Trag?</p>
+      <p>Amennyit lehet tenni. Ehhez nem vagy kötve…</p>
+      <p>– De igen, az vagyok. Ugyan már, Mendeln. – Mendeln sejtette, hogy nincs más választása, ezért továbbra is tudni akarta, hogy mire kényszerítik. – És hová viszel engem, amikor a bátyám oldalán lennék? Hová?</p>
+      <p>Rathma szélesre terítette a köpenyét, tekintete most magát a halált tükrözte. "Oda vinnélek, ahonnan a legmesszebb szeretnék lenni. Én… nem… sajnálattal kell bevallanom, hogy magammal kell vinnem… hogy szerető apám elé állj…" Uldyssian a dzsungelben állt.</p>
+      <p>Először örült a látványnak. Rathma végül beadta a derekát, és oda küldte, ahová mennie kellett.</p>
+      <p>Ekkor Uldyssian észrevette, hogy ismét hiányzik neki Mendeln.</p>
+      <p>Öklével a vastag lombkorona felé rázta a fejét. "Megint a fene vigyen, Rathma! Semmivel sem vagy különb azoknál, akiket a szüleidnek kiáltasz ki!"</p>
+      <p>Uldyssian Mendelnre koncentrált, először megpróbálta magához vonzani a testvérét, majd amikor ez nem sikerült, megpróbált visszatérni Trag'Oul birodalmának ürességébe.</p>
+      <p>De még mindig semmi sem történt.</p>
+      <p>Mielőtt még azon gondolkodhatott volna, mit próbáljon, Uldyssian valami olyasmit érzett, ami teljesen elvonta a figyelmét a testvéréről.</p>
+      <p>Serenthia – Lilith – mindketten a közelben voltak.</p>
+      <p>Tudván, hogy pillanatnyilag semmit sem tehet Mendelnért, Uldyssian azonnal az új helyzetre összpontosított. Bízott Rathmában, hogy majd beleveti őt a dolgok sűrűjébe. Miért nincs itt Lilith fia, hogy foglalkozzon az anyjával? Mi lehetne ennél fontosabb?</p>
+      <p>De ez nem lehetett Uldyssian aggodalma. A lényeg az volt, hogy megbizonyosodjon arról, hogy a démonnő nem érzékeli a jelenlétét. Mindent bevetett, hogy eltakarja magát a tekintete elől – és remélte, hogy tudja, mit csinál –</p>
+      <p>Uldyssian óvatosan továbblépett. Ha egyedül kell lennie egykori szeretőjével szemben, hát legyen. Nem hagyhatja, hogy a nő folytassa gonoszságát…</p>
+      <p>Már leszállt az éjszaka, ami eleinte nyugtalanította. A sárkány birodalmában furcsán telt az idő; sokkal korábban számított rá, hogy a nap folyamán lesz. A sötétség azonban biztosan segíteni fog Uldyssiannak, aki addig sem akart a követői szeme elől menekülni, amíg fel nem méri, milyen hatással lehettek rájuk Lilith-ek.</p>
+      <p>Bár csábító volt szembeszállni vele a többiek előtt, Uldyssian kételkedett benne, hogy egy ilyen manőver a javára válna. Lilith esetében a legjobb először ártalmatlanná tenni... valahogy. Csak aztán aggódhat a probléma többi része miatt.</p>
+      <p>Ahogy közeledett a táborhoz, nyilvánvalóvá vált, hogy az edyrem sorai Hashir óta megnőttek, ami Uldyssiannak nem igazán tetszett, mint régen. Az újonnan érkezők nagy részét Lilith ihlette, bár azon tűnődött, hogyan érte ezt el. Az a tény, hogy a démonnő őt választotta a csatjának, arra a feltételezésre késztette, hogy Lilithnek szüksége van rá, hogy könnyebben felébressze a többi emberben rejlő képességeket, de az új edyremek nagy száma, amit Uldyssian érzett, megcáfolta ezt... legalábbis úgy tűnt.</p>
+      <p>Uldyssian körbejárta a környéket, titokban Lilith nyomát keresve anélkül, hogy a lány észrevette volna. Nem bízott teljesen abban, hogy sokáig rejtőzködni tud előle.</p>
+      <p>A dzsungel lejtősödött, végre egészen jól belátta a tábor fő részét. Csupán a legcsekélyebb érdeklődéssel nézte a sátrak, takarók és fészerhelyek kavalkádját. Valahogy kételkedett benne, hogy Lilith méltóztatna egy ilyenben aludni. Mégis tudta, hogy a közelben kell lennie…</p>
+      <p>Az edyrem kellős közepén egy építmény megdermedt, amitől Uldyssian megdermedt. Egy fáklyákkal megvilágított nagy kőépület állt előtte. Először valami régi vadászháznak gondolta, de ahogy Uldyssian jobban szemügyre vette az épületet, többet vett észre, mint csupán az élesen hegyes ajtókeretet és a furcsán szögletes tetőt. A rovátkolt oszlopok, az ajtó csigadísze, mind egy dologgá alakultak. Bár kisebb és ősibb volt, mint bármelyik, amit korábban látott, ez nyilvánvalóan valamiféle templom lehetett.</p>
+      <p>Miközben ezt felfogta, szeme – melyet azért nagyított ki, hogy éjszaka is jól lásson – megakadt a pillantása valamin, amitől még jobban megdermedt a vér a vérben.</p>
+      <p>A bejárat tetején Serenthia arcának domborműve díszelgett.</p>
+      <p>Bár az arc úgy nézett ki, mintha mindig is az épület része lett volna, egyértelműen új volt.</p>
+      <p>Azonnal megértette, mit jelent. Serenthián keresztül Lilith egy köré épülő kultuszt hozott létre. Sőt, bár Uldyssian a saját nézőpontjából nem lehetett teljesen biztos benne, úgy tűnt, minél jobban tanulmányozta Serenthia arcát, annál inkább megjelentek benne egy másik személy finom utalásai az arcvonásaiban.</p>
+      <p>És akkor felismerte, hogy kihez tartoznak.</p>
+      <p>Lilith. Nyilvánvaló volt, hogy már most is a testükben és a lelkükben is az úrnőjükké kíván válni. Valamikor majd levetkőzheti Serenthia alakját, sőt, talán valahogy "Lylia"-ként is visszatérhet.</p>
+      <p>Uldyssian, parázsló dühét leküzdve, az ősi templomra gondolt. Nem lehetett véletlen, hogy Lilith ide került; ő nem így dolgozott.</p>
+      <p>Ez az építmény volt a tervezett úti célja.</p>
+      <p>Ez a felismerés még jobban végigfutott a hidegen Uldyssianon. Valaminek itt történnie kellett, valaminek, ami szervesen kapcsolódik a démonnő vágyaihoz…</p>
+      <p>Az edyrem nagy része már kezdett letelepedni az éjszakára, kétségtelenül kimerülten a fáradságos úttól. Több őr volt, mint valaha, sokkal több, mint amennyi indokolt lett volna. Uldyssian számára még zavaróbb volt a modoruk, ami még szunnyadó bajtársaikkal szemben is hidegebbnek és óvatosnak tűnt. Az őrök parthaniak és alföldiek keverékei voltak, némelyiket arcról felismerte. Legtöbbjük férfi volt, de néhány nő – hasonlóan sötét arckifejezésű – is sétált közöttük.</p>
+      <p>Uldyssian minden erőfeszítés nélkül is érezte a lelkük felett az árnyékot, egy Lilithre jellemző szennyet.</p>
+      <p>Figyelmeztetés nélkül az egyik őrszem felé pillantott. Uldyssian elfojtott egy jelzőt, megerősítette pajzsát és mélyebbre hátrált a dzsungelbe. Az őr homlokráncolva tett egy lépést a rejtekhelye felé.</p>
+      <p>Semmit sem látsz – gondolta Uldyssian a férfira nézve.</p>
+      <p>Csupán a dzsungel. Az egész a képzeleted szüleménye volt…</p>
+      <p>Még soha nem próbált meg így befolyásolni másokat, és remélte, hogy ezzel a kísérlettel nem árulja el magát. Az őrszem még egy pillanatig körülnézett... aztán felnyögött, és visszatért a helyére.</p>
+      <p>Egyre közelebb osonva Uldyssian ostorozta magát a gondatlanságáért. Túl közel járt ahhoz, hogy felfedje a jelenlétét... ráadásul egy őr előtt. Ha Lilith lett volna, Uldyssiant biztosan leleplezték volna.</p>
+      <p>Vajon Lilith bent volt a templomban? Mivel nem érzékelte megfelelően, Uldyssian csak feltételezni tudta. A kígyó pikkelyeinek felvétele 332</p>
+      <p>A legnagyobb óvintézkedéseket megtéve, még jobban igyekezett átvizsgálni a szerkezetet.</p>
+      <p>Megpróbálták, de gyorsan kudarcot vallottak. Valamiféle lepel borította, ami miatt bármi is történt odabent, az senki, még ő maga számára sem volt észrevehető. Ez csak még jobban szorongatta Uldyssiant. Mit akarhatna annyira elrejteni Lilith, miközben ragaszkodott ahhoz, hogy mindez olyanok között történt, akiknek lehetőségük volt megérezni?</p>
+      <p>Attól félt, hogy van valami sejtelme… és ez döntésre kényszerítette. Lilith biztosan nem cselekedhet, amíg a "követőinek" nagy része nem alszik. Ha Uldyssian észrevétlenül eléri az épületet…</p>
+      <p>Hirtelen mozgás támadt balra tőle. Alig tudott elbújni, hogy ne lássa meg egy arra járó alak. Uldyssian lélegzetét visszafojtva felismerte a tábor szélén lépkedő kopasz férfit.</p>
+      <p>Nyugodt.</p>
+      <p>Uldyssian nem merte hagyni, hogy a pillanat elszálljon.</p>
+      <p>Diomédész fia koncentrálva nyúlt a partháni felé.</p>
+      <p>Romus elfojtott egy sikítást. Laza mozdulatokkal a dzsungel felé fordult, majd eltűnt a tábor szeme elől.</p>
+      <p>"Én vagyok az. Dicsőség, Romus! Te vagy az, akinek most szükségem lenne!"</p>
+      <p>Az egykori rabló pislogott, majd így szólt: "Szolgálatára állok, Uldyssian mester, természetesen!" Hálásan bólintott, és távolabb húzta társát a tábortól. "Először is tudnom kell valamit, Romus… hogy boldogultak az edyremek Hashirban?"</p>
+      <p>"Ez egy véres dolog volt! A templomnak nagyobb mágiája és hatalma volt, mint azt el tudtuk volna képzelni! Igen, voltak elveszettek is, Uldyssian mester, Tomo is köztük volt." Tomo. Uldyssian gyászolta az összes megöltet, de a buzgó Tomót jobban ismerte, mint sokan mások. "Hogy van Saron?"</p>
+      <p>"Megekesküdött, hogy száz Triune-nal bosszulja meg unokatestvére halálát, amikor legközelebb rájuk bukkanunk…"</p>
+      <p>A vér csak ömlött. Uldyssian önmagát hibáztatta, de olyan lényeket is hibáztatott, mint Lilith, Inarius és Rathma, amiért olyan keveset gondoltak a halandó életre.</p>
+      <p>Fizetni fognak. Mindannyian fizetni fognak… először Lilith-tel.</p>
+      <p>Ez visszavezette egy másik kérdéshez, amire gyorsan választ kellett adnia. "Az az ősi építmény. Hogyan lehetséges, hogy mindannyian itt vagytok, a közelében, és nem úton vagytok a főtemplom felé?"</p>
+      <p>Romus arca felderült. "Serenthia volt az! Látomása volt, és meglátta ezt a helyet! Micsoda új és csodálatos hatalom! Még neked sem volt soha ilyen, ugye, Uldyssian mester?"</p>
+      <p>"Nem." Uldyssian kételkedett benne, hogy az edyremek közül bármelyik is tapasztalt volna már ilyen képességet, vagy hogy valaha is fog.</p>
+      <p>"Nem… és attól tartok, hogy Serenthia sem."</p>
+      <p>"Hogy érted ezt?"</p>
+      <p>"Romus, másnak tűnt… másnak tűnt Serenthia?"</p>
+      <p>– Más? – vonta meg a vállát a kopasz férfi. – Amikor eltűntél, ő átvette a küzdelmet, és sokunkat megmentett, akik talán csatlakoztak volna Tomóhoz! Visszahozta belénk a lelket, Uldyssian mester, amikor azt hittük, hogy már nem vagy többé! – Lilith jól végezte a dolgát, ítélve Romus elragadtatott arckifejezéséből és csodálkozó hangjából. Uldyssian éppen időben tért vissza.</p>
+      <p>Megragadta a férfi vállát. Romus messzire jött a kétes hírű alaktól, aki a Parthan tér túlsó végéből figyelte őt. "Figyelj rám!"</p>
+      <p>"Igen, persze…"</p>
+      <p>Uldyssian hevesen csóválta a fejét, és folytatta:</p>
+      <p>"Mindannyian átvernek benneteket, Romus! Az ott testben Serenthia, igen, de amit hallasz és látsz, az egy démon műve, a förtelmes Lucion húgáé! Tudod, kiről beszélek!"</p>
+      <p>Edyrem arca elborult. "Lilithről beszélsz, akiről mindannyian hallottunk már, igen. Igaz lehet, hogy azt mondod, Serenthia ő álruhában? Az nem lehet!"</p>
+      <p>"Serenthia a kezében van. Serenthia ott van, mélyen alszik. Amit láttál, amit átéltél, ígérem neked, Romus, hogy az igazi Serenthiának semmi köze nem lett volna hozzá…"</p>
+      <p>"Semmi… igen…" Romus elgondolkodva nézett le.</p>
+      <p>Uldyssian nem adhatta meg neki azt a luxust, hogy mindezt megemésztse. "Romus… Romus, Serenthia bent van abban a helyen?"</p>
+      <p>"Igen. Annak kellene lennie."</p>
+      <p>"Az őrszemek, akiket láttam. Volt vele különleges kapcsolatuk?" Miután Romus bólintott, Uldyssian elmagyarázta: "Óvatosnak kell lennünk velük. Lehet, hogy a hatása alatt állnak."</p>
+      <p>"Akkor ketten maradunk, Uldyssian mester? Bízhatsz bennem!" Romus hangja szinte könyörgött Uldyssiannak, hogy higgyen benne.</p>
+      <p>Uldyssian nemcsak hogy hitt benne, de Romusnak sajnos kulcsszerepet kellett játszania. Még mindig Lilith közelébe kerülhetett anélkül, hogy gyanút keltene. Uldyssiannak szüksége volt az egykori rablóra, hogy annyira elterelje Lilith figyelmét, hogy aztán lecsaphasson rá, amíg a védelme már nem teljes.</p>
+      <p>Elmagyarázta ezt Romusnak, majd megkérdezte, hogy a férfi még hajlandó-e, mit tud az épületről.</p>
+      <p>– Ez egy régi kápolna vagy szerzetesi lakhely – mondta – felelte Romus. – Serent… Azt mondta nekünk, hogy ez annak a jele, hogy oda irányítottak minket. Azt mondta, hogy ez egy fordulat kezdetét jelzi mindannyiunk számára…</p>
+      <p>Uldyssian ismét hideg futott át rajta. "Vajon előbb fogadna, mint amennyit kért?"</p>
+      <p>"Találnék rá okot, Uldyssian mester." A parthani megborzongott. "Szegény Serenthia…"</p>
+      <p>"Ha meg tudod akadályozni, hogy a démonnő észrevegye, akkor én bemegyek. Aztán te elmész."</p>
+      <p>"De mi a helyzet veled?"</p>
+      <p>Uldyssian úgy tervezte, hogy senki mást nem akar a közelben látni. Lehetséges, hogy Lilith Serenthiából való kiűzése pusztítást végezne a közvetlen környéken. "Csak menjetek minél messzebbre. Érted?" Romus vonakodva bólintott. Még egy-két percig megbeszélték a részleteket, majd egy rövid meghajlással visszatért a táborba. Uldyssian a lehető legegyszerűbben igyekezett tervüket kezelni, tudatában annak, hogy a legkisebb bonyodalom is sokszorosára ronthatja a helyzetet.</p>
+      <p>Romus nem ment azonnal a templomba. Ahogy előírták, először talált okot arra, hogy beszéljen a legközelebbi őrszemekkel, és máshová irányítsa őket. Uldyssian nem akarta, hogy bármelyiküket is megsebesítse pusztán azért, mert Lilith elbűvölte őket.</p>
+      <p>Mire Romus végzett az őrökkel, már leszállt az éj, és a tábor nagy részéből már csak csend áradt. Sok tűz már majdnem kialudt. Néhány fénylő fény lebegett a környéken, utalva az edyrem növekvő képességeire.</p>
+      <p>Szerencsére a legtöbb lámpa halványan világított, hogy alkotóik jobban aludhassanak.</p>
+      <p>Végül Romus az ősi építmény felé vette az irányt.</p>
+      <p>A két szolgálatban álló edyrem csak egy pillanatig habozott, mielőtt beengedte volna. Uldyssian egyik legidősebb követőjeként Romus valószínűleg most már a második lett a parancsnoki rangban. Ez felbecsülhetetlen értékűvé tette a felvételét Uldyssian tervébe.</p>
+      <p>A vastag, fából készült ajtó nyikorogva becsukódott a kopasz férfi mögött. Uldyssian halkan számolt, időt adva Romusnak, hogy beszélgetést kezdeményezzen az ál-Serenthiával. A parthaniak szerint a ma esti összejövetelig egyedül akart maradni.</p>
+      <p>Végül Uldyssian úgy ítélte meg, hogy elég idő telt el. Ha tovább tartott, Romus életét kockáztatta. Csak a két őr maradt, akik mindketten bizalmatlanul tekintettek a maguk előtti területre, amit Lilith felettük gyakorolt hatalma is fokozott.</p>
+      <p>Mivel nem akart senkit szükségtelenül megbántani, Uldyssian a két férfira koncentrált, majd feléjük osont.</p>
+      <p>Az őrök továbbra is előre bámultak. Most már semmit sem hallottak és láttak. Még akkor sem mozdultak, amikor elsietett mellettük.</p>
+      <p>Az épületnek nem volt más bejárata – az egyetlen további nyílások a jóval felettük lévő apró szellőzőnyílások voltak –, de Romus elmagyarázta, hogy van egy külső kamra is azelőtt, amelyben Lilith a szentélyét rendezte be.</p>
+      <p>Uldyssiannak csak el kellett volna érnie. Akkor már nem lesz ok a lopakodásra… csak a gyorsaságra.</p>
+      <p>Egyetlen lehetősége lenne, csakis egyetlen.</p>
+      <p>Az utasítására az ajtó éppen annyira kinyílt, hogy beengedje. Uldyssian elfojtott minden nyikorgást, nehogy a démonnőt még az is megzavarja.</p>
+      <p>A terem, amelybe belépett, teljesen üres volt, bármilyen dekorációt vagy tárgyat is távolítottak el a tolvajok vagy a távozó építőmesterek. Uldyssiant nem érdekelte, mire használták az építményt, csak az, hogy hangok szűrődtek ki a túlsó szobából.</p>
+      <p>Romusé… és Serenthiáé.</p>
+      <p>"…és igen, Romus, hamarosan úton leszünk a Háromság főtemploma felé. Uldyssian halálára esküdtem, hogy teljesítem a küldetését. Először a Háromságot, aztán mindenképpen a Fény Katedrálisát…akik talán rosszabb ellenségek, mint azok, akikkel most harcolunk."</p>
+      <p>– Még egyszer elnézést kérek – felelte neki a parthan. – De én is szeretném betölteni Uldyssian mester örökségét. Köszönöm a megnyugtatást.</p>
+      <p>"Egyáltalán nem. Van még valami más?" Uldyssian már nem merte kockáztatni Romust. Tudván, hogy Serenthia testét sem akarja bántani, a Kígyó Pikkelyeinek fia 340</p>
+      <p>Diomédész minden erejét beleadva elismételte, amit az őrökkel tett odakint. A női hangra szegezte a tekintetét…</p>
+      <p>Csend telepedett az épületre, melyet végül Romus felnyögése tört meg. "Uldyssian mester! Nem mozdul! Úgy áll, mint egy szobor!" – lépett be Uldyssian. Először is Serenthiát vette észre, aki olyan gyönyörű volt, mint amilyenre emlékezett, istennőként egyensúlyozott, egyik kezét Romus felé nyújtva. Egy elbűvölő mosoly, amelyet a kereskedő lánya még soha nem viselt, bőséges bizonyítékot szolgáltatott arra, hogy Lilith valóban a nőben lakozik.</p>
+      <p>Aztán egy második, még szörnyűbb látvány vonta magára a figyelmét a háta mögött.</p>
+      <p>Egy oltár.</p>
+      <p>Egy oltár, amelyet évszázados vér foltozott be.</p>
+      <p>Talán hátborzongató véletlennek gondolta volna, de a szürke kőlap tetején egy hosszú tőr és egy serleg volt. Ami még rosszabb, a foltos felületre frissen rajzolt rúnákat is rajzoltak.</p>
+      <p>Ma este az oltár generációk óta először ivott volna.</p>
+      <p>"Uldyssian mester?"</p>
+      <p>Romus töprengő hangja végre visszarántotta a jelenbe. A parthani hátralépett, miközben Uldyssian a dermedt alakra nézett.</p>
+      <p>Közelről Uldyssian látta az apró utalásokat arra, hogy a nő, akivel felnőtt, valójában nem volt ott. A mosolyon kívül a szemek ravaszsága is megnyilvánult, amit túlságosan is jól felismert.</p>
+      <p>– Vége van, Lilith… – lehelte. Uldyssian a nő halántékára tette a tenyerét. Nem volt biztos benne, mit kellene tennie, de ha valahogy elérné Serenthiát, úgy érezte, a nő segítene neki kiűzni a démont. – Mindennek vége…</p>
+      <p>Valami kemény csattant a feje hátulján.</p>
+      <p>A világ megfordult. Homályos szemmel látta, hogy Romus felé hajol, a parthani fanatikus arckifejezéssel, kezében egy nehéz követ tartva, amelyet látszólag a kamra valahonnan vettek elő. A kő egyik végén lévő friss vér Uldyssianhoz tartozott.</p>
+      <p>És ahogy Uldyssian összeesett, meghallotta Serenthia hangját… és Lilith túlságosan is ismerős nevetését.</p>
+      <p>"Nagyszerű, szerelmem… pont ahogy terveztük…"</p>
     `
   },
   "sin-war-scales-ch15": {
@@ -8457,6 +8337,123 @@ export const wikiArticles: Record<string, any> = {
     },
     content: `
       <h3>15. FEJEZET</h3>
+      <p>Uldyssian arra ébredt, hogy végtagjai az oltárkőhöz vannak kötözve. Ez önmagában is elég nyugtalanító volt, de amikor megpróbálta a képességeit felhasználva kiszabadítani magát... semmi sem történt.</p>
+      <p>Aztán újra meghallotta az ismerős nevetést.</p>
+      <p>– Drága, drága, édes Uldyssianom! – gügyögte Serenthia.</p>
+      <p>Csakhogy nem Serenthia volt az, emlékeztette magát Diomédész fia, hanem Lilith. "Olyan naiv. Olyan bizakodó." Egy arc jelent meg fölötte, de nem az, amelyikre számított. Romus ehelyett lesütötte a szemét egykori barátjára. "Soha nem kellett volna visszajönnöd, Uldyssian mester. Soha."</p>
+      <p>"Romus! Megőrültél? Lilith, ez a démon, nem Serenthia!"</p>
+      <p>A parthan megrázta a fejét. "Nem… tévedsz. Mindkettő az. Az én Serenthiám és az én Lilith-em. Mindkettő megvan nekem…"</p>
+      <p>Léptek hallatszottak, amelyek előre jelezték a démonnő megjelenését.</p>
+      <p>Félresimítva Serenthia hosszú, sötét haját, szeretetteljesen Romus vállára dőlt. "És itt vagy nekem, kedves Romus! Mennyivel hűségesebb szerető vagyok nálad, Uldyssian, aki nem láttad mindazt, amit felajánlottak! Bárki lehettem volna, akit kívánsz, beleértve azt is, amit látsz… de te visszautasítottad a szerelmemet és az ajánlatomat…"</p>
+      <p>"Csak egy bábut akartál, aki vezeti a varázsereged létrehozását, hogy elfoglalhasd Menedéket Inariustól!" Uldyssian Romusra nézett. "Ha talál valaki még hasznosabbat, félredob! Gondolkozz el, Romus! Ez nem te vagy! Ez nem te vagy!"</p>
+      <p>"Semmit sem tudsz az életemről, mielőtt Parthába jöttél, Uldyssian mester! Senkinek sem feleltem! Mindenki félt tőlem! Elvetted ezt tőlem, és a bárányaid közé fogadtál! De ő emlékeztetett arra, hogy ki is vagyok valójában" – közelebb hajolt, szeme tágra nyílt és halálos volt. Mániákus arckifejezéssel – "és ezért még jobban imádom!" Nem volt remény beszélni a Parthával. Lilith teljesen elcsábította, mélyen benne kereste azt a hosszan tartó sötétséget, ami egykor teljesen elnyelte Romust… és most újra.</p>
+      <p>Uldyssian megpróbálta kiszabadítani a bal kezét, de a kötelékek tartottak. Romus vigyorra fakadt. Lilith ajkait színlelt bánattal csücsörítette foglyuk miatt.</p>
+      <p>Miközben Uldyssian az időért és valamilyen menekülési lehetőségért küzdött, megkérdezte: "Szóval, téged használt fel az új edyrem életének megteremtésére? Csak ezt akarja igazán! Ő maga nem tudja ilyen gyorsan megcsinálni. Ez az ajándékok természete; ezek emberi dolgok, ő pedig nem, Romus!" Szavai süket fülekre találtak. "Engem választott. Mind közül engem választott, mert látta, milyen erős vagyok, és hogy felrázhatnak az illúziók, amiket ránk vetettél. Azóta, Hashiri, másoknak is megmutattam, újaknak és régieknek egyaránt, ugyanezt, és minden nap egyre több van." Elvigyorodott.</p>
+      <p>"Úgy bánnak velem, mint egy istennel…"</p>
+      <p>Lilith közelebb hajolt, először megcsókolta Romus arcát, majd megnyalta. A férfi macskaként reagált a mozdulatára, arcát az övéhez dörzsölve. A jelenet több szempontból is rosszul érezte magát Uldyssiant; nemcsak Serenthia, hanem a parthaniak miatt is. Ez nem az a Romus volt, akit ismert.</p>
+      <p>"Felhasználod őt?" – kérdezte lelkesen az egykori rabló.</p>
+      <p>Kuncogott a kérdésén. "Nos, az csodálatos lenne, de nem. A vére nem használna. Sőt, lehet, hogy az ellenkező hatást váltaná ki, hozzáadná a fertőződését. Nem… Szükségem van valakire, akinek az életereje felerősíti azt, amire vágyom, drága, édes Romus… és erre igazán csak egyetlen ember van a fejemben." A Parthan hirtelen eltátotta a száját. Szeme még jobban elkerekedett, odáig, hogy úgy nézett ki, mint egy békáé.</p>
+      <p>Borzongva előrebukott, és egy megdöbbent uldyssiánra vetette magát. Ahogy tette, a háta láthatóvá vált.</p>
+      <p>Egy hosszú, bíborvörös tócsa csordogált ki a hátán lévő gonosz lyukból.</p>
+      <p>Lilith felemelte a tőrt, amelyet Uldyssian az árulása előtt észrevett. Romus vére lecsöpögött a pengén és a markolatán. Lilith ügyet sem vetett a kezén megjelenő vörös foltokra. Ehelyett szabad kezével megsimogatta a parthan kopasz fejét.</p>
+      <p>"Gyönyörű volt… Biztos vagyok benne, hogy Serenthia is élvezte."</p>
+      <p>Kár, hogy annyira tökéletes volt a szerepre.</p>
+      <p>– Megőrültél, Lilith!</p>
+      <p>Arckifejezése megfeszült. "Nem… Igazoltak a tetteim, kedves Uldyssian! Igazoltak! Megmentettem a gyerekeket, és ezért a jótettért a semmibe taszítottak! Inarius azt hitte, soha nem találok vissza… de megtaláltam, megtaláltam!" – folytatta, és elkezdte simogatni a halott Romust. "Olyan elszánt volt, hogy bebizonyítsa magát nekem és neki. Odajött, és elmesélte, hogyan hívtad be a dzsungelbe, és hogy még mindig a barátodnak tettette magát!" Lilith elmosolyodott. "Bevallom, az időzítésed megijesztett, szerelmem. Érzem, hogy mások munkáját érzem ebben. Beszéltél az én drága Inariusommal? Hmm?"</p>
+      <p>Habár Uldyssian többször is úgy gondolta, hogy Rathma nem több a szüleinél, valami mégis visszatartotta attól, hogy elmondja a démonnőnek az igazságot. "Röviden beszélgettem vele. Hiányzol neki, és a bocsánatodat könyörög. Aztán meg akar ölni." A felette lévő arc eltorzult, és semmi épelméjűséget nem mutatott, amit még szörnyűbbé tett az a tény, hogy Serenthiáé volt.</p>
+      <p>"Ülj mit sem sejtve trónján, miközben csillogó katedrálisának falai záporoznak körülötte!" Uldyssian kételkedett benne, hogy az angyal ennyire önelégült lenne, de Lilith egyértelműen osztozott Inarius megalomániájában. El sem tudta képzelni, hogy tervei kudarcba fulladjanak, különösen nem egy halandó beavatkozása miatt.</p>
+      <p>A baj az volt, hogy az utóbbi esetben úgy tűnt, igaza van. Uldyssian érezte a benne lévő erőt, ami ki akart törni a felszínre, de valami visszafogta. Nem érzett magán semmilyen varázslatot, de a démonnő munkája nagyon-nagyon finom tudott lenni.</p>
+      <p>– Még mindig küzdök – jegyezte meg. – Milyen csodálatra méltó az elszántságod… vagy csak még egyszer a karjaidban szeretnél tartani? Lilith elég közel hajolt hozzá, hogy megcsókolja, és bár Uldyssian egykor szerette volna, ha azok az ajkak az övéhez érnek, most felháborodott. De nem önmagáért, hanem Serenthiáért, akinek a teste most a démonnő játékszerévé vált.</p>
+      <p>Az ajkak a füléhez vándoroltak, ahol Lilith azt suttogta: "Nem kell sokáig várnod, szerelmem, és újra átölelsz. Amikor szegény Romus vérével varázsolok, te sem leszel mentes! Akkor végre úgy fogod látni a dolgokat, ahogy én kívánom…"</p>
+      <p>Egy rekedt kuncogás. "Mert egy balek, aki azt hiszi, hogy jól csinálja, a legjobb álcája a tervemnek! De már messze túl vagyunk ezen a ponton, és te már annyi követőt gyűjtöttél! Amikor lehetőség adódott, hogyan is állhattam volna ellen? Most úgy fogsz új híveket gyűjteni, hogy pontosan tudod, mit követelsz tőlük – hűséget irántam!" Uldyssian megpróbálta elkapni, de küzdelme hiábavaló maradt. Lilith ismét nevetett, és még jobban hátrált, hogy csodálja erőfeszítéseit. Romus testéhez súrolta magát, aki még mindig félig a foglya fölött feküdt.</p>
+      <p>Egy gyenge morgással a parthani hirtelen feltápászkodott. Megragadta Lilith karját, amelyben a tőrt tartotta. Vér fröccsent Uldyssianra.</p>
+      <p>Uldyssian minden reménye, hogy a Parthan megdöbbentő tette megmentheti mindkettőjüket, gyorsan szertefoszlott, amikor a démonnő megfordult és torkon ragadta Romust. Becsületére legyen mondva, az egykori rabló, akinek szemében nyoma sem volt a nő fanatikus irányításának, megpróbálta erejével megégetni. Kezei fényesen izzottak, és füst szállt fel ott, ahol Lilithhez értek.</p>
+      <p>De a lány csak nevetett, és egyetlen kézszorítással beleroppant a férfi légcsövébe.</p>
+      <p>Romus, aki már így is hatalmas sebet szenvedett, azonnal meghalt. Lilith ezúttal hagyta, hogy mozdulatlan teste a kőpadlóra rogyjon.</p>
+      <p>Mindkét kezét a Parthan életnedvei áztatva visszafordult Uldyssianhoz. Kísérteties mosolya még Serenthia arcát is túl szörnyűvé tette Uldyssian számára, ezért elfordította a tekintetét.</p>
+      <p>"Milyen erős élet! Igen, szegény Romus vére látványosan fog teljesíteni, szerelmem." Nedves ujjai visszakényszerítették a tekintetét rá. "Nem gondolod?" Amikor Uldyssian csak dühösen meredt rá, megpaskolta az arcát –</p>
+      <p>még több parthani vért hagyva maga után – és újra nevetett.</p>
+      <p>Abban a pillanatban Uldyssian megérezte, hogy valaki más is van a kamrában. De nem reménykedett benne, hogy valaki azért jött, hogy segítsen neki, és a jövevény valóban az egyik őrnek bizonyult, akit korábban megfagyasztott.</p>
+      <p>Az edyrem úgy méregette Uldyssiant, mint egy ételében felfedezett férget.</p>
+      <p>"A többiek itt vannak, Serenthia úrnő." Úgy tűnt, nem lepődik meg, hogy megtalálja Romus holttestét.</p>
+      <p>Lilith a Parthan felett állt, miközben Uldyssianhoz beszélt.</p>
+      <p>"Fogalmad sincs, hányan voltak olyan könnyen a vágyamra hallgatva, drága szerelmem! Olyan kegyes voltál, hogy elfogadtál mindenkit, aki eljött, hogy átölelje, amit felajánlottál, de bár akaratod eltemette azt, amik voltak, nem törölte el azt, amik voltak."</p>
+      <p>– A forgatásuk még Romusnál is egyszerűbb volt. – A tőrt továbbra is a kezében tartva, színlelt pukedlizést mutatott be. – Köszönöm, hogy ilyen jól elrendezted a dolgokat nekem! – Még mindig próbálva halogatni az időt, Uldyssian ismét körülnézett.</p>
+      <p>Bár Lilithnek csak nyomai voltak a kamrában, gyanította, hogy a falakat egykor ugyanolyan förtelmes lényeknek szentelt feliratok borították. "Mi van ezzel a hellyel? Te kerested meg."</p>
+      <p>"…több mint három életeddel ezelőtt… itt találtam vissza a Menedékbe!" Megdöbbentette, hogy Lilith már ilyen régóta a világában volt anélkül, hogy bárki is észrevette volna. Ez ismét felébresztette benne a félelmet, hogy a démonnő talán képes lesz megvalósítani mindazt, amit eltervezett. Ha még az angyal, aki kiűzte, sem érezte volna őt ennyi idő alatt…</p>
+      <p>De mielőtt többet felfedezhetett volna, Lilith edyremmá változott arca elkezdett átszűrődni benne. Oly sok arc…</p>
+      <p>férfi és nő – jól ismerte őket Uldyssian, ami tovább fájt neki. Látott parthanokat és torajiaiakat is, és feltételezte, hogy néhány hashiri is a gyülekezetben van. Összesen legalább pár tucatnyian voltak.</p>
+      <p>"Állj a szoba széléhez!" – parancsolta Lilith.</p>
+      <p>Uldyssian kihasználta a lány figyelmét, hogy még utoljára megpróbáljon kiszabadulni. Kevés reménye volt a sikerre, de képtelen volt elfogadni azt, ami elkerülhetetlennek tűnt –</p>
+      <p>Aztán meglepetésére érezte, hogy a őt megkötöző mágikus erők néhány helyen gyengülnek. Sikerült lepleznie az örömét, ezért ezekre a pontokra koncentrált... és akkor vette észre, hogy Romus vére ezeken a pontokon fröccsent rá.</p>
+      <p>De az erőfeszítés túl lassan haladt. Lilith már a helyén tartotta a gyalogjainak nagy részét az általa tervezett szertartáshoz, és a démonnő most ismét a halott Parthan fölé helyezkedett.</p>
+      <p>Olyan hangok törtek elő a szájából, amelyeket halandó lény nem tudott kiejteni. Nyilvánvalóan a hatalom szavai voltak ezek, mert érezte, hogy a kamra azonnal megtelik láthatatlan, de hatalmas erőkkel, amelyek mélyről emelkednek fel.</p>
+      <p>Valami más is felszállt… vér tört fel Romus sebeiből. A levegőbe ömlött, végül elérve a tőrt. Ezúttal Lilith sokkal többet akart, mint amennyit csak a penge eltakarására tudott volna; Uldyssian gyanította, hogy teljesen kiszívja a holttestet, mielőtt befejezné a feladatát.</p>
+      <p>Miközben ezt tette, az edyremje felfelé fordította a tenyereiket.</p>
+      <p>A bennük rejlő energiák életre keltek a pálmák felett.</p>
+      <p>Az edyrem olyan tökéletes koordinációval mozgott, hogy azon tűnődött, vajon Lilith most már teljesen uralja őket.</p>
+      <p>Érezte, hogy a lány varázsa egyre halványul, de még mindig nem volt elég ahhoz, hogy legyőzhesse őt, nemhogy a követőit. Az idő ellene dolgozott. Lilith már majdnem végzett hátborzongató feladatával.</p>
+      <p>Végül mindenki lássa az alattomos tőrt.</p>
+      <p>Habár vérben úszott, sokkal több bíbor folyadéknak kellett volna jelen lennie. Uldyssian bele sem akart gondolni, hová tűnt a többi.</p>
+      <p>A kötővarázslat egyre gyengült. Már csak egy-két percre volt szüksége…</p>
+      <p>De úgy tűnt, Lilithnek esze ágában sincs ezt odaadni neki. Odament, ahol a férfi feküdt, ügyet sem vetve a maga után hagyott cseppekre.</p>
+      <p>– Most kezdődik, szerelmem – suttogta, és oldalra nyúlt, hogy elvegye a poharat. – Megkezdődik a megtorlás… – Szája eltorzult, ahogy ismét előtörtek belőle azok az embertelen hangok –</p>
+      <p>Az egyik edyrem felkiáltott és hátraesett.</p>
+      <p>Uldyssian először azt hitte, Lilith műve, hogy kezdettől fogva a többi bábját is használni akarta, ahogyan Romussal tette, de aztán meglátta, mi ölte meg a férfit.</p>
+      <p>Egy nyíl átfúródott a torkon. Egy porba beágyazódott nyíl.</p>
+      <p>Mielőtt az első test megdermedt volna, egy második követő is összeesett, egy nyíl fúródott a mellkasába pontosan ott, ahol a szíve volt.</p>
+      <p>De a válaszra majd később fog foglalkozni... ha lehetséges. A pillanatnyi megszakítás megadta neki az időt, amire szüksége volt, hogy végre kioltsa a varázslatot, ami megkötözve és tehetetlenül tartotta.</p>
+      <p>Az egyik legközelebbi edyrem látta, hogy feláll. A sötét bőrű alak Uldyssianra mutatott, de az utóbbi, mivel nem kellett összpontosítania, a falnak repítette leendő támadóját. Uldyssian ezután két másikra meredt, akik éppen csak érzékelték a szabadságukat. Hirtelen olyan erővel csapódtak egymásnak, hogy mindketten elvesztették az eszméletüket.</p>
+      <p>Ez azt jelentette, hogy még mindig volt reménye arra, hogy megvalósítja a tervét, és az edyrem többi részét a maga ügyére fordítja.</p>
+      <p>Bármi áron, ezt nem hagyhatta megtörténni. A kamra megremegett, ahogy minden irányban tiszta erő áradt belőle. Edyrem zuhanni kezdett, némelyik egymásnak és falaknak csapódott. Uldyssiannak nem számított, hogy élnek-e vagy meghalnak, mert valószínűleg örökre beszennyezte őket Lilith. A fontos az volt, hogy megmentsék a többieket.</p>
+      <p>Lilith-et is hátravetette a brutális támadás.</p>
+      <p>De ahogy leugrott az oltárról, látta, hogy a lány felemelkedik. Serenthia vére csöpögött a szája melletti sebből, és egy sötét zúzódás elszíneződött a homlokán.</p>
+      <p>Sajnos a démonnőt messze nem győzték le.</p>
+      <p>Felemelte a tőrt, mintha el akarná hajítani, de ehelyett egy újabb érthetetlen szót mondott. Uldyssian káromkodott, attól tartva, hogy Lilithnek már sikerült…</p>
+      <p>Legnagyobb meglepetésére azonban a követői voltak azok, akik felkiáltottak, majd mozdulatlanná dermedtek körülöttük. Uldyssian érezte, hogy Lilith gyorsan magához vonzott belőlük valamit.</p>
+      <p>– Az én ostoba, ostoba szerelmem… – rekedten szólt a démonnő, miközben felállt. – Mindig egy kicsit rövidlátó. Mindig nem teszel eleget. Ezektől még egy pillanatig bírom. Nem tudtok annyira ellenállni, hogy ne vegyem el drága nyájatok többi részét azzal, amit ezektől a bolondoktól elraboltam! Nagyobb áldozat, mint terveztem, de az ő veszteségük csekély ahhoz képest, amit én nyerek!</p>
+      <p>Nem szólt semmit, ehelyett olyan erővel válaszolt, amitől a földre kellett volna zuhannia. Lilith azonban, bár remegett, állva maradt.</p>
+      <p>Mindketten tudták az okát. Bármennyire is szerette volna, Uldyssian nem tudta rávenni magát, hogy megölje Serenthiát, ami az egyetlen biztos módszer lett volna a lény megállítására, aki megszállta a testét. Ez a habozás azt jelentette, hogy a körülmények változása ellenére Lilith végül győzni fog.</p>
+      <p>És Sanctuary biztosan kudarcra lenne ítélve.</p>
+      <p>– Szegény, édes drágám – gügyögte. – Mindig a győzelem pillanatában ragadod meg a kudarcot! Mégis ígérem, hogy lesz néhány gyönyörűség ebben a testben, ha egyszer újra az enyém leszel…</p>
+      <p>Valami olyan erővel csapódott a tőr pengéjére, hogy kitépte a fegyvert a szétszórt démonnő kezéből. Vér fröccsent Lilith környékére, miközben a tőr és ami eltalálta, a hátsó falnak csapódott.</p>
+      <p>És ahogy mindkét darab megdermedt, Uldyssian meglátta, hogy a tőr közelében egy másik nyílvessző hever… ismét porral borítva.</p>
+      <p>– Serenthia… – kiáltotta egy hang a bejárat felől, egy hang, amely a reszelőssége ellenére annyira ismerős volt Uldyssian számára, hogy felállt tőle a szőr a tarkóján. – Serenthia… – szólította újra, most már közelebbről. – Gyere vissza… hozzánk… hozzám… – Annak ellenére, hogy Lilith még mindig szabad volt, Uldyssiannak az újonnan érkezőhöz kellett fordulnia, hogy kiderüljön, álmodik-e… vagy egy új rémálomban él.</p>
+      <p>Akhiliosz volt az… Akhiliosz, aki nagyon halott volt.</p>
+      <p>A vadász túl sápadt szeme csak egy pillanatra pillantott Uldyssianra, mintha csak nyugtázni akarná, hogy utóbbi látja az igazságot. Aztán Achilios, újabb lövésre kifeszített íjjal, továbbment előre. Maga mögött enyhén nedves földcsíkot hagyott maga után, amely látszólag az ő alakjának nagy részét is beborította.</p>
+      <p>– Serenthia… – ismételte meg a halott férfi. Széttört torkának az a kevéske maradványa is megrándult és megrándult, mintha levegőt venne a beszédhez. – Te… hallasz engem… te… ismersz engem…</p>
+      <p>Lilith furcsán hallgatott, de most felkiáltott:</p>
+      <p>"Csak Lilith létezik, drága elgyötört Achilios! Jaj! Szerelmem, lehet-e ostobán erős, nemde?" – tárta szét a karját.</p>
+      <p>"Akarod, hogy felmelegítselek érte, íjász?"</p>
+      <p>– Kímélj… kímélj meg… a szánalmas… csábításaidtól – felelte Achilios, és tűzre emelte az íjat. – Ha… nem tudom… kiszabadítani egy módon… akkor kiszabadítom… egy másik módon… azt… akarná…</p>
+      <p>"És talán, amikor ő is meghal, lehetőséged lesz újra megnyerni őt? Milyen hátborzongató és csodálatos egyszerre!" – Úgy hajolt, hogy a férfi tiszta lövést kapjon a mellére. "Akkor tűz!"</p>
+      <p>De Achilios nem dőlt be a csábításnak. "Amikor… készen állok, boszorkány… először… akkor is azt akarom… hogy… eljöjjön hozzánk…"</p>
+      <p>Látva, hogy Lilith a sétáló holttestre koncentrál, Uldyssian felkészült a saját támadására. Achilios azonban megrázta a fejét.</p>
+      <p>"Nem… ezt nem a te dolgod… csinálni…" Volt valami a rekedtes hangban, ami miatt Uldyssian odafigyelt. Figyelte, ahogy az íjász leengedi az íjat.</p>
+      <p>– Serenthia… – mormolta Achilios. – Serenthia… kérlek, ébredj…</p>
+      <p>Lilith mintha dermedten állt volna. Uldyssian azt hitte, hogy valami újabb csínytevést tervez, de ekkor a démonnő kezei a torkára kaptak, mintha meg akarná fojtani magát.</p>
+      <p>Felsikoltott. Olyan hangosan és olyan nyers fájdalommal sikoltott, hogy Diomédész fiát nem lepte volna meg, ha a teremben lévő többi halott felkel, hogy csatlakozzon Achilioshoz. Lilith szünet nélkül sikoltott, maga az épület remegett az erőfeszítésétől.</p>
+      <p>És akkor… és akkor… valami szörnyűség bukkant elő felfelé fordított szájából. Először úgy néztek ki, mint egy apró kígyókból álló verm, de Uldyssian végül felismerte őket, mint ujjakat. Karmos ujjakat.</p>
+      <p>Serenthia arca eltorzult, szája kétszeresére, majd háromszorosára nőtt, mint a feje. A kezek egyre szélesebbre, egyre szélesebbre tolták... és csak ekkor vált nyilvánvalóvá, hogy a sikoly abból tört elő, ami előbukkant, nem pedig az előttük álló nőből.</p>
+      <p>A kereskedő lányáért aggódva Uldyssian előrelépett, de az íjász ismét megtiltotta neki. "Ne… ne hagyd abba… ha… reménykedni akarunk… Serenthiában…"</p>
+      <p>Ha bárki más lett volna – nem, akár egy élő Achilios –, Uldyssian tudomást sem vett volna a parancsról. Mégis valahogy rájött, hogy halott bajtársa jobban érti a dolgot, mint ő valaha is el tudná képzelni. Feszült idegekkel Uldyssian kényszerítette magát, hogy figyelje a fejleményeket.</p>
+      <p>Serenthia szörnyű szájából groteszk vörös tollpihék sorozata tört elő. Felfelé nyomultak.</p>
+      <p>Emelkedő…</p>
+      <p>És egyetlen szörnyű lökéssel Lilith démonnő teljes erőből kitört a sötét hajú nő szájából.</p>
+      <p>A zöld pikkelyes szirén még mindig sikoltozott – de inkább dühtől, mint fájdalomtól –, és többször körberepülte a termet. Lent Serenthia – immár újra normális alakja – veszélyesen imbolygott.</p>
+      <p>– Bolondok! – ordította Lilith, hirtelen a levegőben lebegve. – Szűk elméjű halandó bolondok! Azt hiszitek, ennek van bármi jelentősége?</p>
+      <p>– Gondolod, hogy egyáltalán nyertél? – Vadul felnevetett, majd karmos ujját Serenthia felé bökte. – Vigyázzatok, drágáim! Mindjárt leesik!</p>
+      <p>Ezzel a démon felrepült a mennyezet felé, és eltűnt, mielőtt a lány nekicsapódott volna.</p>
+      <p>Sem Uldyssian, sem Achilios nem mertek figyelni, hogy ez csak egy újabb trükk-e, mert Lilith legalább igazat mondott, amikor figyelmeztette őket Serenthiára. Serenthia, aki majdnem olyan sápadt volt, mint az íjász, halkan felnyögött, majd elesett.</p>
+      <p>Uldyssian a képességeit akarta használni, hogy megakadályozza Serenthiát abban, hogy fejjel előre a kövekre csapjon, de Achilios valahogy még gyorsabban mozgott. Érdes karjai csupán pár centire állították meg Serenthiát a katasztrófától. Az íjász gyengéden letette, mintha törékeny üvegből lenne.</p>
+      <p>Serenthia kifújta a levegőt… és szemei hirtelen tágra nyíltak. Felnézett megmentőjére, aki maga is úgy nézett Uldyssianra, mintha hirtelen azt kívánná, bárcsak máshol lenne abban a pillanatban, mint a lány látóterében. Az íjász gyorsan a torkára tette a kezét, hiába próbálva eltakarni a szörnyű látványt.</p>
+      <p>"A-Achilios…" – motyogta. "Achilios…" Egy mosoly kezdett szétterülni az arcán, de mielőtt még elterjedhetett volna… Serenthia elájult.</p>
+      <p>– Dicsőség… legyen… – motyogta a halott férfi. Hátralépett tőle, és csak akkor nézett Uldyssianra.</p>
+      <p>Diomédész fia még mindig nem akarta elhinni, amit lát. "Achilios…"</p>
+      <p>"Jobban… jobban vigyázz… rá… legközelebb… legalábbis így… vissza kelljen…"</p>
+      <p>"És… hogyan… maradhatnék?"</p>
+      <p>Mielőtt Uldyssian válaszolhatott volna, újabb sikoly harsant az ősi építményben. Mindketten a bejárat felé néztek... ahol a hevében észrevétlenül egy csapat megdöbbent edyrem gyűlt össze.</p>
+      <p>A tömeg most halálra mozdulatlannak látta úrnőjüket, urukat pedig mintha a halálból tért volna vissza… és egy férfit, akiről a csoportban lévő parthanok tudták, hogy egy démon mészárolt le.</p>
 
     `
   },
