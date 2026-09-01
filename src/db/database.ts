@@ -1,5 +1,7 @@
 ﻿import Dexie, { type Table } from 'dexie';
 
+import type { DocumentRecord, ExportSnapshot, ImportRun } from '../sync/knowledge-sync.ts';
+
 export interface Article {
   id: string;
   title: string;
@@ -19,11 +21,20 @@ export interface Article {
 
 export class DiabloDatabase extends Dexie {
   articles!: Table<Article, string>;
+  documents!: Table<DocumentRecord, string>;
+  importRuns!: Table<ImportRun, string>;
+  exportSnapshots!: Table<ExportSnapshot, string>;
 
   constructor() {
     super('DiabloWikiDB');
     this.version(1).stores({
       articles: 'id, title, category, lastEdited' // Indexed fields
+    });
+    this.version(2).stores({
+      articles: 'id, title, category, lastEdited',
+      documents: 'documentId, universeId, sha256, workId, instanceId, importedAtUtc, previousDocumentId',
+      importRuns: 'importRunId, documentId, previousDocumentId, status, completedAtUtc',
+      exportSnapshots: 'exportId, universeId, knowledgeSnapshotId, generatedAtUtc'
     });
   }
 }

@@ -5,7 +5,7 @@ import { registerUniverse } from '../universe/article-universes.ts';
 
 const BUILTIN_ARTICLE_IDS = new Set(Object.keys(wikiArticles));
 
-function isStoredArticle(value: unknown): value is Article {
+export function isStoredArticle(value: unknown): value is Article {
   if (!value || typeof value !== 'object') return false;
   const article = value as Partial<Article>;
   return typeof article.id === 'string' && /^[a-z0-9][a-z0-9-]{0,119}$/.test(article.id)

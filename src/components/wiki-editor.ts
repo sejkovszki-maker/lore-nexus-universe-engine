@@ -8,6 +8,8 @@ import { exportUserArticles, importUserArticles, persistUserArticles } from '../
 import { detectArticleUniverse, registerUniverse, type ArticleUniverse } from '../universe/article-universes.ts';
 import { useAppStore } from '../store/appState.ts';
 import { createWorkIdentity, detectCreativeWorkType, type CreativeWorkType } from '../creative-work/model.ts';
+import { KnowledgeIngestionEngine, KnowledgePublishingEngine, type ImportMode, type TranslationProvenance } from '../sync/knowledge-sync.ts';
+import { findLatestWorkDocument, persistDocumentImport, persistSynchronizedImport } from '../sync/knowledge-sync-store.ts';
 
 @customElement('wiki-editor')
 export class WikiEditor extends LitElement {
@@ -42,6 +44,11 @@ export class WikiEditor extends LitElement {
   @state() private storyAfter = '';
   @state() private backupStatus = '';
   @state() private creativeWorkType: CreativeWorkType|'auto' = 'auto';
+  @state() private importMode: ImportMode = 'full-lore-ingestion';
+  @state() private originalContent = '';
+  @state() private uploadedFileSize = 0;
+  @state() private translationProvenance: TranslationProvenance | undefined;
+  @state() private syncStatus = '';
 
   static styles = css`
     :host {
@@ -203,6 +210,14 @@ export class WikiEditor extends LitElement {
       const result = await extractBookFile(file);
       this.extraction = result;
       this.content = result.text;
+      this.originalContent = result.text;
+      this.uploadedFileSize = file.size;
+      this.translationProvenance = undefined;
+      const reverseImport = KnowledgePublishingEngine.detectReverseImport(result.text);
+      if (reverseImport) {
+        this.importMode = 'document-sync';
+        this.syncStatus = `🔄 Lore Nexus export felismerve: ${reverseImport.exportId}. A változások új javaslatként kerülnek feldolgozásra.`;
+      }
       if (!this.articleTitle.trim()) this.articleTitle = file.name.replace(/\.[^.]+$/, '').replace(/[_-]+/g, ' ');
       if (this.autoTranslate) await this.translateContent();
       this.analyzeCurrentContent();
@@ -223,6 +238,7 @@ export class WikiEditor extends LitElement {
         this.translationStatus = `Magyar fordítás: ${completed}/${total}. szövegrész`;
       });
       this.content = result.text;
+      if (result.translated) this.translationProvenance = { sourceLanguage: result.sourceLanguage, targetLanguage: 'hu', method: 'Chrome Local Translator', translatedAtUtc: new Date().toISOString(), confidence: null };
       this.translationStatus = result.translated ? `✅ Automatikusan magyarra fordítva (${result.sourceLanguage}).` : '✅ A dokumentum már magyar nyelvű.';
     } catch (error) {
       this.translationStatus = `⚠️ ${error instanceof Error ? error.message : 'A fordítás nem sikerült.'} Az eredeti szöveg megmaradt.`;
@@ -282,7 +298,18 @@ export class WikiEditor extends LitElement {
     for(const chapter of newArticles.slice(1)){chapter.creativeWorkType='chapter';chapter.workId=identity.workId;chapter.instanceId=identity.instanceId;chapter.itemId=`item:${chapter.id}:local`;}
     if (this.storyAfter) newArticles[0].storyAfter = this.storyAfter;
     try {
-      await persistUserArticles(newArticles);
+      if (this.extraction) {
+        const previous = await findLatestWorkDocument(identity.workId);
+        const record = await KnowledgeIngestionEngine.createRecord({ universeId: universe.id, fileName: this.extraction.fileName, mediaType: this.extraction.mediaType, fileSize: this.uploadedFileSize, title: this.articleTitle, originalText: this.originalContent || this.content, ...(this.translationProvenance ? { translatedText: this.content, language: this.translationProvenance.sourceLanguage, translation: this.translationProvenance } : { language: 'hu' }), visibility: 'private', ...(previous ? { previous } : {}) });
+        if (this.importMode === 'metadata-only' || this.importMode === 'knowledge-extraction' || this.importMode === 'document-sync') {
+          const run = await persistDocumentImport(record, this.importMode);
+          this.syncStatus = `✅ A dokumentum regisztrálva (${run.importRunId}); a Wiki és a kánon tudásbázis nem módosult.`;
+          alert(this.syncStatus);
+          return;
+        }
+        const run = await persistSynchronizedImport(record, this.importMode, newArticles);
+        this.syncStatus = `✅ Knowledge Sync: ${run.changeSet.segmentChanges.filter(change => change.kind === 'added').length} új, ${run.changeSet.segmentChanges.filter(change => change.kind === 'changed').length} módosult, ${run.changeSet.segmentChanges.filter(change => change.kind === 'unchanged').length} változatlan dokumentumszakasz.`;
+      } else await persistUserArticles(newArticles);
       newArticles.forEach(article => { wikiArticles[article.id] = article; });
       registerUniverse(universe);
       useAppStore.setState({});
@@ -303,6 +330,9 @@ export class WikiEditor extends LitElement {
     this.extraction = null;
     this.detectedUniverse = null;
     this.storyAfter = '';
+    this.originalContent = '';
+    this.uploadedFileSize = 0;
+    this.translationProvenance = undefined;
   }
 
   render() {
@@ -319,6 +349,7 @@ export class WikiEditor extends LitElement {
         </section>
 
         ${this.detectedUniverse ? html`<div class="file-result" role="status"><strong>Felismert univerzum: ${this.detectedUniverse.label}</strong> – ${Math.round(this.detectedUniverse.confidence * 100)}% (${this.detectedUniverse.reason}). ${this.detectedUniverse.id !== useAppStore.getState().activeUniverseId ? 'A tartalom külön univerzumfület kap.' : ''}</div>` : ''}
+        ${this.syncStatus ? html`<div class="file-result" role="status" aria-live="polite">${this.syncStatus}</div>` : ''}
 
         ${this.bookAnalysis?.isBook ? html`<div class="input-group"><label for="story-after">A könyv helye a történetben</label><select id="story-after" .value=${this.storyAfter} @change=${(event: Event) => this.storyAfter = (event.target as HTMLSelectElement).value}><option value="">A történet végén / később rendezem</option>${Object.values(wikiArticles).filter(article => (article.universeId || 'diablo') === (this.detectedUniverse?.id || useAppStore.getState().activeUniverseId) && article.type !== 'chapter' && article.type !== 'book').map(article => html`<option value=${article.id}>${article.title} után</option>`)}</select></div>` : ''}
 
@@ -342,6 +373,7 @@ export class WikiEditor extends LitElement {
           ${this.translationStatus ? html`<div class="file-result" aria-live="polite">${this.translationStatus}</div>` : ''}
         </div>
         <div class="input-group"><label for="work-type">Dokumentumtípus</label><select id="work-type" .value=${this.creativeWorkType} @change=${(e:Event)=>this.creativeWorkType=(e.target as HTMLSelectElement).value as CreativeWorkType|'auto'}><option value="auto">Automatikus felismerés</option><option value="wikiArticle">Wiki-cikk</option><option value="article">Külső cikk</option><option value="newsArticle">Hírcikk</option><option value="essay">Esszé</option><option value="research">Tanulmány</option><option value="book">Könyv</option><option value="novel">Regény</option><option value="novella">Kisregény</option><option value="shortStory">Novella / rövid történet</option><option value="anthology">Antológia</option><option value="sourcebook">Lore-könyv</option><option value="manual">Kézikönyv</option><option value="comic">Képregény</option><option value="manuscript">Kézirat</option></select></div>
+        <div class="input-group"><label for="import-mode">Importálási mód</label><select id="import-mode" .value=${this.importMode} @change=${(e:Event)=>this.importMode=(e.target as HTMLSelectElement).value as ImportMode}><option value="metadata-only">Csak metaadat</option><option value="library-import">Könyvtári import</option><option value="knowledge-extraction">Tudáskinyerés, integráció nélkül</option><option value="full-lore-ingestion">Teljes lore-integráció</option><option value="re-import">Újraimport / frissítés</option><option value="document-sync">Lore Nexus dokumentumszinkron</option></select></div>
         
         <div class="input-group">
           <label for="knowledge-title">Tudásanyag Címe</label>
