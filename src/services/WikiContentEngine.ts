@@ -31,6 +31,10 @@ export interface BookAnalysisResult {
     classification: ClassificationResult;
     duplicates: DuplicateAnalysisResult;
     totalRelations: number;
+    existingBook: WikiArticle | null;
+    unchangedChapterCount: number;
+    changedChapterCount: number;
+    newChapterCount: number;
 }
 
 export interface WikiPlacement {
@@ -101,6 +105,25 @@ export class WikiContentEngine {
         return finalId;
     }
 
+    private static normalizeWorkTitle(value: string): string {
+        return this.sanitizeContent(value).toLocaleLowerCase('hu-HU')
+            .replace(/\([^)]*\)/g, ' ')
+            .replace(/\b(?:könyv|regény|olvasó|reader|teljes)\b/giu, ' ')
+            .normalize('NFD').replace(/[\u0300-\u036f]/g, '')
+            .replace(/[^a-z0-9]+/g, ' ').trim();
+    }
+
+    private static normalizedBody(value: string): string {
+        return this.sanitizeContent(value).toLocaleLowerCase('hu-HU').replace(/\s+/g, ' ').trim();
+    }
+
+    private static findExistingBook(title: string, articles: WikiArticles): WikiArticle | null {
+        const wanted = this.normalizeWorkTitle(title);
+        if (!wanted) return null;
+        return Object.values(articles).find(article => article.type === 'book' && article.publicationStatus === 'local-draft'
+            && this.normalizeWorkTitle(article.title) === wanted) ?? null;
+    }
+
     private static extractEntities(text: string): EntityCounts {
         const lowerText = text.toLowerCase();
         const chars = this.entityDictionaries.characters.filter(kw => lowerText.includes(kw));
@@ -161,22 +184,29 @@ export class WikiContentEngine {
         const cleanContent = this.sanitizeContent(content);
 
         const classification = this.classify(cleanTitle, cleanSubtitle, cleanContent);
-        const bookId = this.resolveIdCollision(this.generateId(cleanTitle), existingArticles);
+        const existingBook = this.findExistingBook(cleanTitle, existingArticles);
+        const bookId = existingBook?.id ?? this.resolveIdCollision(this.generateId(cleanTitle), existingArticles);
         
         // Chapter parsing regex: matches "X. fejezet" or "Chapter X" or "X. Fejezet"
-        const chapterRegex = /(?:^|\n)(?:### |## |# )?(?:(?:\d+\.\s*fejezet)|(?:chapter\s+\d+)|(?:fejezet\s+\d+)|(?:[IVXLCDM]+\.\s*fejezet))/gi;
+        const chapterRegex = /(?:^|\n)(?:###?\s+|#\s+)?(?:(?:\d+\.?\s*fejezet\b[^\n]*)|(?:chapter\s+(?:\d+|[ivxlcdm]+)\b[^\n]*)|(?:fejezet\s+(?:\d+|[ivxlcdm]+)\b[^\n]*)|(?:[ivxlcdm]+\.?\s+fejezet\b[^\n]*)|(?:prol[oó]gus\b[^\n]*)|(?:epil[oó]gus\b[^\n]*))/giu;
         const splits = cleanContent.split(chapterRegex);
         const matches = cleanContent.match(chapterRegex);
 
         let chapters: ChapterData[] = [];
         if (matches && matches.length > 0 && splits.length > 1) {
-            // First split might be intro
+            const frontMatter = splits[0].trim();
+            if (frontMatter.length > 50) chapters.push({
+                chapterId: `${bookId}-front-matter`,
+                chapterNumber: '0',
+                title: `${cleanTitle} – Bevezető`,
+                content: frontMatter
+            });
             for (let i = 0; i < matches.length; i++) {
                 const chapterTitleRaw = matches[i].replace(/[#\n]/g, '').trim();
                 const chapterContent = splits[i + 1].trim();
                 if (chapterContent.length > 50) {
                     const chapterNumMatch = chapterTitleRaw.match(/\d+/);
-                    const chapterNum = chapterNumMatch ? chapterNumMatch[0] : `${i+1}`;
+                    const chapterNum = chapterNumMatch ? chapterNumMatch[0] : `${i + 1}`;
                     chapters.push({
                         chapterId: `${bookId}-ch${chapterNum}`,
                         chapterNumber: chapterNum,
@@ -193,6 +223,19 @@ export class WikiContentEngine {
         }
 
         const duplicates = this.analyzeDuplicates(cleanTitle, cleanContent, existingArticles);
+        const existingChapters = existingBook
+            ? Object.values(existingArticles).filter(article => article.type === 'chapter' && article.parentBook === existingBook.id)
+            : [];
+        let unchangedChapterCount = 0;
+        let changedChapterCount = 0;
+        let newChapterCount = 0;
+        for (const [index, chapter] of chapters.entries()) {
+            const previous = existingChapters.find(item => item.id === chapter.chapterId)
+                ?? existingChapters[index];
+            if (!previous) newChapterCount += 1;
+            else if (this.normalizedBody(previous.content) === this.normalizedBody(chapter.content)) unchangedChapterCount += 1;
+            else changedChapterCount += 1;
+        }
         const totalRelations = classification.extractedEntities.characters.length + 
                                classification.extractedEntities.locations.length + 
                                classification.extractedEntities.events.length + 
@@ -205,7 +248,11 @@ export class WikiContentEngine {
             chapters,
             classification,
             duplicates,
-            totalRelations
+            totalRelations,
+            existingBook,
+            unchangedChapterCount,
+            changedChapterCount,
+            newChapterCount
         };
     }
 
@@ -251,8 +298,10 @@ export class WikiContentEngine {
             return Object.values(existingArticles).find(article => (article.universeId || 'diablo') === universe.id && (article.id === normalized || article.title.toLowerCase() === normalized || article.title.toLowerCase().includes(normalized)))?.id;
         }).filter((id): id is string => Boolean(id)))];
 
-        // Main book article
+        const previousBook = analysis.existingBook;
+        // Main book article: an existing local work keeps its stable identity and receives a new version.
         results.push({
+            ...previousBook,
             id: analysis.bookId,
             title: analysis.title,
             subtitle: `${analysis.chapters.length} fejezetes gyűjtemény`,
@@ -263,14 +312,19 @@ export class WikiContentEngine {
             universeId: universe.id,
             universeLabel: universe.label,
             publicationStatus: 'local-draft',
-            version: 1,
+            version: (previousBook?.version ?? 0) + 1,
             lastEdited: Date.now()
         });
 
         // Chapters
-        for (const ch of analysis.chapters) {
+        const previousChapters = Object.values(existingArticles).filter(article => article.type === 'chapter' && article.parentBook === analysis.bookId);
+        for (const [index, ch] of analysis.chapters.entries()) {
+            const previous = previousChapters.find(article => article.id === ch.chapterId) ?? previousChapters[index];
+            if (previous && this.normalizedBody(previous.content) === this.normalizedBody(ch.content)) continue;
+            const chapterId = previous?.id ?? ch.chapterId;
             results.push({
-                id: ch.chapterId,
+                ...previous,
+                id: chapterId,
                 title: ch.title,
                 category: analysis.classification.primaryCategory,
                 content: ch.content,
@@ -280,7 +334,7 @@ export class WikiContentEngine {
                 universeId: universe.id,
                 universeLabel: universe.label,
                 publicationStatus: 'local-draft',
-                version: 1,
+                version: (previous?.version ?? 0) + 1,
                 lastEdited: Date.now()
             });
         }

@@ -84,7 +84,7 @@ test('the Blackmarch article is searchable and book import is available', async 
     mimeType: 'text/plain',
     buffer: Buffer.from('1. fejezet\nA Fekete Menetelés története.\n\n2. fejezet\nA történet folytatódik.'),
   });
-  await expect(page.getByRole('status')).toContainText('proba-konyv.txt');
+  await expect(page.getByRole('status').filter({ hasText: 'proba-konyv.txt' })).toContainText('proba-konyv.txt');
   await expect(page.locator('textarea')).toHaveValue(/A Fekete Menetelés története\./);
 });
 
@@ -117,6 +117,33 @@ test('an imported book survives reload and invalid binary input is rejected', as
   });
   await expect(page.getByRole('alert')).toContainText('nem nyerhető ki könyvszöveg');
   await expect(page.locator('textarea')).toHaveValue('');
+});
+
+test('reimport recognizes the existing work, avoids duplicates and saves new chapter pages', async ({ page }) => {
+  const chapterOne = 'Az első stabil fejezet tartalma. '.repeat(10);
+  const chapterTwo = 'A második stabil fejezet tartalma. '.repeat(10);
+  const upload = async (text: string) => {
+    await page.getByLabel('Könyvdokumentum kiválasztása').setInputFiles({ name: 'Felismert-work.txt', mimeType: 'text/plain', buffer: Buffer.from(text) });
+    await page.getByRole('button', { name: /tartalom elemzése/i }).click();
+  };
+  await page.goto('/#/editor');
+  await page.getByLabel('Idegen nyelvű könyv automatikus fordítása magyarra').uncheck();
+  await upload(`1. fejezet\n${chapterOne}\n\n2. fejezet\n${chapterTwo}`);
+  const firstSaved = page.waitForEvent('dialog').then(dialog => dialog.accept());
+  await page.getByRole('button', { name: /teljes könyv integrálása/i }).click();
+  await firstSaved;
+  await page.goto('/#/editor');
+  await upload(`1. fejezet\n${chapterOne}\n\n2. fejezet\n${chapterTwo}\n\n3. fejezet\n${'Az új harmadik fejezet tartalma. '.repeat(10)}`);
+  await expect(page.getByText(/Meglévő work felismerve/)).toBeVisible();
+  await expect(page.getByText(/1 új, 0 módosult, 2 változatlan fejezet/)).toBeVisible();
+  const secondSaved = page.waitForEvent('dialog').then(dialog => dialog.accept());
+  await page.getByRole('button', { name: /teljes könyv integrálása/i }).click();
+  await secondSaved;
+  await page.reload();
+  await page.getByLabel('Olvasott univerzum').selectOption({ label: 'Felismert work' });
+  await page.getByRole('button', { name: 'Könyvek' }).click();
+  await page.getByRole('button', { name: 'Könyv olvasása' }).click();
+  await expect(page.getByRole('button', { name: '3. fejezet' })).toBeVisible();
 });
 
 test('foreign books create an isolated universe tab and remain readable in story order', async ({ page }) => {

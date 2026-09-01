@@ -176,15 +176,17 @@ export class WikiEditor extends LitElement {
       return;
     }
     this.isProcessing = true;
+    setTimeout(() => {
+      this.analyzeCurrentContent();
+      this.isProcessing = false;
+    }, 600);
+  }
+
+  private analyzeCurrentContent() {
     const detected = detectArticleUniverse(this.articleTitle, this.content, useAppStore.getState().activeUniverseId);
     this.detectedUniverse = { ...detected.universe, confidence: detected.confidence, reason: detected.reason };
     const scopedArticles = Object.fromEntries(Object.entries(wikiArticles).filter(([, article]) => (article.universeId || 'diablo') === detected.universe.id));
-    
-    // Simulate processing time for UX
-    setTimeout(() => {
-        this.bookAnalysis = WikiContentEngine.analyzeBook(this.articleTitle, this.subtitle, this.content, scopedArticles);
-        this.isProcessing = false;
-    }, 600);
+    this.bookAnalysis = WikiContentEngine.analyzeBook(this.articleTitle, this.subtitle, this.content, scopedArticles);
   }
 
   private async handleDocument(event: Event) {
@@ -203,6 +205,7 @@ export class WikiEditor extends LitElement {
       this.content = result.text;
       if (!this.articleTitle.trim()) this.articleTitle = file.name.replace(/\.[^.]+$/, '').replace(/[_-]+/g, ' ');
       if (this.autoTranslate) await this.translateContent();
+      this.analyzeCurrentContent();
     } catch (error) {
       this.extractionError = error instanceof Error ? error.message : 'Ismeretlen dokumentumfeldolgozási hiba.';
     } finally {
@@ -258,6 +261,11 @@ export class WikiEditor extends LitElement {
 
   private async handleSave() {
     if (!this.bookAnalysis) return;
+
+    if (this.bookAnalysis.existingBook && this.bookAnalysis.newChapterCount === 0 && this.bookAnalysis.changedChapterCount === 0) {
+      alert('✅ Ezt a könyvet és minden fejezetét a rendszer már változatlan formában tárolja. Nem készült duplikáció.');
+      return;
+    }
 
     if (this.bookAnalysis.duplicates.isDuplicate && this.bookAnalysis.duplicates.recommendedAction === 'reject') {
         alert('A rendszer elvetette a mentést, mivel a tartalom 100%-ban megegyezik egy meglévő cikkel.');
@@ -336,18 +344,18 @@ export class WikiEditor extends LitElement {
         <div class="input-group"><label for="work-type">Dokumentumtípus</label><select id="work-type" .value=${this.creativeWorkType} @change=${(e:Event)=>this.creativeWorkType=(e.target as HTMLSelectElement).value as CreativeWorkType|'auto'}><option value="auto">Automatikus felismerés</option><option value="wikiArticle">Wiki-cikk</option><option value="article">Külső cikk</option><option value="newsArticle">Hírcikk</option><option value="essay">Esszé</option><option value="research">Tanulmány</option><option value="book">Könyv</option><option value="novel">Regény</option><option value="novella">Kisregény</option><option value="shortStory">Novella / rövid történet</option><option value="anthology">Antológia</option><option value="sourcebook">Lore-könyv</option><option value="manual">Kézikönyv</option><option value="comic">Képregény</option><option value="manuscript">Kézirat</option></select></div>
         
         <div class="input-group">
-          <label>Tudásanyag Címe</label>
-          <input type="text" .value=${this.articleTitle} @input=${(e: any) => this.articleTitle = e.target.value} placeholder="Pl. The Sin War: Birthright">
+          <label for="knowledge-title">Tudásanyag Címe</label>
+          <input id="knowledge-title" type="text" .value=${this.articleTitle} @input=${(e: any) => this.articleTitle = e.target.value} placeholder="Pl. The Sin War: Birthright">
         </div>
 
         <div class="input-group">
-          <label>Rövid Leírás (Opcionális)</label>
-          <input type="text" .value=${this.subtitle} @input=${(e: any) => this.subtitle = e.target.value} placeholder="Pl. Az első könyv a Sin War trilógiából">
+          <label for="knowledge-subtitle">Rövid Leírás (Opcionális)</label>
+          <input id="knowledge-subtitle" type="text" .value=${this.subtitle} @input=${(e: any) => this.subtitle = e.target.value} placeholder="Pl. Az első könyv a Sin War trilógiából">
         </div>
 
         <div class="input-group">
-          <label>Nyers Tartalom (akár teljes könyv)</label>
-          <textarea rows="14" .value=${this.content} @input=${(e: any) => this.content = e.target.value} placeholder="Másold be ide a nyers szöveget... A rendszer automatikusan felismeri a fejezeteket (pl. '1. fejezet' vagy 'Chapter 1' alapján)."></textarea>
+          <label for="knowledge-content">Nyers Tartalom (akár teljes könyv)</label>
+          <textarea id="knowledge-content" rows="14" .value=${this.content} @input=${(e: any) => this.content = e.target.value} placeholder="Másold be ide a nyers szöveget... A rendszer automatikusan felismeri a fejezeteket (pl. '1. fejezet' vagy 'Chapter 1' alapján)."></textarea>
           <button class="btn btn-secondary" @click=${this.translateContent} ?disabled=${this.isProcessing || !this.content.trim()}>🌐 FORDÍTÁS MAGYARRA</button>
         </div>
 
@@ -384,6 +392,7 @@ export class WikiEditor extends LitElement {
             <div class="terminal-line" style="${getDelay(3)}">
                 <span class="icon-emoji">📖</span> <span class="success-text">${a.chapters.length} fejezet felismerve</span>
             </div>
+            ${a.existingBook ? html`<div class="terminal-line" style="${getDelay(3)}"><span class="icon-emoji">♻️</span><span class="success-text">Meglévő work felismerve:</span> ${a.existingBook.title} — ${a.newChapterCount} új, ${a.changedChapterCount} módosult, ${a.unchangedChapterCount} változatlan fejezet</div>` : ''}
         ` : html`
             <div class="terminal-line" style="${getDelay(1)}">
                 <span class="icon-emoji">📄</span> Szimpla Cikk felismerve
