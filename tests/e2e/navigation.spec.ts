@@ -71,7 +71,7 @@ test('books have a separate reader and stable deep links', async ({ page }) => {
 
 test('the Blackmarch article is searchable and the removed importer stays unavailable', async ({ page }) => {
   await page.goto('/#tab/articles');
-  const search = page.getByPlaceholder(/keres/i);
+  const search = page.getByRole('searchbox', { name: 'Keresés a cikkek között' });
   await search.fill('Fekete Menetelés');
   await expect(page.getByText('A Fekete Menetelés (Blackmarch)', { exact: true })).toBeVisible();
 
@@ -94,9 +94,16 @@ test('story reader remains usable without horizontal overflow on mobile and desk
 test('Codex landing uses the full desktop dashboard and keeps mobile compact', async ({ page }) => {
   await page.setViewportSize({ width: 1440, height: 900 });
   await page.goto('/#/wiki');
-  await expect(page.getByRole('heading', { name: 'Diablo', exact: true })).toBeVisible();
+  await expect(page.locator('.hero-slide--active .hero-slide-title')).toBeVisible();
+  await expect(page.locator('.hero-slide')).toHaveCount(4);
   await expect(page.locator('.codex-stat-strip dd')).toHaveCount(6);
   await expect(page.locator('.featured-codex-card')).toHaveCount(4);
+  expect(await page.locator('.featured-codex-card img').evaluateAll(images => images.map(image => image.getAttribute('src')?.split('/').at(-1)))).toEqual([
+    'featured-seven-evils-v1.jpg',
+    'featured-sanctuary-v1.jpg',
+    'featured-dark-exile-v1.jpg',
+    'featured-cosmology-v1.jpg',
+  ]);
   await expect(page.getByRole('complementary', { name: 'Codex gyorsnavigáció' })).toBeVisible();
   expect(await page.evaluate(() => document.documentElement.scrollWidth - window.innerWidth)).toBeLessThanOrEqual(1);
 
@@ -141,12 +148,12 @@ test('desktop Codex menus lead to populated content and its contents panel stays
   await expect(page).toHaveURL(/#\/wiki\/.+$/);
 });
 
-test('the 184-event chronology filters, reveals spoilers and supports timeline backlinks', async ({ page }) => {
+test('the 187-event chronology filters, reveals spoilers and supports timeline backlinks', async ({ page }) => {
   await page.goto('/#/timeline');
-  await expect(page.getByText(/155 esemény/)).toBeVisible();
+  await expect(page.getByText(/158 esemény/)).toBeVisible();
   await page.getByLabel('Diablo IV és újabb történeti spoilerek megjelenítése').check();
-  await expect(page.getByRole('heading', { name: '184. A kampány utáni jelenlegi kánonállapot' })).toBeVisible();
-  await expect(page.getByRole('button', { name: 'Kapcsolódó wiki-cikk megnyitása →' })).toHaveCount(184);
+  await expect(page.getByRole('heading', { name: '187. A kampány utáni jelenlegi kánonállapot' })).toBeVisible();
+  await expect(page.getByRole('button', { name: 'Kapcsolódó wiki-cikk megnyitása →' })).toHaveCount(187);
   await page.getByPlaceholder(/Esemény, szereplő/).fill('Worldstone');
   await expect(page.getByText(/9 esemény/)).toBeVisible();
   await page.goto('/#/timeline/diablo-event-123');

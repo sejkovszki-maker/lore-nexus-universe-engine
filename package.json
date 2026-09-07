@@ -27,7 +27,7 @@
     "test:e2e": "npm run build && playwright test",
     "security:audit": "npm audit --audit-level=high",
     "sbom": "cyclonedx-npm --output-file artifacts/sbom.cdx.json --output-format JSON --spec-version 1.6",
-    "test:regression": "node _scripts/test-wiki-regression.mjs",
+    "test:regression": "node --experimental-strip-types _scripts/test-wiki-regression.mjs",
     "test:fuzz": "node _scripts/fuzz-audit-integrity.mjs",
     "security:secrets": "node _scripts/scan-secrets.mjs",
     "test:security": "npm run test:audit && npm run test:fuzz && npm run security:secrets && npm run security:audit",

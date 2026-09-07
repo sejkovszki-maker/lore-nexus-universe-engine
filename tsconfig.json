@@ -4,8 +4,7 @@
     "module": "ESNext",
     "moduleResolution": "node",
     "strict": true,
-    "jsx": "preserve",
-    "jsxImportSource": "solid-js",
+
     "allowJs": true,
     "esModuleInterop": true,
     "skipLibCheck": true,

@@ -1,7 +1,9 @@
-import { readFile } from 'node:fs/promises';
+import { readFile, readdir } from 'node:fs/promises';
 
 const file = new URL('../src/data/wikiArticles.ts', import.meta.url);
-const text = await readFile(file, 'utf8');
+const modules = new URL('../src/data/articles/', import.meta.url);
+const files = [file, ...(await readdir(modules)).filter(name => name.endsWith('.ts')).sort().map(name => new URL(name, modules))];
+const text = (await Promise.all(files.map(path => readFile(path, 'utf8')))).join('\n');
 const rules = [
   ['mojibake', /(?:�|Ã|Â|â€|Ä|Ĺ|đź|í[\u0080-\u009f])/gu],
   ['control-character', /[\u0000-\u0008\u000b\u000c\u000e-\u001f\u007f-\u009f]/gu],

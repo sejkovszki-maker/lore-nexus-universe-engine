@@ -32,7 +32,7 @@ export class WikiArticleView extends LitElement {
     }
     .markdown-content h1 { font-size: 2.5rem; border-bottom: 1px solid #8b0000; padding-bottom: 0.5rem; }
     .markdown-content h2 { font-size: 2rem; }
-    .markdown-content h3 { font-size: 1.5rem; }
+    .markdown-content h3 { font-size: 1.35rem; color: #d4b87a; border-left: 3px solid #8b000066; padding-left: .75rem; margin-top: 1.5rem; }
     .markdown-content p { margin-bottom: 1.25rem; }
     .markdown-content em { color: #b8860b; }
     .markdown-content strong { color: #f8fafc; font-weight: 600; }
@@ -46,7 +46,93 @@ export class WikiArticleView extends LitElement {
     .relation-button:hover, .relation-button:focus-visible { border-color: #d4af37; color: #d4af37; outline: none; }
     .markdown-content .wiki-link { color: #e6c65c; text-decoration: underline; text-decoration-style: dotted; text-underline-offset: .2em; }
     .markdown-content .wiki-link-broken { color: #ff8a8a; text-decoration: underline wavy; }
+
+    /* Blockquote – játékkalauz idézetek stílusa */
+    .markdown-content blockquote {
+      margin: 1.5rem 0;
+      padding: 1rem 1.4rem;
+      background: rgba(139, 0, 0, 0.08);
+      border-left: 4px solid #8b0000;
+      border-radius: 0 6px 6px 0;
+      font-style: italic;
+      color: #c8a96e;
+      line-height: 1.7;
+    }
+    .markdown-content blockquote br + em,
+    .markdown-content blockquote em {
+      display: block;
+      margin-top: .6rem;
+      font-size: .9rem;
+      color: #9d8060;
+      font-style: normal;
+    }
+
+    /* Táblázatok – mechanika-összefoglalók */
+    .markdown-content table,
+    .markdown-content .wiki-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 1.5rem 0;
+      background: rgba(8, 8, 7, 0.85);
+      border: 1px solid #9d6b2e55;
+      border-radius: 6px;
+      overflow: hidden;
+      font-size: .92rem;
+    }
+    .markdown-content table th {
+      background: rgba(139, 0, 0, 0.3);
+      color: #d4af37;
+      font-family: 'Cinzel', serif;
+      font-size: .88rem;
+      text-align: left;
+      padding: 10px 14px;
+      border-bottom: 1px solid #9d6b2e55;
+    }
+    .markdown-content table td {
+      padding: 10px 14px;
+      border-bottom: 1px solid rgba(255,255,255,0.06);
+      color: #eaddc5;
+      vertical-align: top;
+    }
+    .markdown-content table tr:last-child td {
+      border-bottom: none;
+    }
+    .markdown-content table tr:nth-child(even) {
+      background: rgba(212, 175, 55, 0.03);
+    }
+    .markdown-content table tr:hover td {
+      background: rgba(212, 175, 55, 0.06);
+    }
+
+    /* Listák */
+    .markdown-content ul,
+    .markdown-content ol {
+      padding-left: 1.6rem;
+      margin-bottom: 1.2rem;
+    }
+    .markdown-content li {
+      margin-bottom: .5rem;
+      color: #d9c9ad;
+      line-height: 1.7;
+    }
+    .markdown-content ul li::marker { color: #d4af37; }
+    .markdown-content ol li::marker { color: #d4af37; font-weight: 700; }
+
+    /* Vízszintes elválasztó */
+    .markdown-content hr {
+      border: none;
+      border-top: 1px solid #8b000044;
+      margin: 2rem 0;
+    }
+
     @media (max-width: 700px) { .infobox { float: none; width: auto; margin: 0 0 1.5rem; } :host { max-width: 100%; } }
+    @media (max-width: 700px) {
+      .markdown-content table, .markdown-content .wiki-table {
+        display: block;
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+      }
+    }
   `;
 
   constructor() {

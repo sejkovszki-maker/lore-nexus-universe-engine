@@ -2,7 +2,7 @@ import { spawnSync } from 'node:child_process';
 import process from 'node:process';
 
 const commands = [
-  ['node', ['_scripts/validate-data.js'], 'legacy data validation'],
+  ['node', ['--experimental-strip-types', '_scripts/validate-data.ts'], 'wiki data validation'],
   ['npm', ['run', 'test:unit'], 'unit tests and coverage'],
   ['npm', ['run', 'ai:evaluate'], 'AI golden dataset evaluation'],
   ['npm', ['run', 'test:property'], 'property-based tests'],

@@ -1,13 +1,15 @@
 import { readFile, mkdir, writeFile } from 'node:fs/promises';
 import { resolve } from 'node:path';
-import vm from 'node:vm';
-import { LegacyCompatibilityLayer, type LegacyBookDocument } from '../src/migration/legacy-migration.ts';
+import { LegacyCompatibilityLayer, type LegacyArticle, type LegacyBookDocument, type LegacyTimelineItem } from '../src/migration/legacy-migration.ts';
+import { wikiArticles as currentWikiArticles } from '../src/data/wikiArticles.ts';
+import { diabloTimelineEvents } from '../src/data/diabloChronology.ts';
 
 const root = resolve(import.meta.dirname, '..');
-const legacySource = `${await readFile(resolve(root, 'data.js'), 'utf8')}\n;globalThis.__wiki=wikiArticles;globalThis.__timeline=timelineData;`;
-const legacyContext: Record<string, unknown> = {}; vm.createContext(legacyContext); vm.runInContext(legacySource, legacyContext, { filename: 'data.js', timeout: 10_000 });
-const wikiArticles = legacyContext.__wiki as Record<string, import('../src/migration/legacy-migration.ts').LegacyArticle>;
-const timelineData = legacyContext.__timeline as import('../src/migration/legacy-migration.ts').LegacyTimelineItem[];
+const wikiArticles = currentWikiArticles as Record<string, LegacyArticle>;
+const timelineData: LegacyTimelineItem[] = diabloTimelineEvents.map((event) => ({
+  ...event,
+  date: event.dateDisplay,
+}));
 const books = (await readFile(resolve(root, 'document-store/index.jsonl'), 'utf8')).trim().split(/\r?\n/).filter(Boolean).map((line) => JSON.parse(line) as LegacyBookDocument);
 const identities = [
   { id: 'legacy:tyrael', names: ['Tyrael'] }, { id: 'legacy:lilith', names: ['Lilith'] }, { id: 'legacy:diablo', names: ['Diablo'] },

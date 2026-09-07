@@ -6,9 +6,12 @@ import { wikiArticles } from '../data/wikiArticles.ts';
 
 @customElement('diablo-navigation')
 export class DiabloNavigation extends LitElement {
-  @state()
-  private activeTab = useAppStore.getState().activeTab;
+  @state() private activeTab = useAppStore.getState().activeTab;
   @state() private activeUniverseId = useAppStore.getState().activeUniverseId;
+  @state() private activeGameTag = useAppStore.getState().activeGameTag;
+  @state() private searchValue = '';
+  @state() private searchOpen = false;
+  @state() private articleCount = 0;
   @state() private contentRevision = 0;
 
   constructor() {
@@ -16,8 +19,10 @@ export class DiabloNavigation extends LitElement {
     useAppStore.subscribe((state) => {
       this.activeTab = state.activeTab;
       this.activeUniverseId = state.activeUniverseId;
+      this.activeGameTag = state.activeGameTag;
       this.contentRevision += 1;
     });
+    this.articleCount = Object.values(wikiArticles).filter(a => a.type !== 'chapter' && a.type !== 'book').length;
   }
 
   createRenderRoot() {
@@ -26,6 +31,13 @@ export class DiabloNavigation extends LitElement {
 
   private handleTabClick(tab: 'timeline' | 'articles' | 'story' | 'books' | 'sources' | 'conflicts') {
     useAppStore.setActiveTab(tab);
+  }
+
+  private handleSearch(e: Event) {
+    const q = (e.target as HTMLInputElement).value;
+    this.searchValue = q;
+    useAppStore.setSearchQuery(q);
+    if (q.length > 0) useAppStore.setActiveTab('articles');
   }
 
   render() {
@@ -65,7 +77,34 @@ export class DiabloNavigation extends LitElement {
           <i class="fa-solid fa-scale-balanced ${iconClass}"></i> <span>Kánonellenőrzés</span>
         </button>
       </nav>
-      <div class="universe-switch"><label for="universe-select">Univerzum</label><select id="universe-select" aria-label="Olvasott univerzum" .value=${this.activeUniverseId} @change=${(event: Event) => useAppStore.setActiveUniverse((event.target as HTMLSelectElement).value)}>${universes.map(universe => html`<option value=${universe.id}>${universe.label}</option>`)}</select></div>
+      <div class="universe-switch" style="display: flex; align-items: center; gap: 15px;">
+        <!-- Keresőmező -->
+        <div style="display: flex; align-items: center; gap: 5px; background: rgba(0,0,0,0.5); padding: 5px 10px; border-radius: 20px; border: 1px solid var(--border-gold);">
+          <i class="fa-solid fa-magnifying-glass" style="color: var(--accent-gold);"></i>
+          <input
+            type="search"
+            aria-label="Keresés az enciklopédiában"
+            placeholder="Keresés..."
+            .value=${this.searchValue}
+            @input=${this.handleSearch}
+            style="background: transparent; border: none; outline: none; color: white; width: 120px; font-size: 0.8rem;"
+          />
+        </div>
+
+        <!-- Cikkszámláló -->
+        <div title="Enciklopédia-cikkek száma" style="display: flex; align-items: center; gap: 5px; color: var(--accent-gold); font-size: 0.8rem; border-left: 1px solid rgba(255,255,255,0.1); padding-left: 15px;">
+          <i class="fa-solid fa-database"></i>
+          <strong style="font-family: var(--font-title); font-size: 1rem;">${this.articleCount}</strong>
+          <span style="color: var(--text-secondary); text-transform: uppercase; font-size: 0.65rem;">cikk</span>
+        </div>
+
+        <div style="display: flex; align-items: center; gap: 5px; border-left: 1px solid rgba(255,255,255,0.1); padding-left: 15px;">
+          <label for="universe-select" style="display: none;">Univerzum</label>
+          <select id="universe-select" aria-label="Olvasott univerzum" .value=${this.activeUniverseId} @change=${(event: Event) => useAppStore.setActiveUniverse((event.target as HTMLSelectElement).value)}>
+            ${universes.map(universe => html`<option value=${universe.id}>${universe.label}</option>`)}
+          </select>
+        </div>
+      </div>
     </header>
     `;
   }

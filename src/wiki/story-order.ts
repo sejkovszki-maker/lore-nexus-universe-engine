@@ -48,7 +48,7 @@ export const storyBookSegments: readonly BookSegment[] = [
   { id: 'sin-war-prophet', title: 'A Bűn Háborúja III. – A fátyolos próféta', after: 'sin-war-lore', prefixes: ['sin-war-prophet-ch'] },
   { id: 'demonsbane', title: 'Démonok csapása', after: 'akarat-nahantu', prefixes: ['demonsbane-ch'] },
   { id: 'kingdom-of-shadow', title: 'Az árnyak királysága', after: 'diablo-1-story', prefixes: ['kingdom-of-shadow-ch'] },
-  { id: 'black-road', title: 'A fekete út', after: 'diablo-2-story', prefixes: ['black-road-ch', 'black-road-epilogue'] },
+  { id: 'black-road', title: 'A Gonosz ösvénye', after: 'diablo-2-story', prefixes: ['book-gonosz-osvenye-ch', 'black-road-epilogue'] },
 ] as const;
 
 function numericChapterOrder(id: string): number {
