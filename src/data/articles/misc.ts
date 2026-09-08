@@ -125,16 +125,23 @@ export const miscArticles: Record<string, WikiArticle> = {
 
   "book-the-black-road-reader": {
     "id": "book-the-black-road-reader",
+    "type": "book",
+    "storyAfter": "diablo-1-story",
+    "workId": "work-black-road",
     "category": "Könyvek – Olvasó",
-    "title": "A Gonosz Ösvénye",
-    "subtitle": "Mel Odom teljes regénye – Fejezetek",
+    "title": "A Gonosz ösvénye",
+    "subtitle": "Mel Odom regénye – a Diablo I eseményeivel átfedő történet",
     "infobox": {
         "Szerző": "Mel Odom",
         "Eredeti cím": "The Black Road (2002)",
+        "Megjelenés": "2002. április 2.",
+        "Időrend": "A Diablo I eseményeivel részben párhuzamos",
         "Főszereplő": "Darrick Lang",
-        "Helyszín": "Westmarch, Tauruk kikötője"
+        "Helyszín": "Westmarch, Tauruk kikötője",
+        "ISBN": "978-0-7434-2691-6"
     },
-    "content": "\n      <h2>A regényről</h2>\n      <p><strong>Diablo: A gonosz ösvénye</strong> (The Black Road) Mel Odom 2002-es Diablo regénye, a sorozat harmadik kötete. A cselekmény <em>Darrick Lang</em> westmarch-i tengerészkapitány körül forog, aki visszatér szülővárosába, ahol egy sötét démoni összeesküvéssel kerül szembe.</p>\n      <p><em>Buyard Cholik</em>, egy korrupt Zakarum pap az elhagyatott Tauruk kikötője alatt rejtőző ősi romvárosban – Ransimban – dolgozik, hogy megnyissa a Gonosz Ösvényét (<em>The Black Road</em>), egy dimenzióközi kaput, amelyen át <strong>Kabraxis</strong>, egy hatalmas démon betörhet a halandók világába.</p>\n      \n      <h2>Fejezetek</h2>\n      <div class=\"chapter-grid\" style=\"display:grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 10px; margin-top: 15px;\">\n        <p>[[black-road-ch1|1. Fejezet|references]]</p>\n        <p>[[black-road-ch2|2. Fejezet|references]]</p>\n        <p>[[black-road-ch3|3. Fejezet|references]]</p>\n        <p>[[black-road-ch4|4. Fejezet|references]]</p>\n        <p>[[black-road-ch5|5. Fejezet|references]]</p>\n        <p>[[black-road-ch6|6. Fejezet|references]]</p>\n        <p>[[black-road-ch7|7. Fejezet|references]]</p>\n        <p>[[black-road-ch8|8. Fejezet|references]]</p>\n        <p>[[black-road-ch9|9. Fejezet|references]]</p>\n        <p>[[black-road-ch10|10. Fejezet|references]]</p>\n        <p>[[black-road-ch11|11. Fejezet|references]]</p>\n        <p>[[black-road-ch12|12. Fejezet|references]]</p>\n        <p>[[black-road-ch13|13. Fejezet|references]]</p>\n        <p>[[black-road-ch14|14. Fejezet|references]]</p>\n        <p>[[black-road-ch15|15. Fejezet|references]]</p>\n        <p>[[black-road-ch16|16. Fejezet|references]]</p>\n        <p>[[black-road-ch17|17. Fejezet|references]]</p>\n        <p>[[black-road-ch18|18. Fejezet|references]]</p>\n        <p>[[black-road-ch19|19. Fejezet|references]]</p>\n        <p>[[black-road-ch20|20. Fejezet|references]]</p>\n        <p>[[black-road-ch21|21. Fejezet|references]]</p>\n        <p>[[black-road-ch22|22. Fejezet|references]]</p>\n        <p>[[black-road-ch23|23. Fejezet|references]]</p>\n        <p>[[black-road-ch24|24. Fejezet|references]]</p>\n        <p>[[black-road-ch25|25. Fejezet|references]]</p>\n        <p>[[black-road-epilogue|Epilógus|references]]</p>\n      </div>\n    "
+    "relatedArticles": ["darrick-lang", "kabraxis", "buyard-cholik", "sanctuary-locations", "diablo-1-story"],
+    "content": "\n      <h2>A regényről</h2>\n      <p><strong>Diablo: A Gonosz ösvénye</strong> (<em>The Black Road</em>) Mel Odom 2002-ben megjelent, önálló Diablo-regénye. Darrick Lang westmarchi tengerész története több mint egy évet fog át, és részben egy időben játszódik Tristram bukásával.</p>\n      <h2>Történeti helye</h2>\n      <p>A történet a Diablo I eseményei előtt kezdődik, érinti Diablo Sanctuaryba való visszatérésének időszakát, majd a tristrami események után zárul. A folyamatos történet ezért a Diablo I fejezete után kínálja fel ezt az összefoglalót.</p>\n      <h2>Alaptörténet</h2>\n      <p>Darrick és társai Aribar Raithen kalózait üldözve Tauruk kikötőjébe jutnak. Buyard Cholik, az egykori Zakarum-pap Ransim romjai között Kabraxis visszatérését készíti elő. A konfliktus végül Darrick személyes múltját, Mat Hu-Ring elvesztését és Kabraxis befolyását is összekapcsolja.</p>\n      <h2>Kapcsolódó cikkek</h2>\n      <p>[[darrick-lang|Darrick Lang|references]] · [[kabraxis|Kabraxis|references]] · [[buyard-cholik|Buyard Cholik|references]] · [[sanctuary-locations|Tauruk kikötője és Ransim|references]]</p>\n      <h2>Bibliográfia</h2>\n      <p>Mel Odom: <em>Diablo: The Black Road</em>. Pocket Books, 2002. április 2. ISBN 978-0-7434-2691-6. <a href=\"https://books.google.com/books/about/The_Diablo_The_Black_Road.html?id=fSGE8cPJktwC\" target=\"_blank\" rel=\"noopener noreferrer\">Bibliográfiai rekord</a>.</p>\n    "
 }
 
 };

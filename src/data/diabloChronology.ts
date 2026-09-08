@@ -1736,7 +1736,7 @@ const rawDiabloTimelineEvents: TimelineEvent[] = [
       "A Gonosz ösvénye"
     ],
     "relatedEvents": [],
-    "articleId": "book-gonosz-osvenye-ch1",
+    "articleId": "book-the-black-road-reader",
     "sources": [
       {
         "label": "A Gonosz ösvénye",
@@ -2417,7 +2417,7 @@ const rawDiabloTimelineEvents: TimelineEvent[] = [
       "A Gonosz ösvénye"
     ],
     "relatedEvents": [],
-    "articleId": "book-gonosz-osvenye-ch1",
+    "articleId": "book-the-black-road-reader",
     "sources": [
       {
         "label": "A Gonosz ösvénye",
@@ -3767,8 +3767,8 @@ const rawDiabloTimelineEvents: TimelineEvent[] = [
     "eraName": "Tristram bukása / Diablo I",
     "eraOrder": 11,
     "eventOrder": 106,
-    "title": "A Gonosz ösvénye (The Black Road)",
-    "summary": "Buyard Cholik Zakarum pap expedíciója Tauruk kikötőjében, Kabraxis kapujának felkutatása, Darrick Lang küzdelme Aribar Raithen kalózkapitány ellen.",
+    "title": "A Gonosz ösvénye eseményei átfedik Tristram bukását",
+    "summary": "A több mint egy évet átfogó történetben Buyard Cholik megnyitja Kabraxis kapuját, Darrick Lang pedig szembeszáll a démonnal. A regény cselekménye a Diablo I eseményei előtt kezdődik, és azok után zárul le.",
     "dateDisplay": "",
     "dateStatus": "unknown",
     "canonStatus": "canon",
@@ -3798,7 +3798,7 @@ const rawDiabloTimelineEvents: TimelineEvent[] = [
       "A Gonosz ösvénye"
     ],
     "relatedEvents": [],
-    "articleId": "book-gonosz-osvenye-ch1",
+    "articleId": "book-the-black-road-reader",
     "sources": [
       {
         "label": "A Gonosz ösvénye",
@@ -6801,7 +6801,7 @@ export const timelineArticleByEra: Readonly<Record<string, string>> = Object.fre
   'lord-of-hatred': 'diablo-4-loh'
 });
 
-const validCuratedArticleIds = new Set(Object.values(timelineArticleByEra));
+const validCuratedArticleIds = new Set([...Object.values(timelineArticleByEra), 'book-the-black-road-reader']);
 
 export const diabloTimelineEvents: TimelineEvent[] = rawDiabloTimelineEvents.map(event => ({
   ...event,

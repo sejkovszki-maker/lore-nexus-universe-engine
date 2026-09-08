@@ -1,9 +1,11 @@
 ﻿import { defineConfig } from 'vite';
 import { VitePWA } from 'vite-plugin-pwa';
 
+const isEmailPackage = process.env.EMAIL_PACKAGE === '1';
+
 export default defineConfig({
-  base: process.env.VITE_BASE_PATH || '/',
-  plugins: [
+  base: isEmailPackage ? './' : (process.env.VITE_BASE_PATH || '/'),
+  plugins: isEmailPackage ? [] : [
     VitePWA({
       strategies: 'generateSW',
       registerType: 'autoUpdate',

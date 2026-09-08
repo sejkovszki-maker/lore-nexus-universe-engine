@@ -88,26 +88,25 @@ export class DiabloApp extends LitElement {
           ${this.activeTab === 'conflicts' ? html`<canon-conflict-dashboard class="w-full"></canon-conflict-dashboard>` : ''}
           ${this.activeTab === 'not-found' ? html`<section role="alert" class="w-full max-w-2xl bg-dark-card border border-blood-red rounded-xl p-8 text-center"><h1 class="text-gold text-3xl font-heading">Az oldal nem található</h1><p>A hivatkozás hibás, vagy a tartalom nem ehhez az univerzumhoz tartozik.</p><button class="mt-4 px-4 py-2 border border-gold rounded text-gold" @click=${()=>this.changeTab('articles')}>Vissza a cikkekhez</button></section>` : ''}
         </main>
-        <div class="copyright-notice" role="note" aria-label="Szerzői jogi nyilatkozat">
+        <aside class="copyright-notice" aria-labelledby="legal-notice-title">
           <i class="fa-solid fa-scale-balanced copyright-notice-icon" aria-hidden="true"></i>
           <div class="copyright-notice-body">
-            <div class="copyright-notice-title">⚖ Szerzői jogi nyilatkozat – Rajongói ismeretterjesztő projekt</div>
+            <h2 id="legal-notice-title" class="copyright-notice-title">Jogi és szerzői jogi tájékoztató</h2>
             <p class="copyright-notice-text">
-              Ez az oldal egy <strong>nem kereskedelmi, magáncélú rajongói enciklopédia</strong>, amelyet kizárólag a Diablo-univerzum
-              ismeretterjesztése, oktatása és dokumentálása céljából hoztunk létre. Az oldalon szereplő regények,
-              novellák és egyéb írásos anyagok ismertető, összefoglaló vagy jogszerűen idézett formában jelenhetnek meg – ezek szerzői joga
-              és minden szellemi tulajdonjog kizárólag a <strong>Blizzard Entertainment, Inc.</strong> és az eredeti szerzők
-              (<strong>Mel Odom, Richard A. Knaak, Nate Kenyon, Robert B. Marks</strong> és mások) tulajdona.
+              A Lore Nexus független, nem hivatalos, nem kereskedelmi rajongói enciklopédia. Nem áll kapcsolatban a
+              Blizzard Entertainmenttel, és a Blizzard nem hagyta jóvá vagy támogatta az oldalt.
             </p>
-            <p class="copyright-notice-text">
-              A tartalom közlése kizárólag a vonatkozó idézési és szabad felhasználási szabályok keretein belül történik.
-              Az oldal semmilyen kereskedelmi hasznot nem termel,
-              reklámot nem tartalmaz, és díjat nem számít fel. Ha bármely jogosult törlést vagy módosítást kér,
-              a tartalom haladéktalanul eltávolításra kerül –
-              <a href="mailto:kapcsolat@lorenexus.hu">kapcsolat felvétele itt</a>.
-            </p>
+            <details class="legal-details">
+              <summary>Részletes jogi információk</summary>
+              <section><h3>Harmadik felek szellemi tulajdona</h3><p>A Diablo elnevezés, világ, szereplők, történetek, játékok, védjegyek, logók és hivatalos képi anyagok jogai a Blizzard Entertainmenthez, kapcsolt vállalkozásaihoz vagy az adott jogosulthoz tartoznak. A regények és novellák eredeti szövegének, valamint hivatalos fordításainak jogai a megjelölt szerzőket, kiadókat és más jogosultakat illetik. Mel Odom <em>The Black Road</em> című műve és annak fordítása nem a Lore Nexus szerkesztőjének szellemi tulajdona.</p></section>
+              <section><h3>A Lore Nexus saját tartalma</h3><p>A szerkesztő kizárólag az általa önállóan létrehozott, egyéni és eredeti szerkesztői szöveg, adatstruktúra, programkód és grafikai elem jogait tarthatja fenn. Ez nem terjed ki a Diablo-univerzumra, a forrásművekre, harmadik féltől származó képekre, idézetekre vagy más védett elemekre. Egy mű lefordítása, rendszerezése vagy technikai feldolgozása önmagában nem ruházza át az eredeti mű jogait.</p></section>
+              <section><h3>Felhasználás és forrásmegjelölés</h3><p>A forrásokra épülő ismertetők, összefoglalók és idézetek célja az enciklopédikus tájékoztatás. Minden felhasználást az alkalmazandó jog, a szükséges forrás- és szerzőmegjelölés, valamint az esetleges jogosulti engedély határoz meg. Az oldal nem ad tovább felhasználási engedélyt harmadik fél tartalmára, és a nem kereskedelmi jelleg önmagában nem tesz automatikusan jogszerűvé bármely felhasználást.</p></section>
+              <section><h3>Pontosság, eltávolítás és kapcsolat</h3><p>A kánonbesorolások és fordítások szerkesztői feldolgozások, ezért hibát tartalmazhatnak. Jogosulti vagy helyesbítési kérés a projekt <a href="https://github.com/sejkovszki-maker/lore-nexus-universe-engine/issues" target="_blank" rel="noopener noreferrer">GitHub hibajegyoldalán</a> jelezhető. A vitatott tartalmat a kérés vizsgálata alatt korlátozni vagy eltávolítani lehet.</p></section>
+              <p class="legal-links"><a href="https://www.blizzard.com/legal" target="_blank" rel="noopener noreferrer">Blizzard jogi dokumentumok</a><span aria-hidden="true"> · </span><a href="https://njt.hu/jogszabaly/1999-76-00-00" target="_blank" rel="noopener noreferrer">1999. évi LXXVI. törvény</a></p>
+              <p class="legal-advice">Ez a tájékoztató általános információ, nem egyedi jogi tanács.</p>
+            </details>
           </div>
-        </div>
+        </aside>
         <footer class="codex-footer"><span>Rólunk · Szabályzat · Források · Közreműködők · Kapcsolat</span><strong>✥ Lore Nexus Diablo 5.0 ✥</strong><span>Sanctuary rajongói enciklopédiája</span></footer>
       </div>
     `;

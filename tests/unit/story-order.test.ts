@@ -1,6 +1,6 @@
 import assert from 'node:assert/strict';
 import test from 'node:test';
-import { canonicalStory, canonicalStoryIds, storyBookSegments, storyReadingPath } from '../../src/wiki/story-order.ts';
+import { canonicalStory, canonicalStoryIds, storyBooks, storyBookSegments, storyReadingPath } from '../../src/wiki/story-order.ts';
 import { wikiArticles } from '../../src/data/wikiArticles.ts';
 
 test('canonical story is complete, unique and follows the intended historical endpoints', () => {
@@ -35,4 +35,17 @@ test('optional novels are inserted at curated historical points and remain skipp
     assert.ok(firstBookChapter > anchor, `${segment.title} must follow its historical anchor`);
     assert.ok(expanded.filter(item => item.segmentId === segment.id).length > 0);
   }
+});
+
+test('A Gonosz ösvénye has one public book record at the Diablo I anchor', () => {
+  const book = storyBooks().find(item => item.id === 'book-the-black-road-reader');
+  assert.ok(book);
+  assert.equal(book.after, 'diablo-1-story');
+  assert.equal(book.chapters.length, 0);
+  assert.equal(Object.keys(wikiArticles).some(id => /^(?:black-road|book-gonosz-osvenye)-ch\d+$/.test(id)), false);
+  const expanded = storyReadingPath(true);
+  const anchor = expanded.findIndex(item => item.article.id === 'diablo-1-story');
+  const firstChapter = expanded.findIndex(item => item.segmentId === book.id);
+  assert.equal(firstChapter, anchor + 1);
+  assert.equal(expanded[firstChapter].article.id, 'book-the-black-road-reader');
 });

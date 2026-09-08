@@ -153,6 +153,36 @@ export const charactersArticles: Record<string, WikiArticle> = {
       <p>Forrás: <a href="https://news.blizzard.com/en-us/article/24267731/a-light-extinguished-a-tribute" target="_blank" rel="noopener noreferrer">Blizzard – A Light Extinguished: A Tribute</a>.</p>
     `,
     relatedArticles: ["diablo-4-story", "diablo-4-voh", "diablo-4-loh"]
+  },
+
+  "darrick-lang": {
+    id: "darrick-lang",
+    category: "Karakterek – Emberek & Nephalem",
+    title: "Darrick Lang",
+    subtitle: "Westmarch tengerésze és A Gonosz ösvénye főszereplője",
+    infobox: { "Származás": "Bramwell", "Szolgálat": "Westmarchi haditengerészet", "Mű": "A Gonosz ösvénye" },
+    content: `<h2>Története</h2><p>Darrick Lang Bramwellből származó westmarchi tengerész. Aribar Raithen kalózainak üldözése során jut el Tauruk kikötőjébe, ahol Buyard Cholik Kabraxis visszatérésén dolgozik.</p><h2>Szerepe a kronológiában</h2><p>Története több mint egy évet fog át, és részben egy időben játszódik Tristram bukásával. A teljes olvasási egység a [[book-the-black-road-reader|Könyvtárban|references]] érhető el.</p>`,
+    relatedArticles: ["book-the-black-road-reader", "kabraxis", "buyard-cholik", "sanctuary-locations"]
+  },
+
+  "kabraxis": {
+    id: "kabraxis",
+    category: "Karakterek – Angyalok & Démonok",
+    title: "Kabraxis",
+    subtitle: "A Gonosz ösvényéhez kötődő démon",
+    infobox: { "Típus": "Démon", "Sík": "A Gonosz ösvénye", "Ellenfél": "Darrick Lang" },
+    content: `<h2>A türelmes démon</h2><p>Kabraxis a Három Főgonosztól különálló démoni hatalom. Követői kapuk és hamis vallások segítségével próbálták Sanctuaryba visszahívni.</p><h2>A regény eseményei</h2><p>Buyard Cholik Ransim romjai között nyitott utat számára. Darrick Lang történetének központi konfliktusa a démon befolyása és legyőzése. Lásd: [[book-the-black-road-reader|A Gonosz ösvénye|references]].</p>`,
+    relatedArticles: ["book-the-black-road-reader", "darrick-lang", "buyard-cholik", "prime-lesser-evils"]
+  },
+
+  "buyard-cholik": {
+    id: "buyard-cholik",
+    category: "Karakterek – Emberek & Nephalem",
+    title: "Buyard Cholik",
+    subtitle: "A Kabraxis visszatérését előkészítő egykori Zakarum-pap",
+    infobox: { "Rend": "Zakarum", "Szerep": "Kabraxis közvetítője", "Mű": "A Gonosz ösvénye" },
+    content: `<h2>A bukott pap</h2><p>Buyard Cholik a Zakarum egykori papjaként kutatta fel Tauruk kikötőjét és az alatta fekvő Ransim romjait. Célja Kabraxis kapujának megnyitása és egy új vallási mozgalom felépítése volt.</p><h2>Kapcsolatai</h2><p>Kabraxis szolgálatában állt, terveit pedig Darrick Lang és szövetségesei akadályozták meg. Lásd: [[book-the-black-road-reader|A Gonosz ösvénye|references]].</p>`,
+    relatedArticles: ["book-the-black-road-reader", "darrick-lang", "kabraxis", "sanctuary-factions"]
   }
 
 };

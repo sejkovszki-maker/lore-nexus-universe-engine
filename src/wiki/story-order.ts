@@ -48,7 +48,6 @@ export const storyBookSegments: readonly BookSegment[] = [
   { id: 'sin-war-prophet', title: 'A Bűn Háborúja III. – A fátyolos próféta', after: 'sin-war-lore', prefixes: ['sin-war-prophet-ch'] },
   { id: 'demonsbane', title: 'Démonok csapása', after: 'akarat-nahantu', prefixes: ['demonsbane-ch'] },
   { id: 'kingdom-of-shadow', title: 'Az árnyak királysága', after: 'diablo-1-story', prefixes: ['kingdom-of-shadow-ch'] },
-  { id: 'black-road', title: 'A Gonosz ösvénye', after: 'diablo-2-story', prefixes: ['book-gonosz-osvenye-ch', 'black-road-epilogue'] },
 ] as const;
 
 function numericChapterOrder(id: string): number {
@@ -66,7 +65,11 @@ export interface StoryBook { id: string; title: string; after: string | null; ch
 
 export function storyBooks(universeId = 'diablo'): StoryBook[] {
   const imported = Object.values(wikiArticles).filter(article => articleUniverseId(article) === universeId && article.type === 'book').map(book => ({ id: book.id, title: book.title, after: book.storyAfter || null, chapters: Object.values(wikiArticles).filter(article => articleUniverseId(article) === universeId && article.type === 'chapter' && article.parentBook === book.id).sort((a, b) => numericChapterOrder(a.id) - numericChapterOrder(b.id)) }));
-  if (universeId === 'diablo') return [...storyBookSegments.map(segment => ({ id: segment.id, title: segment.title, after: segment.after, chapters: segmentArticles(segment) })).filter(book => book.chapters.length), ...imported];
+  if (universeId === 'diablo') {
+    const curated = storyBookSegments.map(segment => ({ id: segment.id, title: segment.title, after: segment.after, chapters: segmentArticles(segment) })).filter(book => book.chapters.length);
+    const blackRoad = imported.filter(book => book.id === 'book-the-black-road-reader');
+    return [...blackRoad, ...curated, ...imported.filter(book => book.id !== 'book-the-black-road-reader')];
+  }
   return imported;
 }
 
@@ -86,8 +89,9 @@ export function storyReadingPath(includeBooks = true, universeId = 'diablo'): St
   for (const article of canonicalStory()) {
     path.push({ article, segmentId: null, segmentTitle: null });
     if (!includeBooks) continue;
-    for (const segment of storyBookSegments.filter(item => item.after === article.id)) {
-      path.push(...segmentArticles(segment).map(bookArticle => ({ article: bookArticle, segmentId: segment.id, segmentTitle: segment.title })));
+    for (const book of storyBooks('diablo').filter(item => item.after === article.id)) {
+      const readableItems = book.chapters.length ? book.chapters : [wikiArticles[book.id]].filter((item): item is WikiArticle => Boolean(item));
+      path.push(...readableItems.map(bookArticle => ({ article: bookArticle, segmentId: book.id, segmentTitle: book.title })));
     }
   }
   return path;

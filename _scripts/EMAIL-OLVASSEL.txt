@@ -1,0 +1,21 @@
+LORE NEXUS – E-MAILBEN KÜLDHETŐ, HELYI VÁLTOZAT
+
+1. Csomagold ki a teljes ZIP-fájlt egy tetszőleges mappába.
+2. Kattints kétszer az „INDITAS.cmd” fájlra.
+3. A wiki az alapértelmezett böngészőben nyílik meg.
+4. Olvasás közben hagyd nyitva a fekete kiszolgálóablakot.
+5. Bezáráshoz kattints a kiszolgálóablakba, majd nyomd meg a Ctrl+C billentyűket.
+
+Az alkalmazás kizárólag a saját számítógépeden, a 127.0.0.1:18765 helyi címen fut.
+Nem tölt fel adatot és nem teszi elérhetővé a helyi hálózaton vagy az interneten.
+
+FELTÉTEL
+Windows és telepített Node.js szükséges. Ha az indító nem működik, nyiss Terminált
+ebben a mappában, majd add ki ezt a parancsot: node email-server.mjs
+
+Az enciklopédia internet nélkül is megnyílik. A külső forráshivatkozások és a külső
+betűkészlet/icon szolgáltatások csak internetkapcsolattal érhetők el; nélkülük az oldal
+helyi tartalma és alapvető kezelése továbbra is használható.
+
+Az olvasási helyet a böngésző ezen a gépen megjegyzi. A böngésző adatainak törlése
+az olvasási állást is törölheti.

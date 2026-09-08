@@ -153,7 +153,8 @@ test('the 187-event chronology filters, reveals spoilers and supports timeline b
   await expect(page.getByText(/158 esemény/)).toBeVisible();
   await page.getByLabel('Diablo IV és újabb történeti spoilerek megjelenítése').check();
   await expect(page.getByRole('heading', { name: '187. A kampány utáni jelenlegi kánonállapot' })).toBeVisible();
-  await expect(page.getByRole('button', { name: 'Kapcsolódó wiki-cikk megnyitása →' })).toHaveCount(187);
+  await expect(page.getByRole('button', { name: 'Kapcsolódó wiki-cikk megnyitása →' })).toHaveCount(184);
+  await expect(page.getByRole('button', { name: 'Kapcsolódó könyv megnyitása →' })).toHaveCount(3);
   await page.getByPlaceholder(/Esemény, szereplő/).fill('Worldstone');
   await expect(page.getByText(/9 esemény/)).toBeVisible();
   await page.goto('/#/timeline/diablo-event-123');
@@ -167,3 +168,19 @@ test('the 187-event chronology filters, reveals spoilers and supports timeline b
 test('source library exposes audited sources works and claims without mobile overflow',async({page})=>{await page.setViewportSize({width:390,height:844});await page.goto('/#/sources');await expect(page.getByRole('heading',{name:'Forrástár és műjegyzék'})).toBeVisible();await expect(page.getByRole('button',{name:/Források \(74\)/})).toBeVisible();await expect(page.getByText('Tyrael Hero Spotlight')).toBeVisible();await page.getByRole('button',{name:/Művek \(81\)/}).click();await expect(page.getByRole('heading',{name:'Diablo III: Book of Cain'})).toBeVisible();await expect(page.getByText('gyűjtemény: Tales of Sanctuary').first()).toBeVisible();await expect(page.getByRole('heading',{name:'Heroes Rise, Darkness Falls'})).toBeVisible();await expect(page.getByRole('heading',{name:'Legends of the Necromancer: Rathma'})).toBeVisible();await expect(page.getByRole('heading',{name:'Diablo: Book of Prava'})).toBeVisible();await expect(page.getByRole('heading',{name:'The Lost Horadrim'})).toBeVisible();await page.getByRole('button',{name:/Ellenőrzött állítások \(37\)/}).click();await expect(page.getByText('Diablo II: Lord of Destruction után és Diablo III előtt')).toBeVisible();await expect(page.getByText('Worldstone',{exact:true})).toBeVisible();expect(await page.evaluate(()=>document.documentElement.scrollWidth-window.innerWidth)).toBeLessThanOrEqual(1);});
 
 test('newly resolved local books have public metadata pages without full-text reproduction',async({page})=>{await page.goto('/#/wiki/the-lost-horadrim');await expect(page.getByRole('heading',{name:'The Lost Horadrim – Az elveszett Horadrim'})).toBeVisible();await expect(page.getByText(/Lord of Hatred.*előzményregény/).first()).toBeVisible();await page.goto('/#/wiki/stay-awhile-listen-book-1');await expect(page.getByRole('heading',{name:'Stay Awhile and Listen: Book I'})).toBeVisible();await expect(page.getByText(/nem Sanctuary világán belüli kánonmű/)).toBeVisible();});
+
+test('A Gonosz ösvénye has one metadata page at its Diablo I story and timeline position', async ({ page }) => {
+  await page.goto('/#/books');
+  const card = page.locator('article.card').filter({ hasText: 'A Gonosz ösvénye' });
+  await expect(card).toContainText('Ismertető és bibliográfia');
+  await card.getByRole('button', { name: 'Könyvadatlap megnyitása' }).click();
+  await expect(page).toHaveURL(/#\/book\/book-the-black-road-reader$/);
+  await expect(page.getByText(/Diablo I eseményei előtt kezdődik/)).toBeVisible();
+  await page.goto('/#/timeline');
+  await page.getByLabel('Diablo IV és újabb történeti spoilerek megjelenítése').check();
+  await page.getByPlaceholder(/Esemény, szereplő/).fill('A Gonosz ösvénye eseményei');
+  await page.getByRole('button', { name: 'Kapcsolódó könyv megnyitása →' }).click();
+  await expect(page).toHaveURL(/#\/book\/book-the-black-road-reader$/);
+  await page.getByText('Részletes jogi információk').click();
+  await expect(page.getByText(/nem a Lore Nexus szerkesztőjének szellemi tulajdona/)).toBeVisible();
+});
