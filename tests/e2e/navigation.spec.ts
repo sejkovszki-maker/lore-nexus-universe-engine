@@ -184,3 +184,20 @@ test('A Gonosz ösvénye has one metadata page at its Diablo I story and timelin
   await page.getByText('Részletes jogi információk').click();
   await expect(page.getByText(/nem a Lore Nexus szerkesztőjének szellemi tulajdona/)).toBeVisible();
 });
+
+test('install prompt exposes an accessible local-app install action', async ({ page }) => {
+  await page.goto('/#/wiki');
+  await expect(page.getByRole('button', { name: 'Lore Nexus – Wiki megnyitása' })).toBeVisible();
+  await page.evaluate(() => {
+    const installEvent = new Event('beforeinstallprompt', { cancelable: true });
+    Object.defineProperties(installEvent, {
+      prompt: { value: async () => undefined },
+      userChoice: { value: Promise.resolve({ outcome: 'accepted', platform: 'web' }) },
+    });
+    window.dispatchEvent(installEvent);
+  });
+  const install = page.getByRole('button', { name: 'Lore Nexus telepítése erre az eszközre' });
+  await expect(install).toBeVisible();
+  await install.click();
+  await expect(install).toBeHidden();
+});

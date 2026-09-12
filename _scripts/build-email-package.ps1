@@ -22,6 +22,8 @@ try {
 
   $launcher = "@echo off`r`ntitle Lore Nexus Offline`r`nwhere node >nul 2>nul || (echo A Node.js nincs telepitve. Lasd: OLVASSEL.txt & pause & exit /b 1)`r`nnode email-server.mjs`r`npause`r`n"
   [System.IO.File]::WriteAllText((Join-Path $packageRoot 'INDITAS.cmd'), $launcher, [System.Text.UTF8Encoding]::new($false))
+  $unixLauncher = "#!/usr/bin/env sh`ncd -- `"`$(dirname -- `"`$0`")`" || exit 1`nnode email-server.mjs`n"
+  [System.IO.File]::WriteAllText((Join-Path $packageRoot 'INDITAS.sh'), $unixLauncher, [System.Text.UTF8Encoding]::new($false))
 
   Compress-Archive -LiteralPath $packageRoot -DestinationPath $zipPath -CompressionLevel Optimal
   $hash = (Get-FileHash -LiteralPath $zipPath -Algorithm SHA256).Hash

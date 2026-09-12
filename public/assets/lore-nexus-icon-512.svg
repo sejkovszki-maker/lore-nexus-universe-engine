@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="512" height="512" viewBox="0 0 512 512" role="img" aria-label="Lore Nexus">
+  <rect width="512" height="512" rx="76" fill="#080706"/>
+  <path d="M256 108 294 208 404 256 294 304 256 404 218 304 108 256 218 208Z" fill="none" stroke="#c79a4a" stroke-width="16"/>
+  <circle cx="256" cy="256" r="80" fill="#160b08" stroke="#e0b35b" stroke-width="13"/>
+  <path d="M256 158v196M158 256h196M187 187l138 138M325 187 187 325" stroke="#a33a21" stroke-width="11"/>
+  <circle cx="256" cy="256" r="24" fill="#e0b35b"/>
+</svg>

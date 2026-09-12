@@ -39,11 +39,28 @@ const server = createServer(async (request, response) => {
   }
 });
 
+const openApplication = () => {
+  const url = `http://${host}:${port}/#/wiki`;
+  const command = process.platform === 'win32' ? 'cmd' : process.platform === 'darwin' ? 'open' : 'xdg-open';
+  const args = process.platform === 'win32' ? ['/c', 'start', '', url] : [url];
+  spawn(command, args, { detached: true, stdio: 'ignore', windowsHide: true }).unref();
+};
+
+server.on('error', (error) => {
+  if (error && typeof error === 'object' && 'code' in error && error.code === 'EADDRINUSE') {
+    console.log('A Lore Nexus már fut; a meglévő helyi példány megnyitása.');
+    openApplication();
+    process.exit(0);
+  }
+  console.error('A helyi kiszolgáló nem indítható.', error);
+  process.exit(1);
+});
+
 server.listen(port, host, () => {
   const url = `http://${host}:${port}/#/wiki`;
   console.log(`Lore Nexus elindult: ${url}`);
   console.log('A bezáráshoz nyomd meg a Ctrl+C billentyűket.');
-  spawn('cmd', ['/c', 'start', '', url], { detached: true, stdio: 'ignore', windowsHide: true }).unref();
+  openApplication();
 });
 
 process.on('SIGINT', () => server.close(() => process.exit(0)));

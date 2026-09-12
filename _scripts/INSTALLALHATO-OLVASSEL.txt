@@ -1,0 +1,53 @@
+LORE NEXUS – HELYI, TELEPÍTHETŐ VÁLTOZAT
+
+ELSŐ INDÍTÁS
+1. Csomagold ki a teljes ZIP-fájlt egy saját mappába.
+2. A mappát később ne töröld és ne helyezd át, amíg ezt a kiadást használod.
+3. Kattints kétszer az „INDITAS.cmd” fájlra.
+4. Hagyd nyitva a kiszolgálóablakot, amíg a böngészőből használod a wikit.
+
+WINDOWS-TELEPÍTÉS (AJÁNLOTT)
+1. Kattints kétszer a „TELEPITES.cmd” fájlra.
+2. A telepítő létrehozza a Lore Nexus parancsikonját az Asztalon és a Start menüben.
+3. A parancsikonnal a helyi kiszolgáló és a wiki együtt indul el.
+4. Eltávolításhoz futtasd az „ELTAVOLITAS.cmd” fájlt vagy a Start menü megfelelő pontját.
+   Az eltávolítás csak a parancsikonokat törli; a program és a helyi adatok megmaradnak.
+
+OPCIONÁLIS BÖNGÉSZŐS PWA-TELEPÍTÉS
+1. Nyisd meg a wikit az INDITAS.cmd fájllal Microsoft Edge vagy Google Chrome böngészőben.
+2. Ha megjelenik a Lore Nexus „Telepítés” gombja, kattints rá és erősítsd meg.
+3. Ha a gomb nem jelenik meg, használd a címsor telepítés ikonját vagy a böngésző
+   „Alkalmazások / Az oldal telepítése alkalmazásként” menüpontját.
+4. A megbízható induláshoz a PWA megnyitása előtt is indítsd el az INDITAS.cmd fájlt.
+
+ÁTVITEL MÁS WINDOWS-GÉPRE
+1. Másold át ezt a teljes ZIP-fájlt az új gépre.
+2. Csomagold ki, majd indítsd el az INDITAS.cmd fájlt.
+3. Az új gépen külön is telepítsd az alkalmazást a fenti módon.
+4. A böngészőben tárolt olvasási állás és saját szerkesztések nem kerülnek át
+   automatikusan; ezek eszközönként külön helyi adatok.
+
+MACOS VAGY LINUX
+1. Telepítsd a Node.js aktuális támogatott változatát.
+2. Terminálban lépj a kicsomagolt mappába, majd futtasd: sh INDITAS.sh
+3. A böngészős PWA-telepítés támogatása a választott böngészőtől függ.
+4. A Windows TELEPITES.cmd ezeken a rendszereken nem használható.
+
+MOBILTELEFON ÉS TABLET
+A csomag felülete mobilméretre optimalizált, de teljesen helyi futtatásához az eszközön
+Node.js-kompatibilis helyi kiszolgáló szükséges. Nyilvános tárhely nélkül a Windowsról
+indított példány szándékosan nem érhető el telefonról, mert csak a 127.0.0.1 címen figyel.
+
+BIZTONSÁG ÉS ADATVÉDELEM
+- A kiszolgáló kizárólag a 127.0.0.1:18765 helyi címen működik.
+- A wiki nem válik elérhetővé az interneten vagy a helyi hálózaton.
+- A csomag nem tartalmaz privát forrásdokumentumokat vagy teljes jogvédett könyvszöveget.
+- A böngészőadatok törlése az olvasási állást és a saját helyi módosításokat is törölheti.
+
+FELTÉTEL
+Windows és telepített Node.js szükséges. Ha az indító nem működik, nyiss Terminált
+ebben a mappában, majd add ki ezt a parancsot: node local-server.mjs
+
+FRISSÍTÉS
+Új kiadásnál zárd be a régi kiszolgálót, cseréld le a kicsomagolt csomagot,
+indítsd újra, majd frissítsd az alkalmazást. Saját helyi adatok előtt készíts exportot.

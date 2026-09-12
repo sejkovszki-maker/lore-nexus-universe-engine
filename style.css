@@ -117,6 +117,8 @@
 .legal-details p { margin: 0; color: var(--text-secondary); font-size: .79rem; line-height: 1.65; }
 .legal-details .legal-links { margin-top: 14px; }
 .legal-details .legal-advice { margin-top: 8px; font-style: italic; color: #98886f; }
+.install-app-button{display:flex;align-items:center;gap:.45rem;min-height:44px;padding:.55rem .75rem;border:1px solid #8f642c;background:rgba(117,53,16,.28);color:#e8c786;font:600 .68rem var(--font-title);text-transform:uppercase;cursor:pointer}
+.install-app-button:hover,.install-app-button:focus-visible{border-color:#e0b35b;color:#fff0c8;outline:2px solid transparent;box-shadow:0 0 0 2px rgba(224,179,91,.35)}
 .codex-app-shell > .codex-footer { grid-row: 4; }
 
 /* Reset & Base Styles */
@@ -130,6 +132,10 @@ img, video, iframe {
   max-width: 100%;
   height: auto;
 }
+
+/* Helyi ikonrendszer: nem igényel külső font- vagy CDN-kapcsolatot. */
+.fa-solid{display:inline-block;min-width:1em;text-align:center;font-family:Georgia,'Times New Roman',serif;font-style:normal;font-weight:700;line-height:1}
+.fa-hourglass-half::before{content:'⌛'}.fa-book::before{content:'▣'}.fa-link::before{content:'⌁'}.fa-book-journal-whills::before{content:'▤'}.fa-book-open::before{content:'▥'}.fa-scale-balanced::before{content:'⚖'}.fa-magnifying-glass::before{content:'⌕'}.fa-database::before{content:'◉'}.fa-download::before{content:'⇩'}.fa-house::before{content:'⌂'}.fa-globe::before{content:'⊙'}.fa-sun::before{content:'✹'}.fa-burst::before{content:'✦'}.fa-star::before{content:'★'}.fa-fire::before{content:'♨'}.fa-feather::before{content:'❯'}.fa-user::before{content:'●'}.fa-location-dot::before{content:'◆'}.fa-tree::before{content:'♠'}.fa-compass::before{content:'✥'}.fa-dice::before{content:'◇'}.fa-dragon::before{content:'♜'}.fa-map-location-dot::before{content:'⌖'}.fa-shield-halved::before{content:'◈'}.fa-users::before{content:'♟'}.fa-arrow-right::before{content:'→'}.fa-arrow-left::before{content:'←'}
 
 pre, code {
   white-space: pre-wrap;
@@ -1953,6 +1959,8 @@ diablo-navigation { display: contents; }
   .copyright-notice-text,.legal-details p{font-size:.9rem;line-height:1.7}
   .legal-details h3{font-size:.76rem;line-height:1.45}
   .legal-links a{display:inline-block;min-height:44px;padding:10px 0}
+  .install-app-button span{display:none}
+  .install-app-button{min-width:44px;justify-content:center;padding:.5rem}
 }
 @media(max-width:640px){.article-card-grid{grid-template-columns:1fr}.article-category-list{flex-wrap:nowrap;overflow-x:auto;padding-bottom:.35rem}.article-category-list button{min-width:max-content}}
 

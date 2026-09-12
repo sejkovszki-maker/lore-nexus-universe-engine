@@ -4,6 +4,11 @@ import { useAppStore } from '../store/appState';
 import { availableUniverses } from '../universe/article-universes.ts';
 import { wikiArticles } from '../data/wikiArticles.ts';
 
+interface BeforeInstallPromptEvent extends Event {
+  prompt(): Promise<void>;
+  userChoice: Promise<{ outcome: 'accepted' | 'dismissed'; platform: string }>;
+}
+
 @customElement('diablo-navigation')
 export class DiabloNavigation extends LitElement {
   @state() private activeTab = useAppStore.getState().activeTab;
@@ -13,6 +18,14 @@ export class DiabloNavigation extends LitElement {
   @state() private searchOpen = false;
   @state() private articleCount = 0;
   @state() private contentRevision = 0;
+  @state() private installPrompt: BeforeInstallPromptEvent | null = null;
+
+  private readonly captureInstallPrompt = (event: Event) => {
+    event.preventDefault();
+    this.installPrompt = event as BeforeInstallPromptEvent;
+  };
+
+  private readonly clearInstallPrompt = () => { this.installPrompt = null; };
 
   constructor() {
     super();
@@ -23,6 +36,26 @@ export class DiabloNavigation extends LitElement {
       this.contentRevision += 1;
     });
     this.articleCount = Object.values(wikiArticles).filter(a => a.type !== 'chapter' && a.type !== 'book').length;
+  }
+
+  connectedCallback() {
+    super.connectedCallback();
+    window.addEventListener('beforeinstallprompt', this.captureInstallPrompt);
+    window.addEventListener('appinstalled', this.clearInstallPrompt);
+  }
+
+  disconnectedCallback() {
+    window.removeEventListener('beforeinstallprompt', this.captureInstallPrompt);
+    window.removeEventListener('appinstalled', this.clearInstallPrompt);
+    super.disconnectedCallback();
+  }
+
+  private async installApplication() {
+    const prompt = this.installPrompt;
+    if (!prompt) return;
+    await prompt.prompt();
+    await prompt.userChoice;
+    this.installPrompt = null;
   }
 
   createRenderRoot() {
@@ -78,6 +111,7 @@ export class DiabloNavigation extends LitElement {
         </button>
       </nav>
       <div class="universe-switch" style="display: flex; align-items: center; gap: 15px;">
+        ${this.installPrompt ? html`<button class="install-app-button" aria-label="Lore Nexus telepítése erre az eszközre" @click=${this.installApplication}><i class="fa-solid fa-download" aria-hidden="true"></i><span>Telepítés</span></button>` : ''}
         <!-- Keresőmező -->
         <div style="display: flex; align-items: center; gap: 5px; background: rgba(0,0,0,0.5); padding: 5px 10px; border-radius: 20px; border: 1px solid var(--border-gold);">
           <i class="fa-solid fa-magnifying-glass" style="color: var(--accent-gold);"></i>

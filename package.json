@@ -43,8 +43,9 @@
     "production:verify": "node _scripts/verify-production-readiness.mjs",
     "knowledge:pull": "node _scripts/central-knowledge-cli.mjs pull",
     "knowledge:push": "node _scripts/central-knowledge-cli.mjs push",
-    "package:email": "pwsh -NoProfile -ExecutionPolicy Bypass -File _scripts/build-email-package.ps1"
-    ,"typecheck:netlify": "tsc --noEmit --target ESNext --module NodeNext --moduleResolution NodeNext --skipLibCheck --types node netlify/functions/knowledge-sync.ts"
+    "package:email": "pwsh -NoProfile -ExecutionPolicy Bypass -File _scripts/build-email-package.ps1",
+    "package:installable": "pwsh -NoProfile -ExecutionPolicy Bypass -File _scripts/build-local-installable.ps1",
+    "typecheck:netlify": "tsc --noEmit --target ESNext --module NodeNext --moduleResolution NodeNext --skipLibCheck --types node netlify/functions/knowledge-sync.ts"
   },
   "dependencies": {
     "@netlify/blobs": "^11.0.2",

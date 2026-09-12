@@ -13,9 +13,10 @@ FELTÉTEL
 Windows és telepített Node.js szükséges. Ha az indító nem működik, nyiss Terminált
 ebben a mappában, majd add ki ezt a parancsot: node email-server.mjs
 
-Az enciklopédia internet nélkül is megnyílik. A külső forráshivatkozások és a külső
-betűkészlet/icon szolgáltatások csak internetkapcsolattal érhetők el; nélkülük az oldal
-helyi tartalma és alapvető kezelése továbbra is használható.
+macOS vagy Linux alatt telepített Node.js mellett futtasd: sh INDITAS.sh
+
+Az enciklopédia, a felület betűi, ikonjai és képei internet nélkül is működnek.
+Csak a cikkekben megnyitott külső forráshivatkozások igényelnek internetkapcsolatot.
 
 Az olvasási helyet a böngésző ezen a gépen megjegyzi. A böngésző adatainak törlése
 az olvasási állást is törölheti.
