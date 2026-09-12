@@ -73,7 +73,7 @@ export function setActiveTab(
 }
 
 export function setActiveUniverse(universeId: string): void {
-    state = { ...state, activeUniverseId: universeId, activeArticleId: null, activeCategory: null, searchQuery: '', currentSearchQuery: '' };
+    state = { ...state, activeUniverseId: universeId, activeArticleId: null, activeCategory: null, searchQuery: '', currentSearchQuery: '', activeGameTag: 'ALL', activeEraId: 'ALL' };
     if (typeof window !== 'undefined') navigate({ view: 'timeline', universeId });
     else notify();
 }

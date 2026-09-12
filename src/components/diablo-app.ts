@@ -2,6 +2,7 @@ import { LitElement, html } from 'lit';
 import { customElement, state } from 'lit/decorators.js';
 import { useAppStore } from '../store/appState';
 import { wikiArticles } from '../data/wikiArticles.ts';
+import { articleUniverseId } from '../universe/article-universes.ts';
 
 import './diablo-navigation';
 import './story-reader';
@@ -16,11 +17,14 @@ import './source-library';
 export class DiabloApp extends LitElement {
   @state()
   private activeTab = useAppStore.getState().activeTab;
+  @state()
+  private activeUniverseId = useAppStore.getState().activeUniverseId;
 
   constructor() {
     super();
     useAppStore.subscribe((state) => {
       this.activeTab = state.activeTab;
+      this.activeUniverseId = state.activeUniverseId;
     });
   }
 
@@ -41,7 +45,7 @@ export class DiabloApp extends LitElement {
   }
 
   private openRandomArticle() {
-    const articles = Object.values(wikiArticles).filter(article => article.type !== 'chapter' && article.type !== 'book');
+    const articles = Object.values(wikiArticles).filter(article => articleUniverseId(article) === this.activeUniverseId && article.type !== 'chapter' && article.type !== 'book');
     const article = articles[Math.floor(Math.random() * articles.length)];
     if (article) {
       useAppStore.openArticleRoute(article.id);
@@ -51,9 +55,26 @@ export class DiabloApp extends LitElement {
 
   render() {
     return html`
-      <div class="codex-app-shell">
+      <div class="codex-app-shell ${this.activeUniverseId === 'witcher' ? 'universe-witcher' : 'universe-diablo'}">
         <diablo-navigation></diablo-navigation>
-        <aside class="codex-sidebar" aria-label="Diablo kódex">
+        ${this.activeUniverseId === 'witcher' ? html`<aside class="codex-sidebar" aria-label="Vaják archívum">
+          <h2>Vaják</h2>
+          <button class="sidebar-overview" @click=${()=>this.showArticles()}><i class="fa-solid fa-house"></i> Áttekintés</button>
+          <button class="sidebar-group-title" @click=${()=>this.showArticles('', 'Karakterek')}>Szereplők</button>
+          <button @click=${()=>this.showArticles('Geralt')}><i class="fa-solid fa-user-shield"></i> Ríviai Geralt</button>
+          <button @click=${()=>this.showArticles('Yennefer')}><i class="fa-solid fa-wand-sparkles"></i> Yennefer</button>
+          <button @click=${()=>this.showArticles('Ciri')}><i class="fa-solid fa-star"></i> Ciri</button>
+          <button class="sidebar-group-title" @click=${()=>this.showArticles('', 'Világ')}>A Kontinens</button>
+          <button @click=${()=>this.showArticles('Kontinens')}><i class="fa-solid fa-earth-europe"></i> A világ</button>
+          <button @click=${()=>this.showArticles('Északi')}><i class="fa-solid fa-crown"></i> Északi Királyságok</button>
+          <button @click=${()=>this.showArticles('Nilfgaard')}><i class="fa-solid fa-chess-rook"></i> Nilfgaard</button>
+          <button class="sidebar-group-title" @click=${()=>this.changeTab('timeline')}>Történet</button>
+          <button @click=${()=>this.changeTab('timeline')}><i class="fa-solid fa-hourglass-half"></i> Kronológia</button>
+          <button @click=${()=>this.changeTab('story')}><i class="fa-solid fa-book-open"></i> Folyamatos olvasás</button>
+          <button class="sidebar-group-title" @click=${()=>this.changeTab('books')}>Könyvtár</button>
+          <button @click=${()=>this.changeTab('books')}><i class="fa-solid fa-book"></i> Vaják-könyvek</button>
+          <button class="random-article" @click=${this.openRandomArticle}><i class="fa-solid fa-dice"></i> Véletlen cikk</button>
+        </aside>` : html`<aside class="codex-sidebar" aria-label="Diablo kódex">
           <h2>Codex</h2>
           <button class="sidebar-overview" @click=${()=>this.showArticles()}><i class="fa-solid fa-house"></i> Áttekintés</button>
           <button class="sidebar-group-title" @click=${()=>this.showArticles('Sanctuary')}>Univerzum</button>
@@ -75,7 +96,7 @@ export class DiabloApp extends LitElement {
           <button class="sidebar-group-title" aria-label="Oldalsáv – könyvtár megnyitása" @click=${()=>this.changeTab('books')}>Könyvtár</button>
           <button aria-label="Oldalsáv – könyvtár megnyitása" @click=${()=>this.changeTab('books')}><i class="fa-solid fa-book"></i> Könyvek</button>
           <button class="random-article" @click=${this.openRandomArticle}><i class="fa-solid fa-dice"></i> Véletlen cikk</button>
-        </aside>
+        </aside>`}
         <main class="codex-content">
           ${this.activeTab === 'timeline' ? html`<diablo-timeline class="w-full"></diablo-timeline>` : ''}
           ${this.activeTab === 'articles' ? html`<wiki-article-grid class="w-full"></wiki-article-grid>` : ''}
@@ -93,11 +114,11 @@ export class DiabloApp extends LitElement {
             <h2 id="legal-notice-title" class="copyright-notice-title">Jogi és szerzői jogi tájékoztató</h2>
             <p class="copyright-notice-text">
               A Lore Nexus független, nem hivatalos, nem kereskedelmi rajongói enciklopédia. Nem áll kapcsolatban a
-              Blizzard Entertainmenttel, és a Blizzard nem hagyta jóvá vagy támogatta az oldalt.
+              Blizzard Entertainmenttel, Andrzej Sapkowskival, a CD PROJEKT RED-del, a Netflixszel vagy kiadóikkal, és egyik jogosult sem hagyta jóvá vagy támogatta az oldalt.
             </p>
             <details class="legal-details">
               <summary>Részletes jogi információk</summary>
-              <section><h3>Harmadik felek szellemi tulajdona</h3><p>A Diablo elnevezés, világ, szereplők, történetek, játékok, védjegyek, logók és hivatalos képi anyagok jogai a Blizzard Entertainmenthez, kapcsolt vállalkozásaihoz vagy az adott jogosulthoz tartoznak. A regények és novellák eredeti szövegének, valamint hivatalos fordításainak jogai a megjelölt szerzőket, kiadókat és más jogosultakat illetik. Mel Odom <em>The Black Road</em> című műve és annak fordítása nem a Lore Nexus szerkesztőjének szellemi tulajdona.</p></section>
+              <section><h3>Harmadik felek szellemi tulajdona</h3><p>A Diablo és a Vaják/The Witcher világai, szereplői, történetei, játékai, védjegyei, logói és hivatalos képi anyagai az adott szerzők, kiadók és más jogosultak tulajdonai. A Vaják irodalmi műveinek szerzője Andrzej Sapkowski; a játékokhoz kapcsolódó jogokat a CD PROJEKT RED, a képernyős feldolgozásokhoz kapcsolódó jogokat a Netflix és partnerei kezelik. A regények és novellák eredeti szövegének, valamint hivatalos fordításainak jogai a megjelölt jogosultakat illetik. Mel Odom <em>The Black Road</em> című műve és annak fordítása nem a Lore Nexus szerkesztőjének szellemi tulajdona.</p></section>
               <section><h3>A Lore Nexus saját tartalma</h3><p>A szerkesztő kizárólag az általa önállóan létrehozott, egyéni és eredeti szerkesztői szöveg, adatstruktúra, programkód és grafikai elem jogait tarthatja fenn. Ez nem terjed ki a Diablo-univerzumra, a forrásművekre, harmadik féltől származó képekre, idézetekre vagy más védett elemekre. Egy mű lefordítása, rendszerezése vagy technikai feldolgozása önmagában nem ruházza át az eredeti mű jogait.</p></section>
               <section><h3>Felhasználás és forrásmegjelölés</h3><p>A forrásokra épülő ismertetők, összefoglalók és idézetek célja az enciklopédikus tájékoztatás. Minden felhasználást az alkalmazandó jog, a szükséges forrás- és szerzőmegjelölés, valamint az esetleges jogosulti engedély határoz meg. Az oldal nem ad tovább felhasználási engedélyt harmadik fél tartalmára, és a nem kereskedelmi jelleg önmagában nem tesz automatikusan jogszerűvé bármely felhasználást.</p></section>
               <section><h3>Pontosság, eltávolítás és kapcsolat</h3><p>A kánonbesorolások és fordítások szerkesztői feldolgozások, ezért hibát tartalmazhatnak. Jogosulti vagy helyesbítési kérés a projekt <a href="https://github.com/sejkovszki-maker/lore-nexus-universe-engine/issues" target="_blank" rel="noopener noreferrer">GitHub hibajegyoldalán</a> jelezhető. A vitatott tartalmat a kérés vizsgálata alatt korlátozni vagy eltávolítani lehet.</p></section>
@@ -107,7 +128,7 @@ export class DiabloApp extends LitElement {
             </details>
           </div>
         </aside>
-        <footer class="codex-footer"><span>Rólunk · Szabályzat · Források · Közreműködők · Kapcsolat</span><strong>✥ Lore Nexus Diablo 5.0 ✥</strong><span>Sanctuary rajongói enciklopédiája</span></footer>
+        <footer class="codex-footer"><span>Rólunk · Szabályzat · Közreműködők · Kapcsolat</span><strong>✥ Lore Nexus ${this.activeUniverseId === 'witcher' ? 'Vaják' : 'Diablo'} 5.0 ✥</strong><span>${this.activeUniverseId === 'witcher' ? 'A Kontinens privát olvasói archívuma' : 'Sanctuary rajongói enciklopédiája'}</span></footer>
       </div>
     `;
   }

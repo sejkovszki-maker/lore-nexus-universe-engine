@@ -12,15 +12,24 @@ test('canonical story is complete, unique and follows the intended historical en
 });
 
 test('a foreign universe keeps its articles and books in its own chronological path', () => {
-  wikiArticles['witcher-start'] = { id: 'witcher-start', title: 'Kezdet', category: 'Történet', content: '', universeId: 'witcher', lastEdited: 1 };
-  wikiArticles['witcher-book'] = { id: 'witcher-book', title: 'Könyv', category: 'Könyv', content: '', universeId: 'witcher', type: 'book', storyAfter: 'witcher-start', lastEdited: 2 };
-  wikiArticles['witcher-book-ch1'] = { id: 'witcher-book-ch1', title: 'Első fejezet', category: 'Könyv', content: '', universeId: 'witcher', type: 'chapter', parentBook: 'witcher-book', lastEdited: 3 };
+  wikiArticles['test-universe-start'] = { id: 'test-universe-start', title: 'Kezdet', category: 'Történet', content: '', universeId: 'test-universe', lastEdited: 1 };
+  wikiArticles['test-universe-book'] = { id: 'test-universe-book', title: 'Könyv', category: 'Könyv', content: '', universeId: 'test-universe', type: 'book', storyAfter: 'test-universe-start', lastEdited: 2 };
+  wikiArticles['test-universe-book-ch1'] = { id: 'test-universe-book-ch1', title: 'Első fejezet', category: 'Könyv', content: '', universeId: 'test-universe', type: 'chapter', parentBook: 'test-universe-book', lastEdited: 3 };
   try {
-    assert.deepEqual(storyReadingPath(true, 'witcher').map(item => item.article.id), ['witcher-start', 'witcher-book-ch1']);
-    assert.deepEqual(storyReadingPath(false, 'witcher').map(item => item.article.id), ['witcher-start']);
+    assert.deepEqual(storyReadingPath(true, 'test-universe').map(item => item.article.id), ['test-universe-start', 'test-universe-book-ch1']);
+    assert.deepEqual(storyReadingPath(false, 'test-universe').map(item => item.article.id), ['test-universe-start']);
   } finally {
-    delete wikiArticles['witcher-start']; delete wikiArticles['witcher-book']; delete wikiArticles['witcher-book-ch1'];
+    delete wikiArticles['test-universe-start']; delete wikiArticles['test-universe-book']; delete wikiArticles['test-universe-book-ch1'];
   }
+});
+
+test('the built-in Witcher archive has an isolated chronological reading path and nine books', () => {
+  const path = storyReadingPath(true, 'witcher');
+  assert.ok(path.length >= 20);
+  assert.equal(path.every(item => item.article.universeId === 'witcher'), true);
+  assert.equal(storyBooks('witcher').length, 9);
+  assert.ok(path.findIndex(item => item.article.id === 'witcher-book-last-wish') > path.findIndex(item => item.article.id === 'witcher-geralt'));
+  assert.ok(path.findIndex(item => item.article.id === 'witcher-book-blood-elves') > path.findIndex(item => item.article.id === 'witcher-ciri'));
 });
 
 test('optional novels are inserted at curated historical points and remain skippable as segments', () => {

@@ -80,9 +80,15 @@ export function storyReadingPath(includeBooks = true, universeId = 'diablo'): St
     const books = storyBooks(universeId);
     for (const article of articles) {
       path.push({ article, segmentId: null, segmentTitle: null });
-      if (includeBooks) for (const book of books.filter(item => item.after === article.id)) path.push(...book.chapters.map(chapter => ({ article: chapter, segmentId: book.id, segmentTitle: book.title })));
+      if (includeBooks) for (const book of books.filter(item => item.after === article.id)) {
+        const readableItems = book.chapters.length ? book.chapters : [wikiArticles[book.id]].filter((item): item is WikiArticle => Boolean(item));
+        path.push(...readableItems.map(bookArticle => ({ article: bookArticle, segmentId: book.id, segmentTitle: book.title })));
+      }
     }
-    if (includeBooks) for (const book of books.filter(item => !item.after || !articles.some(article => article.id === item.after))) path.push(...book.chapters.map(chapter => ({ article: chapter, segmentId: book.id, segmentTitle: book.title })));
+    if (includeBooks) for (const book of books.filter(item => !item.after || !articles.some(article => article.id === item.after))) {
+      const readableItems = book.chapters.length ? book.chapters : [wikiArticles[book.id]].filter((item): item is WikiArticle => Boolean(item));
+      path.push(...readableItems.map(bookArticle => ({ article: bookArticle, segmentId: book.id, segmentTitle: book.title })));
+    }
     return path;
   }
   const path: StoryReadingChapter[] = [];

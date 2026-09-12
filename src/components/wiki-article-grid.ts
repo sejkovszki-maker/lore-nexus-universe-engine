@@ -58,18 +58,21 @@ export class WikiArticleGrid extends LitElement {
   private openArticle(id: string) { useAppStore.openArticleRoute(id); window.scrollTo({ top: 0, behavior: 'smooth' }); }
 
   private renderDirectory(filtered: any[]) {
+    const isDiablo = this.activeUniverseId === 'diablo';
+    const universeTitle = isDiablo ? 'Sanctuary Kódexe' : 'A Vaják Archívuma';
+    const universeDescription = isDiablo ? 'Krónikák, személyek, helyszínek és a Pokol titkai' : 'A Kontinens története, szereplői, könyvei és külön történeti ágai';
     return html`
       <section class="codex-directory" aria-labelledby="article-library-title">
         <header class="article-library-heading">
           <span aria-hidden="true">— ❖ —</span>
-          <h1 id="article-library-title">Sanctuary Kódexe</h1>
-          <p>Krónikák, személyek, helyszínek és a Pokol titkai</p>
+          <h1 id="article-library-title">${universeTitle}</h1>
+          <p>${universeDescription}</p>
         </header>
         <div class="article-filters" style="display: flex; flex-direction: column; gap: 15px;">
           <div style="display: flex; gap: 10px; flex-wrap: wrap;">
             <label class="sr-only" for="article-search">Keresés a cikkek között</label>
             <input id="article-search" type="search" placeholder="Keresés a cikkek között..." .value=${this.searchQuery} @input=${this.handleSearch} style="flex: 1; min-width: min(250px, 100%);" />
-            <div class="article-category-list" aria-label="Játék-szűrők" style="background: rgba(139,0,0,0.15); border: 1px solid rgba(139,0,0,0.3); border-radius: 6px; padding: 4px;">
+            ${isDiablo ? html`<div class="article-category-list" aria-label="Játék-szűrők" style="background: rgba(139,0,0,0.15); border: 1px solid rgba(139,0,0,0.3); border-radius: 6px; padding: 4px;">
               ${[
                 { id: 'ALL', label: 'Minden játék' },
                 { id: 'Diablo I', label: 'D1' },
@@ -78,7 +81,7 @@ export class WikiArticleGrid extends LitElement {
                 { id: 'Diablo IV', label: 'D4' },
                 { id: 'Immortal', label: 'Immortal' }
               ].map(g => html`<button class=${useAppStore.getState().activeGameTag === g.id ? 'active' : ''} style="padding: 5px 12px; font-size: 0.8rem;" @click=${() => { useAppStore.setGameTag(g.id); this.requestUpdate(); }}>${g.label}</button>`)}
-            </div>
+            </div>` : ''}
           </div>
           <div class="article-category-list" aria-label="Cikk-kategóriák">
             <button class=${!this.activeCategory ? 'active' : ''} aria-pressed=${!this.activeCategory} @click=${() => this.setCategory(null)}>Összes</button>
@@ -119,6 +122,7 @@ export class WikiArticleGrid extends LitElement {
     }
 
     const allArticles = Object.values(wikiArticles).filter(article => articleUniverseId(article) === this.activeUniverseId && article.type !== 'chapter' && article.type !== 'book') as any[];
+    if (this.activeUniverseId !== 'diablo') return html`<div class="article-codex-frame universe-directory-only">${this.renderDirectory(filtered)}</div>`;
     const countBy = (term: string) => allArticles.filter(a => String(a.category).toLocaleLowerCase('hu').includes(term)).length;
     const featuredItems = [
       { articleId: 'prime-lesser-evils', image: 'featured-seven-evils-v1.jpg' },

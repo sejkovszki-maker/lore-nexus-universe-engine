@@ -79,7 +79,7 @@ export class DiabloNavigation extends LitElement {
     const iconClass = "text-lg md:text-base mb-1 md:mb-0 md:mr-2";
 
     return html`<header class="codex-header">
-      <button class="codex-brand" @click=${() => this.handleTabClick('articles')} aria-label="Lore Nexus – Wiki megnyitása"><span class="brand-sigil" aria-hidden="true">✥</span><span><strong>Lore Nexus</strong><small>Universe Engine</small></span></button>
+      <button class="codex-brand" @click=${() => this.handleTabClick('articles')} aria-label="Lore Nexus – Wiki megnyitása"><span class="brand-sigil" aria-hidden="true">${this.activeUniverseId === 'witcher' ? '🐺' : '✥'}</span><span><strong>Lore Nexus</strong><small>${this.activeUniverseId === 'witcher' ? 'Vaják Archívum' : 'Universe Engine'}</small></span></button>
       <nav aria-label="Fő navigáció" class="codex-topnav">
         <button 
           aria-pressed=${this.activeTab === 'timeline'}

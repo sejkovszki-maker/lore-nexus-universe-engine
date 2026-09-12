@@ -198,3 +198,19 @@ test('install prompt exposes an accessible local-app install action', async ({ p
   await install.click();
   await expect(install).toBeHidden();
 });
+
+test('Witcher is a separate readable universe with its own navigation books and story', async ({ page }) => {
+  await page.goto('/#/wiki');
+  await page.getByLabel('Olvasott univerzum').selectOption('witcher');
+  await expect(page).toHaveURL(/#\/u\/witcher\/timeline$/);
+  await page.getByRole('button', { name: 'Cikkek' }).click();
+  await expect(page.getByRole('heading', { name: 'A Vaják Archívuma' })).toBeVisible();
+  await expect(page.getByText('Ríviai Geralt', { exact: true }).first()).toBeVisible();
+  await expect(page.getByRole('complementary', { name: 'Vaják archívum' })).toBeVisible();
+  await page.locator('diablo-navigation').getByRole('button', { name: 'Könyvek' }).click();
+  await expect(page.getByRole('heading', { name: 'Könyvek' })).toBeVisible();
+  await expect(page.getByRole('heading', { name: 'Az utolsó kívánság' })).toBeVisible();
+  await page.locator('diablo-navigation').getByRole('button', { name: 'Történet' }).click();
+  await expect(page.locator('story-reader')).toBeVisible();
+  expect(await page.evaluate(() => document.documentElement.scrollWidth - window.innerWidth)).toBeLessThanOrEqual(1);
+});

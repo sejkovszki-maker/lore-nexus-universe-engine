@@ -32,6 +32,23 @@
   --transition-normal: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
+.universe-witcher {
+  --accent-gold: #b8c7a3;
+  --border-gold: rgba(184, 199, 163, 0.42);
+  --blood-red: #315b46;
+  --accent-red: #315b46;
+}
+
+.universe-witcher .codex-header,
+.universe-witcher .codex-sidebar,
+.universe-witcher .codex-content {
+  background-image: linear-gradient(rgba(5, 11, 9, 0.92), rgba(7, 10, 9, 0.96));
+}
+
+.universe-witcher .brand-sigil {
+  filter: grayscale(1);
+}
+
 /* Reset & Base Styles */
 * {
   box-sizing: border-box;
