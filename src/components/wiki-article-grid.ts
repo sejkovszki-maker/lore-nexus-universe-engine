@@ -5,7 +5,7 @@ import { wikiArticles } from '../data/wikiArticles';
 import './wiki-article-card';
 import { articleUniverseId } from '../universe/article-universes.ts';
 import { diabloTimelineEras, diabloTimelineEvents } from '../data/diabloChronology.ts';
-import { creativeWorkRegistry, sourceRegistry } from '../research/registry.ts';
+import { creativeWorkRegistry } from '../research/registry.ts';
 
 @customElement('wiki-article-grid')
 export class WikiArticleGrid extends LitElement {
@@ -174,7 +174,7 @@ export class WikiArticleGrid extends LitElement {
             </button>
           </section>
           <dl class="codex-stat-strip">
-            ${[['Cikkek', allArticles.length, 'fa-scroll'], ['Karakterek', countBy('karakter'), 'fa-user-shield'], ['Helyszínek', countBy('helyszín'), 'fa-compass'], ['Események', diabloTimelineEvents.length, 'fa-sun'], ['Könyvek', creativeWorkRegistry.length, 'fa-book-open'], ['Források', sourceRegistry.length, 'fa-file-lines']].map(([label,value,icon]) => html`<div><i class="fa-solid ${icon}" aria-hidden="true"></i><dt>${label}</dt><dd>${value}</dd></div>`)}
+            ${[['Cikkek', allArticles.length, 'fa-scroll'], ['Karakterek', countBy('karakter'), 'fa-user-shield'], ['Helyszínek', countBy('helyszín'), 'fa-compass'], ['Események', diabloTimelineEvents.length, 'fa-sun'], ['Könyvek', creativeWorkRegistry.length, 'fa-book-open']].map(([label,value,icon]) => html`<div><i class="fa-solid ${icon}" aria-hidden="true"></i><dt>${label}</dt><dd>${value}</dd></div>`)}
           </dl>
           <section id="codex-appearances" class="dashboard-section" aria-labelledby="featured-title"><h2 id="featured-title">Kiemelt cikkek</h2><div id="codex-gallery" class="featured-codex-grid">
             ${featuredItems.map(({ article, image }) => html`<button class="featured-codex-card" @click=${() => this.openArticle(article.id)}><img src=${`${import.meta.env.BASE_URL}assets/${image}`} alt="${article.title} – kiemelt illusztráció" loading="lazy"><span class="featured-card-copy"><small>${article.category}</small><strong>${article.title}</strong><span>${article.subtitle || 'Fedezd fel Sanctuary krónikáját.'}</span></span></button>`)}
@@ -185,12 +185,11 @@ export class WikiArticleGrid extends LitElement {
           </div>
           <div class="dashboard-lower-grid">
             <section id="codex-history" class="engraved-panel"><h2>Története és frissítései</h2><ul>${allArticles.slice(-4).reverse().map(article => html`<li><button @click=${() => this.openArticle(article.id)}><span>✥ ${article.title}</span><small>megnyitás ›</small></button></li>`)}</ul><button class="panel-action" @click=${() => document.querySelector('.codex-directory')?.scrollIntoView({behavior:'smooth'})}>Összes cikk megtekintése</button></section>
-            <section id="codex-sources" class="engraved-panel featured-source"><h2>Kiemelt forrás</h2><div><span class="book-cover" aria-hidden="true">DIABLO<br><small>THE SIN WAR</small></span><p><strong>${creativeWorkRegistry[0]?.title ?? 'The Sin War'}</strong><br><small>${creativeWorkRegistry[0]?.authors.join(', ')}</small></p></div><button class="panel-action" @click=${() => useAppStore.setActiveTab('sources')}>Forrás megnyitása</button></section>
             <blockquote id="codex-quotes" class="engraved-panel dashboard-quote">„Az emberek azt hiszik, a pokol mélyén lakozunk. Nem. A pokol bennük van.”<cite>— Mephisto</cite></blockquote>
           </div>
         </div>
         <aside class="codex-dashboard-rail" aria-label="Codex gyorsnavigáció">
-          <section class="engraved-panel"><h2>Tartalomjegyzék</h2><nav>${[['Alapinformációk','codex-basic'],['Megjelenései','codex-appearances'],['Története','codex-history'],['Képességei és hatalma','codex-powers'],['Kapcsolatai','codex-relations'],['Idézetek','codex-quotes'],['Források','codex-sources'],['Galéria','codex-gallery']].map(([item,target]) => html`<button @click=${() => document.getElementById(target)?.scrollIntoView({behavior:'smooth', block:'start'})}>◇ ${item}</button>`)}</nav></section>
+          <section class="engraved-panel"><h2>Tartalomjegyzék</h2><nav>${[['Alapinformációk','codex-basic'],['Megjelenései','codex-appearances'],['Története','codex-history'],['Képességei és hatalma','codex-powers'],['Kapcsolatai','codex-relations'],['Idézetek','codex-quotes'],['Galéria','codex-gallery']].map(([item,target]) => html`<button @click=${() => document.getElementById(target)?.scrollIntoView({behavior:'smooth', block:'start'})}>◇ ${item}</button>`)}</nav></section>
           <section class="engraved-panel mini-timeline"><h2>Idővonal <button @click=${() => useAppStore.setActiveTab('timeline')}>Teljes idővonal ›</button></h2><ol>${eras.map(era => html`<li><span>${era.name}</span><small>${diabloTimelineEvents.filter(event => event.eraId === era.id).length} esemény</small></li>`)}</ol><button class="panel-action" @click=${() => useAppStore.setActiveTab('timeline')}>Időgép megnyitása</button></section>
         </aside>
       </div>

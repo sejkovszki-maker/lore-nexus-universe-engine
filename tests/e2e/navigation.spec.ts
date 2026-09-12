@@ -13,10 +13,8 @@ test('application renders and switches its primary views', async ({ page }) => {
   await expect(page).toHaveURL(/#\/wiki$/);
   await expect(page.locator('wiki-article-grid')).toBeVisible();
   await expect(page.getByRole('button', { name: 'Új Cikk' })).toHaveCount(0);
-  await page.getByRole('button', { name: 'Kánonellenőrzés' }).click();
-  await expect(page).toHaveURL(/#\/conflicts$/);
-  await expect(page.locator('canon-conflict-dashboard')).toBeVisible();
-  await expect(page.getByText('Nincs nyitott kánonkonfliktus.')).toBeVisible();
+  await expect(page.getByRole('button', { name: 'Kánonellenőrzés' })).toHaveCount(0);
+  await expect(page.getByRole('button', { name: 'Források' })).toHaveCount(0);
 });
 
 test('story books appear at their historical anchor and can be skipped', async ({ page }) => {
@@ -96,7 +94,7 @@ test('Codex landing uses the full desktop dashboard and keeps mobile compact', a
   await page.goto('/#/wiki');
   await expect(page.locator('.hero-slide--active .hero-slide-title')).toBeVisible();
   await expect(page.locator('.hero-slide')).toHaveCount(4);
-  await expect(page.locator('.codex-stat-strip dd')).toHaveCount(6);
+  await expect(page.locator('.codex-stat-strip dd')).toHaveCount(5);
   await expect(page.locator('.featured-codex-card')).toHaveCount(4);
   expect(await page.locator('.featured-codex-card img').evaluateAll(images => images.map(image => image.getAttribute('src')?.split('/').at(-1)))).toEqual([
     'featured-seven-evils-v1.jpg',
@@ -126,7 +124,7 @@ test('desktop Codex menus lead to populated content and its contents panel stays
     await sidebar.getByRole('button', { name: label, exact: true }).click();
     await expect(page.locator('.directory-result-count'), `${label} menüpont`).not.toHaveText('0 cikk');
   }
-  for (const label of ['Alapinformációk', 'Megjelenései', 'Története', 'Képességei és hatalma', 'Kapcsolatai', 'Idézetek', 'Források', 'Galéria']) {
+  for (const label of ['Alapinformációk', 'Megjelenései', 'Története', 'Képességei és hatalma', 'Kapcsolatai', 'Idézetek', 'Galéria']) {
     await page.getByRole('button', { name: `◇ ${label}`, exact: true }).click();
     await expect(page).toHaveURL(/#\/wiki$/);
   }
@@ -137,10 +135,9 @@ test('desktop Codex menus lead to populated content and its contents panel stays
   await expect(page).toHaveURL(/#\/timeline$/);
   await sidebar.getByRole('button', { name: 'Oldalsáv – folyamatos olvasás megnyitása' }).click();
   await expect(page).toHaveURL(/#\/story$/);
-  await sidebar.locator('button.sidebar-group-title', { hasText: 'Könyvek és források' }).click();
+  await sidebar.locator('button.sidebar-group-title', { hasText: 'Könyvtár' }).click();
   await expect(page).toHaveURL(/#\/books$/);
-  await sidebar.getByRole('button', { name: 'Oldalsáv – forrástár megnyitása' }).click();
-  await expect(page).toHaveURL(/#\/sources$/);
+  await expect(sidebar.getByRole('button', { name: 'Oldalsáv – forrástár megnyitása' })).toHaveCount(0);
   await page.evaluate(() => scrollTo(0, 700));
   await page.getByLabel('Fő navigáció').getByRole('button', { name: 'Könyvek' }).click();
   await expect.poll(() => page.evaluate(() => scrollY)).toBeLessThan(5);
@@ -165,7 +162,7 @@ test('the 187-event chronology filters, reveals spoilers and supports timeline b
   await expect(page).toHaveURL(/#\/timeline\/diablo-event-001$/);
 });
 
-test('source library exposes audited sources works and claims without mobile overflow',async({page})=>{await page.setViewportSize({width:390,height:844});await page.goto('/#/sources');await expect(page.getByRole('heading',{name:'Forrástár és műjegyzék'})).toBeVisible();await expect(page.getByRole('button',{name:/Források \(74\)/})).toBeVisible();await expect(page.getByText('Tyrael Hero Spotlight')).toBeVisible();await page.getByRole('button',{name:/Művek \(81\)/}).click();await expect(page.getByRole('heading',{name:'Diablo III: Book of Cain'})).toBeVisible();await expect(page.getByText('gyűjtemény: Tales of Sanctuary').first()).toBeVisible();await expect(page.getByRole('heading',{name:'Heroes Rise, Darkness Falls'})).toBeVisible();await expect(page.getByRole('heading',{name:'Legends of the Necromancer: Rathma'})).toBeVisible();await expect(page.getByRole('heading',{name:'Diablo: Book of Prava'})).toBeVisible();await expect(page.getByRole('heading',{name:'The Lost Horadrim'})).toBeVisible();await page.getByRole('button',{name:/Ellenőrzött állítások \(37\)/}).click();await expect(page.getByText('Diablo II: Lord of Destruction után és Diablo III előtt')).toBeVisible();await expect(page.getByText('Worldstone',{exact:true})).toBeVisible();expect(await page.evaluate(()=>document.documentElement.scrollWidth-window.innerWidth)).toBeLessThanOrEqual(1);});
+test('hidden source library keeps audited sources works and claims available by direct route without mobile overflow',async({page})=>{await page.setViewportSize({width:390,height:844});await page.goto('/#/sources');await expect(page.getByRole('heading',{name:'Forrástár és műjegyzék'})).toBeVisible();await expect(page.getByRole('button',{name:/Források \(80\)/})).toBeVisible();await expect(page.getByText('Tyrael Hero Spotlight')).toBeVisible();await expect(page.getByText('Apotheosis',{exact:true})).toBeVisible();await page.getByRole('button',{name:/Művek \(85\)/}).click();await expect(page.getByRole('heading',{name:'Diablo III: Book of Cain'})).toBeVisible();await expect(page.getByText('gyűjtemény: Tales of Sanctuary').first()).toBeVisible();await expect(page.getByRole('heading',{name:'Heroes Rise, Darkness Falls'})).toBeVisible();await expect(page.getByRole('heading',{name:'Legends of the Necromancer: Rathma'})).toBeVisible();await expect(page.getByRole('heading',{name:'Diablo: Book of Prava'})).toBeVisible();await expect(page.getByRole('heading',{name:'The Lost Horadrim'})).toBeVisible();await page.getByRole('button',{name:/Ellenőrzött állítások \(42\)/}).click();await expect(page.getByText('Diablo II: Lord of Destruction után és Diablo III előtt')).toBeVisible();await expect(page.getByText('Worldstone',{exact:true})).toBeVisible();expect(await page.evaluate(()=>document.documentElement.scrollWidth-window.innerWidth)).toBeLessThanOrEqual(1);});
 
 test('newly resolved local books have public metadata pages without full-text reproduction',async({page})=>{await page.goto('/#/wiki/the-lost-horadrim');await expect(page.getByRole('heading',{name:'The Lost Horadrim – Az elveszett Horadrim'})).toBeVisible();await expect(page.getByText(/Lord of Hatred.*előzményregény/).first()).toBeVisible();await page.goto('/#/wiki/stay-awhile-listen-book-1');await expect(page.getByRole('heading',{name:'Stay Awhile and Listen: Book I'})).toBeVisible();await expect(page.getByText(/nem Sanctuary világán belüli kánonmű/)).toBeVisible();});
 

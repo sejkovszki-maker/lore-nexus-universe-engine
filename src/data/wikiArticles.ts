@@ -2,7 +2,7 @@
  * Diablo Lore Portal – Cikk-adatbázis index
  * Moduláris index – a cikkeket a src/data/articles/<modul>.ts
  * fájlokban kell szerkeszteni.
- * Összes aktív rekord: 163
+ * Összes aktív rekord: 170
  */
 
 import { booksArticles } from './articles/books.ts';

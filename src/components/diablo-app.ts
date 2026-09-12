@@ -72,9 +72,8 @@ export class DiabloApp extends LitElement {
           <button class="sidebar-group-title" aria-label="Események – idővonal megnyitása" @click=${()=>this.changeTab('timeline')}>Események</button>
           <button aria-label="Oldalsáv – teljes idővonal megnyitása" @click=${()=>this.changeTab('timeline')}><i class="fa-solid fa-hourglass-half"></i> Teljes kronológia</button>
           <button aria-label="Oldalsáv – folyamatos olvasás megnyitása" @click=${()=>this.changeTab('story')}><i class="fa-solid fa-book-open"></i> Folyamatos történet</button>
-          <button class="sidebar-group-title" aria-label="Oldalsáv – gyűjtemények megnyitása" @click=${()=>this.changeTab('books')}>Könyvek és források</button>
+          <button class="sidebar-group-title" aria-label="Oldalsáv – könyvtár megnyitása" @click=${()=>this.changeTab('books')}>Könyvtár</button>
           <button aria-label="Oldalsáv – könyvtár megnyitása" @click=${()=>this.changeTab('books')}><i class="fa-solid fa-book"></i> Könyvek</button>
-          <button aria-label="Oldalsáv – forrástár megnyitása" @click=${()=>this.changeTab('sources')}><i class="fa-solid fa-link"></i> Forrástár</button>
           <button class="random-article" @click=${this.openRandomArticle}><i class="fa-solid fa-dice"></i> Véletlen cikk</button>
         </aside>
         <main class="codex-content">

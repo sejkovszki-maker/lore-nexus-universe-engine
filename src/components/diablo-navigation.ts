@@ -91,7 +91,6 @@ export class DiabloNavigation extends LitElement {
         <button aria-pressed=${this.activeTab === 'books'} class="${btnClass} ${this.activeTab === 'books' ? 'text-blood-red border-blood-red bg-blood-red/10' : 'text-gray-400 border-transparent hover:text-white hover:bg-white/5'}" @click=${() => this.handleTabClick('books')}>
           <i class="fa-solid fa-book ${iconClass}"></i> <span>Könyvek</span>
         </button>
-        <button aria-pressed=${this.activeTab === 'sources'} class="${btnClass} ${this.activeTab === 'sources' ? 'text-blood-red border-blood-red bg-blood-red/10' : 'text-gray-400 border-transparent hover:text-white hover:bg-white/5'}" @click=${() => this.handleTabClick('sources')}><i class="fa-solid fa-link ${iconClass}"></i><span>Források</span></button>
         <button 
           aria-pressed=${this.activeTab === 'articles'}
           class="${btnClass} ${this.activeTab === 'articles' ? 'text-blood-red border-blood-red bg-blood-red/10' : 'text-gray-400 border-transparent hover:text-white hover:bg-white/5'}"
@@ -105,9 +104,6 @@ export class DiabloNavigation extends LitElement {
           @click=${() => this.handleTabClick('story')}
         >
           <i class="fa-solid fa-book-open ${iconClass}"></i> <span>Történet</span>
-        </button>
-        <button aria-pressed=${this.activeTab === 'conflicts'} class="${btnClass} ${this.activeTab === 'conflicts' ? 'text-blood-red border-blood-red bg-blood-red/10' : 'text-gray-400 border-transparent hover:text-white hover:bg-white/5'}" @click=${() => this.handleTabClick('conflicts')}>
-          <i class="fa-solid fa-scale-balanced ${iconClass}"></i> <span>Kánonellenőrzés</span>
         </button>
       </nav>
       <div class="universe-switch" style="display: flex; align-items: center; gap: 15px;">

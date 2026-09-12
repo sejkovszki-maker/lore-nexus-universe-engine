@@ -15142,6 +15142,90 @@ export const booksArticles: Record<string, WikiArticle> = {
     content: `<h2>Bibliográfia</h2><p><strong>Szerző:</strong> Matthew J. Kirby<br><strong>Kiadó:</strong> Random House Worlds<br><strong>Megjelenés:</strong> 2026. április 21.<br><strong>ISBN:</strong> 9780425284896</p><h2>Spoilermentes összefoglaló</h2><p>A Horadrim rend fennmaradása veszélybe kerül, ezért Lorath vezetésével a távoli Skovos-szigetekre indulnak. Egy korábban eltűnt mágusexpedíció és egy elrejtett páncélterem nyomát követik, miközben az amazonok saját politikai válsággal és egy több irányból támadó élőhalott lénnyel néznek szembe.</p><p>Lorath és Adreona kapitány kénytelen szövetséget kötni, mert a szigeteken kibontakozó fenyegetés nemcsak Skovost, hanem egész Sanctuaryt veszélyeztetheti.</p><h2>Történeti jelentőség</h2><p>A kiadó hivatalosan a <em>Diablo IV: Lord of Hatred</em> előzményregényeként azonosítja. A pontos eseményszintű timeline-beillesztés a teljes kánonaudit után történhet meg; mesterséges évszámot a wiki nem rendel hozzá.</p><h2>Kánon és hozzáférés</h2><p>Hivatalosan licencelt Diablo-regény. A nyilvános wiki bibliográfiát és saját összefoglalást közöl; a teljes helyi példány az eszköz privát olvasójában kezelhető.</p><h2>Forrás</h2><p><a href="https://www.penguinrandomhouse.com/books/538199/the-lost-horadrim-diablo-iv-by-matthew-j-kirby/" target="_blank" rel="noopener noreferrer">Random House Worlds: The Lost Horadrim</a></p>`
   },
 
+  "elveszettek-es-elatkozottak": {
+    id: "elveszettek-es-elatkozottak",
+    title: "Az elveszettek és az elátkozottak",
+    subtitle: "Egy Warlock magányos szolgálata",
+    category: "Rövid történetek",
+    gameTag: "Diablo IV",
+    image: "",
+    description: "A Warlock önként vállalt elszigeteltségét egy váratlan találkozás teszi próbára.",
+    relatedArticles: ["diablo-4-loh", "skovos"],
+    content: `<h2>A tiltott erő őrzője</h2><p>A Warlock küldetése önzetlen, mégis hálátlan: a Pokol teremtményeit saját uraik ellen fordítja, miközben a közösségtől távol kell maradnia. Paul Tobin illusztrált története azt a pillanatot vizsgálja, amikor a megszokott magányt egy váratlan emberi kapcsolat töri meg.</p><h2>Történeti helye</h2><p>A történet a <em>Lord of Hatred</em> Warlock osztályának hivatalos felvezetése. Pontos Sanctuary-beli dátumot a közlemény nem ad, ezért a wiki nem rendel hozzá kitalált évszámot.</p><h2>Alkotók</h2><p>Író: Paul Tobin; rajzi tervek: Corey Peterschmidt; tus: Christopher Mitten; színek: Lauren Affe.</p><h2>Forrás</h2><p><a href="https://news.blizzard.com/en-us/article/24259141/a-new-tale-the-lost-the-damned" target="_blank" rel="noopener noreferrer">Blizzard: The Lost &amp; the Damned</a></p>`
+  },
+
+  "apoteozis-donan": {
+    id: "apoteozis-donan",
+    title: "Apoteózis – Donan és Astaroth lélekköve",
+    subtitle: "A Horadrim kötelesség ára Lilith visszatérése előtt",
+    category: "Rövid történetek",
+    gameTag: "Diablo IV",
+    image: "",
+    description: "Donan évtizedekkel Lilith visszatérése előtt megújítja Astaroth lélekkövét őrző védelmet.",
+    relatedArticles: ["diablo-4-story", "horadrim-order"],
+    content: `<h2>A megújítandó pecsét</h2><p>Évtizedekkel Lilith visszatérése előtt Donan visszatér Astaroth lélekkövéhez, hogy megerősítse annak gyengülő védelmét. A feladat közben szembe kell néznie a Horadrim által őrzött tiltott tudással és azzal, milyen személyes árat követel a rend szolgálata.</p><h2>Kapcsolódás a Diablo IV-hez</h2><p>A történet a <em>Sins of the Horadrim</em> évad előzménye, ugyanakkor Donan, Astaroth és a lélekkő korábbi kapcsolatát is megvilágítja. A közlemény relatív időpontot ad, pontos évet nem.</p><h2>Forrás</h2><p><a href="https://news.blizzard.com/en-us/article/24215258/a-new-tale-apotheosis" target="_blank" rel="noopener noreferrer">Blizzard: Apotheosis</a></p>`
+  },
+
+  "az-elhivas-paladin": {
+    id: "az-elhivas-paladin",
+    title: "Az elhívás – a Fény Őrzőinek Paladinja",
+    subtitle: "A hit újjászületése a Gyűlölet Ura elleni háború előtt",
+    category: "Rövid történetek",
+    gameTag: "Diablo IV",
+    image: "",
+    description: "A Paladin útját és a Fény Őrzőinek szolgálatát bemutató hivatalos előtörténet.",
+    relatedArticles: ["diablo-4-loh", "akarat-nahantu"],
+    content: `<h2>Hívás a szolgálatra</h2><p>Chris Roberson története a Paladin hitből, felelősségből és vezeklésből születő küldetését mutatja be. A szereplő nem egy romlatlan intézményt szolgál: a Fény Őrzői olyan rendként jelennek meg, amely a korábbi egyházi korrupciótól és dogmáktól függetlenül akarja védeni Sanctuary lakóit.</p><h2>A Fény Őrzői</h2><p>A <em>Lord of Hatred</em> hivatalos leírása szerint az Őrzők befogadják a kitaszítottakat és bűnösöket is, ha életüket Sanctuary védelmének szentelik. Ez megkülönbözteti őket a Zakarum történelmi rendjeinek minden korábbi ágától.</p><h2>Forrás</h2><p><a href="https://news.blizzard.com/en-us/article/24243641/a-new-tale-the-calling" target="_blank" rel="noopener noreferrer">Blizzard: The Calling</a></p>`
+  },
+
+  "warlock-vizjerei-orokseg": {
+    id: "warlock-vizjerei-orokseg",
+    title: "A Warlock és a Vizjerei tiltott öröksége",
+    subtitle: "Démonológia, üldöztetés és pokoli kötelékek",
+    category: "Frakciók és rendek",
+    gameTag: "Diablo IV",
+    image: "",
+    description: "A Warlock hagyománya a Vizjerei démonidézőinek bukásáig és a mágusklán-háborúkig vezethető vissza.",
+    relatedArticles: ["mage-clan-wars", "diablo-4-loh", "elveszettek-es-elatkozottak"],
+    content: `<h2>Vizjerei eredet</h2><p>A Vizjerei mágusok egy része démonokat idézett és kötött szolgálatba. A gyakorlat hozzájárult a mágusklán-háborúk kitöréséhez; túlélő művelőit Warlock néven megbélyegezték és üldözték.</p><h2>A Pokol ereje a Pokol ellen</h2><p>A Warlock nem egyszerű démonimádó. Kockázatos paktumokkal, idézéssel és akaraterejével pokoli szolgákat kényszerít harcra korábbi uraik ellen. Módszere ezért egyszerre lehet Sanctuary védelme és a használóját fenyegető romlás forrása.</p><h2>Forrás</h2><p><a href="https://news.blizzard.com/en-us/article/24267728/master-hell-itself-with-the-warlock" target="_blank" rel="noopener noreferrer">Blizzard: Master Hell Itself with the Warlock</a></p>`
+  },
+
+  "nehezen-lepj-druida": {
+    id: "nehezen-lepj-druida",
+    title: "Nehéz léptekkel – Bertolt és az Első Erdő",
+    subtitle: "A Sharval vadonját védő druida története",
+    category: "Rövid történetek",
+    gameTag: "Diablo Immortal",
+    image: "",
+    description: "Bertolt druida a rothadó Első Erdőben száll szembe a pusztító tündérlényekkel.",
+    relatedArticles: ["diablo-immortal"],
+    content: `<h2>Az erdő válasza</h2><p>Az Első Erdő szívében idegen romlás terjed, a tündérlények pedig fákat, állatokat és embereket emésztenek fel. Bertoltot arra tanították, hogy könnyedén járjon a természetben, de a fenyegetéssel szemben felismeri: az erdő megóvásához néha súlyosabb kézre van szükség.</p><h2>Szerepe</h2><p>Ryan Quinn hivatalos képregénye a Diablo Immortal Druidájának világon belüli szerepét mutatja be; nem a teljes kaszt történetének időrendi összefoglalója.</p><h2>Forrás</h2><p><a href="https://news.blizzard.com/en-us/article/24216887/a-new-tale-tread-heavy" target="_blank" rel="noopener noreferrer">Blizzard: Tread Heavy</a></p>`
+  },
+
+  "veres-ekkő-lut-gholein": {
+    id: "veres-ekkő-lut-gholein",
+    title: "A véres ékkő – visszatérés Lut Gholeinbe",
+    subtitle: "Vizjerei kísérletek és tiltott démonmágia",
+    category: "Események",
+    gameTag: "Diablo Immortal",
+    image: "",
+    description: "A Diablo Immortal 5.0 történeti fejezete Lut Gholein romlását és a Warlock tiltott hagyományát kapcsolja össze.",
+    relatedArticles: ["diablo-immortal", "megcsonkitott-varos", "warlock-vizjerei-orokseg"],
+    content: `<h2>Lut Gholein új válsága</h2><p>A kalandozók visszatérnek a legendás sivatagi városba, ahol régi Vizjerei kísérletek áldozatai készülnek bosszúra. A történeti fejezet összeköti a város megszállását, a démonok feletti tiltott uralmat és a Warlock felemelkedését.</p><h2>Biztos és előzetes adatok</h2><p>A helyszín, a Vizjerei-kapcsolat és a Warlock szerepe hivatalosan megerősített. A korai előzetes változtatható információkat is tartalmazott, ezért a wiki csak a későbbi történetben is megerősített elemeket kezeli biztosként.</p><h2>Forrás</h2><p><a href="https://news.blizzard.com/en-us/article/24244890/the-bloodied-jewel-your-first-look-at-our-next-major-update" target="_blank" rel="noopener noreferrer">Blizzard: The Bloodied Jewel</a></p>`
+  },
+
+  "gyotrelem-nemzete": {
+    id: "gyotrelem-nemzete",
+    title: "Gyötrelem nemzete – Lut Gholein két kínzója",
+    subtitle: "Fájdalom és Gyötrelem szorításában",
+    category: "Események",
+    gameTag: "Diablo Immortal",
+    image: "",
+    description: "Lut Gholein története a Magas Körzettel és a város falain túl terjedő torzulásokkal folytatódik.",
+    relatedArticles: ["diablo-immortal", "veres-ekkő-lut-gholein", "megcsonkitott-varos"],
+    content: `<h2>A megszállás folytatása</h2><p>Fájdalom és Gyötrelem erői Lut Gholein fölött szorítják meg uralmukat. A történet a Magas Körzetbe vezet, miközben a torzító kínok már a város falain túlra is elérnek.</p><h2>Ellenőrzési megjegyzés</h2><p>A fejezet folytatása hivatalosan bejelentett történeti tartalom. Mivel a részletes javítási jegyzék 2026. szeptember 14-re van ütemezve, a wiki nem állít ennél részletesebb, még nem véglegesített eseménysort.</p><h2>Forrás</h2><p><a href="https://news.blizzard.com/en-us/article/24297202/made-to-suffer-your-first-look-at-our-next-update" target="_blank" rel="noopener noreferrer">Blizzard: Made to Suffer</a></p>`
+  },
+
   "stay-awhile-listen-book-1": {
     id: "stay-awhile-listen-book-1",
     title: "Stay Awhile and Listen: Book I",
