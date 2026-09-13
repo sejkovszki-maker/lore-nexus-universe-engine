@@ -55,6 +55,10 @@ export class WikiArticleGrid extends LitElement {
     useAppStore.setActiveCategory(cat);
   }
 
+  private reveal(selector: string) {
+    requestAnimationFrame(() => document.querySelector<HTMLElement>(selector)?.scrollIntoView({ behavior: 'auto', block: 'start' }));
+  }
+
   private openArticle(id: string) { useAppStore.openArticleRoute(id); window.scrollTo({ top: 0, behavior: 'smooth' }); }
 
   private renderDirectory(filtered: any[]) {
@@ -152,25 +156,25 @@ export class WikiArticleGrid extends LitElement {
 
           <!-- 2. Vizuális Kategória Könyvtár (Fandom-stílusú belépő) -->
           <section class="visual-directory" aria-label="Főkategóriák">
-            <button type="button" class="v-category-card" @click=${() => { this.setCategory('Karakterek'); document.querySelector('.codex-directory')?.scrollIntoView({behavior:'smooth'}); }} style="background-image: url('${import.meta.env.BASE_URL}assets/featured-seven-evils-v1.jpg')">
+            <button type="button" class="v-category-card" @click=${() => { this.setCategory('Karakterek'); this.reveal('.codex-directory'); }} style="background-image: url('${import.meta.env.BASE_URL}assets/featured-seven-evils-v1.jpg')">
               <div class="v-category-content">
                 <i class="fa-solid fa-users v-category-icon"></i>
                 <h3 class="v-category-title">Karakterek</h3>
               </div>
             </button>
-            <button type="button" class="v-category-card" @click=${() => { this.setCategory('Helyszínek'); document.querySelector('.codex-directory')?.scrollIntoView({behavior:'smooth'}); }} style="background-image: url('${import.meta.env.BASE_URL}assets/featured-sanctuary-v1.jpg')">
+            <button type="button" class="v-category-card" @click=${() => { this.setCategory('Helyszínek'); this.reveal('.codex-directory'); }} style="background-image: url('${import.meta.env.BASE_URL}assets/featured-sanctuary-v1.jpg')">
               <div class="v-category-content">
                 <i class="fa-solid fa-map-location-dot v-category-icon"></i>
                 <h3 class="v-category-title">Helyszínek</h3>
               </div>
             </button>
-            <button type="button" class="v-category-card" @click=${() => { this.setCategory('Frakciók'); document.querySelector('.codex-directory')?.scrollIntoView({behavior:'smooth'}); }} style="background-image: url('${import.meta.env.BASE_URL}assets/featured-cosmology-v1.jpg')">
+            <button type="button" class="v-category-card" @click=${() => { this.setCategory('Frakciók'); this.reveal('.codex-directory'); }} style="background-image: url('${import.meta.env.BASE_URL}assets/featured-cosmology-v1.jpg')">
               <div class="v-category-content">
                 <i class="fa-solid fa-shield-halved v-category-icon"></i>
                 <h3 class="v-category-title">Frakciók</h3>
               </div>
             </button>
-            <button type="button" class="v-category-card" @click=${() => { this.setCategory('Karakterek – Angyalok & Démonok'); document.querySelector('.codex-directory')?.scrollIntoView({behavior:'smooth'}); }} style="background-image: url('${import.meta.env.BASE_URL}assets/featured-dark-exile-v1.jpg')">
+            <button type="button" class="v-category-card" @click=${() => { this.setCategory('Karakterek – Angyalok & Démonok'); this.reveal('.codex-directory'); }} style="background-image: url('${import.meta.env.BASE_URL}assets/featured-dark-exile-v1.jpg')">
               <div class="v-category-content">
                 <i class="fa-solid fa-dragon v-category-icon"></i>
                 <h3 class="v-category-title">Szörnyek</h3>
@@ -188,12 +192,12 @@ export class WikiArticleGrid extends LitElement {
             <section id="codex-relations" class="engraved-panel"><h2>Kapcsolatai</h2><p>Mephisto és Baal testvére, az Angiris Tanács ősi ellenfele, Sanctuary hőseinek és a Horadrim rendnek visszatérő nemezise.</p><button class="panel-action" @click=${() => this.openArticle('prime-lesser-evils')}>Kapcsolati áttekintés</button></section>
           </div>
           <div class="dashboard-lower-grid">
-            <section id="codex-history" class="engraved-panel"><h2>Története és frissítései</h2><ul>${allArticles.slice(-4).reverse().map(article => html`<li><button @click=${() => this.openArticle(article.id)}><span>✥ ${article.title}</span><small>megnyitás ›</small></button></li>`)}</ul><button class="panel-action" @click=${() => document.querySelector('.codex-directory')?.scrollIntoView({behavior:'smooth'})}>Összes cikk megtekintése</button></section>
+            <section id="codex-history" class="engraved-panel"><h2>Története és frissítései</h2><ul>${allArticles.slice(-4).reverse().map(article => html`<li><button @click=${() => this.openArticle(article.id)}><span>✥ ${article.title}</span><small>megnyitás ›</small></button></li>`)}</ul><button class="panel-action" @click=${() => this.reveal('.codex-directory')}>Összes cikk megtekintése</button></section>
             <blockquote id="codex-quotes" class="engraved-panel dashboard-quote">„Az emberek azt hiszik, a pokol mélyén lakozunk. Nem. A pokol bennük van.”<cite>— Mephisto</cite></blockquote>
           </div>
         </div>
         <aside class="codex-dashboard-rail" aria-label="Codex gyorsnavigáció">
-          <section class="engraved-panel"><h2>Tartalomjegyzék</h2><nav>${[['Alapinformációk','codex-basic'],['Megjelenései','codex-appearances'],['Története','codex-history'],['Képességei és hatalma','codex-powers'],['Kapcsolatai','codex-relations'],['Idézetek','codex-quotes'],['Galéria','codex-gallery']].map(([item,target]) => html`<button @click=${() => document.getElementById(target)?.scrollIntoView({behavior:'smooth', block:'start'})}>◇ ${item}</button>`)}</nav></section>
+          <section class="engraved-panel"><h2>Tartalomjegyzék</h2><nav>${[['Alapinformációk','codex-basic'],['Megjelenései','codex-appearances'],['Története','codex-history'],['Képességei és hatalma','codex-powers'],['Kapcsolatai','codex-relations'],['Idézetek','codex-quotes'],['Galéria','codex-gallery']].map(([item,target]) => html`<button @click=${() => this.reveal(`#${target}`)}>◇ ${item}</button>`)}</nav></section>
           <section class="engraved-panel mini-timeline"><h2>Idővonal <button @click=${() => useAppStore.setActiveTab('timeline')}>Teljes idővonal ›</button></h2><ol>${eras.map(era => html`<li><span>${era.name}</span><small>${diabloTimelineEvents.filter(event => event.eraId === era.id).length} esemény</small></li>`)}</ol><button class="panel-action" @click=${() => useAppStore.setActiveTab('timeline')}>Időgép megnyitása</button></section>
         </aside>
       </div>

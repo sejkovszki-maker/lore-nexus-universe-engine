@@ -32,16 +32,23 @@ export class DiabloApp extends LitElement {
     return this; // Disable shadow DOM for Tailwind inheritance
   }
 
+  private revealContent(selector = '.codex-content') {
+    void this.updateComplete.then(() => requestAnimationFrame(() => requestAnimationFrame(() => {
+      const target = document.querySelector<HTMLElement>(selector) ?? document.querySelector<HTMLElement>('.codex-content');
+      target?.scrollIntoView({ behavior: 'auto', block: 'start' });
+    })));
+  }
+
   private changeTab(tab: string) {
     useAppStore.setActiveTab(tab);
-    window.scrollTo({ top: 0, behavior: 'smooth' });
+    this.revealContent();
   }
 
   private showArticles(query = '', category: string | null = null) {
     useAppStore.setSearchQuery(query);
     useAppStore.setActiveCategory(category);
     useAppStore.setActiveTab('articles');
-    window.scrollTo({ top: 0, behavior: 'smooth' });
+    this.revealContent(query || category ? '.codex-directory' : '.codex-content');
   }
 
   private openRandomArticle() {
@@ -49,7 +56,7 @@ export class DiabloApp extends LitElement {
     const article = articles[Math.floor(Math.random() * articles.length)];
     if (article) {
       useAppStore.openArticleRoute(article.id);
-      window.scrollTo({ top: 0, behavior: 'smooth' });
+      this.revealContent();
     }
   }
 

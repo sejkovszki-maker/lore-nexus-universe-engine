@@ -89,6 +89,19 @@ test('story reader remains usable without horizontal overflow on mobile and desk
   }
 });
 
+test('desktop sidebar reveals selected content immediately without manual scrolling', async ({ page }) => {
+  await page.setViewportSize({ width: 1440, height: 900 });
+  await page.goto('/#/wiki');
+  await page.evaluate(() => scrollTo(0, 900));
+  await page.getByRole('complementary', { name: 'Diablo kódex' }).getByRole('button', { name: 'Angiris Tanács' }).click();
+  await expect(page.locator('.codex-directory')).toBeVisible();
+  await expect.poll(() => page.locator('.codex-directory').evaluate(element => Math.round(element.getBoundingClientRect().top))).toBeLessThan(180);
+  await page.evaluate(() => scrollTo(0, 900));
+  await page.getByRole('button', { name: 'Oldalsáv – teljes idővonal megnyitása' }).click();
+  await expect(page.locator('diablo-timeline')).toBeVisible();
+  await expect.poll(() => page.locator('.codex-content').evaluate(element => Math.round(element.getBoundingClientRect().top))).toBeLessThan(180);
+});
+
 test('Codex landing uses the full desktop dashboard and keeps mobile compact', async ({ page }) => {
   await page.setViewportSize({ width: 1440, height: 900 });
   await page.goto('/#/wiki');
@@ -119,7 +132,7 @@ test('desktop Codex menus lead to populated content and its contents panel stays
   const sidebar = page.getByLabel('Diablo kódex');
   await page.evaluate(() => scrollTo(0, 900));
   await sidebar.getByRole('button', { name: 'Sanctuary világa', exact: true }).click();
-  await expect.poll(() => page.evaluate(() => scrollY)).toBeLessThan(5);
+  await expect.poll(() => page.locator('.codex-directory').evaluate(element => Math.round(element.getBoundingClientRect().top))).toBeLessThan(180);
   for (const label of ['Univerzum', 'Sanctuary világa', 'Angiris Tanács', 'Nagy Konfliktus', 'Mennyek és Pokol', 'Lények', 'Démonok', 'Angyalok', 'Emberek', 'Helyszínek', 'Kehjistan', 'Scosglen', 'Egyéb helyszínek']) {
     await sidebar.getByRole('button', { name: label, exact: true }).click();
     await expect(page.locator('.directory-result-count'), `${label} menüpont`).not.toHaveText('0 cikk');
@@ -128,6 +141,8 @@ test('desktop Codex menus lead to populated content and its contents panel stays
     await page.getByRole('button', { name: `◇ ${label}`, exact: true }).click();
     await expect(page).toHaveURL(/#\/wiki$/);
   }
+  await page.getByRole('button', { name: '◇ Története', exact: true }).click();
+  await expect.poll(() => page.locator('#codex-history').evaluate(element => Math.round(element.getBoundingClientRect().top))).toBeLessThan(180);
   await expect(page.locator('.featured-codex-card img')).toHaveCount(4);
   for (const image of await page.locator('.featured-codex-card img').all()) await expect(image).toHaveJSProperty('complete', true);
   expect(await page.locator('.featured-card-copy').evaluateAll(nodes => new Set(nodes.map(node => Math.round(node.getBoundingClientRect().height))).size)).toBe(1);
