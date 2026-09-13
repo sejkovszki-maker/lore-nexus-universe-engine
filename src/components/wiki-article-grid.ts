@@ -140,7 +140,7 @@ export class WikiArticleGrid extends LitElement {
         <div class="codex-dashboard-main">
 
           <!-- 1. Hero Slider (Forgó Kiemelt Cikk Banner) -->
-          <div class="hero-slider" aria-label="Kiemelt tartalmak">
+          <div id="codex-basic" class="hero-slider" aria-label="Alapinformációk és kiemelt tartalmak">
             <button class="hero-pause" aria-pressed=${this.heroPaused} @click=${() => this.heroPaused = !this.heroPaused}>${this.heroPaused ? 'Vetítés folytatása' : 'Vetítés szüneteltetése'}</button>
             ${featuredItems.map(({ article, image }, index) => html`
               <div ?inert=${this.currentHeroIndex !== index} aria-hidden=${this.currentHeroIndex !== index} class="hero-slide ${this.currentHeroIndex === index ? 'hero-slide--active' : ''}" style="background-image: url('${import.meta.env.BASE_URL}assets/${image}')">

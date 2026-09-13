@@ -160,6 +160,47 @@ test('desktop Codex menus lead to populated content and its contents panel stays
   await expect(page).toHaveURL(/#\/wiki\/.+$/);
 });
 
+test('every dashboard contents button reveals a populated target section', async ({ page }) => {
+  await page.setViewportSize({ width: 1440, height: 900 });
+  await page.goto('/#/wiki');
+  const targets = [
+    ['Alapinformációk', 'codex-basic'], ['Megjelenései', 'codex-appearances'],
+    ['Története', 'codex-history'], ['Képességei és hatalma', 'codex-powers'],
+    ['Kapcsolatai', 'codex-relations'], ['Idézetek', 'codex-quotes'], ['Galéria', 'codex-gallery'],
+  ] as const;
+  for (const [label, id] of targets) {
+    await page.getByRole('button', { name: `◇ ${label}`, exact: true }).click();
+    const section = page.locator(`#${id}`);
+    await expect(section).toBeVisible();
+    await expect.poll(() => section.evaluate(element => element.textContent?.trim().length ?? 0)).toBeGreaterThan(10);
+    await expect.poll(() => section.evaluate(element => Math.round(element.getBoundingClientRect().top))).toBeLessThan(180);
+  }
+});
+
+test('all library cards open non-empty content and every visible control has a name', async ({ page }) => {
+  await page.setViewportSize({ width: 1440, height: 900 });
+  await page.goto('/#/books');
+  const titles = await page.locator('book-library .card h2').allTextContents();
+  expect(titles.length).toBeGreaterThan(0);
+  for (const title of titles) {
+    await page.goto('/#/books');
+    const card = page.locator('book-library .card', { hasText: title });
+    await card.getByRole('button').click();
+    await expect(page.locator('book-library .reader')).toBeVisible();
+    await expect.poll(() => page.locator('book-library .reader').evaluate(element => element.textContent?.trim().length ?? 0)).toBeGreaterThan(100);
+  }
+  for (const route of ['/#/wiki', '/#/timeline', '/#/story', '/#/books']) {
+    await page.goto(route);
+    const unnamed = await page.getByRole('button').evaluateAll(buttons => buttons.filter(button => !(button.getAttribute('aria-label') || button.textContent || '').trim()).length);
+    expect(unnamed, `${route} névtelen gombjai`).toBe(0);
+    const invalidLinks = await page.locator('a').evaluateAll(links => links.filter(link => {
+      const href = link.getAttribute('href')?.trim() ?? '';
+      return !href || /^javascript:/i.test(href);
+    }).length);
+    expect(invalidLinks, `${route} hibás hivatkozásai`).toBe(0);
+  }
+});
+
 test('the 187-event chronology filters, reveals spoilers and supports timeline backlinks', async ({ page }) => {
   await page.goto('/#/timeline');
   await expect(page.getByText(/158 esemény/)).toBeVisible();
