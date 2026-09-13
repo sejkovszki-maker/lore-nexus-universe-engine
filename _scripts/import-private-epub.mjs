@@ -47,14 +47,14 @@ try {
   if (markers.length !== 25) throw new Error(`Expected 25 reading sections, found ${markers.length}.`);
   const sourceSha256 = createHash('sha256').update(await readFile(input)).digest('hex');
   const now = Date.now();
-  const bookId = 'the-lost-horadrim-private-reader';
+  const bookId = 'the-lost-horadrim';
   const articles = [{
     id: bookId,
-    title: 'Az elveszett Horadrim – saját példány',
+    title: 'The Lost Horadrim – Az elveszett Horadrim',
     subtitle: 'Magyar szöveg · 24 fejezet és epilógus',
     category: 'Könyvek – Olvasó',
-    content: `<h2>Helyi könyvpéldány</h2><p>Matthew J. Kirby hivatalos Diablo IV-regénye. A teljes magyar szöveg kizárólag ezen az eszközön, a privát könyvtárból olvasható.</p><h2>Feldolgozás</h2><p>Forrásfájl: ${escapeHtml(basename(input))}<br>Nyelv: magyar<br>Forrás-ellenőrző összeg: ${sourceSha256}</p>`,
-    relatedArticles: ['the-lost-horadrim', 'diablo-4-loh', 'horadrim-order', 'skovos'],
+    content: `<h2>Bibliográfia</h2><p><strong>Szerző:</strong> Matthew J. Kirby<br><strong>Kiadó:</strong> Random House Worlds<br><strong>Megjelenés:</strong> 2026. április 21.<br><strong>ISBN:</strong> 9780425284896</p><h2>Spoilermentes ismertető</h2><p>A Horadrim rend fennmaradása veszélybe kerül, ezért Lorath vezetésével a távoli Skovos-szigetekre indulnak. Egy korábban eltűnt mágusexpedíció és egy elrejtett páncélterem nyomát követik, miközben az amazonok saját politikai válsággal és egy több irányból támadó élőhalott lénnyel néznek szembe.</p><p>Lorath és Adreona kapitány kénytelen szövetséget kötni, mert a szigeteken kibontakozó fenyegetés nemcsak Skovost, hanem egész Sanctuaryt veszélyeztetheti.</p><h2>Történeti jelentőség</h2><p>A kiadó hivatalosan a <em>Diablo IV: Lord of Hatred</em> előzményregényeként azonosítja. A történet a <em>Diablo IV: Vessel of Hatred</em> eseményei után következik.</p><h2>Helyi könyvpéldány</h2><p>A teljes magyar szöveg kizárólag ezen az eszközön, a privát könyvtárból olvasható.</p><h2>Feldolgozás</h2><p>Forrásfájl: ${escapeHtml(basename(input))}<br>Nyelv: magyar<br>Forrás-ellenőrző összeg: ${sourceSha256}</p>`,
+    relatedArticles: ['diablo-4-loh', 'horadrim-order', 'skovos'],
     type: 'book', parentBook: undefined, universeId: 'diablo', universeLabel: 'Diablo',
     storyAfter: 'diablo-4-voh', publicationStatus: 'local-draft', version: 1, lastEdited: now,
   }];
@@ -67,7 +67,7 @@ try {
     const chapterNumber = isEpilogue ? 25 : numberNames.indexOf(marker[1]) + 1;
     articles.push({
       id: `${bookId}-ch${String(chapterNumber).padStart(2, '0')}`,
-      title: isEpilogue ? 'Az elveszett Horadrim – Epilógus' : `Az elveszett Horadrim – ${chapterNumber}. fejezet`,
+      title: isEpilogue ? 'The Lost Horadrim – Az elveszett Horadrim – Epilógus' : `The Lost Horadrim – Az elveszett Horadrim – ${chapterNumber}. fejezet`,
       category: 'Könyvek – Olvasó', content: paragraphs(body), relatedArticles: ['the-lost-horadrim'],
       type: 'chapter', parentBook: bookId, universeId: 'diablo', universeLabel: 'Diablo',
       publicationStatus: 'local-draft', version: 1, lastEdited: now + index + 1,

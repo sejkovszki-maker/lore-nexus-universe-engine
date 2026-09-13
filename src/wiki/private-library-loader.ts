@@ -27,7 +27,9 @@ export async function hydratePrivateLibrary(): Promise<number> {
   if (new Set(envelope.articles.map(article => article.id)).size !== envelope.articles.length) throw new Error('DUPLICATE_PRIVATE_LIBRARY_ARTICLE');
   if (await sha256(JSON.stringify(envelope.articles)) !== envelope.payloadSha256) throw new Error('PRIVATE_LIBRARY_INTEGRITY_FAILED');
   for (const article of envelope.articles) {
-    if (wikiArticles[article.id]) throw new Error(`PRIVATE_LIBRARY_COLLISION:${article.id}`);
+    const existing = wikiArticles[article.id];
+    const allowedBookOverlay = article.id === 'the-lost-horadrim' && article.type === 'book' && existing?.type === 'book';
+    if (existing && !allowedBookOverlay) throw new Error(`PRIVATE_LIBRARY_COLLISION:${article.id}`);
     wikiArticles[article.id] = article;
   }
   return envelope.articles.length;
