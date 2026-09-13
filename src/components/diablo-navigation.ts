@@ -131,7 +131,7 @@ export class DiabloNavigation extends LitElement {
         <div style="display: flex; align-items: center; gap: 5px; border-left: 1px solid rgba(255,255,255,0.1); padding-left: 15px;">
           <label for="universe-select" style="display: none;">Univerzum</label>
           <select id="universe-select" aria-label="Olvasott univerzum" .value=${this.activeUniverseId} @change=${(event: Event) => useAppStore.setActiveUniverse((event.target as HTMLSelectElement).value)}>
-            ${universes.map(universe => html`<option value=${universe.id}>${universe.label}</option>`)}
+            ${universes.map(universe => html`<option value=${universe.id} ?selected=${universe.id === this.activeUniverseId}>${universe.label}</option>`)}
           </select>
         </div>
       </div>

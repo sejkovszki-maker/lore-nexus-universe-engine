@@ -261,6 +261,8 @@ test('Witcher is a separate readable universe with its own navigation books and 
   await expect(page).toHaveURL(/#\/u\/witcher\/timeline$/);
   await page.getByRole('button', { name: 'Cikkek' }).click();
   await expect(page.getByRole('heading', { name: 'A Kontinens krónikái' })).toBeVisible();
+  await expect(page.getByRole('img', { name: /Geralt egy holdfényes hegyvidéken/ })).toBeVisible();
+  await expect.poll(() => page.getByRole('img', { name: /Geralt egy holdfényes hegyvidéken/ }).evaluate((image: HTMLImageElement) => image.complete && image.naturalWidth > 1000)).toBe(true);
   await expect(page.locator('.witcher-feature-card').filter({ hasText: 'Ríviai Geralt' })).toBeVisible();
   await expect(page.locator('.witcher-gateway-list').getByRole('button', { name: /A Szférák Együttállása/ })).toBeVisible();
   await expect(page.getByRole('button', { name: /Olvasási sorrend megnyitása/ })).toBeVisible();
@@ -279,6 +281,7 @@ test('Witcher home remains readable and actionable on mobile', async ({ page }) 
   await page.setViewportSize({ width: 390, height: 844 });
   await page.goto('/#/u/witcher/wiki');
   await expect(page.getByRole('heading', { name: 'A Kontinens krónikái' })).toBeVisible();
+  await expect(page.getByRole('img', { name: /Geralt egy holdfényes hegyvidéken/ })).toBeVisible();
   await expect(page.getByRole('button', { name: /Történet olvasása/ })).toBeVisible();
   await expect(page.locator('.witcher-feature-card').filter({ hasText: 'Ríviai Geralt' })).toBeVisible();
   expect(await page.evaluate(() => document.documentElement.scrollWidth - window.innerWidth)).toBeLessThanOrEqual(1);

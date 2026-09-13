@@ -41,6 +41,7 @@ export class WitcherHome extends LitElement {
 
     return html`<section class="witcher-home" aria-labelledby="witcher-home-title">
       <header class="witcher-hero">
+        <img class="witcher-hero-art" src=${`${import.meta.env.BASE_URL}assets/witcher-home-geralt.png`} alt="Geralt egy holdfényes hegyvidéken, egy távoli vár romjai előtt" fetchpriority="high">
         <div class="witcher-hero-copy">
           <p class="witcher-kicker">Lore Nexus · Vaják Archívum</p>
           <h1 id="witcher-home-title">A Kontinens krónikái</h1>
@@ -50,7 +51,6 @@ export class WitcherHome extends LitElement {
             <button @click=${() => this.openTab('books')}><i class="fa-solid fa-book" aria-hidden="true"></i> Könyvespolc</button>
           </div>
         </div>
-        <div class="witcher-medallion" aria-hidden="true"><span>🐺</span><small>Az Út vár</small></div>
       </header>
 
       <dl class="witcher-stats" aria-label="A Vaják Archívum tartalma">
