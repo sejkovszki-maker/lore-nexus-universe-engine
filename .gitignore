@@ -19,6 +19,7 @@ raw-source-store/
 document-store/objects/
 document-store/*.jsonl
 tmp/
+public/private-library/
 
 # Intermediate book extraction output (not application source).
 _scripts/gonosz-osvenye_chapters.json

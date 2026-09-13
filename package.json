@@ -45,6 +45,7 @@
     "knowledge:push": "node _scripts/central-knowledge-cli.mjs push",
     "package:email": "pwsh -NoProfile -ExecutionPolicy Bypass -File _scripts/build-email-package.ps1",
     "package:installable": "pwsh -NoProfile -ExecutionPolicy Bypass -File _scripts/build-local-installable.ps1",
+    "book:import-private": "node _scripts/import-private-epub.mjs",
     "typecheck:netlify": "tsc --noEmit --target ESNext --module NodeNext --moduleResolution NodeNext --skipLibCheck --types node netlify/functions/knowledge-sync.ts"
   },
   "dependencies": {
