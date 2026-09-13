@@ -49,6 +49,40 @@
   filter: grayscale(1);
 }
 
+/* Vaják-univerzum kezdőlap – a tartalmi elemek a witcher-home.ts fájlban szerkeszthetők. */
+.witcher-home { color: #e8e5d8; display: grid; gap: 1.25rem; margin-bottom: 1.5rem; }
+.witcher-hero { min-height: 380px; display: grid; grid-template-columns: minmax(0, 1.6fr) minmax(220px, .6fr); align-items: center; gap: 2rem; padding: clamp(2rem, 5vw, 5rem); border: 1px solid rgba(184,199,163,.42); background: radial-gradient(circle at 78% 45%, rgba(134,154,117,.2), transparent 20%), linear-gradient(90deg, rgba(4,11,8,.98) 10%, rgba(8,20,14,.84) 62%, rgba(12,15,12,.94)), repeating-linear-gradient(135deg, transparent 0 12px, rgba(184,199,163,.025) 12px 13px); box-shadow: inset 0 0 70px #000, 0 20px 60px rgba(0,0,0,.42); position: relative; overflow: hidden; }
+.witcher-hero::before, .witcher-hero::after { content: ''; position: absolute; width: 110px; height: 110px; border: 1px solid rgba(184,199,163,.25); transform: rotate(45deg); }
+.witcher-hero::before { left: -76px; top: -76px; } .witcher-hero::after { right: -76px; bottom: -76px; }
+.witcher-hero-copy { position: relative; z-index: 1; max-width: 760px; }
+.witcher-kicker, .witcher-section-heading span, .witcher-reading-label { color: #aebd99; font: 600 .75rem/1.4 var(--font-title); letter-spacing: .2em; text-transform: uppercase; }
+.witcher-hero h1 { color: #e9dfbd; font: 700 clamp(2.2rem, 6vw, 5rem)/1.04 var(--font-title); letter-spacing: .06em; margin: .5rem 0 1rem; text-shadow: 0 3px 24px #000; }
+.witcher-lead { color: #c4c5ba; max-width: 65ch; font-size: clamp(1rem, 1.6vw, 1.18rem); }
+.witcher-hero-actions { display: flex; flex-wrap: wrap; gap: .75rem; margin-top: 1.75rem; }
+.witcher-hero-actions button, .witcher-primary-action { min-height: 46px; padding: .72rem 1.15rem; border: 1px solid rgba(184,199,163,.48); color: #e7e1c8; background: rgba(5,10,7,.72); font-family: var(--font-title); cursor: pointer; }
+.witcher-primary-action { background: linear-gradient(135deg, #355d48, #203c2d) !important; border-color: #839b78 !important; }
+.witcher-hero-actions button:focus-visible, .witcher-home button:focus-visible { outline: 3px solid #dbe9c4; outline-offset: 3px; }
+.witcher-medallion { justify-self: center; width: min(250px, 80%); aspect-ratio: 1; border: 1px solid rgba(184,199,163,.45); border-radius: 50%; display: grid; place-content: center; text-align: center; background: radial-gradient(circle, rgba(91,118,91,.3), rgba(0,0,0,.7) 68%); box-shadow: 0 0 0 12px rgba(184,199,163,.025), 0 0 60px rgba(114,147,111,.2); }
+.witcher-medallion span { font-size: clamp(4rem, 9vw, 7rem); filter: grayscale(1) contrast(1.25); } .witcher-medallion small { color: #aebd99; font-family: var(--font-title); letter-spacing: .16em; text-transform: uppercase; }
+.witcher-stats { display: grid; grid-template-columns: repeat(4, 1fr); border: 1px solid rgba(184,199,163,.3); background: rgba(5,12,8,.88); }
+.witcher-stats div { text-align: center; padding: 1rem; border-right: 1px solid rgba(184,199,163,.2); } .witcher-stats div:last-child { border: 0; }
+.witcher-stats dt { color: #99a18f; font-size: .72rem; letter-spacing: .12em; text-transform: uppercase; } .witcher-stats dd { color: #dfd7bb; font: 700 1.6rem var(--font-title); }
+.witcher-home-section { border: 1px solid rgba(184,199,163,.26); background: rgba(7,13,10,.88); padding: clamp(1rem, 2.5vw, 1.6rem); }
+.witcher-section-heading { display: flex; justify-content: space-between; align-items: end; gap: 1rem; margin-bottom: 1rem; }
+.witcher-section-heading h2, .witcher-reading-start h2 { color: #ded5b7; font: 600 clamp(1.35rem, 3vw, 2rem) var(--font-title); margin-top: .15rem; }
+.witcher-section-heading > button { color: #b8c7a3; border: 0; background: none; cursor: pointer; }
+.witcher-featured-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; }
+.witcher-feature-card { min-height: 245px; display: flex; flex-direction: column; align-items: flex-start; text-align: left; padding: 1.25rem; color: #dad8ca; border: 1px solid rgba(184,199,163,.24); background: linear-gradient(155deg, rgba(49,91,70,.3), rgba(5,8,6,.96) 64%); cursor: pointer; transition: border-color .2s, transform .2s; }
+@media (hover: hover) { .witcher-feature-card:hover { transform: translateY(-3px); border-color: #8da27f; } }
+.witcher-card-icon { width: 52px; height: 52px; display: grid; place-items: center; border: 1px solid rgba(184,199,163,.35); color: #afc19d; font-size: 1.4rem; margin-bottom: 1rem; transform: rotate(45deg); } .witcher-card-icon i { transform: rotate(-45deg); }
+.witcher-feature-card small { color: #8ea181; text-transform: uppercase; letter-spacing: .14em; } .witcher-feature-card strong { color: #e4dab9; font: 600 1.25rem var(--font-title); margin: .3rem 0 .55rem; } .witcher-feature-card b { color: #a9bb98; margin-top: auto; padding-top: 1rem; font-size: .8rem; text-transform: uppercase; }
+.witcher-home-columns { display: grid; grid-template-columns: 1.15fr .85fr; gap: 1.25rem; }
+.witcher-gateway-list { display: grid; grid-template-columns: 1fr 1fr; gap: .6rem; }.witcher-gateway-list button { display: grid; grid-template-columns: 34px 1fr auto; align-items: center; gap: .65rem; min-height: 58px; padding: .65rem .8rem; text-align: left; color: #d8d5c6; background: rgba(0,0,0,.22); border: 1px solid rgba(184,199,163,.2); cursor: pointer; }.witcher-gateway-list i { color: #9db08d; }.witcher-gateway-list b { color: #aebd99; }
+.witcher-reading-start { background: radial-gradient(circle at 100% 0, rgba(113,139,91,.2), transparent 35%), rgba(10,17,12,.92); }.witcher-reading-start p { color: #babdb3; margin: .75rem 0 1.25rem; }
+.witcher-quick-nav { display: grid; grid-template-columns: repeat(3,1fr); gap: .8rem; }.witcher-quick-nav button { display: flex; gap: .8rem; align-items: center; text-align: left; min-height: 78px; padding: .85rem 1rem; color: #dedbca; background: rgba(6,12,8,.9); border: 1px solid rgba(184,199,163,.25); cursor: pointer; }.witcher-quick-nav i { color: #9fb291; font-size: 1.2rem; }.witcher-quick-nav span { display: grid; }.witcher-quick-nav strong { font-family: var(--font-title); }.witcher-quick-nav small { color: #93998f; }
+@media (max-width: 900px) { .witcher-hero { grid-template-columns: 1fr; min-height: 0; }.witcher-medallion { width: 155px; grid-row: 1; }.witcher-home-columns { grid-template-columns: 1fr; } }
+@media (max-width: 640px) { .witcher-hero { padding: 1.5rem 1rem; text-align: center; }.witcher-hero-actions { justify-content: center; }.witcher-medallion { width: 120px; }.witcher-stats { grid-template-columns: 1fr 1fr; }.witcher-stats div:nth-child(2) { border-right: 0; }.witcher-stats div:nth-child(-n+2) { border-bottom: 1px solid rgba(184,199,163,.2); }.witcher-featured-grid, .witcher-quick-nav, .witcher-gateway-list { grid-template-columns: 1fr; }.witcher-feature-card { min-height: 210px; }.witcher-section-heading { align-items: flex-start; }.witcher-quick-nav small { font-size: .75rem; } }
+
 /* Reset & Base Styles */
 * {
   box-sizing: border-box;

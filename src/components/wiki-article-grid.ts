@@ -6,6 +6,7 @@ import './wiki-article-card';
 import { articleUniverseId } from '../universe/article-universes.ts';
 import { diabloTimelineEras, diabloTimelineEvents } from '../data/diabloChronology.ts';
 import { creativeWorkRegistry } from '../research/registry.ts';
+import './witcher-home.ts';
 
 @customElement('wiki-article-grid')
 export class WikiArticleGrid extends LitElement {
@@ -126,7 +127,9 @@ export class WikiArticleGrid extends LitElement {
     }
 
     const allArticles = Object.values(wikiArticles).filter(article => articleUniverseId(article) === this.activeUniverseId && article.type !== 'chapter' && article.type !== 'book') as any[];
-    if (this.activeUniverseId !== 'diablo') return html`<div class="article-codex-frame universe-directory-only">${this.renderDirectory(filtered)}</div>`;
+    if (this.activeUniverseId !== 'diablo') return html`
+      ${!this.searchQuery && !this.activeCategory ? html`<witcher-home></witcher-home>` : ''}
+      <div class="article-codex-frame universe-directory-only">${this.renderDirectory(filtered)}</div>`;
     const countBy = (term: string) => allArticles.filter(a => String(a.category).toLocaleLowerCase('hu').includes(term)).length;
     const featuredItems = [
       { articleId: 'prime-lesser-evils', image: 'featured-seven-evils-v1.jpg' },
