@@ -63,14 +63,26 @@ export function segmentArticles(segment: BookSegment): WikiArticle[] {
 
 export interface StoryBook { id: string; title: string; after: string | null; chapters: WikiArticle[] }
 
+function chronologicalBookOrder(books: StoryBook[], universeId: string): StoryBook[] {
+  const storyIds = universeId === 'diablo'
+    ? [...canonicalStoryIds]
+    : Object.values(wikiArticles).filter(article => articleUniverseId(article) === universeId && article.type !== 'book' && article.type !== 'chapter').sort((a, b) => (a.lastEdited || 0) - (b.lastEdited || 0) || a.title.localeCompare(b.title, 'hu')).map(article => article.id);
+  const anchorRank = new Map(storyIds.map((id, index) => [id, index]));
+  return books.map((book, sourceIndex) => ({ book, sourceIndex })).sort((left, right) => {
+    const leftRank = left.book.after ? anchorRank.get(left.book.after) ?? Number.MAX_SAFE_INTEGER : Number.MAX_SAFE_INTEGER;
+    const rightRank = right.book.after ? anchorRank.get(right.book.after) ?? Number.MAX_SAFE_INTEGER : Number.MAX_SAFE_INTEGER;
+    return leftRank - rightRank || left.sourceIndex - right.sourceIndex;
+  }).map(item => item.book);
+}
+
 export function storyBooks(universeId = 'diablo'): StoryBook[] {
   const imported = Object.values(wikiArticles).filter(article => articleUniverseId(article) === universeId && article.type === 'book').map(book => ({ id: book.id, title: book.title, after: book.storyAfter || null, chapters: Object.values(wikiArticles).filter(article => articleUniverseId(article) === universeId && article.type === 'chapter' && article.parentBook === book.id).sort((a, b) => numericChapterOrder(a.id) - numericChapterOrder(b.id)) }));
   if (universeId === 'diablo') {
     const curated = storyBookSegments.map(segment => ({ id: segment.id, title: segment.title, after: segment.after, chapters: segmentArticles(segment) })).filter(book => book.chapters.length);
     const blackRoad = imported.filter(book => book.id === 'book-the-black-road-reader');
-    return [...blackRoad, ...curated, ...imported.filter(book => book.id !== 'book-the-black-road-reader')];
+    return chronologicalBookOrder([...blackRoad, ...curated, ...imported.filter(book => book.id !== 'book-the-black-road-reader')], universeId);
   }
-  return imported;
+  return chronologicalBookOrder(imported, universeId);
 }
 
 export function storyReadingPath(includeBooks = true, universeId = 'diablo'): StoryReadingChapter[] {

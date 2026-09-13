@@ -46,6 +46,16 @@ test('optional novels are inserted at curated historical points and remain skipp
   }
 });
 
+test('book library order follows canonical story anchors and leaves unanchored works last', () => {
+  const books = storyBooks();
+  const canonicalRank = new Map(canonicalStoryIds.map((id, index) => [id, index]));
+  const ranks = books.map(book => book.after ? canonicalRank.get(book.after) ?? Number.MAX_SAFE_INTEGER : Number.MAX_SAFE_INTEGER);
+  assert.deepEqual(ranks, [...ranks].sort((left, right) => left - right));
+  assert.equal(books[0].id, 'sin-war-birthright');
+  assert.equal(books[1].id, 'sin-war-scales');
+  assert.equal(books[2].id, 'sin-war-prophet');
+});
+
 test('A Gonosz ösvénye has one public book record at the Diablo I anchor', () => {
   const book = storyBooks().find(item => item.id === 'book-the-black-road-reader');
   assert.ok(book);
