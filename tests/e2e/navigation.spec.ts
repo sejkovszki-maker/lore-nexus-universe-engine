@@ -201,12 +201,12 @@ test('all library cards open non-empty content and every visible control has a n
   }
 });
 
-test('the 187-event chronology filters, reveals spoilers and supports timeline backlinks', async ({ page }) => {
+test('the 188-event chronology filters, reveals spoilers and supports timeline backlinks', async ({ page }) => {
   await page.goto('/#/timeline');
   await expect(page.getByText(/158 esemény/)).toBeVisible();
   await page.getByLabel('Diablo IV és újabb történeti spoilerek megjelenítése').check();
-  await expect(page.getByRole('heading', { name: '187. A kampány utáni jelenlegi kánonállapot' })).toBeVisible();
-  await expect(page.getByRole('button', { name: 'Kapcsolódó wiki-cikk megnyitása →' })).toHaveCount(184);
+  await expect(page.getByRole('heading', { name: '188. A kampány utáni jelenlegi kánonállapot' })).toBeVisible();
+  await expect(page.getByRole('button', { name: 'Kapcsolódó wiki-cikk megnyitása →' })).toHaveCount(185);
   await expect(page.getByRole('button', { name: 'Kapcsolódó könyv megnyitása →' })).toHaveCount(3);
   await page.getByPlaceholder(/Esemény, szereplő/).fill('Worldstone');
   await expect(page.getByText(/9 esemény/)).toBeVisible();

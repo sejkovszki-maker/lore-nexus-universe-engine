@@ -2,7 +2,7 @@
  * Diablo Lore Portal – Cikk-adatbázis index
  * Moduláris index – a cikkeket a src/data/articles/<modul>.ts
  * fájlokban kell szerkeszteni.
- * Összes aktív rekord: 190 (170 Diablo + 20 Vaják)
+ * Az aktív rekordok száma automatikusan az egyes modulok tartalmából adódik.
  */
 
 import { booksArticles } from './articles/books.ts';
@@ -13,6 +13,7 @@ import { locationsArticles } from './articles/locations.ts';
 import { gamesArticles } from './articles/games.ts';
 import { miscArticles } from './articles/misc.ts';
 import { witcherArticles } from './articles/witcher.ts';
+import { lostHoradrimArticles } from './articles/lost-horadrim.ts';
 
 const allWikiArticles: Record<string, any> = {
   ...booksArticles,
@@ -22,7 +23,8 @@ const allWikiArticles: Record<string, any> = {
   ...locationsArticles,
   ...gamesArticles,
   ...miscArticles,
-  ...witcherArticles
+  ...witcherArticles,
+  ...lostHoradrimArticles
 };
 
 // Védelmi szűrő: egy későbbi hibás import se tehessen közzé teljes könyvfejezeteket.

@@ -6628,6 +6628,38 @@ const rawDiabloTimelineEvents: TimelineEvent[] = [
     "needsSourceAudit": false,
     "spoilerLevel": 2,
     "previousEventId": "diablo-event-179",
+    "nextEventId": "diablo-event-lost-horadrim"
+  },
+  {
+    "id": "diablo-event-lost-horadrim",
+    "universeId": "diablo",
+    "eraId": "lord-of-hatred",
+    "eraName": "Lord of Hatred / jelenlegi fő történetszál",
+    "eraOrder": 20,
+    "eventOrder": 184,
+    "title": "Az elveszett Horadrim skovosi expedíciója",
+    "summary": "Lorath, Donan és Tyrael Skovosra indul az eltűnt mágusok nyomában, és Adreona kapitánnyal szövetségben néz szembe a szigetek válságával.",
+    "dateDisplay": "A Vessel of Hatred után, a Lord of Hatred előtt",
+    "dateStatus": "relative",
+    "canonStatus": "canon",
+    "sourcePriority": "primary_book",
+    "retconned": false,
+    "characters": ["Lorath Nahr", "Donan", "Tyrael", "Adreona", "Keldon", "Etara", "Myrina", "Alenia", "Tavie", "Sho-Ren"],
+    "locations": ["Skovos"],
+    "factions": ["Horadrim", "Askari"],
+    "items": [],
+    "games": ["Diablo IV"],
+    "books": ["The Lost Horadrim"],
+    "relatedEvents": ["diablo-event-180", "diablo-event-181"],
+    "articleId": "lost-horadrim-expedition",
+    "sources": [{
+      "label": "Random House Worlds: The Lost Horadrim",
+      "url": "https://www.penguinrandomhouse.com/books/538199/the-lost-horadrim-diablo-iv-by-matthew-j-kirby/",
+      "kind": "primary_book"
+    }],
+    "needsSourceAudit": false,
+    "spoilerLevel": 2,
+    "previousEventId": "diablo-event-180",
     "nextEventId": "diablo-event-181"
   },
   {
@@ -6636,7 +6668,7 @@ const rawDiabloTimelineEvents: TimelineEvent[] = [
     "eraId": "lord-of-hatred",
     "eraName": "Lord of Hatred / jelenlegi fő történetszál",
     "eraOrder": 20,
-    "eventOrder": 184,
+    "eventOrder": 185,
     "title": "Utazás Skovosra",
     "summary": "Utazás Skovosra",
     "dateDisplay": "",
@@ -6665,7 +6697,7 @@ const rawDiabloTimelineEvents: TimelineEvent[] = [
     ],
     "needsSourceAudit": false,
     "spoilerLevel": 2,
-    "previousEventId": "diablo-event-180",
+    "previousEventId": "diablo-event-lost-horadrim",
     "nextEventId": "diablo-event-182"
   },
   {
@@ -6674,7 +6706,7 @@ const rawDiabloTimelineEvents: TimelineEvent[] = [
     "eraId": "lord-of-hatred",
     "eraName": "Lord of Hatred / jelenlegi fő történetszál",
     "eraOrder": 20,
-    "eventOrder": 185,
+    "eventOrder": 186,
     "title": "Lord of Hatred fő kampánya",
     "summary": "Lord of Hatred fő kampánya",
     "dateDisplay": "",
@@ -6710,7 +6742,7 @@ const rawDiabloTimelineEvents: TimelineEvent[] = [
     "eraId": "lord-of-hatred",
     "eraName": "Lord of Hatred / jelenlegi fő történetszál",
     "eraOrder": 20,
-    "eventOrder": 186,
+    "eventOrder": 187,
     "title": "Végső összecsapás Mephistóval",
     "summary": "Végső összecsapás Mephistóval",
     "dateDisplay": "",
@@ -6746,7 +6778,7 @@ const rawDiabloTimelineEvents: TimelineEvent[] = [
     "eraId": "lord-of-hatred",
     "eraName": "Lord of Hatred / jelenlegi fő történetszál",
     "eraOrder": 20,
-    "eventOrder": 187,
+    "eventOrder": 188,
     "title": "A kampány utáni jelenlegi kánonállapot",
     "summary": "A kampány utáni jelenlegi kánonállapot",
     "dateDisplay": "",
@@ -6801,7 +6833,7 @@ export const timelineArticleByEra: Readonly<Record<string, string>> = Object.fre
   'lord-of-hatred': 'diablo-4-loh'
 });
 
-const validCuratedArticleIds = new Set([...Object.values(timelineArticleByEra), 'book-the-black-road-reader']);
+const validCuratedArticleIds = new Set([...Object.values(timelineArticleByEra), 'book-the-black-road-reader', 'lost-horadrim-expedition']);
 
 export const diabloTimelineEvents: TimelineEvent[] = rawDiabloTimelineEvents.map(event => ({
   ...event,

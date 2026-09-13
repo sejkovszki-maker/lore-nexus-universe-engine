@@ -25,6 +25,7 @@ export const canonicalStoryIds = [
   'diablo-3-ros',
   'diablo-4-story',
   'diablo-4-voh',
+  'lost-horadrim-expedition',
   'neyrelle-tribute',
   'skovos',
   'diablo-4-loh',
