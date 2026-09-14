@@ -73,6 +73,9 @@ export const loreCoreArticles: Record<string, WikiArticle> = {
     category: "Kozmogónia",
     title: "Kozmogónia: Anu",
     subtitle: "A Diablo-univerzum teremtésének ősi mitológiája, a teljesség, az egység és a kozmikus kettősség megszületése",
+    heroImage: "assets/anu-cosmology-v1.png",
+    heroAlt: "Anu fehér-arany kozmikus alakja a teremtés előtti sötétségben, mögötte a Tathametet jelképező vörös hasadással",
+    imageCaption: "Anu, az első létező művészi ábrázolása. A fehér-arany fény az ősi teljességet, a háttér vörös hasadása Tathamet megszületését jelképezi.",
     infobox: {
       "Ősprincípium": "Anu (A Teljesség és Tisztaság)",
       "Leválasztott Árnyék": "Tathamet (A Hétfejű Sárkány)",

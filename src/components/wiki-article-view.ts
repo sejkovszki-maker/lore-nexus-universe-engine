@@ -46,6 +46,15 @@ export class WikiArticleView extends LitElement {
     .relation-button:hover, .relation-button:focus-visible { border-color: #d4af37; color: #d4af37; outline: none; }
     .markdown-content .wiki-link { color: #e6c65c; text-decoration: underline; text-decoration-style: dotted; text-underline-offset: .2em; }
     .markdown-content .wiki-link-broken { color: #ff8a8a; text-decoration: underline wavy; }
+    .article-hero { position: relative; overflow: hidden; margin: 0 0 2rem; min-height: 420px; border: 1px solid #9d6b2e88; background: #030303; box-shadow: inset 0 0 0 5px #030303, inset 0 0 0 6px #9d6b2e44; }
+    .article-hero img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: 58% 28%; }
+    .article-hero::after { content: ''; position: absolute; inset: 0; background: linear-gradient(90deg, rgba(2,2,2,.96) 0%, rgba(2,2,2,.72) 35%, rgba(2,2,2,.12) 68%), linear-gradient(0deg, #080807 0%, transparent 38%); pointer-events: none; }
+    .hero-copy { position: relative; z-index: 1; display: flex; min-height: 420px; width: min(48%, 510px); padding: clamp(2rem, 5vw, 4.5rem); flex-direction: column; justify-content: center; box-sizing: border-box; }
+    .hero-kicker { color: #c94631; font: 700 .78rem 'Cinzel', serif; letter-spacing: .24em; text-transform: uppercase; }
+    .hero-title { margin: .55rem 0 .8rem; color: #ead7af; font: 700 clamp(2.6rem, 6vw, 5.2rem) 'Cinzel', serif; line-height: .95; text-shadow: 0 3px 14px #000; }
+    .hero-subtitle { margin: 0; color: #cbb895; font: italic clamp(.95rem, 1.6vw, 1.2rem) Georgia, serif; line-height: 1.55; }
+    .visually-hidden { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0, 0, 0, 0); white-space: nowrap; border: 0; }
+    .article-hero figcaption { position: absolute; z-index: 2; right: 1rem; bottom: .7rem; max-width: 48%; color: #b9aa91; font: italic .72rem Georgia, serif; text-align: right; text-shadow: 0 2px 5px #000; }
 
     /* Blockquote – játékkalauz idézetek stílusa */
     .markdown-content blockquote {
@@ -127,6 +136,12 @@ export class WikiArticleView extends LitElement {
 
     @media (max-width: 700px) { .infobox { float: none; width: auto; margin: 0 0 1.5rem; } :host { max-width: 100%; } }
     @media (max-width: 700px) {
+      .article-hero { min-height: 0; overflow: visible; background: transparent; border: 0; box-shadow: none; }
+      .article-hero img { position: relative; display: block; height: auto; aspect-ratio: 16 / 10; object-position: 59% 22%; border: 1px solid #9d6b2e77; }
+      .article-hero::after { height: min(62.5vw, 430px); background: linear-gradient(0deg, #080807 0%, transparent 42%); }
+      .hero-copy { min-height: 0; width: 100%; padding: 1.25rem .25rem .4rem; }
+      .hero-title { font-size: clamp(2.2rem, 13vw, 3.7rem); }
+      .article-hero figcaption { position: relative; right: auto; bottom: auto; max-width: none; padding: .5rem .25rem 0; text-align: left; line-height: 1.45; }
       .markdown-content table, .markdown-content .wiki-table {
         display: block;
         overflow-x: auto;
@@ -193,8 +208,12 @@ export class WikiArticleView extends LitElement {
         </button>
       </div>
       <article class="bg-dark-card p-6 md:p-12 rounded-xl shadow-2xl border border-gold/20">
-        <h1 class="text-4xl md:text-5xl text-gold font-heading font-bold mb-2">${article.title}</h1>
-        ${article.subtitle ? html`<h2 class="text-xl text-parchment/70 font-heading italic mb-8 border-b border-blood-red/40 pb-4">${article.subtitle}</h2>` : ''}
+        ${article.heroImage ? html`<figure class="article-hero">
+          <img src=${`${import.meta.env.BASE_URL}${article.heroImage}`} alt=${article.heroAlt || ''} decoding="async" fetchpriority="high" />
+          <div class="hero-copy"><span class="hero-kicker">${article.category}</span><h1 class="hero-title"><span class="visually-hidden">${article.title.match(/^Kozmogónia:\s*/i)?.[0] || ''}</span>${article.title.replace(/^Kozmogónia:\s*/i, '')}</h1>${article.subtitle ? html`<p class="hero-subtitle">${article.subtitle}</p>` : ''}</div>
+          ${article.imageCaption ? html`<figcaption>${article.imageCaption}</figcaption>` : ''}
+        </figure>` : html`<h1 class="text-4xl md:text-5xl text-gold font-heading font-bold mb-2">${article.title}</h1>
+        ${article.subtitle ? html`<h2 class="text-xl text-parchment/70 font-heading italic mb-8 border-b border-blood-red/40 pb-4">${article.subtitle}</h2>` : ''}`}
         
         ${article.infobox ? html`<aside class="infobox" aria-label="Cikkadatok"><h2>Adatlap</h2><dl>${Object.entries(article.infobox).map(([key, value]) => html`<dt>${key}</dt><dd>${value}</dd>`)}</dl></aside>` : ''}
         <div class="markdown-content" @click=${this.handleContentClick} .innerHTML=${htmlContent}></div>

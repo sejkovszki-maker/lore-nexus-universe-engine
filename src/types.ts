@@ -8,6 +8,9 @@ export interface WikiArticle {
     subtitle?: string;
     category: string;
     content: string;
+    heroImage?: string;
+    heroAlt?: string;
+    imageCaption?: string;
 
     infobox?: WikiInfobox;
 

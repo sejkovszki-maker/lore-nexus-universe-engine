@@ -57,6 +57,19 @@ test('Router 2.0 supports article deep links, history, 404 and scroll restoratio
   await expect(page.getByRole('heading', { name: 'Az oldal nem található' })).toBeVisible();
 });
 
+test('Anu article uses an accessible responsive cosmology hero', async ({ page }) => {
+  await page.goto('/#/wiki/kozmogonia');
+  const hero = page.locator('wiki-article-view').locator('.article-hero');
+  await expect(hero).toBeVisible();
+  await expect(hero.locator('img')).toHaveAttribute('alt', /Anu fehér-arany kozmikus alakja/);
+  await expect(hero.locator('.hero-title')).toContainText('Anu');
+  await expect(hero.locator('.hero-title')).toHaveAccessibleName('Kozmogónia: Anu');
+  await expect(hero.locator('figcaption')).toContainText('művészi ábrázolása');
+  await page.setViewportSize({ width: 390, height: 844 });
+  await expect(page.locator('body')).not.toHaveCSS('overflow-x', 'scroll');
+  await expect(hero.locator('img')).toBeVisible();
+});
+
 test('books have a separate reader and stable deep links', async ({ page }) => {
   await page.goto('/#/books');
   await expect(page.getByRole('heading', { name: 'Könyvek' })).toBeVisible();
