@@ -128,9 +128,9 @@ export class StoryReader extends LitElement {
     this.goTo(next >= 0 ? next : this.chapters.length - 1);
   }
 
-  private articleHtml(content: string) {
+  private articleHtml(content: string, articleId: string) {
     const scopedArticles = Object.fromEntries(Object.entries(wikiArticles).filter(([, article]) => (article.universeId || 'diablo') === this.universeId));
-    const linked = renderWikiLinks(content, scopedArticles);
+    const linked = renderWikiLinks(content, scopedArticles, articleId);
     return DOMPurify.sanitize(linked, { ADD_ATTR: ['data-wiki-id', 'data-relation'] });
   }
 
@@ -164,7 +164,7 @@ export class StoryReader extends LitElement {
         <p>${article.category}</p>
         <h1 id="story-title">${article.title}</h1>
         ${article.subtitle ? html`<p><em>${article.subtitle}</em></p>` : ''}
-        <div class="content" @click=${this.openWikiLink} .innerHTML=${this.articleHtml(article.content)}></div>
+        <div class="content" @click=${this.openWikiLink} .innerHTML=${this.articleHtml(article.content, article.id)}></div>
       </article>
       <nav class="controls" aria-label="Történet fejezetei">
         <button ?disabled=${this.chapterIndex === 0} @click=${() => this.goTo(this.chapterIndex - 1)}>← Előző fejezet</button>

@@ -37,8 +37,8 @@ export function parseWikiLinks(content: string): WikiLink[] {
   return links;
 }
 
-export function renderWikiLinks(content: string, articles: WikiArticles): string {
-  return content.replace(LINK_PATTERN, (_raw, id: string, label?: string, relation?: string) => {
+export function renderWikiLinks(content: string, articles: WikiArticles, currentArticleId?: string): string {
+  const rendered = content.replace(LINK_PATTERN, (_raw, id: string, label?: string, relation?: string) => {
     const targetId = id.toLowerCase();
     const safeLabel = escapeHtml((label || articles[targetId]?.title || targetId).trim());
     const safeId = escapeHtml(targetId);
@@ -48,6 +48,40 @@ export function renderWikiLinks(content: string, articles: WikiArticles): string
     }
     return `<a class="wiki-link" href="#/wiki/${safeId}" data-wiki-id="${safeId}" data-relation="${relationType}">${safeLabel}</a>`;
   });
+  return linkArticleTitles(rendered, articles, currentArticleId);
+}
+
+/** Adds one contextual passage to every article whose title occurs in prose.
+ * Existing links and markup are left intact, so author-supplied links always win. */
+export function linkArticleTitles(content: string, articles: WikiArticles, currentArticleId?: string): string {
+  const candidates = Object.values(articles)
+    .filter(article => article.id !== currentArticleId && article.type !== 'chapter' && article.title.trim().length >= 4)
+    .sort((a, b) => b.title.length - a.title.length || a.id.localeCompare(b.id));
+  if (!candidates.length) return content;
+
+  const byTitle = new Map<string, WikiArticle>();
+  for (const article of candidates) if (!byTitle.has(article.title.toLocaleLowerCase('hu'))) byTitle.set(article.title.toLocaleLowerCase('hu'), article);
+  const titlePattern = new RegExp(`(^|[^\\p{L}\\p{N}])(${[...byTitle.values()].map(article => escapeRegExp(article.title)).join('|')})(?=$|[^\\p{L}\\p{N}])`, 'giu');
+  const linked = new Set<string>();
+  let blockedDepth = 0;
+  return content.split(/(<[^>]+>)/g).map(part => {
+    if (part.startsWith('<')) {
+      const closing = /^<\s*\//.test(part);
+      const tag = part.match(/^<\s*\/?\s*([a-z0-9-]+)/i)?.[1]?.toLowerCase();
+      if (tag && ['a', 'h1', 'h2', 'h3', 'h4', 'script', 'style', 'code'].includes(tag)) {
+        blockedDepth = Math.max(0, blockedDepth + (closing ? -1 : /\/\s*>$/.test(part) ? 0 : 1));
+      }
+      return part;
+    }
+    if (blockedDepth || !part.trim()) return part;
+    return part.replace(titlePattern, (match, prefix: string, label: string) => {
+      const article = byTitle.get(label.toLocaleLowerCase('hu'));
+      if (!article || linked.has(article.id)) return match;
+      const safeId = escapeHtml(article.id);
+      linked.add(article.id);
+      return `${prefix}<a class="wiki-link wiki-link-auto" href="#/wiki/${safeId}" data-wiki-id="${safeId}" data-relation="related">${label}</a>`;
+    });
+  }).join('');
 }
 
 export function buildBacklinkIndex(articles: WikiArticles): Map<string, string[]> {
@@ -100,4 +134,8 @@ export function relatedArticlesFor(article: WikiArticle, articles: WikiArticles,
 
 function escapeHtml(value: string): string {
   return value.replace(/[&<>"']/g, char => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[char]!));
+}
+
+function escapeRegExp(value: string): string {
+  return value.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
 }

@@ -177,7 +177,7 @@ export class WikiArticleView extends LitElement {
       .replace(/\*(.*?)\*/gim, '<em>$1</em>')
       .replace(/\n$/gim, '<br />');
       
-    htmlContent = renderWikiLinks(htmlContent, scopedArticles);
+    htmlContent = renderWikiLinks(htmlContent, scopedArticles, article.id);
     htmlContent = DOMPurify.sanitize(htmlContent, { ADD_ATTR: ['data-wiki-id', 'data-relation', 'data-missing-id'] });
     const related = relatedArticlesFor(article, scopedArticles);
     const backlinks = (buildBacklinkIndex(scopedArticles).get(article.id) || []).map(id => scopedArticles[id]).filter(Boolean);
