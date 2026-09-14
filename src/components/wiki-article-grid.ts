@@ -7,6 +7,7 @@ import { articleUniverseId } from '../universe/article-universes.ts';
 import { diabloTimelineEras, diabloTimelineEvents } from '../data/diabloChronology.ts';
 import { creativeWorkRegistry } from '../research/registry.ts';
 import './witcher-home.ts';
+import './diablo-home.ts';
 
 @customElement('wiki-article-grid')
 export class WikiArticleGrid extends LitElement {
@@ -14,9 +15,6 @@ export class WikiArticleGrid extends LitElement {
   @state() private activeCategory = useAppStore.getState().activeCategory;
   @state() private categories: string[] = [];
   @state() private activeUniverseId = useAppStore.getState().activeUniverseId;
-  @state() private currentHeroIndex = 0;
-  private heroInterval: ReturnType<typeof setInterval> | undefined;
-  @state() private heroPaused = false;
 
   constructor() {
     super();
@@ -33,14 +31,6 @@ export class WikiArticleGrid extends LitElement {
     const cats = Array.from(new Set(Object.values(wikiArticles).filter(article => articleUniverseId(article) === this.activeUniverseId && article.type !== 'chapter' && article.type !== 'book').map((a: any) => a.category)));
     this.categories = cats;
 
-    this.heroInterval = setInterval(() => {
-      if (!this.heroPaused && !window.matchMedia('(prefers-reduced-motion: reduce)').matches && !this.querySelector('.hero-slider')?.contains(document.activeElement)) this.currentHeroIndex = (this.currentHeroIndex + 1) % 4;
-    }, 6000);
-  }
-
-  disconnectedCallback() {
-    if (this.heroInterval) clearInterval(this.heroInterval);
-    super.disconnectedCallback();
   }
 
   createRenderRoot() {
@@ -70,7 +60,7 @@ export class WikiArticleGrid extends LitElement {
       <section class="codex-directory" aria-labelledby="article-library-title">
         <header class="article-library-heading">
           <span aria-hidden="true">— ❖ —</span>
-          <h1 id="article-library-title">${universeTitle}</h1>
+          <h2 id="article-library-title">${universeTitle}</h2>
           <p>${universeDescription}</p>
         </header>
         <div class="article-filters" style="display: flex; flex-direction: column; gap: 15px;">
@@ -130,6 +120,14 @@ export class WikiArticleGrid extends LitElement {
     if (this.activeUniverseId !== 'diablo') return html`
       ${!this.searchQuery && !this.activeCategory ? html`<witcher-home></witcher-home>` : ''}
       <div class="article-codex-frame universe-directory-only">${this.renderDirectory(filtered)}</div>`;
+    if (!this.searchQuery && !this.activeCategory) return html`
+      <diablo-home></diablo-home>
+      <div class="article-codex-frame universe-directory-only">${this.renderDirectory(filtered)}</div>`;
+    // A szűrt Diablo-archívum is az új egységes felületet használja. A régi
+    // dashboard itt többé nem renderelődik, ezért a menügombok nem tudják
+    // visszahozni a korábbi banneres elrendezést.
+    return html`<div class="article-codex-frame universe-directory-only">${this.renderDirectory(filtered)}</div>`;
+
     const countBy = (term: string) => allArticles.filter(a => String(a.category).toLocaleLowerCase('hu').includes(term)).length;
     const featuredItems = [
       { articleId: 'prime-lesser-evils', image: 'featured-seven-evils-v1.jpg' },
@@ -142,20 +140,18 @@ export class WikiArticleGrid extends LitElement {
       <div class="desktop-codex-dashboard">
         <div class="codex-dashboard-main">
 
-          <!-- 1. Hero Slider (Forgó Kiemelt Cikk Banner) -->
-          <div id="codex-basic" class="hero-slider" aria-label="Alapinformációk és kiemelt tartalmak">
-            <button class="hero-pause" aria-pressed=${this.heroPaused} @click=${() => this.heroPaused = !this.heroPaused}>${this.heroPaused ? 'Vetítés folytatása' : 'Vetítés szüneteltetése'}</button>
-            ${featuredItems.map(({ article, image }, index) => html`
-              <div ?inert=${this.currentHeroIndex !== index} aria-hidden=${this.currentHeroIndex !== index} class="hero-slide ${this.currentHeroIndex === index ? 'hero-slide--active' : ''}" style="background-image: url('${import.meta.env.BASE_URL}assets/${image}')">
-                <div class="hero-slide-content">
-                  <span class="hero-slide-badge">${article.category}</span>
-                  <h2 class="hero-slide-title">${article.title}</h2>
-                  <p class="hero-slide-subtitle">${article.subtitle || 'Fedezd fel Sanctuary világának titkait.'}</p>
-                  <button class="hero-slide-btn" @click=${() => this.openArticle(article.id)}>Cikk olvasása ›</button>
-                </div>
+          <!-- 1. Nyitó hero: a saját, kifejezetten a wikihez készült illusztrációra épül. -->
+          <header id="codex-basic" class="codex-hero" style="background-image: url('${import.meta.env.BASE_URL}assets/diablo-hero-v3.png')">
+            <div class="codex-hero-copy">
+              <p class="codex-hero-kicker">Lore Nexus · Sanctuary Archívum</p>
+              <h1>Sanctuary kódexe</h1>
+              <p>Fedezd fel a Nagy Konfliktus krónikáit, a Pokol urait és az emberek világának elveszett történeteit.</p>
+              <div class="codex-hero-actions">
+                <button class="panel-action" @click=${() => this.reveal('.codex-directory')}>Cikkek böngészése</button>
+                <button class="codex-hero-link" @click=${() => useAppStore.setActiveTab('timeline')}>Idővonal megnyitása ›</button>
               </div>
-            `)}
-          </div>
+            </div>
+          </header>
 
           <!-- 2. Vizuális Kategória Könyvtár (Fandom-stílusú belépő) -->
           <section class="visual-directory" aria-label="Főkategóriák">

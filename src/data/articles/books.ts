@@ -11112,7 +11112,7 @@ export const booksArticles: Record<string, WikiArticle> = {
     id: "kingdom-of-shadow",
     category: "Könyvek – Olvasó",
     title: "Diablo: The Kingdom of Shadow (Az Árnyak Királysága)",
-    subtitle: "Richard A. Knaak regényének teljes kánon olvasható verziója",
+    subtitle: "Richard A. Knaak regényének magyar nyelvű ismertetője",
     infobox: {
       "Szerző": "Richard A. Knaak",
       "Kiadás Éve": "2002",
@@ -11123,30 +11123,10 @@ export const booksArticles: Record<string, WikiArticle> = {
     },
     content: `
       <h2>Bevezetés és Jelentőség</h2>
-      <p>A <strong>The Kingdom of Shadow</strong> (Az Árnyak Királysága) Richard A. Knaak klasszikus Diablo regénye. A történet bemutatja Ureh, a legendás elveszett város sötét titkait, és bevezeti a rajongók egyik kedvenc karakterét, Zayl-t, a nekromantát, valamint hűséges (és beszédes) koponyáját, Humbartot. Ez az archívum a könyv teljes, hivatalos kánon magyar nyelvű fordítását tartalmazza.</p>
+      <p>A <strong>The Kingdom of Shadow</strong> (Az Árnyak Királysága) Richard A. Knaak klasszikus Diablo-regénye. A történet bemutatja Ureh, a legendás elveszett város sötét titkait, és bevezeti Zaylt, a nekromantát, valamint hűséges, beszédes koponyáját, Humbartot.</p>
 
-      <h2>Tartalomjegyzék: Az Árnyak Királysága</h2>
-      <p>Kattints az alábbi gombokra az adott fejezet megnyitásához:</p>
-      <div style="display: flex; gap: 10px; margin-top: 20px; margin-bottom: 20px; flex-wrap: wrap;">
-        <p>[[kingdom-of-shadow-ch1|1. Fejezet|references]]</p>
-        <p>[[kingdom-of-shadow-ch2|2. Fejezet|references]]</p>
-        <p>[[kingdom-of-shadow-ch3|3. Fejezet|references]]</p>
-        <p>[[kingdom-of-shadow-ch4|4. Fejezet|references]]</p>
-        <p>[[kingdom-of-shadow-ch5|5. Fejezet|references]]</p>
-        <p>[[kingdom-of-shadow-ch6|6. Fejezet|references]]</p>
-        <p>[[kingdom-of-shadow-ch7|7. Fejezet|references]]</p>
-        <p>[[kingdom-of-shadow-ch8|8. Fejezet|references]]</p>
-        <p>[[kingdom-of-shadow-ch9|9. Fejezet|references]]</p>
-        <p>[[kingdom-of-shadow-ch10|10. Fejezet|references]]</p>
-        <p>[[kingdom-of-shadow-ch11|11. Fejezet|references]]</p>
-        <p>[[kingdom-of-shadow-ch12|12. Fejezet|references]]</p>
-        <p>[[kingdom-of-shadow-ch13|13. Fejezet|references]]</p>
-        <p>[[kingdom-of-shadow-ch14|14. Fejezet|references]]</p>
-        <p>[[kingdom-of-shadow-ch15|15. Fejezet|references]]</p>
-        <p>[[kingdom-of-shadow-ch16|16. Fejezet|references]]</p>
-        <p>[[kingdom-of-shadow-ch17|17. Fejezet|references]]</p>
-        <p>[[kingdom-of-shadow-ch18|18. Fejezet|references]]</p>
-      </div>
+      <h2>Olvasási információ</h2>
+      <p>A korábbi fejezetimport hiányos és több helyen hibásan darabolt volt, ezért nem jelenik meg olvasható könyvként. A mű adatai és az ellenőrzött kapcsolódó szócikkek továbbra is elérhetők.</p>
 
       <h2>Kapcsolódó szócikkek</h2>
       <ul>

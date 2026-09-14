@@ -14,6 +14,7 @@ import { gamesArticles } from './articles/games.ts';
 import { miscArticles } from './articles/misc.ts';
 import { witcherArticles } from './articles/witcher.ts';
 import { lostHoradrimArticles } from './articles/lost-horadrim.ts';
+import { researchExpansionArticles } from './articles/research-expansion.ts';
 
 const allWikiArticles: Record<string, any> = {
   ...booksArticles,
@@ -24,10 +25,11 @@ const allWikiArticles: Record<string, any> = {
   ...gamesArticles,
   ...miscArticles,
   ...witcherArticles,
-  ...lostHoradrimArticles
+  ...lostHoradrimArticles,
+  ...researchExpansionArticles
 };
 
 // Védelmi szűrő: egy későbbi hibás import se tehessen közzé teljes könyvfejezeteket.
 export const wikiArticles: Record<string, any> = Object.fromEntries(
-  Object.entries(allWikiArticles).filter(([id]) => !/^(?:black-road-ch\d+|book-gonosz-osvenye-ch\d+|black-road-epilogue)$/.test(id)),
+  Object.entries(allWikiArticles).filter(([id]) => !/^(?:black-road-ch\d+|book-gonosz-osvenye-ch\d+|kingdom-of-shadow-ch\d+|black-road-epilogue)$/.test(id)),
 );

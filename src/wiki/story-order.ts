@@ -79,7 +79,9 @@ function chronologicalBookOrder(books: StoryBook[], universeId: string): StoryBo
 export function storyBooks(universeId = 'diablo'): StoryBook[] {
   const imported = Object.values(wikiArticles).filter(article => articleUniverseId(article) === universeId && article.type === 'book').map(book => ({ id: book.id, title: book.title, after: book.storyAfter || null, chapters: Object.values(wikiArticles).filter(article => articleUniverseId(article) === universeId && article.type === 'chapter' && article.parentBook === book.id).sort((a, b) => numericChapterOrder(a.id) - numericChapterOrder(b.id)) }));
   if (universeId === 'diablo') {
-    const curated = storyBookSegments.map(segment => ({ id: segment.id, title: segment.title, after: segment.after, chapters: segmentArticles(segment) })).filter(book => book.chapters.length);
+    const curated = storyBookSegments
+      .map(segment => ({ id: segment.id, title: segment.title, after: segment.after, chapters: segmentArticles(segment) }))
+      .filter(book => book.chapters.length > 0 || Boolean(wikiArticles[book.id]));
     const blackRoad = imported.filter(book => book.id === 'book-the-black-road-reader');
     return chronologicalBookOrder([...blackRoad, ...curated, ...imported.filter(book => book.id !== 'book-the-black-road-reader')], universeId);
   }

@@ -61,6 +61,18 @@ export class DiabloApp extends LitElement {
   }
 
   render() {
+    const state = useAppStore.getState();
+    const hasArticleFilter = Boolean(state.currentSearchQuery || state.activeCategory || (state.activeGameTag && state.activeGameTag !== 'ALL'));
+    const section = ({
+      ...(hasArticleFilter ? { articles: ['Archívum', 'Fedezd fel a világ krónikáit, szereplőit és helyszíneit'] as [string, string] } : {}),
+      timeline: ['Kronológia', 'A világ történetei időrendben'],
+      story: ['Folyamatos történet', 'Olvasd Sanctuary és a Kontinens történeteit egyetlen ívben'],
+      books: ['Könyvtár', 'Regények, novellák és kiegészítő történetek'],
+      sources: ['Forrástár', 'Ellenőrzött műjegyzék és hivatkozások'],
+      conflicts: ['Kánon áttekintése', 'Eltérő folytonosságok és értelmezések'],
+      'article-view': ['Szócikk', 'A világok részletes enciklopédiája'],
+      search: ['Keresés', 'Találd meg a keresett történetet vagy szereplőt'],
+    } as Record<string, [string, string]>)[this.activeTab];
     return html`
       <div class="codex-app-shell ${this.activeUniverseId === 'witcher' ? 'universe-witcher' : 'universe-diablo'}">
         <diablo-navigation></diablo-navigation>
@@ -105,15 +117,21 @@ export class DiabloApp extends LitElement {
           <button class="random-article" @click=${this.openRandomArticle}><i class="fa-solid fa-dice"></i> Véletlen cikk</button>
         </aside>`}
         <main class="codex-content">
-          ${this.activeTab === 'timeline' ? html`<diablo-timeline class="w-full"></diablo-timeline>` : ''}
-          ${this.activeTab === 'articles' ? html`<wiki-article-grid class="w-full"></wiki-article-grid>` : ''}
-          ${this.activeTab === 'search' ? html`<wiki-article-grid class="w-full"></wiki-article-grid>` : ''}
-          ${this.activeTab === 'story' ? html`<story-reader class="w-full"></story-reader>` : ''}
-          ${this.activeTab === 'books' ? html`<book-library class="w-full"></book-library>` : ''}
-          ${this.activeTab === 'sources' ? html`<source-library class="w-full"></source-library>` : ''}
-          ${this.activeTab === 'article-view' ? html`<wiki-article-view class="w-full"></wiki-article-view>` : ''}
-          ${this.activeTab === 'conflicts' ? html`<canon-conflict-dashboard class="w-full"></canon-conflict-dashboard>` : ''}
-          ${this.activeTab === 'not-found' ? html`<section role="alert" class="w-full max-w-2xl bg-dark-card border border-blood-red rounded-xl p-8 text-center"><h1 class="text-gold text-3xl font-heading">Az oldal nem található</h1><p>A hivatkozás hibás, vagy a tartalom nem ehhez az univerzumhoz tartozik.</p><button class="mt-4 px-4 py-2 border border-gold rounded text-gold" @click=${()=>this.changeTab('articles')}>Vissza a cikkekhez</button></section>` : ''}
+          ${section ? html`<header class="unified-menu-header">
+            <span>${this.activeUniverseId === 'witcher' ? 'Lore Nexus · Vaják Archívum' : 'Lore Nexus · Sanctuary Archívum'}</span>
+            <h2>${section[0]}</h2><p>${section[1]}</p>
+          </header>` : ''}
+          <section class="unified-menu-surface ${section ? 'unified-menu-surface--active' : ''}">
+            ${this.activeTab === 'timeline' ? html`<diablo-timeline class="w-full"></diablo-timeline>` : ''}
+            ${this.activeTab === 'articles' ? html`<wiki-article-grid class="w-full"></wiki-article-grid>` : ''}
+            ${this.activeTab === 'search' ? html`<wiki-article-grid class="w-full"></wiki-article-grid>` : ''}
+            ${this.activeTab === 'story' ? html`<story-reader class="w-full"></story-reader>` : ''}
+            ${this.activeTab === 'books' ? html`<book-library class="w-full"></book-library>` : ''}
+            ${this.activeTab === 'sources' ? html`<source-library class="w-full"></source-library>` : ''}
+            ${this.activeTab === 'article-view' ? html`<wiki-article-view class="w-full"></wiki-article-view>` : ''}
+            ${this.activeTab === 'conflicts' ? html`<canon-conflict-dashboard class="w-full"></canon-conflict-dashboard>` : ''}
+            ${this.activeTab === 'not-found' ? html`<section role="alert" class="w-full max-w-2xl bg-dark-card border border-blood-red rounded-xl p-8 text-center"><h1 class="text-gold text-3xl font-heading">Az oldal nem található</h1><p>A hivatkozás hibás, vagy a tartalom nem ehhez az univerzumhoz tartozik.</p><button class="mt-4 px-4 py-2 border border-gold rounded text-gold" @click=${()=>this.changeTab('articles')}>Vissza a cikkekhez</button></section>` : ''}
+          </section>
         </main>
         <aside class="copyright-notice" aria-labelledby="legal-notice-title">
           <i class="fa-solid fa-scale-balanced copyright-notice-icon" aria-hidden="true"></i>

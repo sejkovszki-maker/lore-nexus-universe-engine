@@ -102,34 +102,31 @@ test('desktop sidebar reveals selected content immediately without manual scroll
   await expect.poll(() => page.locator('.codex-content').evaluate(element => Math.round(element.getBoundingClientRect().top))).toBeLessThan(180);
 });
 
-test('Codex landing uses the full desktop dashboard and keeps mobile compact', async ({ page }) => {
+test('Diablo and Witcher landings share the same responsive home layout', async ({ page }) => {
   await page.setViewportSize({ width: 1440, height: 900 });
   await page.goto('/#/wiki');
-  await expect(page.locator('.hero-slide--active .hero-slide-title')).toBeVisible();
-  await expect(page.locator('.hero-slide')).toHaveCount(4);
-  await expect(page.locator('.codex-stat-strip dd')).toHaveCount(5);
-  await expect(page.locator('.featured-codex-card')).toHaveCount(4);
-  expect(await page.locator('.featured-codex-card img').evaluateAll(images => images.map(image => image.getAttribute('src')?.split('/').at(-1)))).toEqual([
-    'featured-seven-evils-v1.jpg',
-    'featured-sanctuary-v1.jpg',
-    'featured-dark-exile-v1.jpg',
-    'featured-cosmology-v1.jpg',
-  ]);
-  await expect(page.getByRole('complementary', { name: 'Codex gyorsnavigáció' })).toBeVisible();
+  await expect(page.locator('diablo-home .witcher-hero')).toBeVisible();
+  await expect(page.locator('diablo-home .witcher-hero-art')).toHaveAttribute('src', /diablo-hero-v3\.png/);
+  await expect(page.locator('diablo-home .witcher-stats dd')).toHaveCount(4);
+  await expect(page.locator('diablo-home .witcher-feature-card')).toHaveCount(3);
+  await expect(page.getByLabel('Diablo gyorsnavigáció')).toBeVisible();
   expect(await page.evaluate(() => document.documentElement.scrollWidth - window.innerWidth)).toBeLessThanOrEqual(1);
 
   await page.setViewportSize({ width: 390, height: 844 });
   await page.reload();
-  await expect(page.locator('.desktop-codex-dashboard')).toBeHidden();
+  await expect(page.locator('diablo-home .witcher-hero')).toBeVisible();
+  await expect(page.locator('diablo-home .witcher-hero h1')).toHaveText('Sanctuary kódexe');
   await expect(page.getByRole('searchbox', { name: 'Keresés a cikkek között' })).toBeVisible();
   await expect(page.locator('.codex-sidebar')).toBeHidden();
   expect(await page.evaluate(() => document.documentElement.scrollWidth - window.innerWidth)).toBeLessThanOrEqual(1);
 });
 
-test('desktop Codex menus lead to populated content and its contents panel stays in-route', async ({ page }) => {
+test('desktop Codex menus lead to populated content and the new home remains in-route', async ({ page }) => {
   await page.setViewportSize({ width: 1440, height: 900 });
   await page.goto('/#/wiki');
   const sidebar = page.getByLabel('Diablo kódex');
+  await expect(page.locator('diablo-home .witcher-home-section')).toHaveCount(3);
+  await expect(page.getByLabel('Diablo gyorsnavigáció')).toBeVisible();
   await page.evaluate(() => scrollTo(0, 900));
   await sidebar.getByRole('button', { name: 'Sanctuary világa', exact: true }).click();
   await expect.poll(() => page.locator('.codex-directory').evaluate(element => Math.round(element.getBoundingClientRect().top))).toBeLessThan(180);
@@ -137,15 +134,6 @@ test('desktop Codex menus lead to populated content and its contents panel stays
     await sidebar.getByRole('button', { name: label, exact: true }).click();
     await expect(page.locator('.directory-result-count'), `${label} menüpont`).not.toHaveText('0 cikk');
   }
-  for (const label of ['Alapinformációk', 'Megjelenései', 'Története', 'Képességei és hatalma', 'Kapcsolatai', 'Idézetek', 'Galéria']) {
-    await page.getByRole('button', { name: `◇ ${label}`, exact: true }).click();
-    await expect(page).toHaveURL(/#\/wiki$/);
-  }
-  await page.getByRole('button', { name: '◇ Története', exact: true }).click();
-  await expect.poll(() => page.locator('#codex-history').evaluate(element => Math.round(element.getBoundingClientRect().top))).toBeLessThan(180);
-  await expect(page.locator('.featured-codex-card img')).toHaveCount(4);
-  for (const image of await page.locator('.featured-codex-card img').all()) await expect(image).toHaveJSProperty('complete', true);
-  expect(await page.locator('.featured-card-copy').evaluateAll(nodes => new Set(nodes.map(node => Math.round(node.getBoundingClientRect().height))).size)).toBe(1);
   await sidebar.getByRole('button', { name: 'Események – idővonal megnyitása' }).click();
   await expect(page).toHaveURL(/#\/timeline$/);
   await sidebar.getByRole('button', { name: 'Oldalsáv – folyamatos olvasás megnyitása' }).click();
@@ -160,21 +148,16 @@ test('desktop Codex menus lead to populated content and its contents panel stays
   await expect(page).toHaveURL(/#\/wiki\/.+$/);
 });
 
-test('every dashboard contents button reveals a populated target section', async ({ page }) => {
+test('every Diablo home shortcut opens populated content', async ({ page }) => {
   await page.setViewportSize({ width: 1440, height: 900 });
   await page.goto('/#/wiki');
-  const targets = [
-    ['Alapinformációk', 'codex-basic'], ['Megjelenései', 'codex-appearances'],
-    ['Története', 'codex-history'], ['Képességei és hatalma', 'codex-powers'],
-    ['Kapcsolatai', 'codex-relations'], ['Idézetek', 'codex-quotes'], ['Galéria', 'codex-gallery'],
-  ] as const;
-  for (const [label, id] of targets) {
-    await page.getByRole('button', { name: `◇ ${label}`, exact: true }).click();
-    const section = page.locator(`#${id}`);
-    await expect(section).toBeVisible();
-    await expect.poll(() => section.evaluate(element => element.textContent?.trim().length ?? 0)).toBeGreaterThan(10);
-    await expect.poll(() => section.evaluate(element => Math.round(element.getBoundingClientRect().top))).toBeLessThan(180);
-  }
+  await page.getByLabel('Diablo gyorsnavigáció').getByRole('button', { name: /Kronológia/ }).click();
+  await expect(page).toHaveURL(/#\/timeline$/);
+  await expect(page.locator('diablo-timeline')).toBeVisible();
+  await page.goto('/#/wiki');
+  await page.getByLabel('Diablo gyorsnavigáció').getByRole('button', { name: /Pokoli urak/ }).click();
+  await expect(page.locator('wiki-article-view')).toBeVisible();
+  await expect(page.locator('wiki-article-view').getByRole('heading').first()).toBeVisible();
 });
 
 test('all library cards open non-empty content and every visible control has a name', async ({ page }) => {
