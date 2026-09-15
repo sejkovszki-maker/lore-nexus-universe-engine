@@ -176,6 +176,7 @@ test('every Diablo home shortcut opens populated content', async ({ page }) => {
 test('all library cards open non-empty content and every visible control has a name', async ({ page }) => {
   await page.setViewportSize({ width: 1440, height: 900 });
   await page.goto('/#/books');
+  await expect(page.locator('book-library .card h2').first()).toBeVisible();
   const titles = await page.locator('book-library .card h2').allTextContents();
   expect(titles.length).toBeGreaterThan(0);
   for (const title of titles) {
@@ -272,6 +273,14 @@ test('Witcher is a separate readable universe with its own navigation books and 
   await expect(page.locator('story-reader')).toBeVisible();
   expect(await page.evaluate(() => document.documentElement.scrollWidth - window.innerWidth)).toBeLessThanOrEqual(1);
 });
+
+  test('A tó úrnője exposes private chapters only when the local library is installed', async ({ page }) => {
+    await page.goto('/#/u/witcher/book/witcher-book-lady-lake');
+    await expect(page.getByRole('heading', { name: 'A tó úrnője', exact: true })).toBeVisible();
+    await expect(page.getByText('A Vaják fősagájának hetedik, lezáró kötete.', { exact: false })).toBeVisible();
+    const localLibraryInstalled = await page.evaluate(async () => (await fetch('./private-library/articles.json')).ok);
+    await expect(page.getByRole('button', { name: /12\. fejezet/i })).toHaveCount(localLibraryInstalled ? 1 : 0);
+  });
 
 test('Witcher home remains readable and actionable on mobile', async ({ page }) => {
   await page.setViewportSize({ width: 390, height: 844 });

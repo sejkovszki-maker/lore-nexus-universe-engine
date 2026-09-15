@@ -25,11 +25,15 @@ test('a foreign universe keeps its articles and books in its own chronological p
 
 test('the built-in Witcher archive has an isolated chronological reading path and nine books', () => {
   const path = storyReadingPath(true, 'witcher');
-  assert.ok(path.length >= 20);
+  assert.ok(path.length >= 15);
   assert.equal(path.every(item => item.article.universeId === 'witcher'), true);
   assert.equal(storyBooks('witcher').length, 9);
   assert.ok(path.findIndex(item => item.article.id === 'witcher-book-last-wish') > path.findIndex(item => item.article.id === 'witcher-geralt'));
   assert.ok(path.findIndex(item => item.article.id === 'witcher-book-blood-elves') > path.findIndex(item => item.article.id === 'witcher-ciri'));
+  const ladyLake = storyBooks('witcher').find(book => book.id === 'witcher-book-lady-lake');
+  assert.equal(ladyLake?.chapters.length, 0);
+  assert.ok(storyBooks('witcher').findIndex(book => book.id === 'witcher-book-lady-lake') > storyBooks('witcher').findIndex(book => book.id === 'witcher-book-tower-swallow'));
+  assert.equal(Object.keys(wikiArticles).some(id => /^witcher-book-lady-lake-ch\d+$/.test(id)), false);
 });
 
 test('optional novels are inserted at curated historical points and remain skippable as segments', () => {

@@ -12,6 +12,7 @@ export const witcherFeatured = [
 ] as const;
 
 export const witcherGateways = [
+  { id: 'witcher-game-codex', label: 'Játékkódex', icon: 'fa-gamepad' },
   { id: 'witcher-world', label: 'A Kontinens', icon: 'fa-earth-europe' },
   { id: 'witcher-conjunction', label: 'A Szférák Együttállása', icon: 'fa-circle-nodes' },
   { id: 'witcher-witchers', label: 'A vajákok', icon: 'fa-shield-halved' },
@@ -84,6 +85,7 @@ export class WitcherHome extends LitElement {
       </div>
 
       <nav class="witcher-quick-nav" aria-label="Vaják gyorsnavigáció">
+        <button @click=${() => this.openArticle('witcher-game-codex')}><i class="fa-solid fa-book-journal-whills" aria-hidden="true"></i><span><strong>Teljes játékkódex</strong><small>Bestiárium, alkímia, iratok és világpontok</small></span></button>
         <button @click=${() => this.openTab('timeline')}><i class="fa-solid fa-hourglass-half" aria-hidden="true"></i><span><strong>Kronológia</strong><small>A történet eseményei sorrendben</small></span></button>
         <button @click=${() => this.openArticle('witcher-games-branch')}><i class="fa-solid fa-gamepad" aria-hidden="true"></i><span><strong>Játékok</strong><small>A CD PROJEKT RED történeti ága</small></span></button>
         <button @click=${() => this.openArticle('witcher-screen-branch')}><i class="fa-solid fa-film" aria-hidden="true"></i><span><strong>Feldolgozások</strong><small>A képernyős változatok külön ága</small></span></button>

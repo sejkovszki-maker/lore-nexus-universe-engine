@@ -15,6 +15,7 @@ import { miscArticles } from './articles/misc.ts';
 import { witcherArticles } from './articles/witcher.ts';
 import { lostHoradrimArticles } from './articles/lost-horadrim.ts';
 import { researchExpansionArticles } from './articles/research-expansion.ts';
+import { witcherGameCodexArticles } from './articles/witcher-game-codex.ts';
 
 const allWikiArticles: Record<string, any> = {
   ...booksArticles,
@@ -26,7 +27,8 @@ const allWikiArticles: Record<string, any> = {
   ...miscArticles,
   ...witcherArticles,
   ...lostHoradrimArticles,
-  ...researchExpansionArticles
+  ...researchExpansionArticles,
+  ...witcherGameCodexArticles,
 };
 
 // Védelmi szűrő: egy későbbi hibás import se tehessen közzé teljes könyvfejezeteket.

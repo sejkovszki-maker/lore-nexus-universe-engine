@@ -87,6 +87,12 @@ export class DiabloApp extends LitElement {
           <button @click=${()=>this.showArticles('Kontinens')}><i class="fa-solid fa-earth-europe"></i> A világ</button>
           <button @click=${()=>this.showArticles('Északi')}><i class="fa-solid fa-crown"></i> Északi Királyságok</button>
           <button @click=${()=>this.showArticles('Nilfgaard')}><i class="fa-solid fa-chess-rook"></i> Nilfgaard</button>
+          <button class="sidebar-group-title" @click=${()=>this.showArticles('', 'Játékkódex')}>Játékkódex</button>
+          <button @click=${()=>useAppStore.openArticleRoute('witcher-game-codex')}><i class="fa-solid fa-book-journal-whills"></i> Teljes áttekintés</button>
+          <button @click=${()=>this.showArticles('', 'Játékkódex – Bestiárium')}><i class="fa-solid fa-dragon"></i> Bestiárium</button>
+          <button @click=${()=>this.showArticles('', 'Játékkódex – Alkímia')}><i class="fa-solid fa-flask"></i> Elixírek és alkímia</button>
+          <button @click=${()=>this.showArticles('', 'Játékkódex – Olvasmányok')}><i class="fa-solid fa-scroll"></i> Könyvek és iratok</button>
+          <button @click=${()=>this.showArticles('', 'Játékkódex – Világpontok')}><i class="fa-solid fa-map-location-dot"></i> Hatalmi helyek</button>
           <button class="sidebar-group-title" @click=${()=>this.changeTab('timeline')}>Történet</button>
           <button @click=${()=>this.changeTab('timeline')}><i class="fa-solid fa-hourglass-half"></i> Kronológia</button>
           <button @click=${()=>this.changeTab('story')}><i class="fa-solid fa-book-open"></i> Folyamatos olvasás</button>

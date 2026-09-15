@@ -28,7 +28,8 @@ export async function hydratePrivateLibrary(): Promise<number> {
   if (await sha256(JSON.stringify(envelope.articles)) !== envelope.payloadSha256) throw new Error('PRIVATE_LIBRARY_INTEGRITY_FAILED');
   for (const article of envelope.articles) {
     const existing = wikiArticles[article.id];
-    const allowedBookOverlay = article.id === 'the-lost-horadrim' && article.type === 'book' && existing?.type === 'book';
+    const allowedBookOverlay = article.type === 'book' && existing?.type === 'book' &&
+      (article.universeId ?? 'diablo') === (existing.universeId ?? 'diablo');
     if (existing && !allowedBookOverlay) throw new Error(`PRIVATE_LIBRARY_COLLISION:${article.id}`);
     wikiArticles[article.id] = article;
   }
