@@ -1,6 +1,6 @@
 # Lore Nexus – Master Development Plan v2
 
-Állapotfelmérés: **2026. augusztus 30.**
+Állapotfelmérés: **2026. szeptember 19.**
 
 Ellenőrzött verzió: **`228bba5`**
 
@@ -29,7 +29,7 @@ Ez a dokumentum az eredeti 217 implementációs egységet, a Wiki UX-tervet és 
 | 4 | CI, Definition of Done és automatizált minőségi kapuk | KÉSZ | Unit, property, integration, regression, fuzz, security, build és E2E fut. |
 | 5 | Kötelező branch protection és review enforcement | RÉSZBEN KÉSZ | CODEOWNERS és PR-folyamat van; repository-szintű kötelező védelem nincs teljesen igazolva. |
 | 6 | Router 2.0 – egyetlen központi, típusos route parser/generator | KÉSZ | Típusos parser/generator és fail-closed validáció működik. |
-| 7 | Stabil fő útvonalak: home, wiki, timeline, story, book, search | RÉSZBEN KÉSZ | Wiki, timeline, story, book, editor és conflicts kész; külön search oldal a keresőcsomag része. |
+| 7 | Stabil fő útvonalak: home, wiki, timeline, story, book, search | KÉSZ | Mindegyik fő nézet központi, típusos route-on érhető el; a külön univerzális keresőoldal E2E-teszttel igazolt. |
 | 8 | Wiki-, Story-, Timeline- és könyv-deep-link | KÉSZ | Közvetlen betöltés és frissítés E2E-ben ellenőrzött. |
 | 9 | Back/Forward history és új history-bejegyzések | KÉSZ | Hash history Back/Forward mátrix sikeres; cikk- és könyvváltás nem írja felül az előzményt. |
 | 10 | Hibás route, 404 cikk és biztonságos fallback | KÉSZ | Hibás, hiányzó és más univerzumhoz tartozó cikk külön 404-et ad. |
@@ -51,9 +51,9 @@ Minden route központi parseren halad át; direct load, refresh, Back, Forward, 
 |---:|---|---|---|
 | 18 | Strukturált Wiki Link Engine és biztonságos renderer | KÉSZ | `[[id|label|relation]]`, DOMPurify, broken-link jelzés és inline handler nélküli navigáció működik. |
 | 19 | Backlink index és kapcsolódó cikkek | KÉSZ | Determinisztikus backlink index és kapcsolódó lista megjelenik. |
-| 20 | Breadcrumb cikkhez, könyvhöz és fejezethez | ÚJ FELADAT | Nincs valódi útvonaljelzés. |
-| 21 | Automatikus tartalomjegyzék stabil heading ID-kkel | ÚJ FELADAT | A renderer felismeri a headingeket, TOC még nincs. |
-| 22 | Háromrészes tudásoldal reszponzív elrendezéssel | RÉSZBEN KÉSZ | Cikk, infobox, kapcsolatok és backlinkek vannak; TOC és alsó tudáspanelek hiányoznak. |
+| 20 | Breadcrumb cikkhez, könyvhöz és fejezethez | RÉSZBEN KÉSZ | A cikkoldal univerzum–kategória–cikk morzsamenüje kész és tesztelt; a könyvolvasó szemantikus morzsamenüje még hiányzik. |
+| 21 | Automatikus tartalomjegyzék stabil heading ID-kkel | KÉSZ | Ütközésmentes, determinisztikus heading ID-k, kattintható TOC és mobil görgethető nézet készült. |
+| 22 | Háromrészes tudásoldal reszponzív elrendezéssel | KÉSZ | Asztalon TOC–cikktest–infobox, mobilon egymás alá rendezett, túlcsordulás nélkül tesztelt nézet működik. |
 | 23 | Verziózott infobox registry és kattintható entitásértékek | RÉSZBEN KÉSZ | Szabad kulcs/érték infobox megjelenik, de nincs publikus típusos registry-integráció. |
 | 24 | Kapcsolódó szócikkek kategorizálása | ÚJ FELADAT | Egyetlen közös kapcsolati lista van. |
 | 25 | Szemantikus kapcsolatok bekötése a cikkoldalba | RÉSZBEN KÉSZ | Typed Relationship és Knowledge Graph motor kész; a statikus Wiki-adatokhoz nincs teljes adapter. |
@@ -62,7 +62,7 @@ Minden route központi parseren halad át; direct load, refresh, Back, Forward, 
 | 28 | Források és evidence megjelenítése a publikus cikkoldalon | RÉSZBEN KÉSZ | A WikiEngine page modell képes rá, a jelenlegi article view nem használja. |
 | 29 | Olvasási pozíció és könyvek opcionális történeti beillesztése | KÉSZ | Pozíciómentés, könyvkapcsoló és teljes könyv átugrása működik. |
 | 30 | Story Map – korszak/fa nézet az aktuális pozícióval | ÚJ FELADAT | Jelenleg lapos fejezetválasztó van. |
-| 31 | Story-, könyv- és fejezetroute összekötése | NINCS KÉSZ | A Story Reader saját hash-t ír, de a központi állapot nem értelmezi. |
+| 31 | Story-, könyv- és fejezetroute összekötése | KÉSZ | A Story Reader, a könyvszakaszok és fejezetek a központi Router 2.0 `openStoryRoute`/`openBookRoute` útvonalait használják; refresh és deep-link E2E tesztelt. |
 
 ### P1 cikk UX kész feltétele
 
@@ -72,11 +72,11 @@ Breadcrumb + mobil TOC + cikk + infobox + kategorizált szemantikus kapcsolatok 
 
 | # | Feladat | Állapot | Bizonyíték / hiányzó rész |
 |---:|---|---|---|
-| 32 | Cím- és tartalomkeresés a jelenlegi Wiki-adatokon | RÉSZBEN KÉSZ | A cikklista keres, az univerzális WikiEngine interfész létezik. |
-| 33 | Többmezős keresési index | NINCS KÉSZ | Nincs teljes Title/Subtitle/Alias/Entity/Content/Infobox/Relationship/Event/Book/Source/Timeline index a publikus UI mögött. |
-| 34 | Súlyozott lexikai rangsorolás | RÉSZBEN KÉSZ | A háttérben hybrid ranking motor van, a Wiki keresőbe nincs teljesen bekötve. |
-| 35 | Elütéstűrés és „Ezt kerested?” | RÉSZBEN KÉSZ | Damerau–Levenshtein az entity resolutionben használatos, keresőjavaslatként nincs integrálva. |
-| 36 | Keresési facetek és filterek | RÉSZBEN KÉSZ | Metadata/canon/time szűrő motor létezik, publikus kereső UI nincs. |
+| 32 | Cím- és tartalomkeresés a jelenlegi Wiki-adatokon | KÉSZ | Önálló `#/search` oldal keres a cikk-, könyv-, fejezet- és timeline-adatokban, univerzum-izolációval. |
+| 33 | Többmezős keresési index | KÉSZ | Title, subtitle, category, content, infobox, relationship, timeline és timeline-entity mezők egy közös publikus indexben kereshetők. |
+| 34 | Súlyozott lexikai rangsorolás | KÉSZ | Dokumentált mezősúlyok, AND tokenfeltétel, determinisztikus holtverseny és találatonkénti rangmagyarázat működik. |
+| 35 | Elütéstűrés és „Ezt kerested?” | KÉSZ | Normalizált szerkesztési távolság alapján kattintható, univerzumon belüli „Ezt kerested?” javaslat készült. |
+| 36 | Keresési facetek és filterek | KÉSZ | Tartalomtípus- és dinamikus kategóriafacet működik, mobil/desktop UI- és route-teszttel. |
 | 37 | Szemantikus és hybrid keresés publikus integrációja | RÉSZBEN KÉSZ | Embedding registry, vector index és hybrid engine unit tesztelt háttérmodul. |
 
 ### P1 kereső kész feltétele
@@ -111,11 +111,11 @@ Az egységes `#/search` oldal minden felsorolt mezőt súlyozva keres, elütést
 | 50 | Terminológiai és fordítási konzisztencia | NINCS KÉSZ | A fordítás nem fut lore-szótáras ellenőrzésen. |
 | 51 | Nyelvi Review Queue és quality gate | NINCS KÉSZ | Nincs súlyossági szintű nyelvi jóváhagyási folyamat. |
 | 52 | Timeline 2.0 Knowledge Graph adapter | RÉSZBEN KÉSZ | Timeline és temporal graph motor külön létezik; a publikus timeline statikus adatokra épül. |
-| 53 | Timeline facetek | NINCS KÉSZ | Korszak, játék, könyv, karakter, helyszín, frakció, canon és forrás együtt nem szűrhető. |
+| 53 | Timeline facetek | KÉSZ | Korszak, játék, könyv, szereplő, helyszín, frakció, kánon és forrástípus együttesen szűrhető. |
 | 54 | Megosztható eseményoldal és timeline deep-link | ÚJ FELADAT | Nincs stabil eseményroute. |
 | 55 | Lore Nexus Health belső oldal | ÚJ FELADAT | Háttér self-audit és quality metrikák vannak, egységes felület nincs. |
-| 56 | Article Quality Score | RÉSZBEN KÉSZ | Knowledge Quality Score motor létezik, statikus Wiki-cikkekhez nincs adapter és UI. |
-| 57 | Accessibility audit és WCAG regressziós kapu | RÉSZBEN KÉSZ | Több ARIA/fókusz javítás és mobil E2E van, teljes automatikus WCAG audit nincs. |
+| 56 | Article Quality Score | KÉSZ | A statikus Wiki-cikk adapter tartalom, adatlap, kapcsolatok, backlinkek és forrásjelzés alapján látható, magyarázott 0–100 pontot ad. |
+| 57 | Accessibility audit és WCAG regressziós kapu | KÉSZ | axe-core WCAG 2 A/AA és 2.1 A/AA kapu vizsgálja hat kritikus route desktop és mobil nézetét; critical/serious hiba blokkol. A feltárt 163 mobil kontraszthiba javítva. |
 | 58 | Mobil UI újratervezés | RÉSZBEN KÉSZ | Alsó navigáció és reszponzív alap működik; az új P1 folyamatok még nincsenek validálva. |
 | 59 | Teljesítmény és bundle-optimalizálás | RÉSZBEN KÉSZ | Lazy PDF/DOCX betöltés és story-cache van; a Wiki-adat chunk kb. 3,7 MB. |
 

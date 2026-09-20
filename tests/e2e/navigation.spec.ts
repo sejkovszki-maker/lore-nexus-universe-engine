@@ -19,20 +19,44 @@ test('application renders and switches its primary views', async ({ page }) => {
 
 test('story books appear at their historical anchor and can be skipped', async ({ page }) => {
   await page.goto('/#tab/story');
-  await expect(page.getByLabel('Könyvek beillesztése a történetbe')).toBeChecked();
+  const readingMode = page.getByLabel('Folyamatos történet olvasási módja');
+  await expect(readingMode).toHaveValue('complete');
   await page.getByLabel('Történeti fejezet').selectOption('4');
   await expect(page.getByText(/Könyvszakasz: A Bűn Háborúja I/)).toBeVisible();
+  await expect(page.getByRole('heading', { name: /Itt következik: A Bűn Háborúja I/ })).toBeVisible();
+  await expect(page.getByText(/történeti sorrendbe/)).toBeVisible();
+  await expect(page.getByText('📖 Könyv', { exact: true })).toBeVisible();
+  await expect(page.getByText('Mi történt eddig?')).toBeVisible();
   await page.getByRole('button', { name: /teljes könyv átugrása/i }).click();
   await expect(page.getByText(/Könyvszakasz: A Bűn Háborúja II/)).toBeVisible();
-  await page.getByLabel('Könyvek beillesztése a történetbe').uncheck();
+  await readingMode.selectOption('main');
   await expect(page.getByRole('button', { name: /teljes könyv átugrása/i })).toHaveCount(0);
   await expect(page.getByRole('heading', { name: 'Uldyssian ul-Diomed', exact: true })).toBeVisible();
+  await expect(page.getByText('✦ Fő történet', { exact: true })).toBeVisible();
 });
 
 test('direct hash navigation restores the requested view', async ({ page }) => {
   await page.goto('/#tab/articles');
   await expect(page.locator('wiki-article-grid')).toBeVisible();
   await expect(page.getByRole('navigation', { name: 'Fő navigáció' }).getByRole('button', { name: 'Cikkek' })).toHaveClass(/text-blood-red/);
+});
+
+test('universal search uses weighted fields, facets, suggestions and stable routes', async ({ page }) => {
+  await page.goto('/#/search');
+  await expect(page.getByRole('heading',{name:'Univerzális kereső'})).toBeVisible();
+  const input=page.getByLabel('Univerzális keresőkifejezés');
+  await input.fill('Tathamet');
+  await expect(page.locator('wiki-search-page .result').first()).toContainText('Anu és Tathamet kozmikus háborúja');
+  await page.getByLabel('Keresési tartalomtípus').selectOption('article');
+  await input.fill('Ősprincípium');
+  await expect(page.locator('wiki-search-page .result').first()).toContainText('Kozmogónia: Anu');
+  await expect(page.getByRole('status')).toContainText(/találat/);
+  await input.fill('Kozmgonia: Anu');
+  await expect(page.getByText('Ezt kerested?')).toBeVisible();
+  await page.getByRole('button',{name:'Kozmogónia: Anu'}).click();
+  await expect(page.locator('wiki-search-page .result').first()).toContainText('Kozmogónia: Anu');
+  await page.locator('wiki-search-page .result').first().click();
+  await expect(page).toHaveURL(/#\/wiki\/kozmogonia$/);
 });
 
 test('Router 2.0 supports article deep links, history, 404 and scroll restoration', async ({ page }) => {
@@ -70,6 +94,23 @@ test('Anu article uses an accessible responsive cosmology hero', async ({ page }
   await expect(hero.locator('img')).toBeVisible();
 });
 
+test('article page exposes breadcrumb, stable table of contents and quality summary', async ({ page }) => {
+  await page.goto('/#/wiki/kozmogonia');
+  const view=page.locator('wiki-article-view');
+  await expect(view.getByRole('navigation',{name:'Morzsamenü'})).toContainText('Kozmogónia: Anu');
+  const toc=view.getByRole('navigation',{name:'Tartalomjegyzék'});
+  await expect(toc).toBeVisible();
+  const firstLink=toc.getByRole('link').first();
+  const target=(await firstLink.getAttribute('href'))?.slice(1);
+  expect(target).toBeTruthy();
+  await firstLink.click();
+  await expect(view.locator(`#${target}`)).toBeVisible();
+  await expect(view.getByLabel('Cikkminőség')).toContainText(/100|Közepes|Erős|Bővítendő/);
+  await page.setViewportSize({width:390,height:844});
+  await expect(toc).toBeVisible();
+  expect(await page.evaluate(()=>document.documentElement.scrollWidth-window.innerWidth)).toBeLessThanOrEqual(1);
+});
+
 test('books have a separate reader and stable deep links', async ({ page }) => {
   await page.goto('/#/books');
   await expect(page.getByRole('heading', { name: 'Könyvek' })).toBeVisible();
@@ -78,6 +119,92 @@ test('books have a separate reader and stable deep links', async ({ page }) => {
   await expect(page.getByRole('navigation', { name: 'Könyv lapozása' })).toBeVisible();
   await page.reload();
   await expect(page.getByRole('navigation', { name: 'Könyv lapozása' })).toBeVisible();
+});
+
+test('book reader remembers the exact position and supports manual bookmarks', async ({ page }) => {
+  await page.goto('/#/books');
+  const card = page.locator('book-library .card').filter({ has: page.getByRole('heading', { name: 'Az árnyak királysága', exact: true }) });
+  await card.getByRole('button', { name: /Könyv olvasása|Olvasás folytatása/ }).click();
+  await expect(page.locator('book-library .reader')).toBeVisible();
+  await page.evaluate(() => window.scrollTo(0, 1400));
+  await expect.poll(() => page.evaluate(() => window.scrollY)).toBeGreaterThan(700);
+  await page.waitForTimeout(400);
+  await page.getByRole('button', { name: 'Könyvjelző ide' }).evaluate((button: HTMLButtonElement) => button.click());
+  await expect(page.getByRole('status')).toContainText('könyvjelzőt elmentettem');
+  await page.goto('/#/books');
+  const continuedCard = page.locator('book-library .card').filter({ has: page.getByRole('heading', { name: 'Az árnyak királysága', exact: true }) });
+  await expect(continuedCard.getByRole('button', { name: 'Olvasás folytatása' })).toBeVisible();
+  await continuedCard.getByRole('button', { name: 'Olvasás folytatása' }).click();
+  await expect.poll(() => page.evaluate(() => window.scrollY)).toBeGreaterThan(700);
+  await expect(page.getByRole('heading', { name: 'Könyvjelzők' })).toBeAttached();
+});
+
+test('library exposes reading status, statistics, personal backup and home continuation', async ({ page }) => {
+  await page.goto('/#/books');
+  const card = page.locator('book-library .card').filter({ has: page.getByRole('heading', { name: 'Az árnyak királysága', exact: true }) });
+  await card.getByRole('button', { name: /Könyv olvasása|Olvasás folytatása/ }).click();
+  await page.goto('/#/books');
+  const savedCard = page.locator('book-library .card').filter({ has: page.getByRole('heading', { name: 'Az árnyak királysága', exact: true }) });
+  await expect(savedCard.getByLabel('Az árnyak királysága olvasási állapota')).toHaveValue('reading');
+  await savedCard.getByLabel('Az árnyak királysága olvasási állapota').selectOption('completed');
+  await expect(page.getByLabel('Olvasási statisztika')).toContainText('1 befejezve');
+  await page.getByLabel('Keresés a könyvtárban').fill('árnyak királysága');
+  await expect(page.getByText('1 könyv látható.')).toBeVisible();
+  await expect(page.locator('book-library .card')).toHaveCount(1);
+  await expect(savedCard).toContainText(/kb\. \d+ perc/);
+  await expect(savedCard.getByRole('progressbar')).toHaveJSProperty('value', 100);
+  await page.getByLabel('Keresés a könyvtárban').fill('');
+  await page.getByLabel('Könyvek szűrése olvasási állapot szerint').selectOption('completed');
+  await expect(page.locator('book-library .card')).toHaveCount(1);
+  await page.getByLabel('Könyvek rendezése').selectOption('recent');
+  await expect(page.getByRole('button', { name: 'Teljes személyes mentés' })).toBeVisible();
+  await expect(page.getByLabel('Személyes mentés visszaállítása')).toBeAttached();
+  await page.goto('/#/wiki');
+  await expect(page.locator('diablo-home .witcher-reading-label')).toHaveText('Folytasd innen');
+  await expect(page.locator('diablo-home').getByRole('button', { name: /Olvasás folytatása/ })).toBeVisible();
+});
+
+test('book reader preferences persist and focus mode hides surrounding distractions', async ({ page }) => {
+  await page.setViewportSize({ width: 1440, height: 900 });
+  await page.goto('/#/books');
+  const card = page.locator('book-library .card').filter({ has: page.getByRole('heading', { name: 'Az árnyak királysága', exact: true }) });
+  await card.getByRole('button', { name: /Könyv olvasása|Olvasás folytatása/ }).click();
+  await page.getByRole('button', { name: /Olvasási beállítások/ }).click();
+  await page.getByLabel('Könyv olvasási témája').selectOption('parchment');
+  await page.getByLabel('Könyv betűmérete').fill('1.2');
+  const reader = page.locator('book-library .reader');
+  await expect(reader).toHaveAttribute('data-theme', 'parchment');
+  await expect(reader).toHaveAttribute('style', /--reader-font-scale:1.2/);
+  await page.reload();
+  await expect(reader).toHaveAttribute('data-theme', 'parchment');
+  await expect(reader).toHaveAttribute('style', /--reader-font-scale:1.2/);
+  await page.getByRole('button', { name: 'Zavaró elemek nélküli mód' }).click();
+  await expect(reader).toHaveClass(/focus-mode/);
+  await expect(page.getByRole('button', { name: /Kilépés az olvasómódból/ })).toBeVisible();
+  await page.keyboard.press('Escape');
+  await expect(reader).not.toHaveClass(/focus-mode/);
+});
+
+test('book reader searches every chapter and saves a note for selected text', async ({ page }) => {
+  await page.goto('/#/books');
+  const card = page.locator('book-library .card').filter({ has: page.getByRole('heading', { name: 'Az árnyak királysága', exact: true }) });
+  await card.getByRole('button', { name: /Könyv olvasása|Olvasás folytatása/ }).click();
+  const search = page.getByRole('searchbox', { name: 'Keresés a megnyitott könyvben' });
+  await search.fill('Kentril');
+  await expect(page.locator('book-library .search-results button').first()).toBeVisible();
+  await expect(page.locator('book-library .search-results')).toContainText('találat');
+  const paragraph = page.locator('book-library .chapter-content p').first();
+  await paragraph.evaluate(element => {
+    const selection = window.getSelection(); const range = document.createRange();
+    range.selectNodeContents(element); selection?.removeAllRanges(); selection?.addRange(range);
+    element.dispatchEvent(new MouseEvent('mouseup', { bubbles: true, composed: true }));
+  });
+  await expect(page.locator('book-library .selected-quote')).toBeVisible();
+  await page.getByLabel('Saját olvasási jegyzet').fill('Fontos részlet a történetből.');
+  await page.getByRole('button', { name: 'Jegyzet mentése' }).click();
+  await expect(page.getByRole('status')).toContainText('jegyzetet elmentettem');
+  await expect(page.getByRole('heading', { name: 'Könyvjelzők és jegyzetek' })).toBeVisible();
+  await expect(page.getByText('Fontos részlet a történetből.')).toBeVisible();
 });
 
 test('the Blackmarch article is searchable and the removed importer stays unavailable', async ({ page }) => {
@@ -201,6 +328,10 @@ test('all library cards open non-empty content and every visible control has a n
 test('the 188-event chronology filters, reveals spoilers and supports timeline backlinks', async ({ page }) => {
   await page.goto('/#/timeline');
   await expect(page.getByText(/158 esemény/)).toBeVisible();
+  for (const facet of ['Korszak','Szereplő','Helyszín','Játék','Frakció','Könyv','Kánon','Forrástípus']) await expect(page.getByLabel(facet,{exact:true})).toBeVisible();
+  await page.getByLabel('Kánon',{exact:true}).selectOption('canon');
+  await expect(page.getByRole('status')).toHaveCount(0);
+  await page.getByLabel('Kánon',{exact:true}).selectOption('');
   await page.getByLabel('Diablo IV és újabb történeti spoilerek megjelenítése').check();
   await expect(page.getByRole('heading', { name: '188. A kampány utáni jelenlegi kánonállapot' })).toBeVisible();
   await expect(page.getByRole('button', { name: 'Kapcsolódó wiki-cikk megnyitása →' })).toHaveCount(185);
@@ -219,18 +350,23 @@ test('hidden source library keeps audited sources works and claims available by 
 
 test('newly resolved local books have public metadata pages without full-text reproduction',async({page})=>{await page.goto('/#/wiki/the-lost-horadrim');await expect(page.getByRole('heading',{name:'The Lost Horadrim – Az elveszett Horadrim'})).toBeVisible();await expect(page.getByText(/Lord of Hatred.*előzményregény/).first()).toBeVisible();await page.goto('/#/wiki/stay-awhile-listen-book-1');await expect(page.getByRole('heading',{name:'Stay Awhile and Listen: Book I'})).toBeVisible();await expect(page.getByText(/nem Sanctuary világán belüli kánonmű/)).toBeVisible();});
 
-test('A Gonosz ösvénye has one metadata page at its Diablo I story and timeline position', async ({ page }) => {
+test('A Gonosz ösvénye has one book at its Diablo I position and uses private chapters only locally', async ({ page }) => {
   await page.goto('/#/books');
+  const localLibraryInstalled = await page.evaluate(async () => (await fetch('./private-library/articles.json')).ok);
   const card = page.locator('article.card').filter({ hasText: 'A Gonosz ösvénye' });
-  await expect(card).toContainText('Ismertető és bibliográfia');
-  await card.getByRole('button', { name: 'Könyvadatlap megnyitása' }).click();
-  await expect(page).toHaveURL(/#\/book\/book-the-black-road-reader$/);
+  await expect(card).toContainText(localLibraryInstalled ? '26 fejezet' : 'Ismertető és bibliográfia');
+  await card.getByRole('button', { name: localLibraryInstalled ? 'Könyv olvasása' : 'Könyvadatlap megnyitása' }).click();
+  await expect(page).toHaveURL(localLibraryInstalled ? /#\/book\/book-the-black-road-reader\/book-the-black-road-reader-ch01$/ : /#\/book\/book-the-black-road-reader$/);
   await expect(page.getByText(/Diablo I eseményei előtt kezdődik/)).toBeVisible();
+  if (localLibraryInstalled) {
+    await expect(page.getByRole('button', { name: '26. fejezet' })).toBeVisible();
+    await expect(page.getByRole('heading', { name: 'A Gonosz ösvénye - 1. fejezet' })).toBeVisible();
+  }
   await page.goto('/#/timeline');
   await page.getByLabel('Diablo IV és újabb történeti spoilerek megjelenítése').check();
   await page.getByPlaceholder(/Esemény, szereplő/).fill('A Gonosz ösvénye eseményei');
   await page.getByRole('button', { name: 'Kapcsolódó könyv megnyitása →' }).click();
-  await expect(page).toHaveURL(/#\/book\/book-the-black-road-reader$/);
+  await expect(page).toHaveURL(localLibraryInstalled ? /#\/book\/book-the-black-road-reader\/book-the-black-road-reader-ch01$/ : /#\/book\/book-the-black-road-reader$/);
   await page.getByText('Részletes jogi információk').click();
   await expect(page.getByText(/nem a Lore Nexus szerkesztőjének szellemi tulajdona/)).toBeVisible();
 });

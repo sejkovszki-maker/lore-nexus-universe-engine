@@ -5,6 +5,7 @@ import { wikiArticles } from '../data/wikiArticles';
 import DOMPurify from 'dompurify';
 import { buildBacklinkIndex, relatedArticlesFor, renderWikiLinks } from '../wiki/link-engine';
 import { diabloTimelineEvents } from '../data/diabloChronology.ts';
+import { addStableHeadingIds, articleQualitySummary } from '../wiki/article-presentation.ts';
 
 @customElement('wiki-article-view')
 export class WikiArticleView extends LitElement {
@@ -41,6 +42,7 @@ export class WikiArticleView extends LitElement {
     .infobox dt { color: #d4af37; font-weight: 700; margin-top: .75rem; }
     .infobox dd { margin: .15rem 0 0; color: #eaddc5; }
     .relations { clear: both; margin-top: 2rem; padding-top: 1.5rem; border-top: 1px solid #8b000066; }
+    .breadcrumb { display:flex;flex-wrap:wrap;gap:.45rem;align-items:center;margin:0 0 1rem;color:#b9aa91;font-size:.9rem }.breadcrumb button{border:0;background:none;color:#d4af37;padding:.35rem;cursor:pointer}.toc{float:left;width:min(230px,28%);margin:0 1.5rem 1.5rem 0;padding:1rem;border:1px solid #9d6b2e55;background:#080807dd}.toc h2{margin:.1rem 0 .7rem;color:#d4af37;font:700 1rem 'Cinzel',serif}.toc a{display:block;padding:.35rem;color:#cbb895;text-decoration:none}.toc a.level-3{padding-left:1.2rem;font-size:.9rem}.toc a:hover,.toc a:focus-visible{color:#fff;text-decoration:underline}.quality{clear:both;display:flex;flex-wrap:wrap;gap:.65rem;align-items:center;margin-top:2rem;padding:1rem;border:1px solid #9d6b2e55;background:#0b0909}.quality meter{width:160px;accent-color:#d4af37}.quality small{color:#b9aa91}
     .relation-list { display: flex; flex-wrap: wrap; gap: .6rem; }
     .relation-button { border: 1px solid #9d6b2e77; background: #d4af3710; color: #eaddc5; border-radius: 1px; padding: .55rem .9rem; cursor: pointer; font-family: 'Cinzel', serif; }
     .relation-button:hover, .relation-button:focus-visible { border-color: #d4af37; color: #d4af37; outline: none; }
@@ -134,7 +136,7 @@ export class WikiArticleView extends LitElement {
       margin: 2rem 0;
     }
 
-    @media (max-width: 700px) { .infobox { float: none; width: auto; margin: 0 0 1.5rem; } :host { max-width: 100%; } }
+    @media (max-width: 700px) { .infobox,.toc { float: none; width: auto; margin: 0 0 1.5rem; } :host { max-width: 100%; } .toc{max-height:45vh;overflow:auto}.quality meter{width:100%} }
     @media (max-width: 700px) {
       .article-hero { min-height: 0; overflow: visible; background: transparent; border: 0; box-shadow: none; }
       .article-hero img { position: relative; display: block; height: auto; aspect-ratio: 16 / 10; object-position: 59% 22%; border: 1px solid #9d6b2e77; }
@@ -194,11 +196,15 @@ export class WikiArticleView extends LitElement {
       
     htmlContent = renderWikiLinks(htmlContent, scopedArticles, article.id);
     htmlContent = DOMPurify.sanitize(htmlContent, { ADD_ATTR: ['data-wiki-id', 'data-relation', 'data-missing-id'] });
+    const presentation = addStableHeadingIds(htmlContent);
+    htmlContent = presentation.html;
     const related = relatedArticlesFor(article, scopedArticles);
     const backlinks = (buildBacklinkIndex(scopedArticles).get(article.id) || []).map(id => scopedArticles[id]).filter(Boolean);
     const timelineEvents = universeId === 'diablo' ? diabloTimelineEvents.filter(event => event.articleId === article.id) : [];
+    const quality = articleQualitySummary(article, related.length, backlinks.length);
 
     return html`
+      <nav class="breadcrumb" aria-label="Morzsamenü"><button @click=${this.handleBack}>${universeId === 'witcher' ? 'Vaják' : 'Diablo'}</button><span aria-hidden="true">›</span><button @click=${this.handleBack}>${article.category}</button><span aria-hidden="true">›</span><span aria-current="page">${article.title}</span></nav>
       <div class="mb-6">
         <button 
           @click=${this.handleBack}
@@ -216,7 +222,9 @@ export class WikiArticleView extends LitElement {
         ${article.subtitle ? html`<h2 class="text-xl text-parchment/70 font-heading italic mb-8 border-b border-blood-red/40 pb-4">${article.subtitle}</h2>` : ''}`}
         
         ${article.infobox ? html`<aside class="infobox" aria-label="Cikkadatok"><h2>Adatlap</h2><dl>${Object.entries(article.infobox).map(([key, value]) => html`<dt>${key}</dt><dd>${value}</dd>`)}</dl></aside>` : ''}
+        ${presentation.headings.length ? html`<nav class="toc" aria-label="Tartalomjegyzék"><h2>Tartalomjegyzék</h2>${presentation.headings.map(item=>html`<a class=${`level-${item.level}`} href=${`#${item.id}`} @click=${(event:MouseEvent)=>{event.preventDefault();this.shadowRoot?.getElementById(item.id)?.scrollIntoView({behavior:'smooth',block:'start'});}}>${item.label}</a>`)}</nav>` : ''}
         <div class="markdown-content" @click=${this.handleContentClick} .innerHTML=${htmlContent}></div>
+        <section class="quality" aria-label="Cikkminőség"><strong>Cikkminőség: ${quality.label}</strong><meter min="0" max="100" .value=${quality.score}>${quality.score}%</meter><span>${quality.score}/100</span><small>${quality.checks.length?quality.checks.join(' · '):'A cikk további bővítést igényel.'}</small></section>
         ${related.length ? html`<section class="relations" aria-labelledby="related-heading"><h2 id="related-heading">Kapcsolódó szócikkek</h2><div class="relation-list">${related.map(item => html`<button class="relation-button" @click=${() => this.openArticle(item.id)}>${item.title}</button>`)}</div></section>` : ''}
         ${backlinks.length ? html`<section class="relations" aria-labelledby="backlinks-heading"><h2 id="backlinks-heading">Erre a lapra hivatkozik</h2><div class="relation-list">${backlinks.map(item => html`<button class="relation-button" @click=${() => this.openArticle(item.id)}>${item.title}</button>`)}</div></section>` : ''}
         ${timelineEvents.length ? html`<section class="relations" aria-labelledby="timeline-links-heading"><h2 id="timeline-links-heading">Kapcsolódó idővonalesemények</h2><div class="relation-list">${timelineEvents.map(event => html`<button class="relation-button" @click=${() => useAppStore.openTimelineRoute(event.id)}>${String(event.eventOrder).padStart(3,'0')}. ${event.title}</button>`)}</div></section>` : ''}

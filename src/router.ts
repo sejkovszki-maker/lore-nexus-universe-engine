@@ -11,7 +11,7 @@ export interface AppRoute {
 }
 
 const SAFE_SEGMENT = /^[a-z0-9][a-z0-9-]{0,119}$/;
-const LEGACY_TABS: Record<string, AppView> = { timeline: 'timeline', articles: 'articles', 'article-view': 'article-view', story: 'story', conflicts: 'conflicts', books: 'books', sources:'sources' };
+const LEGACY_TABS: Record<string, AppView> = { timeline: 'timeline', articles: 'articles', 'article-view': 'article-view', story: 'story', conflicts: 'conflicts', books: 'books', sources:'sources',search:'search' };
 
 function safe(value: string | undefined): string | undefined {
   if (!value) return undefined;

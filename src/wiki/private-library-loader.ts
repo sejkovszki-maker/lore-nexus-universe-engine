@@ -28,9 +28,18 @@ export async function hydratePrivateLibrary(): Promise<number> {
   if (await sha256(JSON.stringify(envelope.articles)) !== envelope.payloadSha256) throw new Error('PRIVATE_LIBRARY_INTEGRITY_FAILED');
   for (const article of envelope.articles) {
     const existing = wikiArticles[article.id];
-    const allowedBookOverlay = article.type === 'book' && existing?.type === 'book' &&
+    const existingIsLegacyBook = existing && existing.type === undefined &&
+      existing.category?.startsWith('Könyvek') && !/-ch\d+$/u.test(existing.id);
+    const existingIsLegacyChapter = existing && existing.type === undefined &&
+      existing.category?.startsWith('Könyvek') && article.parentBook !== undefined &&
+      new RegExp(`^${article.parentBook.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')}-ch\\d+$`, 'u').test(existing.id);
+    const allowedBookOverlay = article.type === 'book' && (existing?.type === 'book' || existingIsLegacyBook) &&
       (article.universeId ?? 'diablo') === (existing.universeId ?? 'diablo');
-    if (existing && !allowedBookOverlay) throw new Error(`PRIVATE_LIBRARY_COLLISION:${article.id}`);
+    const allowedChapterRepair = article.type === 'chapter' && (existing?.type === 'chapter' || existingIsLegacyChapter) &&
+      (article.parentBook === existing.parentBook || existingIsLegacyChapter) &&
+      typeof article.parentBook === 'string' &&
+      (article.universeId ?? 'diablo') === (existing.universeId ?? 'diablo');
+    if (existing && !allowedBookOverlay && !allowedChapterRepair) throw new Error(`PRIVATE_LIBRARY_COLLISION:${article.id}`);
     wikiArticles[article.id] = article;
   }
   return envelope.articles.length;

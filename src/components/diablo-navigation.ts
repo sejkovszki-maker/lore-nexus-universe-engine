@@ -70,7 +70,7 @@ export class DiabloNavigation extends LitElement {
     const q = (e.target as HTMLInputElement).value;
     this.searchValue = q;
     useAppStore.setSearchQuery(q);
-    if (q.length > 0) useAppStore.setActiveTab('articles');
+    if (q.length > 0) useAppStore.setActiveTab('search');
   }
 
   render() {

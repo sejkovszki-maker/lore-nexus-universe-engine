@@ -5,6 +5,7 @@ import { storyBooks, storyReadingPath } from '../wiki/story-order';
 import { renderWikiLinks } from '../wiki/link-engine';
 import { wikiArticles } from '../data/wikiArticles';
 import { useAppStore } from '../store/appState.ts';
+import { segmentIntroduction, storyRecap } from '../wiki/story-reader-context.ts';
 
 const STORAGE_KEY = 'lore-nexus:story-progress:v1';
 const BOOKS_SETTING_KEY = 'lore-nexus:story-books:v1';
@@ -35,6 +36,14 @@ export class StoryReader extends LitElement {
     .controls { display:grid; grid-template-columns:1fr 1fr; gap:1rem; margin-top:2.5rem; }
     .book-tools { display:flex; align-items:center; justify-content:space-between; gap:1rem; flex-wrap:wrap; margin:1rem 0; padding:.85rem; border:1px solid #d4af3744; border-radius:.65rem; background:#d4af370a; }
     .book-badge { color:#d4af37; font-weight:800; }
+    .source-badge { display:inline-flex; align-items:center; gap:.4rem; margin:.3rem 0 1rem; padding:.35rem .65rem; border:1px solid #d4af3755; border-radius:99px; color:#d4af37; font-size:.85rem; font-weight:800; }
+    .segment-intro,.recap { margin:1.2rem 0; padding:1rem; border:1px solid #d4af3744; border-radius:.75rem; background:#d4af3709; }
+    .segment-intro h2,.recap summary { color:#d4af37; font-family:'Cinzel',serif; }
+    .segment-actions { display:flex; gap:.75rem; flex-wrap:wrap; margin-top:1rem; }
+    .recap summary { cursor:pointer; font-weight:800; }
+    .recap ol { display:grid; gap:.8rem; padding-left:1.4rem; }
+    .recap li strong,.recap li span { display:block; }
+    .recap li span { color:#cbbd9f; font-size:.85rem; }
     .toggle { display:flex; align-items:center; gap:.55rem; cursor:pointer; }
     .toggle input { inline-size:1.15rem; block-size:1.15rem; accent-color:#d4af37; }
     button { min-height:48px; border:1px solid #d4af3766; border-radius:.65rem; background:#d4af3712; color:#f0dfbc; padding:.75rem 1rem; cursor:pointer; font-weight:700; }
@@ -104,8 +113,7 @@ export class StoryReader extends LitElement {
     window.scrollTo({ top: 0, behavior: 'smooth' });
   }
 
-  private toggleBooks(event: Event) {
-    const enabled = (event.target as HTMLInputElement).checked;
+  private setBooksEnabled(enabled: boolean) {
     const currentChapter = this.chapters[this.chapterIndex];
     const currentId = currentChapter?.article.id;
     this.booksEnabled = enabled;
@@ -128,6 +136,10 @@ export class StoryReader extends LitElement {
     this.goTo(next >= 0 ? next : this.chapters.length - 1);
   }
 
+  private startCurrentUnit() {
+    this.renderRoot.querySelector<HTMLElement>('#story-title')?.scrollIntoView({ block: 'start', behavior: 'smooth' });
+  }
+
   private articleHtml(content: string, articleId: string) {
     const scopedArticles = Object.fromEntries(Object.entries(wikiArticles).filter(([, article]) => (article.universeId || 'diablo') === this.universeId));
     const linked = renderWikiLinks(content, scopedArticles, articleId);
@@ -146,6 +158,8 @@ export class StoryReader extends LitElement {
     const article = chapter?.article;
     if (!article) return html`<p>A történet jelenleg nem érhető el.</p>`;
     const percent = Math.round(((this.chapterIndex + 1) / this.chapters.length) * 100);
+    const introduction = segmentIntroduction(this.chapters, this.chapterIndex, wikiArticles);
+    const recap = storyRecap(this.chapters, this.chapterIndex);
     return html`<section class="reader" aria-labelledby="story-title">
       <div class="toolbar">
         <label for="story-chapter">Fejezet</label>
@@ -153,7 +167,7 @@ export class StoryReader extends LitElement {
             ${this.chapters.map((item, index) => html`<option value=${index}>${index + 1}. ${item.segmentId ? '📖 ' : ''}${item.article.title}</option>`)}
           </select>
         <div class="book-tools">
-          <label class="toggle"><input type="checkbox" .checked=${this.booksEnabled} @change=${this.toggleBooks}> Könyvek beillesztése a történetbe</label>
+          <label>Olvasási mód <select aria-label="Folyamatos történet olvasási módja" .value=${this.booksEnabled?'complete':'main'} @change=${(event:Event)=>this.setBooksEnabled((event.target as HTMLSelectElement).value==='complete')}><option value="main">Csak a fő történet</option><option value="complete">Teljes történet könyvekkel</option></select></label>
           ${chapter.segmentId ? html`<button @click=${this.skipCurrentBook}>A teljes könyv átugrása →</button>` : html`<span>A könyvek a megfelelő történeti ponton jelennek meg.</span>`}
         </div>
         <div class="progress" role="progressbar" aria-label="Olvasási előrehaladás" aria-valuemin="0" aria-valuemax="100" aria-valuenow=${percent} aria-valuetext=${`${this.chapterIndex + 1}/${this.chapters.length}. fejezet`}><span style=${`width:${percent}%`}></span></div>
@@ -161,6 +175,9 @@ export class StoryReader extends LitElement {
       </div>
       <article>
         ${chapter.segmentTitle ? html`<p class="book-badge">📖 Könyvszakasz: ${chapter.segmentTitle}</p>` : ''}
+        <span class="source-badge">${chapter.segmentId?'📖 Könyv':'✦ Fő történet'}</span>
+        ${introduction?html`<aside class="segment-intro" aria-labelledby="segment-intro-title"><h2 id="segment-intro-title">Itt következik: ${introduction.title}</h2><p>${introduction.explanation}</p>${introduction.summary?html`<p><strong>Rövid tájékozódó összefoglaló:</strong> ${introduction.summary}</p>`:''}<div class="segment-actions"><button @click=${this.startCurrentUnit}>Könyv olvasásának megkezdése</button><button @click=${this.skipCurrentBook}>A könyv átugrása →</button></div></aside>`:''}
+        ${recap.length?html`<details class="recap"><summary>Mi történt eddig?</summary><ol>${recap.map(item=>html`<li><span>${item.kind}</span><strong>${item.title}</strong>${item.summary?html`<p>${item.summary}</p>`:''}</li>`)}</ol></details>`:''}
         <p>${article.category}</p>
         <h1 id="story-title">${article.title}</h1>
         ${article.subtitle ? html`<p><em>${article.subtitle}</em></p>` : ''}

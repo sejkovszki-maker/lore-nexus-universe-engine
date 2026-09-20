@@ -12,6 +12,7 @@ import './diablo-timeline';
 import './canon-conflict-dashboard';
 import './book-library';
 import './source-library';
+import './wiki-search-page';
 
 @customElement('diablo-app')
 export class DiabloApp extends LitElement {
@@ -130,7 +131,7 @@ export class DiabloApp extends LitElement {
           <section class="unified-menu-surface ${section ? 'unified-menu-surface--active' : ''}">
             ${this.activeTab === 'timeline' ? html`<diablo-timeline class="w-full"></diablo-timeline>` : ''}
             ${this.activeTab === 'articles' ? html`<wiki-article-grid class="w-full"></wiki-article-grid>` : ''}
-            ${this.activeTab === 'search' ? html`<wiki-article-grid class="w-full"></wiki-article-grid>` : ''}
+            ${this.activeTab === 'search' ? html`<wiki-search-page class="w-full"></wiki-search-page>` : ''}
             ${this.activeTab === 'story' ? html`<story-reader class="w-full"></story-reader>` : ''}
             ${this.activeTab === 'books' ? html`<book-library class="w-full"></book-library>` : ''}
             ${this.activeTab === 'sources' ? html`<source-library class="w-full"></source-library>` : ''}

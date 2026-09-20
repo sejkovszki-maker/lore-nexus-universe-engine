@@ -3,6 +3,7 @@ import { customElement } from 'lit/decorators.js';
 import { useAppStore } from '../store/appState.ts';
 import { wikiArticles } from '../data/wikiArticles.ts';
 import { articleUniverseId } from '../universe/article-universes.ts';
+import { latestReadingItem } from '../wiki/reading-dashboard.ts';
 
 // A kezdőlap tartalma ezen a két listán egyszerűen bővíthető vagy átrendezhető.
 export const witcherFeatured = [
@@ -39,6 +40,7 @@ export class WitcherHome extends LitElement {
     const books = records.filter(article => article.type === 'book');
     const featured = witcherFeatured.map(item => ({ ...item, article: wikiArticles[item.id] })).filter(item => item.article);
     const firstBook = wikiArticles['witcher-book-last-wish'];
+    const continuation = latestReadingItem('witcher', wikiArticles);
 
     return html`<section class="witcher-home" aria-labelledby="witcher-home-title">
       <header class="witcher-hero">
@@ -77,10 +79,10 @@ export class WitcherHome extends LitElement {
           <div class="witcher-gateway-list">${witcherGateways.map(item => html`<button @click=${() => this.openArticle(item.id)}><i class="fa-solid ${item.icon}" aria-hidden="true"></i><span>${item.label}</span><b>›</b></button>`)}</div>
         </section>
         <section class="witcher-home-section witcher-reading-start" aria-labelledby="witcher-reading-title">
-          <span class="witcher-reading-label">Ajánlott kezdés</span>
-          <h2 id="witcher-reading-title">${firstBook?.title ?? 'Az utolsó kívánság'}</h2>
-          <p>Geralt korai történetei bemutatják a vaják hivatását, Yennefert és a világ erkölcsi szürkezónáit. Első olvasásra innen érdemes elindulni.</p>
-          <button class="witcher-primary-action" @click=${() => this.openTab('books')}>Olvasási sorrend megnyitása ›</button>
+          <span class="witcher-reading-label">${continuation?'Folytasd innen':'Ajánlott kezdés'}</span>
+          <h2 id="witcher-reading-title">${continuation?.title??firstBook?.title??'Az utolsó kívánság'}</h2>
+          <p>${continuation?.detail??'Geralt korai történetei bemutatják a vaják hivatását, Yennefert és a világ erkölcsi szürkezónáit. Első olvasásra innen érdemes elindulni.'}</p>
+          <button class="witcher-primary-action" @click=${() => continuation?.kind==='book' ? useAppStore.openBookRoute(continuation.bookId!,continuation.chapterId) : continuation?.kind==='story' ? useAppStore.openStoryRoute(continuation.articleId) : this.openTab('books')}>${continuation?'Olvasás folytatása ›':'Olvasási sorrend megnyitása ›'}</button>
         </section>
       </div>
 

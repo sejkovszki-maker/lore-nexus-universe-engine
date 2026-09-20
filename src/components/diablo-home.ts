@@ -3,6 +3,7 @@ import { customElement } from 'lit/decorators.js';
 import { useAppStore } from '../store/appState.ts';
 import { wikiArticles } from '../data/wikiArticles.ts';
 import { articleUniverseId } from '../universe/article-universes.ts';
+import { latestReadingItem } from '../wiki/reading-dashboard.ts';
 
 const featured = [
   { id: 'prime-lesser-evils', eyebrow: 'A Pokol urai', icon: 'fa-fire', description: 'Diablo, Baal és Mephisto: a Nagy Konfliktus legsötétebb hatalmai.' },
@@ -35,6 +36,7 @@ export class DiabloHome extends LitElement {
     const records = Object.values(wikiArticles).filter(article => articleUniverseId(article) === 'diablo');
     const articles = records.filter(article => article.type !== 'book' && article.type !== 'chapter');
     const selected = featured.map(item => ({ ...item, article: wikiArticles[item.id] })).filter(item => item.article);
+    const continuation = latestReadingItem('diablo', wikiArticles);
 
     return html`<section class="witcher-home diablo-home" aria-labelledby="diablo-home-title">
       <header class="witcher-hero diablo-hero">
@@ -73,10 +75,10 @@ export class DiabloHome extends LitElement {
           <div class="witcher-gateway-list">${gateways.map(item => html`<button @click=${() => this.openArticle(item.id)}><i class="fa-solid ${item.icon}" aria-hidden="true"></i><span>${item.label}</span><b>›</b></button>`)}</div>
         </section>
         <section class="witcher-home-section witcher-reading-start" aria-labelledby="diablo-reading-title">
-          <span class="witcher-reading-label">Ajánlott kezdés</span>
-          <h2 id="diablo-reading-title">A Nagy Konfliktus</h2>
-          <p>Ismerd meg, hogyan született Sanctuary, és miért sodródik újra meg újra az angyalok és démonok örök háborújába.</p>
-          <button class="witcher-primary-action" @click=${() => this.openArticle('kozmogonia')}>Kozmogónia megnyitása ›</button>
+          <span class="witcher-reading-label">${continuation?'Folytasd innen':'Ajánlott kezdés'}</span>
+          <h2 id="diablo-reading-title">${continuation?.title??'A Nagy Konfliktus'}</h2>
+          <p>${continuation?.detail??'Ismerd meg, hogyan született Sanctuary, és miért sodródik újra meg újra az angyalok és démonok örök háborújába.'}</p>
+          <button class="witcher-primary-action" @click=${() => continuation?.kind==='book' ? useAppStore.openBookRoute(continuation.bookId!,continuation.chapterId) : continuation?.kind==='story' ? useAppStore.openStoryRoute(continuation.articleId) : this.openArticle('kozmogonia')}>${continuation?'Olvasás folytatása ›':'Kozmogónia megnyitása ›'}</button>
         </section>
       </div>
 

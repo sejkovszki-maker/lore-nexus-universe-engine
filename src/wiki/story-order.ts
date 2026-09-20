@@ -82,8 +82,10 @@ export function storyBooks(universeId = 'diablo'): StoryBook[] {
     const curated = storyBookSegments
       .map(segment => ({ id: segment.id, title: segment.title, after: segment.after, chapters: segmentArticles(segment) }))
       .filter(book => book.chapters.length > 0 || Boolean(wikiArticles[book.id]));
+    const curatedIds = new Set(curated.map(book => book.id));
     const blackRoad = imported.filter(book => book.id === 'book-the-black-road-reader');
-    return chronologicalBookOrder([...blackRoad, ...curated, ...imported.filter(book => book.id !== 'book-the-black-road-reader')], universeId);
+    const remainingImported = imported.filter(book => book.id !== 'book-the-black-road-reader' && !curatedIds.has(book.id));
+    return chronologicalBookOrder([...blackRoad, ...curated, ...remainingImported], universeId);
   }
   return chronologicalBookOrder(imported, universeId);
 }
