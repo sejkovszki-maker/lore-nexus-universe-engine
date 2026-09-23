@@ -13,8 +13,24 @@ export default defineConfig({
         // Temporary compatibility ceiling for the legacy embedded lore bundle.
         // The Source/Document storage migration will remove the data payload from this JS chunk.
         maximumFileSizeToCacheInBytes: 5 * 1024 * 1024,
-        globPatterns: ['**/*.{js,css,html,ico,png,svg,wasm}'],
-        runtimeCaching: []
+        globPatterns: ['**/*.{js,css,html,ico,svg,wasm}'],
+        runtimeCaching: [{
+          urlPattern: ({ request }) => request.destination === 'image',
+          handler: 'CacheFirst',
+          options: {
+            cacheName: 'lore-nexus-images-v1',
+            expiration: { maxEntries: 120, maxAgeSeconds: 60 * 60 * 24 * 90 },
+            cacheableResponse: { statuses: [0, 200] },
+          },
+        }, {
+          urlPattern: ({ url }) => url.pathname.endsWith('/reader-library/articles.json'),
+          handler: 'CacheFirst',
+          options: {
+            cacheName: 'lore-nexus-reader-library-v1',
+            expiration: { maxEntries: 2, maxAgeSeconds: 60 * 60 * 24 * 365 },
+            cacheableResponse: { statuses: [0, 200] },
+          },
+        }]
       },
       manifest: {
         id: './',

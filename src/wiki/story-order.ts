@@ -31,6 +31,27 @@ export const canonicalStoryIds = [
   'diablo-4-loh',
 ] as const;
 
+/** A könyv- és játékkódex-lapok nélküli, olvasásra szerkesztett Witcher-történeti ív. */
+export const witcherStoryIds = [
+  'witcher-world',
+  'witcher-conjunction',
+  'witcher-witchers',
+  'witcher-geralt',
+  'witcher-yennefer',
+  'witcher-ciri',
+  'witcher-northern-realms',
+  'witcher-nilfgaard',
+  'witcher-nilfgaard-history',
+  'witcher-northern-wars',
+  'witcher-thanedd-coup',
+  'witcher-elder-blood',
+  'witcher-emhyr',
+  'witcher-lodge-sorceresses',
+  'witcher-wild-hunt',
+  'witcher-games-branch',
+  'witcher-songs-of-the-past',
+] as const;
+
 export function canonicalStory(): WikiArticle[] {
   return canonicalStoryIds.map(id => wikiArticles[id]).filter((article): article is WikiArticle => Boolean(article));
 }
@@ -67,7 +88,9 @@ export interface StoryBook { id: string; title: string; after: string | null; ch
 function chronologicalBookOrder(books: StoryBook[], universeId: string): StoryBook[] {
   const storyIds = universeId === 'diablo'
     ? [...canonicalStoryIds]
-    : Object.values(wikiArticles).filter(article => articleUniverseId(article) === universeId && article.type !== 'book' && article.type !== 'chapter').sort((a, b) => (a.lastEdited || 0) - (b.lastEdited || 0) || a.title.localeCompare(b.title, 'hu')).map(article => article.id);
+    : universeId === 'witcher'
+      ? [...witcherStoryIds]
+      : Object.values(wikiArticles).filter(article => articleUniverseId(article) === universeId && article.type !== 'book' && article.type !== 'chapter').sort((a, b) => (a.lastEdited || 0) - (b.lastEdited || 0) || a.title.localeCompare(b.title, 'hu')).map(article => article.id);
   const anchorRank = new Map(storyIds.map((id, index) => [id, index]));
   return books.map((book, sourceIndex) => ({ book, sourceIndex })).sort((left, right) => {
     const leftRank = left.book.after ? anchorRank.get(left.book.after) ?? Number.MAX_SAFE_INTEGER : Number.MAX_SAFE_INTEGER;
@@ -92,7 +115,9 @@ export function storyBooks(universeId = 'diablo'): StoryBook[] {
 
 export function storyReadingPath(includeBooks = true, universeId = 'diablo'): StoryReadingChapter[] {
   if (universeId !== 'diablo') {
-    const articles = Object.values(wikiArticles).filter(article => articleUniverseId(article) === universeId && article.type !== 'book' && article.type !== 'chapter').sort((a, b) => (a.lastEdited || 0) - (b.lastEdited || 0) || a.title.localeCompare(b.title, 'hu'));
+    const articles = universeId === 'witcher'
+      ? witcherStoryIds.map(id => wikiArticles[id]).filter((article): article is WikiArticle => Boolean(article))
+      : Object.values(wikiArticles).filter(article => articleUniverseId(article) === universeId && article.type !== 'book' && article.type !== 'chapter').sort((a, b) => (a.lastEdited || 0) - (b.lastEdited || 0) || a.title.localeCompare(b.title, 'hu'));
     const path: StoryReadingChapter[] = [];
     const books = storyBooks(universeId);
     for (const article of articles) {

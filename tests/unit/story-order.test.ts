@@ -1,7 +1,11 @@
 import assert from 'node:assert/strict';
 import test from 'node:test';
-import { canonicalStory, canonicalStoryIds, storyBooks, storyBookSegments, storyReadingPath } from '../../src/wiki/story-order.ts';
+import { canonicalStory, canonicalStoryIds, storyBooks, storyBookSegments, storyReadingPath, witcherStoryIds } from '../../src/wiki/story-order.ts';
 import { wikiArticles } from '../../src/data/wikiArticles.ts';
+import { installReaderArticles } from '../../src/wiki/reader-library-loader.ts';
+import { readFile } from 'node:fs/promises';
+
+installReaderArticles(JSON.parse(await readFile(new URL('../../public/reader-library/articles.json', import.meta.url), 'utf8')));
 
 test('canonical story is complete, unique and follows the intended historical endpoints', () => {
   const story = canonicalStory();
@@ -34,6 +38,10 @@ test('the built-in Witcher archive has an isolated chronological reading path an
   assert.equal(ladyLake?.chapters.length, 0);
   assert.ok(storyBooks('witcher').findIndex(book => book.id === 'witcher-book-lady-lake') > storyBooks('witcher').findIndex(book => book.id === 'witcher-book-tower-swallow'));
   assert.equal(Object.keys(wikiArticles).some(id => /^witcher-book-lady-lake-ch\d+$/.test(id)), false);
+  const mainPath = storyReadingPath(false, 'witcher').map(item => item.article.id);
+  assert.deepEqual(mainPath, [...witcherStoryIds]);
+  assert.equal(mainPath.some(id => id.startsWith('witcher-game-')), false);
+  assert.equal(mainPath.includes('witcher-screen-branch'), false);
 });
 
 test('optional novels are inserted at curated historical points and remain skippable as segments', () => {

@@ -1,6 +1,6 @@
 export const BOOK_READER_SETTINGS_KEY = 'lore-nexus:book-reader-settings:v1';
 
-export type ReaderTheme = 'dark' | 'parchment' | 'contrast';
+export type ReaderTheme = 'dark' | 'parchment' | 'contrast' | 'eink';
 export interface BookReaderSettings {
   fontScale: number;
   lineHeight: number;
@@ -23,7 +23,7 @@ export function normalizeBookReaderSettings(value: unknown): BookReaderSettings 
   const fontScale = typeof candidate.fontScale === 'number' && Number.isFinite(candidate.fontScale) ? candidate.fontScale : defaultBookReaderSettings.fontScale;
   const lineHeight = typeof candidate.lineHeight === 'number' && Number.isFinite(candidate.lineHeight) ? candidate.lineHeight : defaultBookReaderSettings.lineHeight;
   const columnWidth = typeof candidate.columnWidth === 'number' && Number.isFinite(candidate.columnWidth) ? candidate.columnWidth : defaultBookReaderSettings.columnWidth;
-  const theme: ReaderTheme = candidate.theme === 'parchment' || candidate.theme === 'contrast' || candidate.theme === 'dark' ? candidate.theme : defaultBookReaderSettings.theme;
+  const theme: ReaderTheme = candidate.theme === 'parchment' || candidate.theme === 'contrast' || candidate.theme === 'eink' || candidate.theme === 'dark' ? candidate.theme : defaultBookReaderSettings.theme;
   return {
     fontScale: Math.round(clamp(fontScale, .85, 1.4) * 100) / 100,
     lineHeight: Math.round(clamp(lineHeight, 1.5, 2.3) * 100) / 100,

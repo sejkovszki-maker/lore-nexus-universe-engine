@@ -35,6 +35,7 @@ export class WikiArticleView extends LitElement {
     .markdown-content h2 { font-size: 2rem; }
     .markdown-content h3 { font-size: 1.35rem; color: #d4b87a; border-left: 3px solid #8b000066; padding-left: .75rem; margin-top: 1.5rem; }
     .markdown-content p { margin-bottom: 1.25rem; }
+    .markdown-content > p,.markdown-content > ul,.markdown-content > ol,.markdown-content > table,.markdown-content > blockquote { content-visibility:auto; contain-intrinsic-size:auto 4rem; }
     .markdown-content em { color: #b8860b; }
     .markdown-content strong { color: #f8fafc; font-weight: 600; }
     .infobox { float: right; width: min(320px, 42%); margin: 0 0 1.5rem 1.5rem; padding: 1.2rem; border: 1px solid #9d6b2e77; border-radius: 1px; background: #080807ee; box-shadow: inset 0 0 0 5px #030303, inset 0 0 0 6px #9d6b2e33; }

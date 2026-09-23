@@ -3,8 +3,10 @@ import { createHash } from 'node:crypto';
 import { readFile } from 'node:fs/promises';
 import { wikiArticles } from '../src/data/wikiArticles.ts';
 import { diabloTimelineEvents } from '../src/data/diabloChronology.ts';
+import { installReaderArticles } from '../src/wiki/reader-library-loader.ts';
 
 const baseline = JSON.parse(await readFile('tests/regression/wiki-baseline.json', 'utf8'));
+installReaderArticles(JSON.parse(await readFile('public/reader-library/articles.json', 'utf8')));
 const ids = Object.keys(wikiArticles).sort();
 const structuralRecords = ids.map((id) => ({
   id,

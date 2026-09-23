@@ -1,0 +1,22 @@
+{
+  "schemaVersion": 1,
+  "timezone": "Europe/Budapest",
+  "lastSuccessfulHourlyCheck": "2026-09-19T00:00:00+02:00",
+  "lastSuccessfulDailyCheck": "2026-09-23T00:00:00+02:00",
+  "lastSuccessfulWeeklyCheck": "2026-09-19T00:00:00+02:00",
+  "lastSuccessfulMonthlyCheck": null,
+  "lastRunMode": [
+    "manual-daily-source-watch",
+    "local-integrity"
+  ],
+  "lastReport": "docs/research-state/AUTOMATION_REPORT_2026-09-23.md",
+  "knownDiscoveryKeys": [
+    "diablo:season-of-hells-legacy:official:2026-09",
+    "witcher:songs-of-the-past:official:2026-08",
+    "witcher:letten:official:2026-08",
+    "witcher-3:remastered:official:2026-08",
+    "witcher:reigns:official:2026-02",
+    "diablo4:whats-next-panel-recap:official:2026-09",
+    "diablo-immortal:made-to-suffer:official:2026-09"
+  ]
+}

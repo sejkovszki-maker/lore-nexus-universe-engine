@@ -1,6 +1,8 @@
 import type { WikiArticles } from '../../types.ts';
 
 const blizzardSeasonSource = 'https://news.blizzard.com/en-us/article/24295394/celebrate-30-years-of-diablo-in-season-of-hell-s-legacy';
+const blizzardSeasonPanelSource = 'https://news.blizzard.com/en-us/article/24297205/diablo-iv-what-s-next-panel-recap';
+const blizzardMadeToSufferSource = 'https://news.blizzard.com/en-us/article/24297202/made-to-suffer-your-first-look-at-our-next-update';
 const songsSource = 'https://press.cdprojektred.com/en/news/1839/the-witcher-3-wild-hunt-remastered-announced-songs-of-the-past-gets-first-look';
 const witcher3Source = 'https://www.thewitcher.com/_next/witcher3';
 const reignsSource = 'https://www.thewitcher.com/us/en/news/51911/reigns-the-witcher-available-now';
@@ -14,7 +16,7 @@ export const latestOfficialReleaseArticles: WikiArticles = {
     category: 'Események – Szezonális történetek',
     title: "Season of Hell's Legacy – A Pokol örökségének szezonja",
     subtitle: 'Diablo harminc évének emlékei és a Főgonoszok visszhangjai',
-    lastEdited: 2026092001,
+    lastEdited: 2026092301,
     infobox: {
       'Játék': 'Diablo IV',
       'Szezon': '15. szezon',
@@ -29,10 +31,42 @@ export const latestOfficialReleaseArticles: WikiArticles = {
     <h2>A három rémálom</h2><p>Diablo visszhangja a [[diablo-1-story|tristrami katedrális|location]] mélyén jelenik meg; Baal emléke az [[diablo-2-lod|Arreat-hegy|location]] pusztulásához kapcsolódik; Mephisto rémálma pedig a [[diablo-2-story|Gyűlölet Börtönébe|location]] vezeti az utazót. Ezek a helyszínek a sorozat múltjának felújított emlékképei. A wiki ezért nem írja át velük a korábbi játékok eseményeit, és nem kezeli őket újabb történelmi ostromként.</p>
     <h2>Gonoszszilánkok és a sötét vándor szerepe</h2><p>A három nagy Gonoszszilánk a Rettegéshez, a Pusztításhoz és a Gyűlölethez kötődik. A viselőjük ideiglenesen maga is sötét vándorrá válik: a kiválasztott Főgonosz jellegzetes ereje időről időre megnyilvánul benne, ugyanakkor sebezhetőbbé is válik ugyanazzal a hatalommal szemben. A szezon ezzel a Diablo-történetek visszatérő kérdését dolgozza fel: meddig használható a Pokol ereje anélkül, hogy az használóját is birtokba venné?</p>
     <h2>Éber rémálmok</h2><p>Az Éber rémálmok három méretben jelennek meg. A legnagyobbak többszintes, csúcskategóriás kazamaták, amelyek a Főgonoszokkal vívott történelmi küzdelmeket idézik fel. A közepes változatok egy-egy klasszikus helyszínt, például a Diablo II Gonoszok Odúját építik újjá. A legkisebbek váratlan, rövid világ-események, amelyek régi ellenfeleket vagy szörnyhullámokat hoznak vissza.</p>
+    <h2>A Halottak Kultusza és a történeti folytonosság</h2><p>A BlizzCon-panel pontosította, hogy a Pandemonium hasadékai és a holtak visszatérése nem elszigetelt nosztalgikus jelenség. A <em>Season of Death's Awakening</em> eseményeit folytatják: a Halottak Kultuszának rítusai erősödnek, és Sanctuary múltjából elveszett lelkeket ragadnak ki. A szezon így hivatalos jelen idejű kerettörténettel kapcsolódik a Diablo IV szezonális ágához, miközben a régi csaták továbbra is rémálomként, nem megismétlődő történelmi eseményként jelennek meg.</p>
+    <h2>Visszatérő alakok és helyszínek</h2><p>Az újabb hivatalos összefoglaló szerint a rémálmok a Diablo I, a Hellfire, a Diablo II, a Diablo III és a [[diablo-immortal|Diablo Immortal|game]] emlékeit is felidézik. Közel húsz korábbi ellenfél mellett régi hősök, köztük Leah is megjelenhetnek. Ezek a szereplők a rémálmok által megőrzött lenyomatok; jelenlétük önmagában nem igazolja testi feltámadásukat.</p>
     <h2>Kisebb lélekszilánkok</h2><p>A szezon további szilánkjai Andarielhez, Azmodanhoz, Belialhoz, Durielhez, Lilithhez, Na-Krulhoz és Skarnhoz, valamint a Fekete Lélekkőhöz kapcsolódnak. Ezek elsősorban játékmeneti tárgyak: erős előnyt és ellensúlyozó hátrányt adnak. Jelenlétük nem jelenti automatikusan, hogy valamennyi névadó szereplő fizikailag visszatért a fő történetben.</p>
     <h2>Örökségtárgyak</h2><p>A szezon kilenc, régebbi Diablo-játékokból ismert egyedi tárgyat emel át a Diablo IV-be. Köztük van Leoric koronája, a Jordán Köve, Messerschmidt fosztófejszéje és több más relikvia. A tárgyak mechanikai újraértelmezések, de nevük és leírásuk kapcsolatot teremt Sanctuary korábbi korszakaival.</p>
     <h2>Helye a kánonban</h2><p>A szezon hivatalos Diablo IV-tartalom, de nosztalgikus, szezonális kerettörténete miatt külön rétegben szerepel. Biztos történeti állítás Deckard Cain lelkének figyelmeztetése, a három megszállott vándor és a rémálmok elleni küldetés. A régi csaták újrajátszása emlékkép, ezért nem duplikálható a fő idővonalban. A szezon a [[diablo-4-loh|Lord of Hatred|event]] rendszereire is épít, de nem helyettesíti annak fő kampányát.</p>
-    <h2>Forrás és ellenőrzés</h2><p><a href="${blizzardSeasonSource}" target="_blank" rel="noopener noreferrer">Blizzard Entertainment: Celebrate 30 Years of Diablo in Season of Hell's Legacy</a>. A cikk saját magyar összefoglaló; a történeti állításokat elválasztja a tárgy-, jutalom- és játékmeneti adatoktól.</p>`,
+    <h2>A 2027-es Amazon előzetese</h2><p>A panel a Skovosról érkező Amazon későbbi Diablo IV-osztályát is bemutatta. Négy fejlesztés alatt álló harci archetípust nevezett meg: a pajzzsal és karddal küzdő Bajnokot, a dárdás Rajtaütőt, a távolsági Vadászt és a valkűröket irányító Parancsnokot. Ez a rész a 2027-re tervezett osztálycsomag előzetese, ezért nem a Hell's Legacy küldetéssorának eseménye, hanem kapcsolódó jövőbeli kiadási információ.</p>
+    <h2>Források és ellenőrzés</h2><p><a href="${blizzardSeasonSource}" target="_blank" rel="noopener noreferrer">Blizzard Entertainment: Celebrate 30 Years of Diablo in Season of Hell's Legacy</a>; <a href="${blizzardSeasonPanelSource}" target="_blank" rel="noopener noreferrer">Diablo IV: What's Next Panel Recap</a>. A cikk saját magyar összefoglaló; a történeti állításokat elválasztja a tárgy-, jutalom- és játékmeneti adatoktól.</p>`,
+  },
+
+  'diablo-immortal-made-to-suffer': {
+    id: 'diablo-immortal-made-to-suffer',
+    universeId: 'diablo',
+    universeLabel: 'Diablo',
+    category: 'Diablo Immortal (2022)',
+    title: 'Made to Suffer – A Nation in Agony folytatása',
+    subtitle: 'Pain és Anguish szorításában megnyílik Lut Gholein High Ward negyede',
+    lastEdited: 2026092302,
+    infobox: {
+      'Játék': 'Diablo Immortal',
+      'Történeti ág': 'Nation in Agony',
+      'Helyszín': 'Lut Gholein és a High Ward',
+      'Fő fenyegetések': 'Pain és Anguish',
+      'Kapcsolódó démonok': 'Andariel és Duriel',
+      'Forrásstátusz': 'hivatalos Blizzard-előzetes',
+      'Crossover': 'Spawn – külön, nem automatikusan kánon',
+    },
+    relatedArticles: ['diablo-immortal', 'diablo-2-story', 'prime-lesser-evils', 'veres-ekkő-lut-gholein'],
+    content: `<h2>Áttekintés</h2><p>A <em>Made to Suffer</em> a [[diablo-immortal|Diablo Immortal|game]] <em>Nation in Agony</em> történeti ágának újabb fejezete. Lut Gholein, a Sivatag Ékköve továbbra sem szabadult meg a gyötrelemtől: Pain és Anguish befolyása egyre mélyebben hatol a városba, miközben a torzulások már a falakon kívüli vidéket is elérik.</p>
+    <h2>A High Ward</h2><p>A történet megnyitja Lut Gholein korábban elzárt High Ward negyedét. Ez a valaha virágzó városrész Jerhyn szultán palotáját övezi. Egykori gazdagságának maradványai éles ellentétben állnak az utcákon terjedő sötétséggel. A terület nem azonos a [[diablo-2-story|Diablo II-ben bejárható Lut Gholeinnel|location]]: ugyanannak a városnak egy később feltárt része a Diablo Immortal saját korszakában.</p>
+    <h2>A Nation in Agony folytatása</h2><p>Pain és Anguish kettős fenyegetése nem zárul le a város korábbi ostromával. A hivatalos előzetes új szövetségeseket, ismerős helyszínek újbóli felkeresését és a falakon messze túlérő veszélyt ígér. Mivel az első közlemény előzetesként jelent meg, a wiki csak a Blizzard által kifejezetten megerősített alaphelyzetet rögzíti; a későbbi küldetésfordulatokat nem következteti ki.</p>
+    <h2>Twisting Torments</h2><p>A Rocky Waste területén megjelenő új zónaeseményben Andariel és Duriel követői csapnak össze. A Kín és a Fájdalom démoni befolyása átszivárog Sanctuaryba, megerősítve szolgáikat. A megjelenő láncok, féregfészkek és torzult lények játékmeneti formában fejezik ki a két kisebb Gonosz uralmát. Az esemény ismétlődő rendszere nem jelenti azt, hogy ugyanaz a történeti csata végtelen alkalommal megtörténik.</p>
+    <h2>Andariel és Duriel szerepe</h2><p>Andariel és Duriel a [[prime-lesser-evils|Pokol hét urának|characters]] kisebb gonoszai. A frissítés rivalizálásukat Pain és Anguish kiterjedő hatásán keresztül mutatja be. A hivatalos szöveg biztosan megnevezi őket az esemény forrásaként, de az előzetes nem ad teljes választ arra, milyen formában vannak jelen, ezért testi visszatérésük részleteit külön játékbeli bizonyíték nélkül nem szabad végleges tényként kezelni.</p>
+    <h2>Játékmeneti kiegészítések</h2><p>Az előzetes új legendás drágaköveket, csatatéri módosításokat és további zónaeseményeket is felsorol. Ezek a kiadás dokumentálásához tartoznak, de nem mindegyik hordoz önálló történeti jelentést. A tudásmodell ezért különválasztja a High Ward és a Nation in Agony cselekményét a jutalomrendszerektől.</p>
+    <h2>A Spawn-együttműködés helye</h2><p>A frissítés egy későbbi Spawn crossover eseményt is előrevetít. Ez hivatalos együttműködés, de külső franchise szereplőjét kapcsolja a játékhoz. Emiatt külön crossover-jelölést kap: a megjelenés ténye dokumentálható, a hozzá kapcsolódó eseményeket azonban nem lehet automatikusan a Diablo fő történeti kánonjába emelni.</p>
+    <h2>Kronológiai besorolás</h2><p>A történet a Diablo Immortal folytonosságán belül, a Nation in Agony korábbi fejezete után helyezkedik el. Nem a Diablo IV jelenében történik, és nem módosítja visszamenőleg Lut Gholein Diablo II-kori eseményeit. A fő idővonalon ezért a Diablo Immortal ágán belüli folytatásként, relatív dátummal kezelendő.</p>
+    <h2>Forrás és ellenőrzés</h2><p><a href="${blizzardMadeToSufferSource}" target="_blank" rel="noopener noreferrer">Blizzard Entertainment: Made to Suffer – Your First Look at Our Next Update</a>. A lap saját magyar összefoglaló, és elkülöníti a biztos történeti állításokat, az előzetesen változható részleteket, valamint a nem kánonként kezelt crossover-elemeket.</p>`,
   },
 
   'witcher-songs-of-the-past': {

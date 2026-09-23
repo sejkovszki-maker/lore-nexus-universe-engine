@@ -6,6 +6,7 @@ import { renderWikiLinks } from '../wiki/link-engine';
 import { wikiArticles } from '../data/wikiArticles';
 import { useAppStore } from '../store/appState.ts';
 import { segmentIntroduction, storyRecap } from '../wiki/story-reader-context.ts';
+import { ensurePrivateLibrary } from '../wiki/private-library-loader.ts';
 
 const STORAGE_KEY = 'lore-nexus:story-progress:v1';
 const BOOKS_SETTING_KEY = 'lore-nexus:story-books:v1';
@@ -55,6 +56,7 @@ export class StoryReader extends LitElement {
 
   connectedCallback() {
     super.connectedCallback();
+    void ensurePrivateLibrary().then(()=>this.requestUpdate()).catch(()=>0);
     this.booksEnabled = localStorage.getItem(BOOKS_SETTING_KEY) !== 'false';
     this.unsubscribe = useAppStore.subscribe(state => {
       if (state.activeUniverseId !== this.universeId) this.universeId = state.activeUniverseId;

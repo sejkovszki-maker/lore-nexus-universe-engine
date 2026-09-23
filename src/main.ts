@@ -1,11 +1,13 @@
 import '../style.css';
 import { hydrateUserArticles } from './wiki/user-article-store.ts';
-import { hydratePrivateLibrary } from './wiki/private-library-loader.ts';
 
-try {
-  await hydratePrivateLibrary();
-} catch (error) {
-  console.error('A privát könyvtár betöltése nem sikerült.', error);
+if (/^#\/(?:u\/[^/]+\/)?(?:book\/|story(?:\/|$))/u.test(window.location.hash)) {
+  try {
+    const { ensurePrivateLibrary } = await import('./wiki/private-library-loader.ts');
+    await ensurePrivateLibrary();
+  } catch (error) {
+    console.error('A közvetlen könyvhivatkozáshoz szükséges helyi könyvtár nem tölthető be.', error);
+  }
 }
 
 try {

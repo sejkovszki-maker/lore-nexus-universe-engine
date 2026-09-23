@@ -5,13 +5,14 @@ import { wikiArticles } from '../../src/data/wikiArticles.ts';
 
 const expected = [
   'season-hells-legacy',
+  'diablo-immortal-made-to-suffer',
   'witcher-songs-of-the-past',
   'witcher-letten',
   'witcher3-remastered',
   'reigns-the-witcher',
 ];
 
-test('a négy hivatalos megjelenés és Letten külön, teljes rekordként érhető el', () => {
+test('az új hivatalos megjelenések és Letten külön, teljes rekordként érhetők el', () => {
   assert.deepEqual(Object.keys(latestOfficialReleaseArticles), expected);
   for (const id of expected) {
     const article = latestOfficialReleaseArticles[id];
@@ -24,12 +25,14 @@ test('a négy hivatalos megjelenés és Letten külön, teljes rekordként érhe
 
 test('a Diablo és Witcher folytonosság nem keveredik', () => {
   assert.equal(latestOfficialReleaseArticles['season-hells-legacy'].universeId, 'diablo');
-  for (const id of expected.slice(1)) {
+  assert.equal(latestOfficialReleaseArticles['diablo-immortal-made-to-suffer'].universeId, 'diablo');
+  for (const id of expected.slice(2)) {
     assert.equal(latestOfficialReleaseArticles[id].universeId, 'witcher');
   }
   assert.match(latestOfficialReleaseArticles['reigns-the-witcher'].content, /alternatív játékfolytonosság/);
   assert.match(latestOfficialReleaseArticles['witcher3-remastered'].content, /nem önálló történeti mű/);
   assert.match(latestOfficialReleaseArticles['season-hells-legacy'].content, /emlékkép/);
+  assert.match(latestOfficialReleaseArticles['diablo-immortal-made-to-suffer'].content, /crossover-jelölést/);
 });
 
 test('minden új belső hivatkozás létező cikkre mutat', () => {

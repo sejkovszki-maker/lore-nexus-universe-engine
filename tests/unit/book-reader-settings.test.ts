@@ -23,3 +23,9 @@ test('invalid reader settings fall back and extreme values are clamped', () => {
   const storage = new MemoryStorage(); storage.value = '{broken';
   assert.deepEqual(loadBookReaderSettings(storage), defaultBookReaderSettings);
 });
+
+test('e-ink theme persists as an explicit low-refresh reader preference', () => {
+  const storage = new MemoryStorage();
+  storeBookReaderSettings({ ...defaultBookReaderSettings, theme: 'eink' }, storage);
+  assert.equal(loadBookReaderSettings(storage).theme, 'eink');
+});

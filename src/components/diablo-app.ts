@@ -1,18 +1,19 @@
 import { LitElement, html } from 'lit';
 import { customElement, state } from 'lit/decorators.js';
 import { useAppStore } from '../store/appState';
-import { wikiArticles } from '../data/wikiArticles.ts';
-import { articleUniverseId } from '../universe/article-universes.ts';
 
 import './diablo-navigation';
-import './story-reader';
-import './wiki-article-grid';
-import './wiki-article-view';
-import './diablo-timeline';
-import './canon-conflict-dashboard';
-import './book-library';
-import './source-library';
-import './wiki-search-page';
+
+const componentLoaders: Record<string, () => Promise<unknown>> = {
+  articles: () => import('./wiki-article-grid'),
+  'article-view': () => import('./wiki-article-view'),
+  search: () => import('./wiki-search-page'),
+  timeline: () => import('./diablo-timeline'),
+  story: () => import('./story-reader'),
+  books: () => import('./book-library'),
+  sources: () => import('./source-library'),
+  conflicts: () => import('./canon-conflict-dashboard'),
+};
 
 @customElement('diablo-app')
 export class DiabloApp extends LitElement {
@@ -23,10 +24,17 @@ export class DiabloApp extends LitElement {
 
   constructor() {
     super();
+    void this.ensureComponent(this.activeTab);
     useAppStore.subscribe((state) => {
       this.activeTab = state.activeTab;
       this.activeUniverseId = state.activeUniverseId;
+      void this.ensureComponent(state.activeTab);
     });
+  }
+
+  private async ensureComponent(tab: string) {
+    await componentLoaders[tab]?.();
+    this.requestUpdate();
   }
 
   createRenderRoot() {
@@ -34,25 +42,39 @@ export class DiabloApp extends LitElement {
   }
 
   private revealContent(selector = '.codex-content') {
-    void this.updateComplete.then(() => requestAnimationFrame(() => requestAnimationFrame(() => {
+    const reveal = () => {
       const target = document.querySelector<HTMLElement>(selector) ?? document.querySelector<HTMLElement>('.codex-content');
-      target?.scrollIntoView({ behavior: 'auto', block: 'start' });
+      if (!target) return;
+      const top = Math.max(0, window.scrollY + target.getBoundingClientRect().top - 72);
+      window.scrollTo({ top, behavior: 'auto' });
+    };
+    void this.updateComplete.then(() => requestAnimationFrame(() => requestAnimationFrame(() => {
+      reveal();
+      window.setTimeout(reveal, 120);
     })));
   }
 
-  private changeTab(tab: string) {
+  private async changeTab(tab: string) {
     useAppStore.setActiveTab(tab);
+    await this.ensureComponent(tab);
     this.revealContent();
   }
 
-  private showArticles(query = '', category: string | null = null) {
+  private async showArticles(query = '', category: string | null = null) {
     useAppStore.setSearchQuery(query);
     useAppStore.setActiveCategory(category);
-    useAppStore.setActiveTab('articles');
+    // Ne indítsunk azonos útvonalra mesterséges navigációt: annak scroll-
+    // visszaállítása felülírná az oldalsáv célzott tartalomfelfedését.
+    if (useAppStore.getState().activeTab !== 'articles') useAppStore.setActiveTab('articles');
+    await this.ensureComponent('articles');
     this.revealContent(query || category ? '.codex-directory' : '.codex-content');
   }
 
-  private openRandomArticle() {
+  private async openRandomArticle() {
+    const [{ wikiArticles }, { articleUniverseId }] = await Promise.all([
+      import('../data/wikiArticles.ts'),
+      import('../universe/article-universes.ts'),
+    ]);
     const articles = Object.values(wikiArticles).filter(article => articleUniverseId(article) === this.activeUniverseId && article.type !== 'chapter' && article.type !== 'book');
     const article = articles[Math.floor(Math.random() * articles.length)];
     if (article) {

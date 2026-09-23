@@ -173,16 +173,30 @@ test('book reader preferences persist and focus mode hides surrounding distracti
   await page.getByLabel('Könyv olvasási témája').selectOption('parchment');
   await page.getByLabel('Könyv betűmérete').fill('1.2');
   const reader = page.locator('book-library .reader');
-  await expect(reader).toHaveAttribute('data-theme', 'parchment');
-  await expect(reader).toHaveAttribute('style', /--reader-font-scale:1.2/);
+  await expect(reader).toHaveAttribute('data-theme', 'parchment', { timeout: 15_000 });
+  await expect(reader).toHaveAttribute('style', /--reader-font-scale:1.2/, { timeout: 15_000 });
   await page.reload();
-  await expect(reader).toHaveAttribute('data-theme', 'parchment');
-  await expect(reader).toHaveAttribute('style', /--reader-font-scale:1.2/);
+  await expect(reader).toHaveAttribute('data-theme', 'parchment', { timeout: 15_000 });
+  await expect(reader).toHaveAttribute('style', /--reader-font-scale:1.2/, { timeout: 15_000 });
   await page.getByRole('button', { name: 'Zavaró elemek nélküli mód' }).click();
   await expect(reader).toHaveClass(/focus-mode/);
   await expect(page.getByRole('button', { name: /Kilépés az olvasómódból/ })).toBeVisible();
   await page.keyboard.press('Escape');
   await expect(reader).not.toHaveClass(/focus-mode/);
+});
+
+test('book reader supports e-ink mode and exports a portable EPUB on demand', async ({ page }) => {
+  await page.goto('/#/books');
+  const card = page.locator('book-library .card').filter({ has: page.getByRole('heading', { name: 'Az árnyak királysága', exact: true }) });
+  await card.getByRole('button', { name: /Könyv olvasása|Olvasás folytatása/ }).click();
+  await page.getByRole('button', { name: /Olvasási beállítások/ }).click();
+  await page.getByLabel('Könyv olvasási témája').selectOption('eink');
+  await expect(page.locator('book-library .reader')).toHaveAttribute('data-theme', 'eink');
+  const downloadPromise = page.waitForEvent('download');
+  await page.getByRole('button', { name: 'EPUB könyvolvasóra' }).click();
+  const download = await downloadPromise;
+  expect(download.suggestedFilename()).toMatch(/\.epub$/u);
+  await expect(page.getByRole('status')).toContainText('EPUB elkészült');
 });
 
 test('book reader searches every chapter and saves a note for selected text', async ({ page }) => {

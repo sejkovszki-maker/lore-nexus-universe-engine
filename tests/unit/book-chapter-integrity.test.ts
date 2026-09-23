@@ -1,6 +1,10 @@
 import assert from 'node:assert/strict';
 import test from 'node:test';
 import { wikiArticles } from '../../src/data/wikiArticles.ts';
+import { installReaderArticles } from '../../src/wiki/reader-library-loader.ts';
+import { readFile } from 'node:fs/promises';
+
+installReaderArticles(JSON.parse(await readFile(new URL('../../public/reader-library/articles.json', import.meta.url), 'utf8')));
 
 test('A kígyó pikkelyei 12–15. fejezetei külön, olvasható lapokon maradnak', () => {
   const chapters = [12, 13, 14, 15].map((number) =>

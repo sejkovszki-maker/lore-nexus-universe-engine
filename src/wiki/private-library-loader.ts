@@ -1,6 +1,7 @@
 import { wikiArticles } from '../data/wikiArticles.ts';
 import type { WikiArticle } from '../types.ts';
 import { isStoredArticle } from './user-article-store.ts';
+import { ensureReaderLibrary } from './reader-library-loader.ts';
 
 interface PrivateLibraryEnvelope {
   format: 'lore-nexus-private-library';
@@ -15,6 +16,7 @@ async function sha256(value: string): Promise<string> {
 }
 
 export async function hydratePrivateLibrary(): Promise<number> {
+  await ensureReaderLibrary();
   const url = `${import.meta.env.BASE_URL}private-library/articles.json`;
   const response = await fetch(url, { cache: 'no-store' });
   if (response.status === 404) return 0;
@@ -43,4 +45,14 @@ export async function hydratePrivateLibrary(): Promise<number> {
     wikiArticles[article.id] = article;
   }
   return envelope.articles.length;
+}
+
+let hydration: Promise<number> | undefined;
+
+export function ensurePrivateLibrary(): Promise<number> {
+  hydration ??= hydratePrivateLibrary().catch(error => {
+    hydration = undefined;
+    throw error;
+  });
+  return hydration;
 }
